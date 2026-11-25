@@ -75,3 +75,14 @@ def place(im, pad=0):
     k, px_, py_ = [float(v) for v in a.person.split(",")]
     return cv2.warpAffine(im, np.float32([[k, 0, px_], [0, k, py_ - k * pad]]), (W, H), flags=cv2.INTER_CUBIC if k > .98 else cv2.INTER_AREA)
 rng = np.random.default_rng(1); noise = [rng.normal(0, 1.1, (H, W, 1)).astype(np.float32) / 255 for _ in range(5)]
+def frame(f, mraw, i):
+    ms = clean(mraw, f); rb, fill = room(f, (ms > .05).astype(np.float32)); r = np.clip(grade(fit(rb)) * light + noise[i % 5], 0, 1)
+    F, M = crown(unmix(f, fill, ms), ms); return r, np.clip(place(grade(F), PAD), 0, 1), np.clip(place(M.astype(np.float32), PAD), 0, 1)
+if a.still is not None:
+    k = int(a.still * fps); cap.set(cv2.CAP_PROP_POS_FRAMES, k); mc.set(cv2.CAP_PROP_POS_FRAMES, k); r, q, m = frame(cap.read()[1], mc.read()[1], 0)
+    cv2.imwrite(a.out + "/still.png", ((r * (1 - m[..., None]) + q * m[..., None]) * 255).astype(np.uint8)); raise SystemExit
+pipe = lambda o, pf, args: subprocess.Popen(["ffmpeg", "-v", "error", "-y", "-f", "rawvideo", "-pix_fmt", pf, "-s", f"{W}x{H}", "-r", f"{fps}", "-i", "-"] + args + ["-color_primaries", "bt709", "-color_trc", "bt709", "-colorspace", "bt709", o], stdin=subprocess.PIPE)
+A = pipe(a.out + "/room.mov", "bgr24", ["-vf", "scale=out_color_matrix=bt709", "-c:v", "prores_ks", "-profile:v", "3", "-pix_fmt", "yuv422p10le"]); B = pipe(a.out + "/person.mov", "bgra", ["-vf", "scale=out_color_matrix=bt709", "-c:v", "prores_ks", "-profile:v", "4444", "-pix_fmt", "yuva444p10le"])
+from concurrent.futures import ThreadPoolExecutor
+from collections import deque
+cv2.setNumThreads(1); ex = ThreadPoolExecutor(max_workers=max(2, (os.cpu_count() or 4) - 2)); q_ = deque(); pm = None; i = 0; done = False
