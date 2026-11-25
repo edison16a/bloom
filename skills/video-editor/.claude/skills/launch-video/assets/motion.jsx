@@ -54,3 +54,10 @@ function placeWindow(U, cam, x, y, w, r, a, z) {
   var d = fx(L, 'ADBE Drop Shadow'); fxProp(d, 'Opacity').setValue(34); fxProp(d, 'Direction').setValue(180); fxProp(d, 'Distance').setValue(22 / k); fxProp(d, 'Softness').setValue(90 / k);
   return L;
 }
+// Arrives leaning back, then lies flat. One per film.
+function settleFlat(L, t, dur, lean) {
+  dur = dur || 1.4; L.threeDLayer = true;
+  anim(tr(L, 'rotX'), [[t, lean || 26], [t + dur, 0]], SOFT);
+  anim(tr(L, 'op'), [[t, 0], [t + 0.3, 100]], OUT);
+  var b = blurOf(L); anim(b, [[t, 14], [t + 0.55, 0]], OUT);
+}
