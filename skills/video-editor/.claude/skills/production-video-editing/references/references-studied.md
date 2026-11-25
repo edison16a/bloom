@@ -87,3 +87,19 @@ Opens on paintings and archive speeches with their real sound. White words follo
 4. One idea at a time, with empty space around it.
 5. There is a moment of near silence right before the reveal.
 6. Endings are plain: logo, then maybe a URL or one sentence.
+
+## Measured sound (not heard)
+| Film | Loudness | Shape |
+|---|---|---|
+| Artificial Societies | -13.7 LUFS | Steady bed, +6 dB lift at 26 s, full stop at 64 s. 5 of 11 cuts on a hit |
+| Hue | -16.8 | Hits and silence alternate 8 to 16 s, near silence 46 to 49 s before the reveal. 11 of 27 cuts on a hit |
+| Open Actuation | -18.5 | Slow heavy pulse, a hit at 14 s, then -58 dB silence, then voice over an even quiet bed |
+| Cascade | -19.2 | Story music grows then stops dead, dry dialogue, one sting at the end |
+| CarSignal | -16.9 | Song loud for 16 s, cut away at 24 s, dry dialogue with a bed, song returns at the end |
+| Central Blue | -17.7 | Low boom opening, bed under voice |
+| Ghostship | level only, about -22 dB then -10 | Even opening, a drop to -43 at 8 s, a hit at 9, lifts of about 10 dB at 15 and 24, quiet tail by 50 (sampled thinly after 30 s) |
+| Vendo | level only, speech about -22 dB | Voice led. Gaps fall to -40 or -55, so the bed is very quiet or absent. No lift, fades out at 64 |
+
+Not measured: the two LinkedIn films (the site blocks it) and the compilation as a whole.
+
+The shared shape: a strong opening, a hard stop right before the reveal, music back with the product, sound effects only on real interactions, and a flat quiet bed under speech.
