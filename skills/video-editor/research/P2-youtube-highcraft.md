@@ -236,3 +236,17 @@ The brief asks for 2023–2026 videos. Five picks are older, but they are kept a
   - MrBeast: green money + white/yellow italic.
   - JH: cream paper + red/orange.
 - **Highlighter wipes** (Vox, Cleo, HAI) on article screenshots, about 6–10 frames left to right.
+
+### Flow and direction rules
+- **Talking-head sections are mostly static:** 60–79% of seconds have no global motion (MKBHD, Mrwho, Vox explainers, JH). Movement comes from B-roll and graphic layers, not camera moves on the host.
+- **Graphic flow:**
+  - HAI and PolyMatter slide new layers up (↑ dominant).
+  - Wendover and JH maps push in (Z+) to a location, then hold.
+  - Kurzgesagt is a continuous zoom (Z±).
+  - Vox/Cleo charts build left → right.
+- **Live-action vlogs** (MrBeast, Trahan, Nick Shirley) are 50–83% moving. Lateral handheld follow; whip pans go both ways (← and → about equal), with no enforced screen direction. Directional continuity is kept within a run: Cleo's car-roof time-lapse keeps forward motion across 10+ cuts, and the MrBeast drone fly-in continues into a forward push.
+- **Match and continuity tricks seen:**
+  - Phone → laptop → email screen (02).
+  - Satellite dissolve from a ground shot of the same location (07).
+  - Hands entering before the host (11).
+  - Host cut-out sliding in over a blurred background (04, 15).
