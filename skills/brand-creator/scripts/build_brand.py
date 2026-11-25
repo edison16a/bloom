@@ -184,3 +184,32 @@ def set_wordmark(wm, symbol_cache):
     zone_top = -100.0 if has_tall else -font.xh * k
     return {"parts": parts, "bbox": (bx0, by0, bx1, by1), "zone_top": zone_top, "text": text, "font": wm["font"]}
 
+
+def wordmark_body(wmo, word, accent):
+    out = []
+    for p in wmo["parts"]:
+        col = accent if p["accent"] else word
+        if p.get("custom"):
+            out.append(p["svg"].replace("{T%d}" % p["i"], col))
+        else:
+            out.append('<path fill="%s" d="%s"/>' % (col, p["d"]))
+    return "".join(out)
+
+
+# ---------------------------------------------------------------- symbol
+
+def token_fill(svg, single=None):
+    """Symbols use {P} primary, {A} accent, {I} ink. single replaces all three with one token."""
+    if single:
+        for t in ("{P}", "{A}", "{I}"):
+            svg = svg.replace(t, single)
+    return svg
+
+
+BAD = re.compile(r"<\s*(script|text|image|foreignObject|linearGradient|radialGradient|filter|style)\b|url\(\s*['\"]?http|xlink:href\s*=\s*['\"]?http|\son\w+\s*=", re.I)
+
+
+def check_symbol(svg, label):
+    if BAD.search(svg):
+        sys.exit("%s: no scripts, text, images, gradients, filters or style blocks allowed" % label)
+
