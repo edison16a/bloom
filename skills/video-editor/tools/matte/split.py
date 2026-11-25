@@ -30,3 +30,30 @@ def clean(m, f):
     out = cv2.GaussianBlur(np.maximum(g, cv2.GaussianBlur(core, (0, 0), 3)), (0, 0), .7)
     return np.clip(out, 0, 1) * cv2.GaussianBlur(cv2.dilate(u, np.ones((11, 11))).astype(np.float32), (0, 0), 2)
 PAD = 48
+def crown(F, m):
+    """Hair that leaves the top of the plate would end in a straight line. Round it off with a few mirrored rows on the head's own curve."""
+    h, w = m.shape; feather = np.clip(np.arange(h, dtype=np.float32) / 9, 0, 1)[:, None]; m = m.copy(); near = np.clip((30 - np.arange(h, dtype=np.float32)) / 10, 0, 1)[:, None]; m *= 1 - near * np.clip((cv2.GaussianBlur(F.astype(np.float32).mean(2), (0, 0), 2) - 85) / 35, 0, 1); t = ((m[2:7].mean(0) > .5) & (F[2:7].mean((0, 2)) < 95)).astype(np.uint8); n, lab, st, _ = cv2.connectedComponentsWithStats(t[None].copy(), connectivity=8)
+    F = cv2.copyMakeBorder(F.astype(np.float32), PAD, 0, 0, 0, cv2.BORDER_REFLECT_101); M = cv2.copyMakeBorder(m * feather, PAD, 0, 0, 0, cv2.BORDER_CONSTANT, value=0)
+    if n < 2: return F, M
+    k = 1 + int(np.argmax(st[1:, 4])); l, c = int(st[k, 0]), int(st[k, 2]); r = l + c - 1
+    if c < 8: return F, M
+    R = max(float((m[int(h * .12)] > .5).sum()) * .62, c * .55); hw = c / 2; x = np.arange(w, dtype=np.float32) - (l + r) / 2
+    rise = np.where(np.abs(x) < hw, np.sqrt(np.maximum(R * R - x * x, 0)) - np.sqrt(R * R - hw * hw), -3.0); rise = np.minimum(rise, PAD - 6)
+    up = np.arange(PAD, 0, -1, dtype=np.float32)[:, None]; a_ = np.clip((rise[None] - up) / 6 + .5, 0, 1)
+    on = cv2.GaussianBlur((np.abs(x) < hw).astype(np.float32)[None], (0, 0), 2)
+    M[:PAD] = a_; M[PAD:] = m * (feather * (1 - on) + on); M[PAD - 6:PAD + 12] = M[PAD - 6:PAD + 12] * .5 + cv2.GaussianBlur(M, (0, 0), 1.5)[PAD - 6:PAD + 12] * .5
+    return F, M
+if a.wb: wb = np.array([float(v) for v in a.wb.split(",")])
+else:                                                    # neutralise the room's cast halfway, keep some warmth
+    cap.set(cv2.CAP_PROP_POS_FRAMES, N // 2); mc.set(cv2.CAP_PROP_POS_FRAMES, N // 2); f, m = cap.read()[1], mc.read()[1]
+    px = f[(m[:, :, 1] < 20) & (f.mean(2) > 90) & (f.mean(2) < 245)].astype(np.float32).mean(0)[::-1]; wb = (px.mean() / px) ** 0.42; wb /= wb.mean()
+cap.set(cv2.CAP_PROP_POS_FRAMES, 0); mc.set(cv2.CAP_PROP_POS_FRAMES, 0)   # back to the first frame after sampling
+print("white balance gains r,g,b", np.round(wb, 3))
+gain = wb[::-1].astype(np.float32)
+yy, xx = np.mgrid[0:H, 0:W].astype(np.float32); cx, cy = [float(v) for v in a.light.split(",")]
+d_ = np.sqrt(((xx / W - cx) * 1.25) ** 2 + ((yy / H - cy) * 1.0) ** 2); d_ = np.clip((d_ - .16) / .5, 0, 1); d_ = d_ * d_ * (3 - 2 * d_)
+light = (a.near * (1 - d_) + a.room * d_)[..., None].astype(np.float32)          # light falls off around the person, so text at the sides is readable
+def grade(f, k=1.0):
+    f = f.astype(np.float32) / 255 * gain * k; g = f.mean(2, keepdims=True); f = g + (f - g) * a.sat
+    f = np.clip(f, 0, 1.3); f = f + a.lift * np.sin(np.clip(f, 0, 1) * np.pi); f = f + (a.contrast - 1) * np.sin((np.clip(f, 0, 1) - .5) * np.pi) * .5 * 0.9
+    return np.clip(np.where(f > .86, .86 + (1 - np.exp(-(f - .86) / .14)) * .14, f), 0, 1)
