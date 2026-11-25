@@ -211,3 +211,19 @@
   - **Mouse-click** on the subscribe-button CTA (Codie #10).
   - Clips with high cuts_with_hit (#02 0.67, #12 0.60, #09 0.54, #19 0.53) are the ones with the most graphic inserts. That's consistent with hits on inserts.
 - What is *not* there: no SFX on every caption word. Captions swap silently. Sound effects are reserved for **objects entering** (stickers, icons, cards), about 3–8 per 30 s in the graphic-heavy edits and 0 in the founder single-takes.
+
+### Text and caption conventions
+- **Position:** captions sit in the **middle band, 50–60% of frame height** (over the chest or mic) in 18 of 25 clips. The rest sit in the lower third at about 75% (Ali pills, MKBHD caps), or below a 16:9 window (Starter Story). Nobody puts captions in the bottom 15% (Shorts UI) or the top 10%.
+- **Size:** small by TikTok standards. Body captions are about 3.5–5% of frame height, 1–4 words wide, and never wider than about 80% of the frame. "Big" text is reserved for 1–3 moments per video: the title payoff, numbers, and the closing line ("YOU ARE.", "$2,000", "$1,000,000", "LAYOFFS!").
+- **Highlighting:** three systems.
+  1. Bold or colour keyword inside a white phrase (Hormozi: bold white; Codie: serif bold line 1).
+  2. Karaoke active word: Ali (black on white pill, rest grey), Starter Story (purple on white).
+  3. Speaker colour-coding: DOAC (guest green or white, host yellow) and Hormozi (questioner yellow italic).
+- **Typography mixing:** a sans body, plus *serif italic* for emphasised or emotional words (Williamson, Codie #25, Ali #05/06), ALL-CAPS condensed for chapter or data labels (MKBHD, DOAC maps), and handwritten script for asides or annotations (Ali).
+- **Animation:** most caption swaps are hard cuts. Animated entries are reserved for headers and labels: typewriter (Ali app names at about 2–3 frames per letter, Ali handwriting line by line), fade-up with a small drift over about 4 frames ("$1.65 BILLION"), pop or scale on stickers, and a 0.3–0.4 s fade-out on the hook title box (Leila).
+- **Hook title box:** a white rounded box with black bold sans (Leila, DOAC, Codie), or a black box with a coloured outline (Huberman). It's 2–3 lines and holds **1.2–4 s**, then gets out of the way.
+
+### Flow and direction rules
+- The camera is mostly locked off. Motion comes from **scale changes** (punch-ins between 2–3 sizes), **window-shape changes** (Williamson), and **handheld B-roll** (MKBHD).
+- Direction continuity shows up only in Ali's whip-pan (a left-to-right blur matched across the cut) and in MKBHD's product handling. It isn't a governing rule in this genre.
+- Layout systems are kept fixed for the whole video so the eye stays put. Examples: Starter Story's top headline + window + caption stack, GaryVee and Williamson's centred window on black, and DOAC's fixed caption band. All movement happens *inside* a stable frame.
