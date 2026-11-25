@@ -101,3 +101,14 @@
   - +33 dB at 61 s in 20 Cascade, music re-entering after a silence beat at the story's resolution.
   - +19.7 dB at 1 s in 25 sieve and +19.8 dB at 1 s in 12 WithAI: music slams in on frame 1 to 30 of the cold open.
 - Rule (inferred): put the turn ("Introducing X", "Let's see it in action", the money number) on a music lift, usually after 0.3-1 s of near-silence.
+
+### SFX density and placement
+- Measured transients: median 53/min (IQR 43-67). Voice-led films still carry about 50-67/min (Unveil: 51-67), so SFX are present even under VO.
+- Placement inferred from hits plus visuals:
+  1. UI element pop-ins (cards, chips, stat bubbles): a soft tick or pop on the settle frame.
+  2. Cursor clicks: a click sound on every click (Sim, Comena, VibeFlow, Weave).
+  3. Counter ticks during number roll-ups (Sim launch "3,600 to 5,000+", PlexTrac 45 to 76).
+  4. A whoosh on whip pans and panel slides (Wildcard, Lance's exit whip).
+  5. Glitch or static bursts on chaos montages (sieve, Knowlify).
+  6. A boom or impact on the logo or money reveal.
+- 40-70% of cuts carry a hit in the UI-led films (VibeFlow 70%, Comena 50%, Wildcard 40%, TrueMile 42%, Palmier 40%). Cinematic films (Cluely $15M, Cascade, Knowlify) use almost none on cuts (0-10%) and let the score carry the energy.
