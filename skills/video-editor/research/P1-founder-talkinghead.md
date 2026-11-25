@@ -279,3 +279,17 @@ Hits are speech-inflated, so these rules come from the visuals plus the cases ab
   - light-leak flash, about 2 frames (#04)
   - stripe wipe (#11, lower craft)
 - Cross-dissolves appear only on the founder → product title hand-off (#16).
+
+### 10 reusable moves (recipes at 24/30 fps)
+1. **Caption chunker (vertical).** 1–3 words, a semibold sans at about 4.5% of frame height, white with a 60% black shadow or a box, center at 58–62% down. Hard-on at the word's first phoneme and hard-off at the next chunk (0 easing). One keyword per line in bold or accent colour. No SFX.
+2. **Hook title box.** A rounded box (yellow #FFE600 with black text, or red #E02020 with white caps) appears in 1 frame at 0.0 s. Hold 1.5–3 s across the first cut, then fade opacity 100→0 over 3 frames. A soft "pop" SFX on in, nothing on out.
+3. **Emphasis swap.** On the key phrase, replace the caption with a large display serif (light weight, 10–12% of frame height) with a white outer glow (radius about 20 px, 40%). Scale 100→104% over 12 frames ease-out, hold about 1 s, cut out. Optional low "whoomp" or riser tail.
+4. **Punch-in rhythm.** Alternate 100% and 115–125% scale (or wide/close cameras) on every sentence or about every 2–4 s. The cut lands on a hard consonant or breath; on Shorts add a −20 dB tick/whoosh so every cut has a transient (the 73–75% pattern).
+5. **Front-loaded hook.** First 5–8 s at 2–3× the body cut rate (≥25 cuts/min, shots 0.5–1.5 s): title box + punch-ins + one B-roll flash. Body at 10–20 cuts/min; for launches, rebuild to 30–45 cuts/min into the reveal or CTA.
+6. **Name lower third.** Logo mark wipes L→R over 4 frames (ease-out cubic), name types in 6 frames later, role line fades in 2 frames after that. Right- or left-third placement, 2 lines (bold name, regular role). Hold 3 s, then fade out over 4 frames. Soft click SFX on the wipe.
+7. **B-roll card.** Insert B-roll as a 92–95% scaled rounded-corner card (radius about 24 px) on black or brand colour, with a slow 102→106% push over the shot. Enter with a 2-frame light-leak/flash, exit on a hard cut back to the A-cam. Whoosh optional.
+8. **Whip-pan transition.** The last 3 frames of shot A get a 40→0 px directional blur plus an x-offset; the first 3 frames of shot B blur out the same way. Total 5–6 frames, ease-in-out. Air whoosh peaking at the cut. Keep the pan direction consistent with the narrative (← = back in time/the other person, as in #22).
+9. **Big-number beat.** Bold condensed white numerals bottom-center (about 12% of frame height) with a heavy drop shadow. Optional count-up over 12–18 frames (ease-out expo) landing on a downbeat. Cash-register or impact SFX on the landing; for a rolling counter, a tick per cut.
+10. **Montage lock.** For a 4–10 s B-roll run, set the bed at 110–130 BPM and cut every beat (0.46–0.55 s), or every half-beat for a 2–3 frame strobe (a16z patents). Match motion direction across adjacent pairs, then end on an impact plus a 1-frame white flash into the hero or title card. Verify ≥45% of cuts land on beat (GaryVee/Codie level).
+
+Bonus: the **paper-freeze intro** (#17). Freeze frame, desaturate, replace the background with a paper texture, write a handwritten label with an arrow over 24 frames, hold 2 s, tear back over 6 frames with a paper-rip SFX.
