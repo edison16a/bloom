@@ -71,3 +71,12 @@ function nameText(name, role, x, y, a, z) {
   tr(N, 'pos').setValue([x, y]); tr(R, 'pos').setValue([x, y + 46]);
   var q = [N, R]; for (var i = 0; i < 2; i++) { span(q[i], a, z); softShadow(q[i], 60, 26); fadeIn(q[i], a + i * fr(3), 8); fadeOut(q[i], z, 6); }
 }
+// phrase: lines appear on the spoken word, one italic serif accent
+function phrase(lines, x, y, size, times, z) {
+  for (var i = 0; i < lines.length; i++) {
+    var it = lines[i][1], L = kitText(lines[i][0], it ? size * 1.16 : size, it ? 'Instrument Serif' : 'Inter', it ? 'Italic' : 'Medium');
+    tr(L, 'pos').setValue([x, y + i * size * 1.12]); span(L, times[i], z); softShadow(L, 45, 40);
+    var b = blurOf(L); if (b) anim(b, [[times[i], 10], [times[i] + fr(7), 0]], OUT);
+    fadeIn(L, times[i], 6); fadeOut(L, z, 6);
+  }
+}
