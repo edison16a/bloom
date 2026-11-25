@@ -55,3 +55,23 @@ interface IconProps extends SVGProps<SVGSVGElement> {
   name: IconName;
   size?: number;
 }
+
+export function Icon({ name, size = 16, ...rest }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth={1.5}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      focusable="false"
+      {...rest}
+    >
+      {paths[name]}
+    </svg>
+  );
+}
