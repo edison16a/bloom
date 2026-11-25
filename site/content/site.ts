@@ -7,3 +7,9 @@ export const site = {
   cloneUrl: "https://github.com/edison16a/bloom.git",
   branch: "main",
 } as const;
+
+export const nav = [
+  { href: "/art/", label: "Art" },
+  { href: "/launch/", label: "Launch" },
+  { href: "/logo/", label: "Logo" },
+] as const;
