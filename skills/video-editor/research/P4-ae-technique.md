@@ -95,3 +95,34 @@ Measurement caveats, read first:
 Not obtained: the School of Motion kinetic-type course, Talking-Head MG breakdown uW-8SKO8kYE (429 on subs), and a speed-graph numeric article. Easing numbers below marked *(inferred)* convert what the tutors did by hand into KeyframeEase values. They weren't read off a screen.
 
 ---
+
+## 4. Recipes in AE-scripting form (EffectCraft runs the AE scripting API)
+
+Conventions: `fps = comp.frameRate`, `f(n) = n/fps`. Ease objects are `new KeyframeEase(speed, influence)`. "Easy Ease" (F9) is `KeyframeEase(0, 33.33)` on both sides.
+- **Expo-out** (Ben Marriott's "drag both handles left" speed graph, arriving into rest) *(inferred values)*: outgoing ease on key 1 is `KeyframeEase(0, 5–10)`, incoming ease on key 2 is `KeyframeEase(0, 85–95)`. Fast start, long settle.
+- **Expo-in** for exits is the mirror: key 1 out `(0, 85–95)`, key 2 in `(0, 5–10)`.
+
+### R1. Clean title entry (Ben Marriott B1): the "90% of client jobs" move
+```
+L = comp.layers.addText("TITLE");               // final position = rest pose
+P = L.property("ADBE Transform Group").property("ADBE Position");
+t0 = inPoint; t1 = t0 + f(12);                  // 10–15 f typical (inferred from tutorial pacing)
+P.setValueAtTime(t1, rest); P.setValueAtTime(t0, rest + [0, 40]);   // "doesn't need to travel far": ~30–60 px at 1080p
+O = L.property("ADBE Transform Group").property("ADBE Opacity"); O.setValueAtTime(t0,0); O.setValueAtTime(t1,100);
+apply expo-out to both props (same ease on both)
+// polish layers (each optional):
+fx = L.Effects.addProperty("ADBE Fill"); color key t0 = [1,0,0] (red), t0+f(6) = white, easy-ease   // "barely visible → white"
+gb = L.Effects.addProperty("ADBE Gaussian Blur 2"); blurriness t0=20 → t1=0, easy-ease
+```
+SFX: a soft whoosh peaking at t0+f(3). If it should land, add a tick or impact at t1−f(1).
+
+### R2. "Sink-in" scale (B1)
+`Scale 104% → 100%` over 8–12 f, value-graph ease with "the sharpest easing" (incoming influence ~95, outgoing ~5, *inferred*), plus Gaussian Blur 10→0. Use on punch words in talking heads: it reads as impact without travel.
+
+### R3. Cinematic tracking spread (B1, B4; seen in 10 Paul)
+```
+anim = L.Text.Animators.addProperty("ADBE Text Animator");
+anim.property("ADBE Text Animator Properties").addProperty("ADBE Text Tracking Amount");
+tracking: key 0 at in → +30 at in+5s (linear or very gentle ease)   // base Character tracking ~600 for trailer look; +5 for subtle (Ignace)
+```
+Pair with R4 opacity/blur per character. Paul's reel uses this for every title card, with the hold card lasting 2–3 s.
