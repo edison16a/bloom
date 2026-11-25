@@ -57,3 +57,13 @@ export interface ColorStyle {
   /** Fine per-pixel iridescent stripes, 0–1, applied to cells the scene flags as iridescent (flag 0.25–0.5) or all boxed cells. */
   iridescence?: number;
 }
+
+export interface DitherStyle {
+  type: "bayer" | "noise";
+  /** Colour stops dark → bright. */
+  stops: string[];
+  /** Per transition: true = dithered, false = smooth. Length stops-1. Default all true. */
+  bands?: boolean[];
+  /** 0–1 random jitter mixed into the Bayer matrix. Default 0.18. */
+  jitter?: number;
+}
