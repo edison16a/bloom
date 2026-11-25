@@ -61,3 +61,10 @@
 - **25** sieve (YC X25): chaos open. Red monospace error logs, missed-call and Slack notification toasts stacking over each other, macro stock-ticker footage, red glitch flashes; cuts every 2-4 frames (first-quarter cpm 97, median shot 0.33 s), with the logs scrolling and digit tickers smearing. Then stock-footage traders with white sans lines ("are too / To Be (Data) Janitors"), a Google search UI -> SEC 10-K document zoom, white bold "hedge funds" over an inset photo. The turn: a calm deep-blue abstract flame/fluid gradient background, "Meet sieve", code snippet, "Called with only four lines of code", spreadsheets, a candlestick chart with a BUY chip, "Delivered." huge. Matrix-style ASCII-dissolve text ("Human precision. At scale."), a team avatar cloud. End on grey: three short lines then the logo. Quarters 97/19/8/0: chaos -> calm deceleration. 103 bpm, LUFS -14.3, +19.7 dB at 1 s (hard music-in on the first frame).
 
 ## 3. Batch synthesis (n = 25)
+
+### Measurement caveats
+- **Cut counts undercount this genre.** UI-led launch films move through animated panels, overlays and single-take camera moves, not hard cuts. measure.py retries at scdet threshold 5 when cuts/min is under 6. After the retry, 03 Lance (2.1), 05 Wildcard (5.5), 09 Comena (2.8), 10 VibeFlow (5.2), 13 Cluely (2.1) and 19 Morgen (1.1) are still low, and the sheets confirm these are real continuous styles. For these films, hits/min and the sheets are the better pace signal.
+- 23 Anvil's "+135.6 dB lift" is an artefact: the energy array has a digital-silence value of -180 dB.
+- 01 Palmier's median shot (0.08 s) is skewed by its 3 s strobe, which contains 25 of its 40 cuts.
+- 18, 19, 23 and 24 are low-craft or demo-style uploads. They are kept as contrast and drag the medians down.
+- cuts_on_beat is 0 for many videos where the beat is weak or the cuts are few. Treat it as low-confidence.
