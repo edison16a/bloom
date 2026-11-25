@@ -47,3 +47,27 @@ h2{font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#777;margi
 
 MEASURE = "<script>addEventListener('load',()=>setTimeout(()=>{document.title='H'+Math.ceil(Math.max(...[...document.querySelectorAll('*')].map(e=>e.scrollHeight)))},300))</script>"
 
+
+def chrome_shot(page_html, out_png, width, height=None, fragment=""):
+    """Screenshot an HTML page at full height. height=None measures the page first so nothing is cut off."""
+    chrome = B.find_chrome()
+    if not chrome:
+        sys.exit("Chrome not found. Set CHROME=/path/to/chrome")
+    tmp = tempfile.mkdtemp(prefix="prev-")
+    try:
+        page = os.path.join(tmp, "p.html")
+        open(page, "w").write(page_html)
+        base = [chrome, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--no-first-run",
+                "--user-data-dir=" + os.path.join(tmp, "prof"), "--virtual-time-budget=8000"]
+        url = "file://" + page + fragment
+        if height is None:
+            open(page, "w").write(page_html + MEASURE)
+            dom = subprocess.run(base + ["--window-size=%d,800" % width, "--dump-dom", url], capture_output=True, text=True, timeout=180).stdout
+            m = re.search(r"<title>H(\d+)</title>", dom)
+            height = min(int(m.group(1)) + 8, 16000) if m else 5200
+            open(page, "w").write(page_html)
+        subprocess.run(base + ["--window-size=%d,%d" % (width, height), "--screenshot=" + out_png, url], capture_output=True, timeout=180)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    print(out_png)
+
