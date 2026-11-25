@@ -14,3 +14,13 @@ defineScene({
   poster: 6.2,                             // still for reduced motion
 })
 ```
+
+## Hook 1: full-frame shader
+
+```glsl
+void scene(vec2 uv, vec2 p, inout Cell c)
+// uv 0..1 (y up). p.y -1..1, p.x -aspect..aspect.
+// Write c.color (linear-ish rgb), c.tone 0..1, c.alpha, c.depth 0..1, c.flag
+```
+
+Raymarch with `vec3 rd=camRay(p)` from `u_eye`. Set `c.alpha=0.` where empty so later sources show through.
