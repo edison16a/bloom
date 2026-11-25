@@ -1,0 +1,9 @@
+node_modules
+.next
+*.tsbuildinfo
+.DS_Store
+# Copied in by `npm run sync` in the dot-art gallery
+skills/dot-art/examples/gallery/components/dot-art
+skills/dot-art/examples/gallery/lib/photos.ts
+skills/dot-art/examples/gallery/lib/scenes
+skills/dot-art/examples/gallery/public/images
