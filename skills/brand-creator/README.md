@@ -59,3 +59,20 @@ These are made up companies from test runs: a savings app, a developer tool, an 
 4. **Color.** Black led or one named saturated color, tried on the best lockup.
 5. **Build and review.** The kit is built, the board is rendered to a PNG, and Claude checks it against a checklist until it passes.
 6. **Deliver.** One recommendation with the reason, the board, the zip, and three to five ranked alternatives.
+
+## How to start
+
+```bash
+git clone https://github.com/edison16a/brand-creator.git
+cd brand-creator
+pip install -r requirements.txt
+claude
+```
+
+You also need Google Chrome or Chromium (set `CHROME=/path/to/chrome` if it is somewhere unusual). Then ask:
+
+> Create a brand for Acme. We make scheduling software for dental clinics.
+
+Your brand lands in `brands/acme/`. Open `brands/acme/brand-board.html` in a browser.
+
+The reference logos are not stored in git because they are trademarks of their owners. The first time the skill needs them it runs `python3 -I scripts/collect_logos.py --skip-wd`, which downloads them in about a minute. A trademark search before you use a name and logo is still your job.
