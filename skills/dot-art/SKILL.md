@@ -75,3 +75,28 @@ node <skill>/scripts/install.mjs <project> --scenes bloom,knot   # omit --scenes
 ```
 
 Lands in `components/dot-art` (or `src/components/dot-art`). Re-run with `--force` to update the engine; scene files already there are kept. `--reset` overwrites the shipped scenes too.
+
+### 3. Write the scene
+
+```bash
+node <skill>/scripts/new.mjs aurora --kind background --import "@/components/dot-art" --out components/dot-art/scenes/aurora.ts
+# kinds: object background text-object text-background image model logo
+```
+
+Scenes are plain objects. Two shortcuts cover a lot:
+
+```ts
+import { logoScene, modelScene, imageSource, looks, withLook, defineScene } from "@/components/dot-art";
+export const mark  = logoScene({ id: "mark", shape: { path: "M12 1...Z", viewBox: [0,0,24,24] }, look: looks.led() });
+export const jet   = modelScene({ id: "jet", url: "/jet.glb", motion: "assemble", look: looks.type("cleared for takeoff") });
+export const photo = defineScene({ id: "photo", title: "", loop: 8, background: "#04050c", samples: 3,
+  sources: [imageSource({ src: "/office.jpg", local: 0.9, edge: 0.8, fill: 0.45 })], ...looks.neon() });
+export const same  = withLook(flower, looks.hex(), { id: "flowerHex" });   // any scene, any surface
+```
+
+For an original object, write a `surface` hook (see `scenes/knot.ts` for a compact one, `scenes/bloom.ts` for a full story). For a background, write a `scene` hook (`ribbons.ts`, `dunes.ts`, `tide.ts`). Hook signatures and helpers: `references/authoring.md`.
+
+Three loop rules that cannot be broken:
+1. Drive motion with `u_phase` (0 to 1) as whole cycles: `sin(TAU*u_phase*k)`, k an integer.
+2. Noise over time is `lnoise(p, u_phase, r)`, never `snoise(vec3(p, u_time))`.
+3. A story scene may use `u_time`, if the first and last frames match.
