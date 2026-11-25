@@ -376,3 +376,33 @@ def normalize_symbols(syms):
         out.append('<g transform="translate(%s %s) scale(%s)">%s</g>' % (fnum(tx), fnum(ty), fnum(k), s))
     return out
 
+
+def render_pngs(jobs):
+    chrome = find_chrome()
+    if not chrome:
+        print("Chrome not found: skipping PNGs. The brand board can still export PNGs in the browser.", file=sys.stderr)
+        return {}
+    tmp = tempfile.mkdtemp(prefix="brand-png-")
+    out = {}
+    try:
+        for i in range(0, len(jobs), 8):
+            page = os.path.join(tmp, "r%d.html" % i)
+            open(page, "w").write(RENDER.replace("__JOBS__", json.dumps(jobs[i:i + 8])))
+            p = subprocess.run([chrome, "--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
+                                "--user-data-dir=" + os.path.join(tmp, "prof"), "--virtual-time-budget=60000",
+                                "--dump-dom", "file://" + page], capture_output=True, text=True, timeout=300)
+            m = re.search(r'<pre id="out">(.*?)</pre>', p.stdout, re.S)
+            if m and m.group(1).strip():
+                out.update(json.loads(html.unescape(m.group(1))))
+            else:
+                print("PNG batch %d failed: %s" % (i, p.stderr[-200:]), file=sys.stderr)
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+    return {k: base64.b64decode(v) for k, v in out.items()}
+
+
+# ---------------------------------------------------------------- main
+
+def slugify(s):
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-") or "brand"
+
