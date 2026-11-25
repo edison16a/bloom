@@ -58,3 +58,19 @@ Score a render against this before showing it. Every line should pass.
 5. Night or low-key photo: `relative: true`, `ridge` .5-.8, `edge` 1+, `fill` .35.
 6. Bright sky behind a dark subject: `invert: true`, `gamma` 2+.
 7. Faces: `halftone`, 140+ columns, `edge` under .3.
+
+## Failure table
+
+| You see | Do |
+|---|---|
+| Letters, no shape | `cell: [4,7]`, `samples: 4`, `detail: .8`, `under: .2`, larger subject |
+| Grey mush | `gamma` 1.1+, `shade` up, less ambient, darker back side |
+| White slab | soft-clip highlights, lower `gain`, shrink specular power |
+| Structure invisible in a background | Features 4x larger, contrast by `pow(x,3)`, colour follows structure |
+| Confetti of stray letters | Under 1500 loose points in the air at once |
+| Boiling silhouette | `samples` 4, `glitchUntil` before rotation starts, points `size` 1.5+ |
+| Holes in a surface | More `count`, or `size` 1.5-2 |
+| Doubled stars on a stagger grid | Use `cellId(uv)` for per-dot hashes |
+| Pop at the loop point | A non-integer cycle, or `u_time` in noise |
+| Faint square behind the object | Add a ground pool or set `c.alpha=0` outside it |
+| Bevels or faces filled by stripes | Those cells passed `boxAbove`: cap their tone under it |
