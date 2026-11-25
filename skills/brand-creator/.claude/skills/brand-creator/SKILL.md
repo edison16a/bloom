@@ -153,3 +153,11 @@ Edit `brand.json` and rebuild; never hand edit the generated files.
 | "Bigger text", "closer", "more space" | Adjust `lockup.cap_ratio` or `lockup.gap`. |
 | "Just a wordmark" | Keep the main symbol for the app icon only and recommend the wordmark file as the logo. |
 | "Different style", "more playful", "more serious" | Go back to steps 3 to 6 with new candidates and show a new options sheet. |
+
+## Rules
+
+- Every symbol is designed for this request. Never reuse a mark from an earlier run or copy a logo from the references.
+- Never fabricate research numbers: quote `research/patterns.md` and `research/case_studies.md` as they are.
+- Fonts are SIL Open Font License and are converted to outlines in every exported file.
+- Do not claim a logo is unique or trademark safe.
+- UI and writing style for anything you show: minimal and modern, rounded corners, no gradients, plain sentences.
