@@ -68,3 +68,16 @@
 - 01 Palmier's median shot (0.08 s) is skewed by its 3 s strobe, which contains 25 of its 40 cuts.
 - 18, 19, 23 and 24 are low-craft or demo-style uploads. They are kept as contrast and drag the medians down.
 - cuts_on_beat is 0 for many videos where the beat is weak or the cuts are few. Treat it as low-confidence.
+
+### Typical ranges (median, with IQR in brackets)
+| metric | median | IQR | note |
+|---|---|---|---|
+| cuts/min | 7.3 | 5.5-14.4 | high-craft subset (01, 02, 11, 15, 17, 20, 22, 25): 14-61 |
+| median shot (s) | 4.0 | 2.0-5.7 | strobe sections run 0.08-0.33 s |
+| BPM | 80 | 76-90 | range 70-125; slow tempo with a hard beat, not fast tempo |
+| beat strength | 2.25 | 1.94-2.76 | clearest beats: Tenera 5.57, Cascade 5.29, PlexTrac 4.71, Sim launch 4.56 |
+| LUFS | -17.3 | -21.0 to -13.8 | music-led films -10 to -15; voice-led Unveil films -21 to -24; amateur demos -26 to -30 |
+| hits/min | 53.5 | 42.6-66.7 | most energetic: Sim launch 105.5, PlexTrac 95.5, Palmier 82.8 |
+| cuts on beat | 14% | 0-20% | cuts follow speech or animation, not the bar line |
+| cuts with a hit | 20% | 8-33% | hits sit on UI events more than on cuts |
+| speech share | 0.25 | 0.13-0.31 | most use VO or captions over a continuous music bed |
