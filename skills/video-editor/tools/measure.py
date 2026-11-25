@@ -67,3 +67,19 @@ def gray_frames(p, fps=10, w=96, h=54):
     raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', p, '-vf', f'fps={fps},scale={w}:{h},format=gray', '-f', 'rawvideo', '-'],
                          capture_output=True).stdout
     return np.frombuffer(raw, np.uint8).reshape(-1, h, w).astype(np.float32)
+
+def motion(fr):
+    """Global translation per frame step via phase correlation (+x = content moves right, +y = down) and a zoom proxy."""
+    out = []
+    win = np.outer(np.hanning(fr.shape[1]), np.hanning(fr.shape[2]))
+    for a, b in zip(fr[:-1], fr[1:]):
+        A = np.fft.fft2((a - a.mean()) * win); Bf = np.fft.fft2((b - b.mean()) * win)
+        R = A.conj() * Bf; R /= np.abs(R) + 1e-6
+        c = np.fft.ifft2(R).real
+        y, x = np.unravel_index(np.argmax(c), c.shape)
+        if y > c.shape[0] // 2: y -= c.shape[0]
+        if x > c.shape[1] // 2: x -= c.shape[1]
+        # zoom proxy: change in edge energy spread from centre
+        ga = np.abs(np.diff(a, axis=1)).mean(); gb = np.abs(np.diff(b, axis=1)).mean()
+        out.append((x, y, float(np.abs(b - a).mean()), float(np.log((gb + 1e-3) / (ga + 1e-3)))))
+    return np.array(out) if out else np.zeros((0, 4))
