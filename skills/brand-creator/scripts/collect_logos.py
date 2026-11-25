@@ -23,3 +23,9 @@ SOURCES = {
 }
 TECH_INDUSTRIES = "wd:Q638608 wd:Q880371 wd:Q11661 wd:Q1068598 wd:Q2096489 wd:Q418 wd:Q11650 wd:Q941594 wd:Q7397 wd:Q1366722 wd:Q11016 wd:Q8148"
 
+
+def get(url, timeout=60):
+    req = urllib.request.Request(url, headers=UA)
+    with urllib.request.urlopen(req, timeout=timeout) as r:
+        return r.read()
+
