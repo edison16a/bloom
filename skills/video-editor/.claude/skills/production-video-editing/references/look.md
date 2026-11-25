@@ -52,3 +52,11 @@ Crop the capture tight to what is being said, so it reads at that size. Never zo
 - Neutral skin, a little contrast, matched cameras. Blur and darken the room gently if it is messy.
 - Cut on breath. If a jump is visible, use a short optical flow blend, not a zoom.
 - Leave the speaker alone on screen for the first line, any personal line, the turn and the last line.
+
+## Gate questions (answer each with a frame, not a feeling)
+1. Is the person on screen whenever they speak?
+2. Does any panel or letter touch the face or hair?
+3. Is the panel content readable at full size without a zoom?
+4. Is there anything I could delete and lose no information? Delete it.
+5. Put a frame next to the matching reference. Same family of film?
+6. Is there a single thing a viewer would call a template, an app screenshot of AI, or a slide? Remove it.
