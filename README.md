@@ -30,3 +30,15 @@
     <td width="50%"><img src="assets/screenshots/surfaces.webp" alt="The surface switcher: the same flower redrawn in hexagons"></td>
   </tr>
 </table>
+
+## What it is
+
+Bloom is a monorepo of three skills for Claude Code and Codex. You bring the idea. The skills cover how the site looks, the launch video and the brand.
+
+| | Skill | What it does | Folder |
+|---|---|---|---|
+| 1 | Dot Art | Animated art made of hexagons, LED pixels, dither or letters, dropped into your project as a React component | `skills/dot-art` |
+| 2 | Launch Video | A launch film from a direction and a link: product capture, real music, short lines, cut to the beat in EffectCraft | `skills/video-editor` |
+| 3 | Brand Creator | A logo, wordmark and full brand kit from a company name, based on research on 8,332 real tech logos | `skills/brand-creator` |
+
+The site in `site/` shows each skill with real work it made: every dot art scene running live, a launch film, and five brands built with the brand builder (Vela, Bloom, Kite, Halo and Tessel). Bloom's own logo came out of Brand Creator.
