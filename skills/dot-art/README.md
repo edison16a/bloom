@@ -83,3 +83,23 @@ Words repeated until they become a surface.
 > **Rushing down a corridor of typed panels**
 
 ![Corridor](assets/tunnel.gif)
+
+## Blind tests
+
+Each of these came from a fresh Claude that had only this skill and the prompt.
+
+> **A blue lotus made of letters. It opens from a bud, then wind strips it to its golden core. I want to make out the petals clearly**
+
+![Lotus](assets/lotus.gif)
+
+> **A hummingbird hovering, made of hexagons, emerald back, magenta throat that flashes as it turns, wings a blur**
+
+![Hummingbird](assets/hummingbird.gif)
+
+> **Aurora over a black treeline, octagon tiles, green into violet, room for a headline at the left**
+
+![Aurora](assets/aurora.gif)
+
+> **Rain on a window at night built from one sentence. Soft city lights behind, streaks refract the lines**
+
+![Rain](assets/rain.gif)
