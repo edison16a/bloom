@@ -130,3 +130,10 @@ interface SourceBase {
 
 /** Full-frame GLSL: `void scene(vec2 uv, vec2 p, inout Cell c)`. */
 export interface ShaderSource extends SourceBase { type: "shader"; glsl: string; blend?: "over" | "add" }
+
+export interface Geometry {
+  position: Float32Array; normal?: Float32Array; color?: Float32Array;
+  /** Four free floats per vertex, exposed as `p.extra`. */
+  extra?: Float32Array;
+  index?: Uint32Array;
+}
