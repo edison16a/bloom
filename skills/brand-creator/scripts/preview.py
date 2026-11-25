@@ -71,3 +71,65 @@ def chrome_shot(page_html, out_png, width, height=None, fragment=""):
         shutil.rmtree(tmp, ignore_errors=True)
     print(out_png)
 
+
+def candidates(path):
+    c = json.load(open(path))
+    name, col = c["name"], c["colors"]
+    sc = B.schemes(col)
+    html = ["<style>%s</style>" % CSS]
+    wmos = []
+    if c.get("wordmarks"):
+        html.append("<h2>Wordmarks</h2><div class='g w'>")
+        for i, wm in enumerate(c["wordmarks"]):
+            wmo = B.set_wordmark(dict(wm, _name=name), {})
+            wmos.append(wmo)
+            tpl, vb = B.comp_wordmark(wmo)
+            svg = B.svg_doc(B.paint(tpl, sc["color"]), vb)
+            fam = B.list_fonts().get(wm["font"], {}).get("family", wm["font"])
+            html.append("<div class=c><b>W%d</b><div class=t>%s</div><i>%s %s, %s, tracking %s</i></div>" % (
+                i + 1, svg, fam, wm["font"].rsplit("-", 1)[-1], wm.get("case", "as-is"), wm.get("tracking", 0)))
+        html.append("</div>")
+    syms = []
+    if c.get("symbols"):
+        raw = []
+        for i, s in enumerate(c["symbols"]):
+            B.check_symbol(s, "symbol %d" % (i + 1))
+            raw.append(B.Uniq.ids(s))
+        syms = B.normalize_symbols(raw)
+        html.append("<h2>Symbols</h2><div class='g s'>")
+        for i, s in enumerate(syms):
+            tpl, vb = B.comp_symbol(s)
+            col_svg = B.svg_doc(B.paint(tpl, sc["color"]), vb)
+            mono = B.svg_doc(B.paint(tpl, sc["black"]), vb)
+            app = B.svg_doc(B.paint(B.comp_appicon(s, 0.2)[0], dict(sc["on-primary"], **{"{BG}": col["primary"]})), (0, 0, 100, 100), 0)
+            html.append("<div class=c><b>S%d</b><div class=row><div style='width:96px;height:96px'>%s</div><div style='width:96px;height:96px'>%s</div>"
+                        "<div style='width:72px;height:72px'>%s</div><div style='width:32px;height:32px'>%s</div><div style='width:16px;height:16px'>%s</div></div></div>" % (
+                            i + 1, col_svg.replace("<svg ", "<svg style='width:100%;height:100%' "), mono.replace("<svg ", "<svg style='width:100%;height:100%' "),
+                            app.replace("<svg ", "<svg style='width:100%;height:100%' "), app.replace("<svg ", "<svg style='width:100%;height:100%' "),
+                            mono.replace("<svg ", "<svg style='width:100%;height:100%' ")))
+        html.append("</div>")
+    if c.get("lockups") and syms and wmos:
+        html.append("<h2>Lockups</h2><div class='g l'>")
+        for lk in c["lockups"]:
+            s, w = syms[lk["symbol"]], wmos[lk["wordmark"]]
+            tpl, vb = B.comp_horizontal(s, w, lk)
+            html.append("<div class=c><b>S%d + W%d</b><div class=t style='height:150px'>%s</div></div>" % (
+                lk["symbol"] + 1, lk["wordmark"] + 1, B.svg_doc(B.paint(tpl, sc["color"]), vb)))
+        html.append("</div>")
+    out = os.path.splitext(path)[0] + ".png"
+    chrome_shot("<!doctype html><meta charset=utf-8>" + "".join(html), out, 1600)
+
+
+OPT_CSS = """body{margin:0;background:#F4F4F2;font:15px/1.45 -apple-system,Helvetica,Arial,sans-serif;color:#1A1A1C;width:1600px}
+header{padding:32px 32px 8px}header h1{margin:0;font-size:26px}header p{margin:6px 0 0;color:#666}
+.o{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;padding:20px 32px 32px}
+.k{background:#fff;border-radius:18px;padding:22px;display:flex;flex-direction:column;gap:16px}
+.h{display:flex;align-items:baseline;gap:12px}.n{background:#1A1A1C;color:#fff;border-radius:999px;font-weight:700;
+min-width:34px;height:34px;display:flex;align-items:center;justify-content:center;font-size:16px}
+.h b{font-size:18px}.hero{height:170px;border-radius:12px;background:#FAFAF8;display:flex;align-items:center;justify-content:center}
+.hero svg{max-width:78%;max-height:84px}.strip{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px}
+.tile{height:110px;border-radius:12px;display:flex;align-items:center;justify-content:center;gap:16px}
+.tile svg{max-width:80%;max-height:46px}.sw{display:flex;gap:8px;align-items:center;color:#666;font-size:13px}
+.sw span{width:18px;height:18px;border-radius:6px;display:inline-block;border:1px solid #0001}.why{color:#444}
+"""
+
