@@ -8,3 +8,10 @@ description: Make production-quality product launch films, demos, app promos, fe
 A short film where the product is the picture: one idea, shown with real things, moving slowly and settling.
 
 Paths that start with `tools/` are in the video-editor repository (`edison16a/video-editor`). Outside it, run them from a checkout of that repository.
+
+## Read first
+1. `references/structure.md`: the film shapes and how to choose.
+2. `references/motion.md`: how the product and text move, with exact numbers.
+3. `../production-video-editing/references/references-studied.md`: the films the user chose. Name the closest one in the plan. The notes are enough. Open its links only when the user asks you to.
+4. `../production-video-editing/references/look.md`: the NEVER list also applies here.
+5. As needed: `../production-video-editing/references/` `sound.md`, `sourcing.md`, `effectcraft.md`, `vertical.md`, and `references/voiceover.md` when nobody speaks.
