@@ -203,3 +203,14 @@ Frame counts assume 30 fps; 24 fps films scale in proportion.
     - Left-aligned small sans text in a corner appends one sentence every about 1.5-2 s ("That's Gary. / His AI agent... / It cost $400k.") over a held, graded live-action shot.
     - Use three examples (rule of three), then cut to the calm hero.
     - The money or product reveal lands on a music swell after a silence beat.
+
+### Amateur tells the pros avoid
+1. **No music bed or a very quiet mix.** Weave (-30.4 LUFS) and Anvil (-26.6) vs pro music-led films at -10 to -15.
+2. **One layout held for minutes.** Morgen's static split for 113 s (motion share 0.0), Weave's and Anvil's 70-145 s screen recordings with a webcam bubble.
+3. **Spending all the energy in the first 7 s, then dropping to a flat screen recording.** Anvil's quarters were 44/0/0/0; the pros alternate human, UI and text cards every 5-15 s.
+4. **Over length.** Dash at 3 min for a single gag; the pros sit at 40-90 s.
+5. **Raw, un-zoomed full-desktop UI where text is unreadable.** The pros crop, punch in, or rebuild the UI as cards.
+6. **Dated corporate templates.** PlexTrac's flat mountain icons, logo fly-through and bubbly stats look 2018 next to 2025-26 glass, blur and grotesk styles.
+7. **Low-res uploads and heavy colour casts that hide the product.** Lamb Labs at 640x360; Dash's yellow haze over the UI inserts.
+8. **Captions covering faces, or several caption styles at once.** The pros keep one caption system plus one display-type system.
+9. **Cutting to the bar line regardless of content.** The pros cut on phrase ends and UI landings, and save beat-locked cutting for montage bursts.
