@@ -1,0 +1,3 @@
+# L2-ai: AI product launch and feature films (2023–2026)
+
+25 official launch or feature videos from OpenAI, Anthropic, Perplexity, ElevenLabs, Runway, Midjourney, Gamma, Granola, Lovable, Vercel v0, Replit, Cognition (Devin), Glean, Cursor, Notion, Linear, Pika and The Browser Company (Arc). All come from the brands' own channels, run 18 s to 3:54, and were uploaded between Oct 2023 and Mar 2026. All were measured with `tools/measure.py`. A local copy of it was used, changed only so that a subtitle HTTP 429 error does not abort the download (`--ignore-errors`). Harvey was searched for, but no official launch film turned up, so it was left out.
