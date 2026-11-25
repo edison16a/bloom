@@ -173,3 +173,25 @@ def options(path):
     open(base + ".html", "w").write(page)
     chrome_shot(page, base + ".png", 1600)
 
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--candidates")
+    ap.add_argument("--options", help="options.json: 3 to 5 finished directions to show the user before building")
+    ap.add_argument("--board")
+    ap.add_argument("--height", type=int, help="board screenshot height in px (default: the whole page)")
+    ap.add_argument("--theme", choices=("light", "dark", "auto"), default="light", help="board theme (default light)")
+    ap.add_argument("--width", type=int, default=1440)
+    a = ap.parse_args()
+    if a.candidates:
+        candidates(a.candidates)
+    if a.options:
+        options(a.options)
+    if a.board:
+        out = os.path.join(os.path.dirname(os.path.abspath(a.board)), "board.png")
+        frag = "" if a.theme == "auto" else "#" + a.theme
+        chrome_shot(open(a.board).read(), out, a.width, a.height, frag)
+
+
+if __name__ == "__main__":
+    main()
