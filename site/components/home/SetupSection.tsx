@@ -22,12 +22,12 @@ export function SetupSection() {
         <div className={styles.grid}>
           {skills.map((s) => (
             <div key={s.id} className={styles.card}>
-              <h3><span>{s.number}</span>{s.name}</h3>
+              <h3>{s.name}</h3>
               <SetupPrompt prompt={setupPrompt(s.id)} bare />
             </div>
           ))}
           <div className={styles.card}>
-            <h3><span>1 2 3</span>All three</h3>
+            <h3>All three</h3>
             <SetupPrompt prompt={setupAllPrompt()} bare />
           </div>
         </div>
