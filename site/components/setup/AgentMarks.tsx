@@ -7,3 +7,13 @@ export function ClaudeMark({ size = 16 }: { size?: number }) {
     </svg>
   );
 }
+
+export function CodexMark({ size = 16 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" aria-hidden="true" focusable="false">
+      <rect x="2.75" y="3.75" width="18.5" height="16.5" rx="5" stroke="currentColor" strokeWidth="1.5" />
+      <path d="M7.5 9.5l3 2.5-3 2.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M12.5 15h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+    </svg>
+  );
+}
