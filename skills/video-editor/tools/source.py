@@ -29,3 +29,36 @@ WHISPER = [os.environ.get("VO_WHISPER_MODEL", ""), os.path.expanduser("~/.config
            os.path.expanduser("~/.cache/openwhispr/whisper-models/ggml-small.bin"),
            os.path.join(os.path.dirname(os.path.abspath(__file__)), "voice/models/ggml-small.en.bin")]
 
+
+# ---------------------------------------------------------------- plumbing
+def opener(url, timeout):
+    wiki = "wikimedia.org" in url
+    for k in range(3):
+        time.sleep(1.5 if wiki else 0.4)
+        try: return urllib.request.urlopen(urllib.request.Request(url, headers={"User-Agent": BOT if wiki else UA}), timeout=timeout)
+        except urllib.error.HTTPError as e:
+            if e.code != 429 or k == 2: raise
+            time.sleep(min(30, int(e.headers.get("Retry-After") or 8)))
+
+
+def get(url, binary=False, timeout=40):
+    with opener(url, timeout) as r:
+        d = r.read()
+    return d if binary else d.decode("utf8", "replace")
+
+
+def jget(url):
+    return json.loads(get(url))
+
+
+def warn(name, e):
+    print(f"  ! {name}: {str(e)[:120]}", file=sys.stderr)
+
+
+def adir(job, kind):
+    d = os.path.join(ROOT, "work", job, "assets", kind); os.makedirs(d, exist_ok=True); return d
+
+
+def slug(s):
+    return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")[:60] or "x"
+
