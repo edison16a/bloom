@@ -243,3 +243,15 @@ Three tempo families appear in this batch:
   - one **big lift** (+20 to +43 dB) at the emotional turn: 01 at 23 s, 08 at 108 s, 03 at 63 and 92 s, 22 at 88 s;
   - near-silence before the lift (03's Q1 and Q4 ≈ -34 dB). Contrast is what makes the lift feel loud.
 - Loudness: brand films sit at -13 to -17 LUFS. Hype edits are mastered hot (21 Mavs -8.9, 18 Beats -9.8, 06 Nike -10.7).
+
+### Text animation conventions
+- **Type is sparse and placed.** Most live-action spots use 1–3 lines total, small, centred or anchored to the subject (Apple, Nike, Pixel, Galaxy). Big full-frame type is reserved for hype and graphic pieces (PL "It's Time", Slack, Squarespace "is unavailable", Beats "LISTEN TO YOUR HEART").
+- **Build by word or line, never all at once:** Nike end card ("WINNING" → "+ISN'T FOR" → "+EVERYONE."), Pixel ("Google" → "Pixel 9" → "with Gemini"), Notion ("Tasks. Notes. Wikis." → "+Calendar."), Galaxy (words slide out from behind the product).
+- **Typewriter UI** is the dominant software-brand move (Notion, Wix, Squarespace, Slack, Apple MacBook): ~1–3 chars/frame with a visible cursor. The card or field appears in 2–3 frames (bar → ghost → solid) before the text starts.
+- **Diegetic type** puts the stat on a real object (Spotify clapperboard, street sign and CRTs; Pacers newspaper clippings; Apple file names). It reads as "real" and avoids a lower-third look.
+- **Font classes:**
+  - condensed bold sans for sport (Nike red Futura-Condensed class, Beats slab, PUMA streaked condensed);
+  - editorial Didone/serif for premium or creative brands (Squarespace, Wix, Apple mixed italic);
+  - rounded geometric sans for SaaS (Slack, Notion, PL).
+- **Mixed roman and italic within one phrase** (Apple MacBook "2x *faster*") and **words scattered around the subject** are high-craft Apple moves.
+- **Colour-flash type** (PL): a word alternates white ↔ brand gradient every 1–2 frames on the beat. It is a cheap, energetic text accent.
