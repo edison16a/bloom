@@ -13,3 +13,16 @@ interface LoadedSource {
   src: Source; prog: Program; textures: Record<string, LoadedTexture>;
   vao: WebGLVertexArrayObject; buffers: WebGLBuffer[]; count: number; indexed: boolean;
 }
+
+export interface RendererOptions {
+  /** Multiplies point counts and supersampling. 1 = full. 0.5 suits phones. */
+  quality?: number;
+  onError?: (e: Error) => void;
+}
+
+/** Renders one scene into one canvas. Deterministic: `render(t)` depends only on t (plus pointer and glitch history). */
+const geoCache = new WeakMap<() => Geometry, Geometry>();
+function resolveGeometry(g?: Geometry | (() => Geometry)): Geometry | undefined {
+  if (typeof g !== "function") return g;
+  let v = geoCache.get(g); if (!v) geoCache.set(g, (v = g())); return v;
+}
