@@ -48,7 +48,7 @@ export default function LogoPage() {
         <Figures items={brandFigures} />
       </Section>
 
-      <Section title="From the skill's test runs">
+      <Section title="From the agent's test runs">
         <div className={styles.tests}>
           {testRuns.map((t) => (
             <figure key={t.name} className={styles.test}>

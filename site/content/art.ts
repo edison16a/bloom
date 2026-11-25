@@ -65,7 +65,7 @@ export const artGroups: ArtGroup[] = [
   {
     id: "blind-tests",
     name: "Blind tests",
-    note: "Each one came from a fresh agent that had only the skill and the prompt.",
+    note: "Each one came from a fresh run of the agent with nothing but the prompt.",
     pieces: [
       { id: "lotus", title: "Lotus", prompt: "A blue lotus made of letters. It opens from a bud, then wind strips it to its golden core", start: 3.5 },
       { id: "hummingbird", title: "Hummingbird", prompt: "A hummingbird hovering, made of hexagons, emerald back, magenta throat that flashes as it turns" },
