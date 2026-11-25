@@ -1,0 +1,19 @@
+.DS_Store
+# per-job files stay local
+input/*
+output/*
+work/*
+!input/.gitkeep
+!output/.gitkeep
+!work/.gitkeep
+.mcp.json
+__pycache__/
+
+# local voice model environments
+tools/voice/.venv-*/
+
+# capture tool dependencies
+tools/capture/node_modules/
+
+# downloaded speech models
+tools/voice/models/
