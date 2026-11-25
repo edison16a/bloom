@@ -133,3 +133,43 @@ min-width:34px;height:34px;display:flex;align-items:center;justify-content:cente
 .sw span{width:18px;height:18px;border-radius:6px;display:inline-block;border:1px solid #0001}.why{color:#444}
 """
 
+
+def options(path):
+    """Render a few finished directions side by side so the user can choose one before the full kit is built."""
+    c = json.load(open(path))
+    name, base_col, opts = c["name"], c.get("colors", {}), c["options"]
+    raw = []
+    for i, o in enumerate(opts):
+        B.check_symbol(o["symbol"]["svg"], "option %d symbol" % (i + 1))
+        raw.append(B.Uniq.ids(o["symbol"]["svg"]))
+    syms = B.normalize_symbols(raw)
+    cards = []
+    for i, (o, s) in enumerate(zip(opts, syms)):
+        col = dict(base_col, **o.get("colors", {}))
+        sc = B.schemes(col)
+        wmo = B.set_wordmark(dict(o["wordmark"], _name=name), {})
+        tpl, vb = B.comp_horizontal(s, wmo, o.get("lockup", {}))
+        hero = B.svg_doc(B.paint(tpl, sc["color"]), vb)
+        rev = B.svg_doc(B.paint(tpl, sc["reverse"]), vb)
+        on = "#FFFFFF" if B.contrast("#FFFFFF", col["primary"]) >= 2.5 else col.get("ink", "#0E0E10")
+        app_m = {k: on for k in ("{S1}", "{S2}", "{S3}", "{W}", "{WA}")} | {"{BG}": col["primary"]}
+        app = B.svg_doc(B.paint(B.comp_appicon(s, 0.2)[0], app_m), (0, 0, 100, 100), 0)
+        mono = B.svg_doc(B.paint(B.comp_symbol(s)[0], sc["black"]), B.comp_symbol(s)[1])
+        fit = "<svg style='width:100%;height:100%' "
+        swatches = "".join("<span style='background:%s'></span>%s" % (col[k], col[k]) for k in ("primary", "ink") if k in col)
+        cards.append(
+            "<div class=k><div class=h><div class=n>%d</div><b>%s</b></div><div class=hero>%s</div>"
+            "<div class=strip><div class=tile style='background:%s'>%s</div>"
+            "<div class=tile style='background:#FAFAF8'><div style='width:44px;height:44px'>%s</div><div style='width:44px;height:44px'>%s</div></div>"
+            "<div class=tile style='background:#FAFAF8'><div style='width:32px;height:32px'>%s</div><div style='width:16px;height:16px'>%s</div></div></div>"
+            "<div class=sw>%s %s</div><div class=why>%s</div></div>" % (
+                o.get("number", i + 1), o.get("label", "Option %d" % o.get("number", i + 1)), hero, col.get("ink", "#0E0E10"), rev,
+                app.replace("<svg ", fit), mono.replace("<svg ", fit), app.replace("<svg ", fit), mono.replace("<svg ", fit),
+                swatches, ("&nbsp; " + o["colors_name"]) if o.get("colors_name") else "", o.get("why", "")))
+    page = ("<!doctype html><meta charset=utf-8><title>%s options</title><style>%s</style><header><h1>%s: choose a direction</h1>"
+            "<p>Reply with the number you like (or mix parts, for example the symbol of 2 with the type of 1). The full kit is built only for your choice.</p></header>"
+            "<div class=o>%s</div>") % (name, OPT_CSS, name, "".join(cards))
+    base = os.path.splitext(path)[0]
+    open(base + ".html", "w").write(page)
+    chrome_shot(page, base + ".png", 1600)
+
