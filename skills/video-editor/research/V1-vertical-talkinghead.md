@@ -40,3 +40,149 @@
 | 25 | Most Unhinged Advice to a Graduate / Codie Sanchez / youtu.be/qeCw_JsYZCc | 31.4 | 21.0 | 2.6 | 75 (2.71) | −16.6 | 63.0 | 0.09 | 0.09 | 0.29 | static | Over-the-shoulder question hook; 3–4 angles; key lines switch to big serif with italic underline on a darkened frame |
 
 \* = unreliable for speech-only content (see caveats).
+
+## 2. Per-video notes
+
+**01 Hormozi – "If you don't do anything"**
+- Hook (0–3 s): straight to the claim on a medium close-up, with no title card. The caption appears in the first 0.4 s.
+- Structure: single take, 35 s. The framing changes every 3–6 s between 3 scales: medium, tighter, and slightly re-centred (visible in the overview). These are digital punch-ins that scdet missed. The one detected cut, at 30 s, is a hard punch for the final line.
+- Text: white sans, about 4% of frame height, 2–3 words per caption at about 60% of frame height (mid-chest, over the mic). The key word is bolder ("self-**help**", "**14**"), quoted inner speech is set in *italics* with quotes, and captions swap every 0.6–0.8 s. There's no visible entry animation at 5 fps (a hard swap).
+- Sound: there's no music evidence. The −25 LUFS integrated loudness is quiet for Shorts. The 8 dB lift at 30 s matches the final punch-in.
+- Transitions: hard punch-ins only.
+
+**02 Hormozi – "Bigger houses or a bigger team"**
+- Hook: the audience member's question plays first. It's captioned in yellow italic, so the viewer knows it isn't Alex speaking.
+- Structure: question (0–11 s) → answer (11–56 s), shot on 2 angles (wide whiteboard and closer). Cuts at 11.3, 16.7 and 41.6 s.
+- Text: white sans captions at about 50% of frame height. Payload words are bold white ("**deals**", "**bigger deals**", "**$10M houses**", "**zeros**"). Numbers are written as $400K, $10M.
+- SFX/music: 2 of 3 cuts coincide with a transient (cuts_with_hit 0.67), which could be a soft hit on the angle change (inference).
+- Loop: the last caption, "has to add **zeros**", is the title payoff.
+
+**03 Hormozi – "Scale a wedding photography business"**
+- Hook: a DM-style question card for 2 s (bold name "Jules" plus a 3-line question at upper-left, white on the image) while he eats a sandwich. It reads as a "reply to a fan" format. A hard cut at 2.0 s goes into the answer.
+- Text: the same white sans with bold keywords. Process steps use ASCII arrows: "**outbound** →", "**wedding planner** →". "**100%**" is bolded.
+- Structure: one locked take after the hook, with the jump cuts undetected.
+
+**04 Ali Abdaal – "Top 5 productivity apps"**
+- Hook: the header "TOP 5 PRODUCTIVITY APPS" in condensed yellow-orange display type, with 5 app icons popping in left to right at about 0.2 s intervals. A handwritten subline types on underneath ("that I'm using everyday").
+- Structure: a list, with each item about 5 s. The header swaps to [app icon + name]. The name types on character by character (about 2–3 frames per letter: "Te" → "Telegram"). A handwritten description with a hand-drawn curved arrow writes on beneath it.
+- Captions: a white rounded pill at about 75% of frame height (lower third), with 2–3 words. The active word is black bold and the rest grey (karaoke). The pill sits clear of the bottom 15% UI zone.
+- Flow: one locked take. The `Z-` entries at 2 s and 16 s are likely small zoom resets.
+
+**05 Ali Abdaal – "Freedom in my 20s"**
+- Hook: a cut-out of Ali (smiling, holding a phone) on a painted autumn and sky background, with an "In my 20s" serif-italic header and handwritten body text typing on line by line.
+- Structure: illustrated essay (0–42 s, almost no cuts: Q1 0/min, Q2 5.3/min), then a live-action montage (42–90 s, 40–45 cuts/min). That's the clearest acceleration in the batch. The essay section uses a cut-out head sticker plus "in my 20s / in my 30s" handwriting, with a hand-drawn line animating in from the left. The montage section uses archival phone clips and a 2×2 grid collage, then polaroid photos dropping in with "less freedom.. and much more **fulfilment**".
+- Transitions: a whip-pan from Ali to his wife about 3 frames long, with heavy horizontal motion blur (transitions sheet). The flow string shows `←←←` and `→→` in the final third.
+- End: handwritten yellow summary text typing on over a 2-shot ("So that's one thing that I've sort of changed…").
+
+**06 Ali Abdaal – "£3,000 a month as a medical student"**
+- Hook: he walks toward the camera in scrubs (a natural push-in), under a dark rounded "blob" title: "✨How I made✨ **£3,000** as a *medical student*" (£3,000 in a large teal-to-green gradient serif). The karaoke pill caption runs below.
+- Structure: about 10 cuts/min, front-loaded (19.4/min in Q1, then 7.3, 4.9, 9.7). A dark blob label "21 year old full-time medical student" has a hand-drawn arrow pointing at him. An "18 Years old" purple tilted tag and a "−£1,000" red tag sit on an old photo. "Built **Websites**" and "medical school **BMAT exam**" are captioned inside a 2×2 split.
+- Graphics: a chat-message sequence (bubbles pop in one at a time with sparkle stars), a thought bubble that types on with yellow keywords, and a numbered takeaway blob ("**1** You can **outsource** things…").
+- Transitions: a rack-focus blur-in (frame fully defocused, then sharp over about 6 frames), visible at 3 s and 15 s.
+
+**07 Dan Koe – "What skill to learn"**
+- Hook: 0–3 s on pure black with a small white serif caption, "if you don't know / start writing" (a VO-only cold open). A hard cut at 2.9 s to his face.
+- Structure: one locked medium close-up for 53 s. Below the caption, a stock-photo card (about 60% of frame width, with a soft dark edge) swaps every 1–2 s, literally illustrating the noun being said (classroom desks for "english class", The Thinker for "think", an empty auditorium for "audience"). scdet doesn't see these swaps because they occupy under 30% of the frame.
+- Text: small white sans with a drop shadow, a full phrase on one line, at about 55% of frame height.
+- Music: none audible from the metrics (inference). The energy is carried by the image swaps.
+
+**08 Dan Koe – "6 months"**
+- Hook: 6 s of black with a centred small caption carrying the VO ("all you have to do is commit for six months… that is not a lot… it's actually very little"), then a cut to his face at 5.8 s.
+- After that: a single take with small white captions, 2–3 words each, at about 55% of frame height. Nothing else. LUFS is −14.6 (loud and clean).
+
+**09 Codie Sanchez – "Dream job"**
+- Hook: "There was / a guy yesterday" (a serif bold first line plus a light sans second line). At 0.87 s a cut to a still of the Wharton School sign with a black silhouette cut-out, slowly zooming in, with the caption "**MBA** / from Wharton", then "and he's / 54 years old".
+- Structure: 2-cam alternation (frontal mid and 3/4 side) every 2–4 s, 15.6 cuts/min, evenly paced (19, 10, 14, 19 by quarter). The middle is a role-play dialogue with speaker labels ("**Boss:**" / "**Employee:**" in bold serif) above the line in light sans. The punchline is "**Boss:** LAYOFFS!".
+- Text: a two-line build. Line 1 (serif bold) appears first and line 2 (sans light) appears on the next phrase, at about 55% of frame height.
+- 54% of cuts have a transient (inference: soft whooshes or hard consonants at the cut).
+
+**10 Codie Sanchez – "GTA VI cash cow"**
+- Hook (0–1 s): selfie at arm's length, "This is wild." in a white highlight box. At 0.83 s a stacked split: the GTA VI logo fills the top half, her face is in the bottom half, and the caption "GTA six" sits on the seam.
+- Structure: a newsjack built from stacked split-screens, full-frame B-roll (trailer clip with chromatic-aberration edges and "$1.65 BILLION" in serif fading up over about 4 frames), a highlighted article screenshot (yellow highlighter on key phrases plus a boxed caption word), and pop-in app icons (DoorDash, NBC, YouTube) sliding in at lower-left in sequence. Also a red "X" sticker over a merch photo, a burger cut-out, and a Rockstar logo with "make $$$".
+- Captions: 1–2 words per card, black text on a white box, at about 50% of frame height (the box acts as the highlight).
+- Transitions: a pixel-sort or glitch frame out of the trailer B-roll (1 frame).
+- End CTA: a red YouTube "SUBSCRIBE" button with an animated cursor clicking it, plus "if you want more business ideas".
+- Audio: beat strength 7.19 is the only clear beat in the batch, likely a music bed (inference). The loudest lift is +6.6 dB at 61 s (the CTA).
+
+**11 DOAC – "NVIDIA spy operation"**
+- Hook: the guest mid-sentence, with a white-box black bold ALL-CAPS title, "HOW A CHINESE SPY TRICKED NVIDIA'S CEO", in the lower third for about 3 s.
+- Structure: interview cutting (guest MCU / guest CU punch / host reaction). The host and guest are also shown as a stacked split (host top, guest bottom) for exchanges. Documentary inserts: a dark navy globe with China outlined in red, a "HONEYPOT → TARGET" concentric-ring diagram, a timeline card with photo and "JUN 2024", and Singapore/Malaysia maps with condensed bold data cards ("MEGASPEED", "A STOREFRONT", "2 EMPLOYEES") plus "SOURCE: THE NEW YORK TIMES".
+- Captions: 1–2 words, bold sans, colour-coded per speaker (guest green, host yellow), at about 55% of frame height.
+- CTA: a "Like" thumbs-up button pops in at about 4 s with an animated tap. A label with a hand-drawn arrow reads "CIA Whistleblower".
+- Audio: the two 1 s digital-silence holes (see caveats). There's an orange overexposed "flash" frame on one host shot (a light-leak transition).
+
+**12 Starter Story – "$14k MRR"**
+- Layout: a black 9:16 canvas, a 3-line bold white headline fixed at the top for the whole video, a 16:9 video window in the middle, and caption text below the window in white with the active word in purple (karaoke).
+- Hook: the founder's own clip with a big yellow outlined "**$115K**" stamp. At 0.5 s "**KRIS**" pops in with a hand-drawn arrow pointing at his head.
+- Structure: about 4 s per source. Sources are founder webcam, X post screenshot with yellow highlight, app-store listing, a slow push across a store UI, and "$14,000" yellow stamps over the app page. Red strike-through on "paid ads / influencers" means "didn't need". A "**SAUCE**" yellow sticker slaps onto his mouth area.
+- End: a 4-up Zoom-style call grid ("Chris to come break this down").
+- cuts_with_hit is 0.60: cuts sit on transients, plausibly whoosh/pop SFX on the stamps (inference).
+
+**13 DOAC – "Honeytrap"**
+- Hook: the host's question with a 3-line white-box ALL-CAPS title (censored "S*X"). At about 4 s the frame goes to a red monochrome tint with a "Like" button pop. That's a mid-hook CTA that also works as a colour flash.
+- Structure: 3 people (host, guest, second guest) with reaction cuts. 17.1 cuts/min, with a spike in Q2 (28/min) during the guest's explanation. A label with an arrow reads "Russian Honeypot". A HUD-style "HABIT LOOP" diagram overlay (cue → routine → reward) sits on the guest shot.
+- Captions: the same as #11, 1–2 words, guest white and host yellow.
+
+**14 MKBHD – "iPhone Duo is here"**
+- Hook (0–3 s): product only. A hand holds the phone on a pink backdrop and flips it. At 2.7 s, giant thin condensed white outline letters "DUO" fill the frame behind the phone (text-behind-object), then cut to Marques.
+- Structure: numbered chapters, each introduced by a white-box tag in condensed bold, "1. THE SHAPE" / "2. THE CREASE" / "3. THE PRICE". The tag stays on the B-roll that follows. "**$2,000**" is a big boxed number over him. There are no word-by-word captions. The tags are the only text.
+- B-roll: handheld macro product shots with rack focus, then screen demos. The flow shows `→ / ←` runs from the handheld moves.
+- End: a short reaction beat on him. It's a loop candidate, because the last frame is similar to the first-shot framing (weak).
+
+**15 MKBHD – "This can SEE sound"**
+- Hook: the device screen (top half) stacked over Marques reacting (bottom half), "AND IT'S HONESTLY…", then a gesture ("OKAY.").
+- Captions: ALL-CAPS white with a dark outline and shadow, 2–4 words, at about 75% of frame height (lower third, above the UI safe zone).
+- Inserts: an Amazon listing screenshot with yellow highlight on the product name and price ("$799.00"). Over-the-shoulder demos of the device screen. Outdoor test on a Rivian.
+- End: open loop, "SO… WHAT HAPPENED THERE." It ends on a question, which invites a rewatch or comments.
+
+**16 Leila Hormozi – "Never chase money"** (low-edit control)
+- Hook: a white rounded box, "Why people can't make money", in black bold sans at about 50% of frame height. It fades out over about 0.4 s at 2 s.
+- After that: 22 s, one locked podcast angle, small 2-line white captions. There are no punch-ins, B-roll or SFX. Useful as a baseline for "what minimal looks like".
+
+**17 Leila Hormozi – "Quit your job"**
+- Hook: the question card "Should you quit your job?" (white box, black bold) for about 1.2 s while she gestures.
+- Single take with one punch at 5.9 s. Small 2-line captions with italic quotes for inner-voice lines. The f-word is censored as "f*cking".
+
+**18 GaryVee – "Better person > money"**
+- Format: a rounded-corner square video window (about 1:1) centred on black. Single-word captions in white sans with a soft shadow, at the vertical centre of the window, changing on every word (about 0.25–0.35 s each).
+- Structure: 2 detected cuts plus punch-ins. A slow lateral drift (`←←←` in flow) suggests a keyframed Ken Burns or handheld cam.
+- Audio: −10.8 LUFS, the loudest in the batch, with a true peak of −0.5 dBTP. It's mastered hot.
+
+**19 Chris Williamson – "Definition of safety"**
+- Format: a rounded-square window on black (the same idea as #18). Captions inside the window are mixed: single sans words, with emphasised words swapped to large serif italic (*safety*, *unsafe*, *come*, *existing*, *to happen*). One giant word, "TO… Y?", is half hidden behind the subject.
+- Hook: the host asks "favourite… safety is?", then the guest replies "what is it?". At about 3.7 s a full-frame teal card shows "YOU WILL BE OKAY NO MATTER WHAT HAPPENS." in white bold caps. The thesis is shown before it's argued.
+- B-roll: film stills and clips (dark, cinematic) with a word on each, and vlog clips of the speaker.
+- Full-frame flash cards (teal, or white with teal text: "outside", "no matter", "BUT YOU CAN HANDLE IT.") act as punctuation every 10–20 s.
+- 53% of cuts have a transient (inference: whoosh or impact on the card cuts).
+
+**20 Chris Williamson – "View your life"**
+- The fastest cutter: 26.4 cuts/min, median shot 1.8 s, 33 → 40 → 13 → 20 cuts/min by quarter. That's dense in the middle and calmer for the argument at the end.
+- The window changes shape: rounded square → a short 16:9 strip → two stacked 16:9 strips → back to square (transitions sheet). A 1-frame white flash goes into a cyan/blue-graded club clip.
+- Captions: the same mixed sans/serif-italic system. Single emphasised caps words ("HONEST", "VIRTUOUS", "COURAGEOUS" in a pale tint). "fe…ng" is giant behind his head.
+- End: "THAT YOUR" → "**YOU ARE.**" The last caption scales up to fill the window width. That's the button.
+
+**21 Starter Story – "Night shifts → $1M"**
+- Same template as #12: fixed 3-line headline, 16:9 window, purple active-word captions.
+- Sources: founder clip with a "**$1M**" yellow stamp, an old photo in a white card ("Zero rupees."), a product-list page with "**$437,500**" then "**$1,000,000**" stamps, X posts, and a second founder (narrator/host) on a podcast mic.
+- Cuts accelerate across the clip: 6.9 → 13.8 → 13.8 → 20.7 per minute by quarter.
+
+**22 YC – "LLMs That Write Well"**
+- Hook: a straight-to-camera claim, "As LLMs have gotten better at coding and math, they've actually gotten worse at writing." A white lower-third name card ("Jared Friedman / General Partner, Y Combinator") with an orange top rule slides in at 0.4 s and holds about 4 s.
+- Structure: alternates a wide shot (desk visible) and a close shot (chest-up) every 5–6 s: cuts at 5.3, 11.6, 15.4, 20.7, 25.3 and 31.0 s. That's a classic 2-size punch cadence.
+- Captions: a white sentence fragment at about 55% of frame height, swapping at phrase boundaries (1–1.5 s), with no highlight. Audio is quiet (−24.1 LUFS).
+
+**23 Huberman – "When to not trust your thoughts"**
+- Hook: a black box with a blue outline and white ALL-CAPS 3-line title for about 4 s, at about 50% of frame height.
+- Cuts: 4.0 s to the host laughing, then back. 31 and 33 s are reaction cuts. Otherwise a single angle.
+- Captions: small white bold sans, phrase-length, at about 55% of frame height.
+
+**24 Huberman – "Addiction is about control"**
+- The same blue-outline title box hook for about 2 s, then 61 s on one angle. The framing changes (scale and position) every few seconds, which are punch-ins not counted by scdet. Captions are as in #23.
+
+**25 Codie Sanchez – "Unhinged advice to a graduate"**
+- Hook: an over-the-shoulder 2-shot, with the interviewer's question as a 3-line caption in white boxes (black text). The answer starts at 3.7 s.
+- Structure: 3–4 angles (wide, medium, close punch). 21 cuts/min, rising from 15.3 in Q1 to 22.9 in Q2–Q4.
+- Text: normal lines are black on white highlight boxes. Key lines switch style: the frame darkens (a vignette or −30% exposure), and a large white serif caption builds in 2 lines with the second line in *underlined italic* ("You will have / so much more", "when you have more / ***resources to give***").
+- The largest lift (+14.4 dB at 25 s) lands at the peak line (louder delivery, maybe plus music, inference).
+
+## 3. Batch synthesis
