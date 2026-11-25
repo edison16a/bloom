@@ -196,3 +196,16 @@ cd examples/gallery && npm install && npm run sync && npm run dev
 | Letters | 4x7 px and up | Text objects and text backgrounds |
 
 Circles are left out on purpose. They leave gaps that break up the depth of a 3D form.
+
+## What is inside
+
+```
+SKILL.md         how Claude works with it
+references/      recipes, authoring, craft checklist, Next.js notes
+engine/          the engine, React component, looks, 16 scenes
+scripts/         install, new, sheet, render
+examples/        prompts, photo scenes, gallery app
+assets/          the files on this page
+```
+
+Photo credits: [examples/images/CREDITS.md](examples/images/CREDITS.md). Example photos are for demonstration. Scenes are original.
