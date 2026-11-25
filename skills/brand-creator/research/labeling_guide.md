@@ -31,3 +31,10 @@ All keys above (`comp`, `kind`, `cont`, `style`, `simple`, `craft`, describing t
 | `track` | letter spacing: `tight`, `normal`, `wide` |
 | `custom` | the one custom detail in the word: `none`, `letter` (a modified letter), `lig` (ligature or joined letters), `color` (one letter or part in another color), `dot` (a special dot or accent), `cut` (a slash, cut or gap), `symbol` (a symbol replaces a letter) |
 | `sym` | where the symbol sits: `left`, `top`, `right`, `inside` (part of the word), `none` |
+
+## Example lines
+
+```
+{"id":"si-snapchat","comp":"S","kind":"C","cont":"none","style":"flat","simple":1,"craft":5}
+{"id":"svgl-stripe_wordmark","comp":"W","kind":"X","cont":"none","style":"flat","simple":1,"craft":5,"type":"geo","case":"lower","weight":"bold","track":"tight","custom":"dot","sym":"none"}
+```
