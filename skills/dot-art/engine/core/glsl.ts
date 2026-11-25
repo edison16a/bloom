@@ -157,3 +157,14 @@ void main(){
   o_color=vec4(v_color*a,a);
   o_data=vec4(v_d.x*a,v_d.y*a,v_d.z*a,a);
 }`;
+
+export const RESOLVE_FS = `#version 300 es
+precision highp float; precision highp sampler2D;
+uniform sampler2D u_color,u_data; uniform int u_ss; uniform int u_stagger; uniform int u_rows; uniform int u_w;
+layout(location=0) out vec4 o_color;
+layout(location=1) out vec4 o_data;
+void main(){
+  ivec2 b=ivec2(gl_FragCoord.xy)*u_ss; if(u_stagger>0&&((u_rows-1-int(gl_FragCoord.y))&1)==1) b.x+=u_ss/2; vec4 c=vec4(0.),d=vec4(0.);
+  for(int y=0;y<u_ss;y++)for(int x=0;x<u_ss;x++){ ivec2 q=b+ivec2(x,y); q.x=min(q.x,u_w-1); c+=texelFetch(u_color,q,0); d+=texelFetch(u_data,q,0); }
+  float n=float(u_ss*u_ss); o_color=c/n; o_data=d/n;
+}`;
