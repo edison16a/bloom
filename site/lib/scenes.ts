@@ -15,3 +15,21 @@ const variants: Scene[] = [
   withLook(engine.bloom, looks.dither(["#07060a", "#7a1450", "#ff3d9a", "#ffe3f1"], { cell: 4 }), { id: "bloomDither", title: "Bloom, dither" }),
   withLook(engine.bloom, looks.marks("plus", { cell: 9 }), { id: "bloomPlus", title: "Bloom, plus signs" }),
 ];
+
+const all: Scene[] = [
+  engine.bloom, engine.bloomHex, engine.bloomOctagon, engine.tree, engine.saturn, engine.helix,
+  engine.jelly, engine.knot, engine.morpho, engine.emblems,
+  engine.ribbons, engine.funnel, engine.eclipse, engine.dunes,
+  engine.liquid, engine.tide, engine.keys, engine.tunnel,
+  lotus, hummingbird, aurora, rain,
+  pagoda, dahlia, rocket,
+  ...variants,
+];
+
+const byId = new Map(all.map((s) => [s.id, s]));
+
+export const sceneIds = (): string[] => [...byId.keys()];
+
+export function sceneById(id: string): Scene | undefined {
+  return byId.get(id);
+}
