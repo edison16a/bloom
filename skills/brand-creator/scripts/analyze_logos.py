@@ -106,3 +106,19 @@ window.addEventListener('load',async()=>{const res=[];for(const it of ITEMS){try
  document.getElementById('out').textContent=JSON.stringify(res);document.title='done'});
 </script>"""
 
+
+def run_chunk(chrome, items, tmpdir, idx):
+    page = os.path.join(tmpdir, "chunk%03d.html" % idx)
+    imgs = "".join('<img id="i_%s" src="%s" style="display:none">' % (it["id"], it["src"]) for it in items)
+    open(page, "w").write(PAGE.replace("<pre id=out></pre>", "<pre id=out></pre>" + imgs).replace("__ITEMS__", json.dumps([{"id": it["id"], "src": it["src"][:20]} for it in items])))
+    cmd = [chrome, "--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
+           "--user-data-dir=" + os.path.join(tmpdir, "prof"), "--virtual-time-budget=600000",
+           "--run-all-compositor-stages-before-draw", "--dump-dom", "file://" + page]
+    p = subprocess.run(cmd, capture_output=True, text=True, timeout=900)
+    m = re.search(r'<pre id="out">(.*?)</pre>', p.stdout, re.S)
+    if not m or not m.group(1).strip():
+        print("chunk", idx, "returned nothing", p.stderr[-300:], file=sys.stderr)
+        return []
+    import html
+    return json.loads(html.unescape(m.group(1)))
+
