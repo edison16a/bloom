@@ -51,3 +51,13 @@ Paste any of these into Claude Code with the skill installed.
 > Saturn in ASCII, the message wraps the planet and the rings drift.
 
 > A hot-air balloon made of the passenger names, envelope stripes in two colours.
+
+## Text backgrounds
+
+> One sentence repeated edge to edge, light folds through it like silk.
+
+> A night ocean where every wave is a line of the word tide.
+
+> Rushing down a corridor of typed panels, calm vanishing point for the headline.
+
+> Rain on glass built from our changelog, drops refract the lines behind them.
