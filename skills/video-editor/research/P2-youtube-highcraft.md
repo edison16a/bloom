@@ -191,3 +191,14 @@ The brief asks for 2023–2026 videos. Five picks are older, but they are kept a
   - Loudest: Veritasium −11.9, MrBeast −12.2, Mrwhosetheboss −13.2.
   - Quietest: HAI and Wendover at −23 to −25 (unverified, see caveats).
 - **Hits/min:** median 55, IQR 51–70. Not meaningful as SFX density (VO-saturated). Only the MrBeast and Nick Shirley vlogs (23–35) differ.
+
+### How pacing changes across the video
+- **Front-loading is the rule.** 17 of 24 have Q1 cpm ≥ Q4 cpm, and the median first-3-min cpm (15.0) is about 27% above the whole-video median (11.8).
+- Strongest front-loads:
+  - Johnny Harris China (31 → 12.5)
+  - Yes Theory (43.7 → 25.2, Q4 8.8)
+  - Nick Shirley (Q1 16.8 → Q4 2.5)
+  - Vox shutdown (Q1 14.9 → Q2 7.0)
+- **Shape:** a fast cold open (0–30 s, often 30–70 cpm in montage bursts) → settle into explanation at 8–15 cpm → a short burst at each chapter break → the sponsor read is often cut faster than the content (HAI, Wendover).
+- **MrBeast is the exception:** flat 33–41 cpm in every quarter. No "settle" phase.
+- **Bursts inside slow sections:** Johnny Harris, Yes Theory and Cleo drop in 1–3 s montage bursts at 3–6-frame shots (photo stacks, currency macros, nature lists) inside 5–15 cpm sections. The ear hears a sustained VO line while the eye gets a flurry. Inference: this is how they keep energy without speeding the VO.
