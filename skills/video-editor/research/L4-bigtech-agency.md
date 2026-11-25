@@ -252,3 +252,24 @@ Batch of 25. Videos 01–15 are big-tech software and feature films: Apple, Goog
 - **Grammar:** one idea, many skins. A rapid style montage holds together because the title stays locked in position while everything around it changes.
 
 ## 3. Batch synthesis
+
+### Typical ranges (n=25; median, IQR)
+
+| Metric | All | Big-tech (01–15) | Agency (16–25) |
+|---|---|---|---|
+| Cuts/min | 14.5 (8.7–22.0) | 14.5 (10.5–21.6) | 13.7 (8.2–36.9) |
+| Median shot (s) | 2.5 (1.7–3.8) | 2.2 (1.7–3.4) | 3.0 (1.2–4.3) |
+| BPM | 92 (80–127) | 91 (78–123) | 95 (86–122) |
+| Beat strength | 3.1 (2.2–4.6) | 2.5 (2.1–4.5) | 3.4 (3.1–5.1) |
+| LUFS | -16.0 (-17.1 to -14.3) | -16.0 (-17.4 to -14.7) | -16.2 (-17.0 to -14.3) |
+| Hits/min | 57 (41–90) | 57 (43–81) | 56 (43–85) |
+| % cuts on beat | 24 (14–32) | 24 (13–28) | 23 (16–39) |
+| % cuts with hit | 26 (14–33) | 16 (12–30) | 28 (26–35) |
+| Speech share | 0.10 (0.02–0.19) | — | — |
+
+- **Two clear speeds:**
+  - **Narrative and feature films** (Apple keynote film, Pixel, BUCK Airbnb, explainers): 6–15 cuts per min, 2.5–6 s shots.
+  - **Sizzles and reels** (WWDC highlights, Stripe Sessions, Copilot Super Bowl, BUCK and Ordinary Folk reels, Air Max): 17–156 cuts per min, 0.2–1.7 s shots.
+  - A launch trailer for an app sits at the high end only when it is a sizzle. The UI-led product films (Canvas, Vids, Shopify) keep 2.7–5 s "shots" but fill them with constant in-frame animation (motion share 0.35–0.42) and SFX (90–103 hits per min).
+- **BPM:** the most energetic UI trailers sit at 110–137 BPM with a strong beat: #08 Copilot 137 (5.3), #12 Shopify 110 (6.8), #22 Leave Dates 127. Reels go to 160–176. The 70–90 BPM entries are emotional or narrative films (Super Bowl, Pixel, VoiceOver, iMac Pro).
+- **Loudness:** delivered around -16 LUFS (YouTube-normalised range). The punchy outliers are #04 Canvas (-8.6) and #25 Air Max (-6.6). Nothing quieter than -20.4.
