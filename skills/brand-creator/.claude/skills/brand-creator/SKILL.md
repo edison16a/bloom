@@ -33,3 +33,15 @@ Work in `brands/<slug>/` (create it). Before the options, ask the user nothing b
 ### 1. Brief
 
 Write `brands/<slug>/brief.md` in five lines: what the company does and for whom, its category archetype (pick one from `.claude/skills/brand-creator/references/archetypes.md`), three adjectives, the color strategy (black led, or one named saturated color, and why), and what the closest competitors' logos look like so you can stand apart.
+
+### 2. Look at real references
+
+Render two or three reference sheets that match the archetype and look at them (Read the PNG):
+
+```bash
+python3 -I scripts/examples.py --set word --craft 5 --case lower --track tight --n 30 --out brands/<slug>/ref-words.png
+python3 -I scripts/examples.py --set mark --craft 5 --kind LI,G --simple 2 --n 40 --out brands/<slug>/ref-marks.png
+python3 -I scripts/examples.py --brand stripe,linear,vercel,nvidia,spacex --out brands/<slug>/ref-named.png
+```
+
+If it says the cache is missing, run `python3 -I scripts/collect_logos.py --skip-wd` once (about a minute). Narrow filters often return fewer logos than `--n`; the script says so, and you can drop a filter (for example `--track`) to see more. `--brand` matches exact names first, so `--brand stripe` is Stripe and not every name containing it. Learn proportions, weight and restraint. Never copy a logo.
