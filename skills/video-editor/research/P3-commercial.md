@@ -223,3 +223,14 @@ Three tempo families appear in this batch:
 - **Hype/sports edits** (16, 21, 22, 23, 25 plus 02 and 05 by the end): 50–110 cuts/min, median shot 0.36–0.7 s, loud (-9 to -15 LUFS).
 - **Brand films/stories** (03, 04, 06, 08, 10, 17, 18, 19): 22–42 cuts/min, median shot 0.75–2.2 s.
 - **Single-idea spots** (01, 09, 11, 12, 14, 15, 20, 24): ≤ 30 cuts/min with long holds. In 14 and 15 the motion lives inside the frame (kinetic type, UI) rather than in cuts.
+
+### How pacing changes
+- The most common shape is **build to Q3, release in Q4**: 06 (28→44→64→28), 07 (16→24→48→8), 08 (19→31→35→10), 16 (19→55→87→52), 24 (7→27→34→7). The fastest cutting sits just before the end card, and the end card itself is a 2–5 s hold.
+- **Monotonic build:** 05 Nike (16→24→42→56). This works when VO intensity also rises.
+- **Front-loaded hype:** 21 Mavs (144→114→85→20) and 23 PL (66→165→108→94). They grab attention fast, then let the last section breathe.
+- Slow-burns that never speed up (20 Gymshark, 12 Squarespace) rely on star power or a single gag. These are not a model for "energetic".
+
+### Cuts vs beat
+- Only 14% of cuts land exactly on a detected beat (IQR 8–20%), and 14% coincide with a transient. Pros do **not** cut every shot on the grid. They put the *picture events* (type changes, photo slams, impacts, logo hits) on the beat and let the in-between cuts follow action and VO phrasing.
+- Exceptions that are fully on-grid are graphic-driven pieces: 02 Apple photo slams (44% on beat / 47% with hit) and 14 Slack type changes (every 0.46 s = 1 beat at 129 BPM *(inf.)*). Rule: **the more graphic and less live-action the piece, the more strictly on-beat it is.**
+- VO-led films (05, 06, 21) cut on VO phrase boundaries: 7–14% on beat even at 35–90 cuts/min.
