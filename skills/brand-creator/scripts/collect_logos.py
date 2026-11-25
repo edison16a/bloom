@@ -29,3 +29,9 @@ def get(url, timeout=60):
     with urllib.request.urlopen(req, timeout=timeout) as r:
         return r.read()
 
+
+def key_of(name):
+    n = name.lower().replace("&", "and")
+    n = re.sub(r"\b(inc|corp|corporation|ltd|llc|gmbh|co|company|technologies|labs?)\b\.?", "", n)
+    return re.sub(r"[^a-z0-9]", "", n)
+
