@@ -1,0 +1,19 @@
+{
+  "founder-m": {
+    "engine": "qwen-design",
+    "instruct": "A confident young American man in his late twenties, warm and clear, mid-low pitch. He narrates a startup product launch at a brisk, energetic pace with crisp consonants and a slight smile in his voice. Natural and conversational, never announcer-like or salesy."
+  },
+  "founder-f": {
+    "engine": "qwen-design",
+    "instruct": "A confident young American woman in her late twenties, bright and warm, clear diction. She narrates a startup product launch at a brisk, energetic pace, upbeat and conversational, with natural emphasis on key words. Never salesy or robotic."
+  },
+  "keynote-m": {
+    "engine": "qwen-design",
+    "instruct": "A calm, polished male narrator with a low, smooth voice, like a premium tech keynote film. Measured, intimate and assured, with short deliberate pauses between ideas."
+  },
+  "chatterbox": {
+    "engine": "chatterbox",
+    "exaggeration": 0.5,
+    "cfg": 0.3
+  }
+}
