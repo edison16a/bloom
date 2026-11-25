@@ -43,3 +43,17 @@ export interface GlyphStyle {
   /** Characters used for loose particles (flag > 0.5). */
   looseChars?: string;
 }
+
+export interface ColorStyle {
+  /** `source`: colour from the scene. `tone`: gradient-map the tone. `space`: gradient across the frame. `mono`: first stop only. */
+  by?: "source" | "tone" | "space" | "mono";
+  stops?: string[];
+  /** For `space`, direction in degrees (0 = left→right, 90 = top→bottom). */
+  angle?: number;
+  /** For `space`/`mono`, tone at which colour starts lifting towards white (0–1). 1 disables. */
+  highlight?: number;
+  /** Brightness also follows tone (LED look). 0 = flat colour, 1 = fully tone-driven. Default 1. */
+  shade?: number;
+  /** Fine per-pixel iridescent stripes, 0–1, applied to cells the scene flags as iridescent (flag 0.25–0.5) or all boxed cells. */
+  iridescence?: number;
+}
