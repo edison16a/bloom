@@ -184,3 +184,15 @@ See all of it in a Next.js app:
 ```bash
 cd examples/gallery && npm install && npm run sync && npm run dev
 ```
+
+## Marks
+
+| Mark | Lattice | Good for |
+|---|---|---|
+| Hexagon | Honeycomb, nests edge to edge | Objects and photos. The default dot |
+| Octagon | Square, diamond gaps | Print-like fields, backgrounds |
+| LED square | Square, constant size | Product icons, neon photos |
+| Dither | Full-bleed pixels, four inks | Retro backgrounds |
+| Letters | 4x7 px and up | Text objects and text backgrounds |
+
+Circles are left out on purpose. They leave gaps that break up the depth of a 3D form.
