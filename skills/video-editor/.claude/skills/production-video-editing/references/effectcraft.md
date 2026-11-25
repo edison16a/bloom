@@ -66,3 +66,9 @@ Product films also load `launch-video/assets/motion.jsx` (windows, camera moves,
 - **Text over UI:** a black solid with a masked, feathered top band (to y≈175, feather 150) at about 94% opacity.
 - **Audio:**
   - Music and SFX are layers. Set `L.startTime = t - trimIn`, `inPoint = t`, `outPoint = t + len`, and use audio levels in dB (keyed fade at the end).
+
+### Check and render
+- `render_frame {comp, time}` at every beat and on both sides of every transition.
+- Render with `renderQueue.add {comp, format: "prores", proresProfile: "422hq", audio: "on", sampleRate: 48000, output}`, then `renderQueue.render {wait: false}`. Poll with `renderQueue.list` (about 2 minutes for 40 s at 1080p60).
+- Finish in ffmpeg: H.264 plus loudnorm.
+
