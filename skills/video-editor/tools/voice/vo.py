@@ -29,3 +29,13 @@ WHISPER_MODELS = [os.environ.get("VO_WHISPER_MODEL", ""),
 def sh(cmd, **kw):
     return subprocess.run(cmd, capture_output=True, text=True, **kw)
 
+
+def load_voice(spec):
+    path, _, name = spec.partition(":")
+    voices = json.load(open(path))
+    if not name: name = next(iter(voices))
+    v = dict(voices[name]); v["name"] = name
+    for k in ("ref_audio",):
+        if v.get(k): v[k] = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(path)), v[k]))
+    return v
+
