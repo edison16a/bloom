@@ -321,3 +321,38 @@ const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getConte
 g.drawImage(img,0,0,W,H);out[j.name]=c.toDataURL('image/png').split(',')[1]}
 document.getElementById('out').textContent=JSON.stringify(out)})();</script>"""
 
+
+def find_chrome():
+    for c in [os.environ.get("CHROME", ""), "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+              "/Applications/Chromium.app/Contents/MacOS/Chromium", shutil.which("google-chrome") or "",
+              shutil.which("chromium") or "", shutil.which("chromium-browser") or ""]:
+        if c and os.path.exists(c):
+            return c
+    return None
+
+
+MEASURE = r"""<!doctype html><meta charset=utf-8><body><pre id=out></pre><script>
+const SY=__SY__;(async()=>{const out=[];for(const s of SY){const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 -50 200 200" width="800" height="800">'+s+'</svg>';
+const img=new Image();img.src='data:image/svg+xml;base64,'+btoa(unescape(encodeURIComponent(svg)));await img.decode();
+const c=document.createElement('canvas');c.width=c.height=800;const g=c.getContext('2d');g.drawImage(img,0,0);const d=g.getImageData(0,0,800,800).data;
+let x0=800,y0=800,x1=-1,y1=-1;for(let y=0;y<800;y++)for(let x=0;x<800;x++)if(d[(y*800+x)*4+3]>40){if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y}
+out.push(x1<0?null:[x0/4-50,y0/4-50,(x1+1)/4-50,(y1+1)/4-50])}
+document.getElementById('out').textContent=JSON.stringify(out)})();</script>"""
+
+
+def chrome_eval(page_html, timeout=120):
+    chrome = find_chrome()
+    if not chrome:
+        return None
+    tmp = tempfile.mkdtemp(prefix="brand-m-")
+    try:
+        page = os.path.join(tmp, "m.html")
+        open(page, "w").write(page_html)
+        p = subprocess.run([chrome, "--headless=new", "--disable-gpu", "--no-first-run", "--no-default-browser-check",
+                            "--user-data-dir=" + os.path.join(tmp, "prof"), "--virtual-time-budget=30000",
+                            "--dump-dom", "file://" + page], capture_output=True, text=True, timeout=timeout)
+        m = re.search(r'<pre id="out">(.*?)</pre>', p.stdout, re.S)
+        return json.loads(html.unescape(m.group(1))) if m and m.group(1).strip() else None
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
