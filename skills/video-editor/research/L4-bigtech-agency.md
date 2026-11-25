@@ -321,3 +321,56 @@ Batch of 25. Videos 01–15 are big-tech software and feature films: Apple, Goog
 - **Graphic match cuts on UI components.** The same rounded capsule in the same screen position across cuts (#01 tab bar → camera pill → slide-to-answer). Record icon → full-frame record button (#05).
 - **Push in to the cursor, then cut to the isolated element on black or a gradient** (#05, #12). Zoom continuity replaces the cut.
 - **Static holds are allowed** when something animates inside the frame. The "." share is high in Apple and Google films, but the motion lives in UI morphs.
+
+### The 10 most reusable concrete moves (recipes)
+Frames are at 30 fps. Frame counts are estimated from the 5 fps and 10 fps sheets, so treat them as about ±3 frames.
+
+1. **Word-swap hook** (#05):
+   - "Meet your [chip] ___": the fixed text fades in over 8 frames.
+   - The final word swaps every 12 frames (the beat at 120 BPM is 15 frames, so swap on every beat or every 8th note).
+   - Each word slides up 12 px and fades in over 6 frames, easeOutCubic; the old word fades up and out.
+   - SFX: a soft tick on each swap. After 5 swaps, the whole line dissolves and you cut on the downbeat.
+2. **Cursor push-in → isolated element:**
+   - Camera scales 100 → 250–400% toward the cursor click over 24–36 frames, ease-in (accelerating, like the #12 laptop push).
+   - Hard cut on the beat to the same element alone on a dark or gradient field at 100%.
+   - SFX: a whoosh rising into a soft click or impact on the cut.
+3. **Accent-word kinetic line on black** (#04, #24):
+   - Words appear one at a time, every 8–15 frames.
+   - Each is a 4–6 frame opacity and 6–10 px rise.
+   - The key word is in the brand accent colour.
+   - Hold the full line 20–30 frames; cut to the product on the downbeat.
+   - SFX: none per word, or a very light tick. A hit on the cut.
+4. **Staggered device fan** (#02):
+   - 4–5 phone screens slide in from screen-right, one every 3–4 frames, 20 frames each, easeOutQuint, slight overlap.
+   - Then a slow camera drift of about 2% per second.
+   - SFX: a quick whoosh cluster, one airy whoosh per two phones.
+5. **Counter roll-up stat** (#13, #11):
+   - Number counts from about 35% of the target to the target over 30–45 frames, easeOutExpo.
+   - Text scales 90 → 100% and goes from blurred to sharp.
+   - Hold 20 frames, then a diagonal tile wipe of UI cards from top-left over 15 frames.
+   - SFX: a riser under the count, a hit on the final digit.
+6. **Typed prompt in a glass box:**
+   - The box scales in 95 → 100% over 8 frames.
+   - Text types at about 2 characters per frame with a blinking caret, 12–20 characters.
+   - Cut before it finishes, on the beat, to the result.
+   - SFX: keyboard ticks at about 15 per second (soft), then a "send" whoosh.
+7. **Logo or name-chip flurry for social proof** (#10):
+   - 6–8 partner logos, 6–9 frames each, hard cuts on 8th notes.
+   - Same scale and same screen position for each.
+   - SFX: none; the music beat carries it.
+8. **Single-direction whip transition** (#17):
+   - Last 4 frames of outgoing shot: a downward motion-blur pan (directional blur 40–80 px).
+   - First 4 frames of incoming shot: the matching blur settling.
+   - Always the same direction in a film.
+   - SFX: a whoosh peaking on the cut frame.
+9. **Card-pop UI build** (#22, #11):
+   - Notification or feature cards pop in at 90 → 104 → 100% scale over 8–10 frames (back-out easing), staggered by 4 frames.
+   - Small 3-stroke "burst" accent lines on the landing.
+   - SFX: a pop or tick per card, slightly varied in pitch.
+10. **One-title, many-skins strobe climax** (#25, #18):
+    - Lock the title or logo in the same position.
+    - Swap backgrounds and materials every 4–6 frames for 1–2 s at the music peak (150–176 BPM).
+    - Then a hard cut to a clean endcard on flat colour, held for 2–3 s.
+    - SFX: hits on every other swap, a big impact into the endcard, then a ring-out.
+
+Also useful: **chapter-card light-lines** (#06). A particle or line sweep ← carries a 2–3 word chapter title between demo blocks, with a bass drop-out under the card and a lift back in.
