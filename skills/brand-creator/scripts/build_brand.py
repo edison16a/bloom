@@ -235,3 +235,33 @@ def comp_wordmark(wmo):
     x0, y0, x1, y1 = wmo["bbox"]
     return wordmark_body(wmo, "{W}", "{WA}"), (x0, y0, x1 - x0, y1 - y0)
 
+
+def comp_horizontal(sym, wmo, lk):
+    H = 100.0
+    cap = H * float(lk.get("cap_ratio", 0.66))
+    s = cap / 100.0
+    gap = H * float(lk.get("gap", 0.24))
+    x0, y0, x1, y1 = wmo["bbox"]
+    zone_mid = (wmo["zone_top"] / 2.0) * s  # middle of the text zone relative to baseline
+    base_y = H / 2.0 - zone_mid
+    tx = H + gap - x0 * s
+    sym_t = comp_symbol(sym)[0]
+    word = '<g transform="translate(%s %s) scale(%s)">%s</g>' % (fnum(tx), fnum(base_y), fnum(s), wordmark_body(wmo, "{W}", "{WA}"))
+    top = min(0, base_y + y0 * s)
+    bot = max(H, base_y + y1 * s)
+    return sym_t + word, (0, top, H + gap + (x1 - x0) * s, bot - top)
+
+
+def comp_stacked(sym, wmo, lk):
+    H = 100.0
+    cap = H * float(lk.get("stack_cap_ratio", 0.36))
+    s = cap / 100.0
+    x0, y0, x1, y1 = wmo["bbox"]
+    ww = (x1 - x0) * s
+    W = max(H, ww)
+    gap = H * float(lk.get("stack_gap", 0.24))
+    base_y = H + gap - wmo["zone_top"] * s
+    sym_t = '<g transform="translate(%s 0)">%s</g>' % (fnum((W - H) / 2), comp_symbol(sym)[0])
+    word = '<g transform="translate(%s %s) scale(%s)">%s</g>' % (fnum((W - ww) / 2 - x0 * s), fnum(base_y), fnum(s), wordmark_body(wmo, "{W}", "{WA}"))
+    return sym_t + word, (0, 0, W, base_y + y1 * s)
+
