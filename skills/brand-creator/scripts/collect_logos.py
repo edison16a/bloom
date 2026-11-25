@@ -68,3 +68,22 @@ def rows_si():
             yield dict(brand=x["title"], source="si", kind="icon", file=f, hex="#" + x["hex"],
                        url=x.get("source", ""), category="", basis="listed in simple-icons")
 
+
+def rows_gb():
+    base = os.path.join(CACHE, "gb", "logos-main")
+    for x in json.load(open(os.path.join(base, "logos.json"))):
+        files = x["files"]
+        has_icon = any("-icon" in f for f in files)
+        for fn in files:
+            f = os.path.join("gb", "logos-main", "logos", fn)
+            if not os.path.exists(os.path.join(CACHE, f)):
+                continue
+            if "-icon" in fn:
+                kind = "icon"
+            elif has_icon:
+                kind = "full"  # the non icon file of a brand that also ships an icon carries the wordmark
+            else:
+                kind = "primary"
+            yield dict(brand=x["name"], source="gb", kind=kind, file=f, hex="", url=x.get("url", ""),
+                       category="", basis="listed in gilbarbara/logos")
+
