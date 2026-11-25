@@ -89,3 +89,19 @@ flat solid fills, cut solid with knocked out parts, line outlines or strokes, de
 Mirror symmetric left to right (over 95 percent of pixels match): all 22%, craft 4+ 23%, craft 1-2 13%. Parts are separate filled shapes; complexity is edge length relative to area (a plain circle is about 3.5).
 
 ## Color
+
+### Main brand color family
+
+| family | official hex (simple-icons) (n=3472) | craft 4+ (n=3035) | craft 1-2 (n=522) | YC (n=1703) |
+|---|---|---|---|---|
+| blue | 29% | 28% | 26% | 30% |
+| black | 14% | 20% | 9% | 12% |
+| red | 18% | 16% | 16% | 9% |
+| green | 10% | 9% | 9% | 9% |
+| orange | 8% | 6% | 11% | 6% |
+| purple | 5% | 6% | 2% | 6% |
+| teal | 6% | 6% | 5% | 9% |
+| yellow | 5% | 4% | 9% | 4% |
+| gray | 3% | 2% | 8% | 4% |
+| pink | 2% | 2% | 2% | 2% |
+| white | 1% | 2% | 3% | 8% |
