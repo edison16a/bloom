@@ -181,3 +181,183 @@ void main(){
   if(u_reset>1.5) prev=-1.; else if(u_reset>.5&&prev>=0.) prev=0.;   // loop wrap: cells already lit count as long lit, so nothing scrambles at the seam
   o=vec4(on?(prev<0.?u_now+1.:prev):-1.);
 }`;
+
+export const CELL_FS = `#version 300 es
+precision highp float; precision highp int; precision highp sampler2D;
+uniform sampler2D u_color,u_data,u_age,u_atlas,u_overlay;
+uniform vec2 u_res; uniform vec2 u_cell; uniform vec2 u_grid;
+uniform float u_time,u_phase,u_dpr;
+uniform int u_mark; uniform vec2 u_size; uniform float u_round; uniform float u_stagger; uniform vec2 u_rotCS;
+uniform vec3 u_curve; // gain, lift, gamma
+uniform float u_ghost; uniform vec3 u_ghostColor;
+uniform int u_by; uniform int u_nStops; uniform vec3 u_stops[8]; uniform vec2 u_dir; uniform float u_highlight,u_shade,u_irid;
+uniform int u_dither; uniform float u_bands[8]; uniform float u_jitter;
+uniform vec4 u_bg; // rgb, a
+uniform vec4 u_fade; uniform vec4 u_hole; uniform float u_fadeStrength;
+uniform vec3 u_ptr; uniform int u_ptrMode; uniform vec2 u_ptrCfg; // radius px, strength
+// glyph
+uniform ivec4 u_at; // cols, rows, stride, weights
+uniform sampler2D u_lut; // rows: ramp, message, glitch, loose (tile index in r + 256 g)
+uniform int u_nRamp,u_nMsg; uniform int u_fill; uniform float u_msgAbove,u_scroll; uniform int u_rowShift;
+uniform int u_edgeT[8]; uniform float u_edge; uniform float u_box; uniform float u_glitch;
+uniform int u_nGlitch,u_nLoose;
+uniform float u_hasOverlay;
+uniform sampler2D u_hiC,u_hiD; uniform float u_detail,u_under;
+out vec4 o;
+#define sat(x) clamp(x,0.,1.)
+float hash12(vec2 p){ vec3 q=fract(vec3(p.xyx)*.1031); q+=dot(q,q.yzx+33.33); return fract((q.x+q.y)*q.z); }
+float bayer2(ivec2 p){ return float((p.x^p.y)&1)*.5+float(p.y&1)*.25; }
+float bayer8(ivec2 p){ p&=7; return bayer2(p&1)+bayer2((p>>1)&1)*.25+bayer2((p>>2)&1)*.0625; }
+vec3 grad(float t){ t=sat(t)*float(u_nStops-1); int i=int(min(floor(t),float(u_nStops-2))); if(u_nStops<2) return u_stops[0]; return mix(u_stops[i],u_stops[i+1],t-float(i)); }
+
+int lut(int row,int i){ vec2 v=texelFetch(u_lut,ivec2(i,row),0).rg*255.; return int(v.x+.5)+256*int(v.y+.5); }
+struct S { vec3 col; float tone; float cov; float depth; float flag; vec2 ctr; };
+vec2 cellUV(vec2 ctr){ return vec2(ctr.x,u_grid.y*u_cell.y-ctr.y)/(u_grid*u_cell); }
+float maskAt(vec2 f){
+  float m=1.;
+  if(u_fade.x>0.) m*=smoothstep(0.,u_fade.x,f.x);
+  if(u_fade.y>0.) m*=smoothstep(0.,u_fade.y,1.-f.x);
+  if(u_fade.z>0.) m*=smoothstep(0.,u_fade.z,f.y);
+  if(u_fade.w>0.) m*=smoothstep(0.,u_fade.w,1.-f.y);
+  if(u_hole.z>0.){ float d=length((f-u_hole.xy)/u_hole.zw); m*=mix(1.,smoothstep(.35,1.15,d),u_fadeStrength); }
+  return m;
+}
+S fetchCell(vec2 id){
+  S s; vec2 q=id+.5; if(u_stagger>.5 && mod(id.y,2.)>.5) q.x+=.5;
+  q*=u_cell; vec2 ctr=mat2(u_rotCS.x,-u_rotCS.y,u_rotCS.y,u_rotCS.x)*q; s.ctr=ctr;
+  vec2 at=ctr; float boost=0.;
+  if(u_ptr.z>.001 && u_ptrMode>0){
+    vec2 d=ctr-u_ptr.xy; float l=length(d)+1e-3, k=exp(-l*l/(u_ptrCfg.x*u_ptrCfg.x))*u_ptr.z;
+    if(u_ptrMode==1) boost=k*u_ptrCfg.y;
+    else if(u_ptrMode==2) at-=d*k*u_ptrCfg.y*.6;
+    else { float w=sin(l/u_ptrCfg.x*9.-u_time*6.)*exp(-l/u_ptrCfg.x)*u_ptr.z; at+=d/l*w*u_cell.y*2.*u_ptrCfg.y; boost=w*.15*u_ptrCfg.y; }
+  }
+  vec2 uv=cellUV(u_stagger>.5&&mod(id.y,2.)>.5?at-vec2(u_cell.x*.5,0.):at);
+  vec4 c=texture(u_color,uv), d=texture(u_data,uv);
+  float a=max(c.a,1e-4), b=max(d.a,1e-4);
+  s.col=c.rgb/a; s.cov=sat(c.a);
+  s.tone=d.r/min(b,1.); s.depth=mix(1.,d.g/b,step(.02,d.a)); s.flag=d.b/b;
+  s.tone=sat(s.tone*u_curve.x+u_curve.y*step(.004,s.tone));
+  s.tone=pow(s.tone,u_curve.z);
+  s.tone*=s.cov;
+  s.tone=sat(s.tone*(1.+boost*2.)+boost*.35*s.cov);
+  return s;
+}
+vec3 iridAt(vec2 fr){ float t=dot(fr,vec2(.72,.69))/(u_dpr*13.)+dot(fr,vec2(-.2,.9))/(u_dpr*420.)+u_phase*2.;
+  vec3 a=mix(vec3(.28,.45,1.),vec3(.86,.62,1.),.5+.5*sin(t*6.28)); return mix(a,vec3(.8,.97,1.),pow(.5+.5*sin(t*12.6+1.),4.)); }
+vec3 colorOf(S s, vec2 fr){
+  vec2 f=s.ctr/u_res; vec3 c;
+  if(u_by==0) c=s.col;
+  else if(u_by==1) return grad(s.tone);
+  else if(u_by==2){ float t=dot(f-.5,u_dir)+.5; c=grad(t); }
+  else c=u_stops[0];
+  if(u_highlight<1.) c=mix(c,vec3(1.),smoothstep(u_highlight,1.15,s.tone)*.85);
+  return c;
+}
+float shape(vec2 q,float r){ // q in px from centre, r = half-size px; returns signed distance (px)
+  if(u_mark==0){ float k=u_round*r; vec2 d=abs(q)-r+k; return length(max(d,0.))+min(max(d.x,d.y),0.)-k; }
+  if(u_mark==3) return (abs(q.x)+abs(q.y))*.7071-r*.85;
+  vec2 a=abs(q);
+  if(u_mark==1) return max(a.x,a.x*.5+a.y*.8660254)-r;               // pointy-top hexagon, r = apothem
+  if(u_mark==2) return max(max(a.x,a.y),(a.x+a.y)*.70710678)-r;     // octagon
+  float w=max(r*.24,.5*u_dpr);
+  if(u_mark==4) return min(max(a.x-r,a.y-w),max(a.y-r,a.x-w));
+  if(u_mark==5){ a=abs(vec2(q.x+q.y,q.x-q.y)*.7071); return min(max(a.x-r,a.y-w),max(a.y-r,a.x-w)); }
+  return max(abs(q.x)-u_cell.x*.5,abs(q.y)-r); // line
+}
+float tile(int t,int wt,vec2 l){ // l in 0..1, y down
+  int n=t+wt*u_at.z; ivec2 c=ivec2(n%u_at.x,n/u_at.x);
+  vec2 sz=vec2(textureSize(u_atlas,0))/vec2(u_at.xy);
+  return texture(u_atlas,(vec2(c)+l)*sz/vec2(textureSize(u_atlas,0))).r;
+}
+void main(){
+  vec2 fr=vec2(gl_FragCoord.x,u_res.y-gl_FragCoord.y);
+  vec2 q=mat2(u_rotCS.x,u_rotCS.y,-u_rotCS.y,u_rotCS.x)*fr/u_cell;
+  float row=floor(q.y); if(u_stagger>.5 && mod(row,2.)>.5) q.x-=.5;
+  vec2 id=floor(q), l=q-id;
+  S s=fetchCell(id);
+  float m=maskAt(s.ctr/u_res);
+  vec3 col; float ink=0.;
+  if(u_mark==7){ // pixel / dither
+    float t=s.tone*m*float(u_nStops-1); int i=int(min(floor(t),float(u_nStops-2))); float f=t-float(i);
+    float thr=u_dither==1?bayer8(ivec2(id)):hash12(id+.5);
+    thr=mix(thr,hash12(id*1.7+3.1),u_jitter); thr=thr*.94+.03;
+    float k=u_bands[i]>.5?step(thr,f):f;
+    vec3 a=i==0?u_bg.rgb:u_stops[i]; col=mix(a,u_stops[i+1],k);
+    ink=(i==0)?(u_bands[0]>.5?k:f):1.;
+    vec2 e=abs(l-.5)*u_cell; float gap=u_size.y<1.?1.-smoothstep(-.5,.5,max(e.x-u_cell.x*.5*u_size.y,e.y-u_cell.y*.5*u_size.y)):1.;
+    ink*=gap;
+    if(i==0) col=u_stops[1];
+  } else if(u_mark==8){ // glyph
+    int wt=s.tone>.72?2:s.tone>.34?1:0; wt=min(wt,u_at.w-1);
+    int t=lut(0,int(clamp(floor(s.tone*float(u_nRamp-1)+.5),0.,float(u_nRamp-1))));
+    ivec2 ii=ivec2(id);
+    bool lit=s.tone>.012;
+    if(u_nMsg>0 && u_fill>0 && (u_fill==2?lit:s.tone>u_msgAbove)){
+      int k=ii.x+ii.y*u_rowShift+int(floor(u_time*u_scroll)); t=lut(1,((k%u_nMsg)+u_nMsg)%u_nMsg);
+    }
+    col=colorOf(s,fr);
+    float lum=u_shade>0.?mix(1.,s.tone,u_shade):1.;
+    bool boxed=s.tone>u_box;
+    if(u_edge>0. && lit && s.flag<.6){
+      vec2 px=1./u_grid, uv=cellUV(s.ctr);
+      #define CV(o) texture(u_color,uv+vec2(o)*px).a
+      #define DP(o) mix(1.,texture(u_data,uv+vec2(o)*px).g/max(texture(u_data,uv+vec2(o)*px).a,1e-4),step(.02,texture(u_data,uv+vec2(o)*px).a))
+      vec2 g=vec2(CV(vec2(1,0))-CV(vec2(-1,0)),CV(vec2(0,1))-CV(vec2(0,-1)))+.5*vec2(CV(vec2(1,1))+CV(vec2(1,-1))-CV(vec2(-1,1))-CV(vec2(-1,-1)),CV(vec2(1,1))+CV(vec2(-1,1))-CV(vec2(1,-1))-CV(vec2(-1,-1)));
+      vec2 gd=-vec2(DP(vec2(1,0))-DP(vec2(-1,0)),DP(vec2(0,1))-DP(vec2(0,-1)));
+      bool sil=length(g)>1.1, dep=length(gd)>.05/u_edge;
+      if(sil||dep){
+        vec2 n=sil?g:gd; n.x*=1.; float an=atan(n.y,n.x); an=mod(an,3.14159265);
+        int e=int(floor(an/3.14159265*4.+.5))%4; // 0: normal horizontal -> |, 1: normal 45 -> \\, 2: -> -, 3: -> /
+        t=e==0?u_edgeT[0]:e==1?u_edgeT[1]:e==2?(n.y>0.?u_edgeT[2]:u_edgeT[4]):u_edgeT[3];
+        col=col*1.25+.06; lum=max(lum,.55); boxed=false; wt=min(1,u_at.w-1);
+      }
+    }
+    if(s.flag>.6 && u_nLoose>0){ t=lut(3,int(hash12(id+floor(s.flag*97.)+floor(u_time*6.))*float(u_nLoose))); boxed=false; lum=max(lum,.35); }
+    if(u_glitch>0. && s.cov>.12){
+      float on=texelFetch(u_age,ivec2(int(id.x),int(u_grid.y)-1-int(id.y)),0).r-1.;
+      float age=u_time-on;
+      float life=u_glitch*(.45+.9*hash12(id+7.));
+      if(on>-.5 && age>=0. && age<life && s.flag<.6){
+        t=lut(2,int(hash12(id*1.31+floor(u_time*22.))*float(u_nGlitch)));
+        col=col*.5+.45; lum=max(lum,.85); wt=min(2,u_at.w-1); boxed=false;
+      }
+    }
+    if(u_hasOverlay>.5){
+      vec4 ov=texelFetch(u_overlay,ivec2(id),0);
+      if(ov.a>.002){ t=int(ov.r*255.+.5)+256*int(ov.g*255.+.5); int oc=int(ov.a*255.+.5); col=oc==255?vec3(1.):vec3(float((oc-1)/36),float(((oc-1)/6)%6),float((oc-1)%6))/5.; lum=ov.b; boxed=false; wt=min(2,u_at.w-1); lit=true; }
+    }
+    float g=lit?tile(t,wt,l):0.;
+    if(u_irid>0. && (boxed || s.flag>.2&&s.flag<.6)) col=mix(col,iridAt(boxed?fr:s.ctr)*mix(.75,1.,s.tone),u_irid);
+    if(boxed) g=1.-g;
+    ink=g*lum*m;
+    if((u_detail>0.||u_under>0.) && s.flag<.6){
+      // Letters carry the texture; the full-resolution render underneath carries the form.
+      vec2 huv=cellUV(fr); vec4 hc=texture(u_hiC,huv), hd=texture(u_hiD,huv); float cov=sat(hc.a);
+      float ht=pow(sat(hd.r*u_curve.x+u_curve.y),u_curve.z);
+      float k=mix(1.,smoothstep(.05,.6,cov)*mix(1.,clamp(ht/max(s.tone,.04),.25,1.5),.75),u_detail);
+      ink*=k; if(hc.a>.02) col=u_by==0?mix(col,hc.rgb/hc.a,u_detail*.8):col;
+      ink=max(ink,u_under*ht*m*smoothstep(0.,.5,cov));
+    }
+  } else { // SDF marks
+    float r0=(u_mark==1?u_cell.x:min(u_cell.x,u_cell.y))*.5; ink=0.; col=vec3(0.);
+    int R=u_size.y>1.||u_mark==1?1:0; float gst=0.;
+    for(int y=-R;y<=R;y++)for(int x=-R;x<=R;x++){
+      vec2 nid=id+vec2(x,y); S n; if(R==0) n=s; else { n=fetchCell(nid); }
+      float mm=maskAt(n.ctr/u_res);
+      float tt=n.tone;
+      float r=r0*mix(u_size.x,u_size.y,sqrt(sat(tt)));
+      vec2 dq=fr-n.ctr; dq=mat2(u_rotCS.x,u_rotCS.y,-u_rotCS.y,u_rotCS.x)*dq;
+      float k=1.-smoothstep(-.5,.5,shape(dq,r)); if(u_size.x<=0.) k*=smoothstep(0.,.03,tt);
+      vec3 nc=colorOf(n,fr); if(u_irid>0.&&n.flag>.2&&n.flag<.6) nc=mix(nc,iridAt(n.ctr),u_irid);
+      float b=k*mix(step(.004,tt),tt,u_shade)*mm;
+      if(b>ink||R==0){ ink=b; col=nc; }
+      if(u_ghost>0.&&(x==0&&y==0||u_mark==1)){ float gr=r0*mix(u_size.x,u_size.y,u_size.x==u_size.y?1.:.35); gst=max(gst,(1.-smoothstep(-.5,.5,shape(dq,gr)))*u_ghost); }
+    }
+    if(gst>ink){ col=mix(u_ghostColor,col,sat(ink/gst)); ink=gst; }
+  }
+  // Emissive look on dark grounds, opaque ink on light ones.
+  ink=sat(ink);
+  vec3 rgb=mix(u_bg.rgb*u_bg.a,col,ink); float al=mix(u_bg.a,1.,ink);
+  o=vec4(u_bg.a<.5?col*ink:rgb,al);
+}`;
