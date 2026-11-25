@@ -16,3 +16,24 @@ interface LiveSceneProps {
   maxDpr?: number;
   interactive?: boolean;
 }
+
+/** A live dot art scene by id. Pages are server components, so they pass ids, never scenes. */
+export function LiveScene({ id, label, className, start, quality, fps, maxDpr = 1.5, interactive = true }: LiveSceneProps) {
+  const scene = sceneById(id);
+  const [host, time] = useSceneClock(start, scene?.loop ?? 1, scene?.poster ?? (scene?.loop ?? 0) / 2);
+  if (!scene) return null;
+  return (
+    <div ref={host} style={{ position: "absolute", inset: 0 }}>
+      <DotArt
+        scene={scene}
+        label={label}
+        className={className}
+        time={time}
+        quality={quality}
+        fps={fps}
+        maxDpr={maxDpr}
+        interactive={interactive}
+      />
+    </div>
+  );
+}
