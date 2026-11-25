@@ -1,0 +1,23 @@
+{
+  "name": "dot-art-gallery",
+  "private": true,
+  "scripts": {
+    "sync": "node ../../scripts/install.mjs . --reset && mkdir -p public/images lib && cp ../images/*.jpg public/images/ && cp ../photos.ts lib/photos.ts && rm -rf lib/scenes && cp -R ../scenes lib/scenes",
+    "predev": "npm run sync",
+    "prebuild": "npm run sync",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "next": "^15.5.29",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/react": "^19.3.1",
+    "typescript": "^5.9.3"
+  }
+}
