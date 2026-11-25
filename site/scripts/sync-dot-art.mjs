@@ -15,3 +15,9 @@ if (!existsSync(path.join(skill, "scripts/node_modules"))) {
 }
 
 execFileSync("node", [path.join(skill, "scripts/install.mjs"), site, "--reset"], { stdio: ["ignore", "ignore", "inherit"] });
+
+const examples = path.join(site, "lib/dot-art-examples");
+rmSync(examples, { recursive: true, force: true });
+mkdirSync(examples, { recursive: true });
+cpSync(path.join(skill, "examples/scenes"), path.join(examples, "scenes"), { recursive: true });
+cpSync(path.join(skill, "examples/photos.ts"), path.join(examples, "photos.ts"));
