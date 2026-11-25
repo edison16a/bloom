@@ -52,3 +52,25 @@ export function rasterize(input: ShapeInput, size = 384): Float32Array {
   }
   return out;
 }
+
+/** Felzenszwalb exact distance transform: distance inside the mask to the nearest edge, in pixels. */
+export function distanceField(mask: Float32Array, size: number): Float32Array {
+  const INF = 1e12, g = new Float64Array(size * size);
+  for (let i = 0; i < g.length; i++) g[i] = mask[i] > 0.5 ? INF : 0;
+  const f = new Float64Array(size), d = new Float64Array(size), v = new Int32Array(size), z = new Float64Array(size + 1);
+  const pass = () => {
+    let k = 0; v[0] = 0; z[0] = -INF; z[1] = INF;
+    for (let q = 1; q < size; q++) {
+      let s = (f[q] + q * q - (f[v[k]] + v[k] * v[k])) / (2 * q - 2 * v[k]);
+      while (s <= z[k]) { k--; s = (f[q] + q * q - (f[v[k]] + v[k] * v[k])) / (2 * q - 2 * v[k]); }
+      k++; v[k] = q; z[k] = s; z[k + 1] = INF;
+    }
+    k = 0;
+    for (let q = 0; q < size; q++) { while (z[k + 1] < q) k++; d[q] = (q - v[k]) ** 2 + f[v[k]]; }
+  };
+  for (let x = 0; x < size; x++) { for (let y = 0; y < size; y++) f[y] = g[y * size + x]; pass(); for (let y = 0; y < size; y++) g[y * size + x] = d[y]; }
+  for (let y = 0; y < size; y++) { for (let x = 0; x < size; x++) f[x] = g[y * size + x]; pass(); for (let x = 0; x < size; x++) g[y * size + x] = d[x]; }
+  const out = new Float32Array(size * size);
+  for (let i = 0; i < out.length; i++) out[i] = Math.sqrt(Math.min(g[i], 1e8));
+  return out;
+}
