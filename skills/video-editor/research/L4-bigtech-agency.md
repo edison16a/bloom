@@ -288,3 +288,15 @@ Batch of 25. Videos 01–15 are big-tech software and feature films: Apple, Goog
 - The highest on-beat shares come from trailers and few-cut spots: #17 at 67% (only 3 cuts, all on downbeats), #12 at 60%, #08 at 42%, #21 at 42%, #20 at 41%.
 - Dialogue-led films cut to speech instead: Pixel 0%, Spotify 8%, Stripe 12%.
 - **Inference:** in UI trailers, in-frame animations (card lands, word swaps, number ticks) land on the beat. That is why hits per min (90–104) is far higher than cuts per min (8–19). The beat is "hit" by animation events, not only by cuts.
+
+### SFX density and placement
+- **Hits per min splits the films into two groups:**
+  - About 90–104 hits per min in UI and product trailers (#04, #05, #08, #12, #18, #19). Every UI event gets a click, tick, whoosh or riser hit.
+  - About 9–40 hits per min in emotional and live-action films (#09 Super Bowl 19, #24 iMac Pro 9, #07 Pixel 41, #16 Airbnb 40). There the score carries the energy and SFX are diegetic foley.
+- **"Cut with hit":** 80% in #04 and #12, 58% in #08, but 0% in #09, #13, #16 and #17. The UI trailers stack an impact on the cut; story spots never do.
+- **Inferred placement rules:**
+  - Typed text gets per-keystroke ticks (#05, #12).
+  - Card or notification pops get a soft pop (#22, #11 icon grid).
+  - Push-ins get a whoosh that resolves on the cut (#12 laptop → prompt).
+  - Counters roll with a riser (#13).
+  - Logo resolve gets a single low hit or chime, then silence or tail.
