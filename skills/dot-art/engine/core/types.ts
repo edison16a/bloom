@@ -100,3 +100,11 @@ export interface Fade {
   /** 0–1 how dark the hole gets. Default 0.8. */
   strength?: number;
 }
+
+export interface Bloom {
+  strength: number;
+  /** Radius multiplier. Default 1. */
+  radius?: number;
+  /** Only cells above this contribute. Default 0. */
+  threshold?: number;
+}
