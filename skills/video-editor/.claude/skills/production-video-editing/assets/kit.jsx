@@ -42,3 +42,20 @@ function glass(x, y, w, h, r, tint, edge) {
   var f = g.addProperty('ADBE Vector Graphic - Fill'); f.property('ADBE Vector Fill Color').setValue(WHITE); f.property('ADBE Vector Fill Opacity').setValue(tint);
   tr(L, 'pos').setValue([x + w / 2, y + h / 2]); return L;
 }
+// One frame that stays, content dissolves inside it. items: [{f, t, src}]
+function panelRun(p, a, z, items) {
+  var G = glass(p.x, p.y, p.w, p.h, p.r, 18, 48); span(G, a, z);
+  anim(tr(G, 'op'), [[a, 0], [a + fr(8), 100]], OUT); fadeOut(G, z, 6);
+  var iw = p.w - 2 * p.inset, ih = p.h - 2 * p.inset;
+  for (var i = 0; i < items.length; i++) {
+    var it = items[i], src = kitFoot(it.f), L = K.comp.layers.add(src), t0 = it.t + (i ? 0 : fr(4)), t1 = i < items.length - 1 ? items[i + 1].t + fr(6) : z;
+    var sc = Math.max(iw / src.width, ih / src.height) * 100;
+    L.startTime = t0 - (it.src || 0); L.inPoint = t0; L.outPoint = t1; try { L.audioEnabled = false; } catch (e) {}
+    tr(L, 'scale').setValue([sc, sc]); tr(L, 'pos').setValue([p.x + p.w / 2, p.y + p.h / 2]);
+    var mw = iw / sc * 100, mh = ih / sc * 100;
+    rmask(L, (src.width - mw) / 2, (src.height - mh) / 2, mw, mh, p.innerR / sc * 100);
+    if (i == 0) { var b = blurOf(L); if (b) anim(b, [[t0, 24], [t0 + fr(10), 0]], OUT); }
+    anim(tr(L, 'op'), [[t0, 0], [t0 + fr(i ? 5 : 10), 100]], OUT);
+    if (i == items.length - 1) fadeOut(L, z, 6);
+  }
+}
