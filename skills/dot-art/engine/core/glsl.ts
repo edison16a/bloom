@@ -361,3 +361,15 @@ void main(){
   vec3 rgb=mix(u_bg.rgb*u_bg.a,col,ink); float al=mix(u_bg.a,1.,ink);
   o=vec4(u_bg.a<.5?col*ink:rgb,al);
 }`;
+
+export const BLUR_FS = `#version 300 es
+precision highp float;
+in vec2 v_uv; uniform sampler2D u_tex; uniform vec2 u_step; uniform float u_threshold; uniform vec3 u_base; uniform float u_first;
+out vec4 o;
+void main(){
+  vec4 s=vec4(0.); float w=0.;
+  for(int i=-4;i<=4;i++){ float k=exp(-float(i*i)/8.); vec4 c=texture(u_tex,v_uv+u_step*float(i)*1.4);
+    if(u_first>.5){ c.rgb=max(c.rgb-u_base,0.); float l=max(c.r,max(c.g,c.b)); c.rgb*=smoothstep(u_threshold,u_threshold+.12,l+1e-4+step(u_threshold,0.)); }
+    s+=c*k; w+=k; }
+  o=s/w;
+}`;
