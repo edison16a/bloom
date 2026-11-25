@@ -41,3 +41,29 @@ Copy this list and tick it off.
 [ ] 7 Mount with <DotArt>, check in the real page, and at 390 px wide
 [ ] 8 Export GIF/MP4 if asked
 ```
+
+### 1. Decide
+
+Pick one from each column, and say the choice in one line before building.
+
+| Family | Source | Look |
+|---|---|---|
+| dot object | `surface` points, `logoScene`, `modelScene` | led, halftone, hex, octagon |
+| dot image | `imageSource` | neon (contour glow), halftone (full colour), dither, type |
+| dot background | `shader` | dither, halftone, led |
+| text object | same as dot object | `type` |
+| text background | `shader` | `words`, or glyph ramp |
+
+Words people use, and what they mean here:
+
+| They say | Use | Why |
+|---|---|---|
+| dots, hexagon, honeycomb | `hex` | Default "dot". Tiles nest, so depth and shading survive |
+| octagon, mosaic, tile | `octagon` | Square grid, diamond gaps. Best for print-like fields |
+| block, pixel, LED | `square` | Constant size, brightness carries light |
+| dithered, retro, 8-bit | `pixel` + `dither` | Four inks, no greys |
+| ASCII, text, made of words | `glyph` | Letters carry light and outline |
+
+There is no circle mark, on purpose: circles leave gaps that break up the depth of a 3D form. If asked for round dots, use `hex` and say so: at 5-8 px it reads as a dot.
+
+Then give it a **story**: what appears, what it does, how it leaves or returns. "Rotates" alone is a screensaver. Good ones: types itself, collapses to a seed, buds, opens, holds, blows away, leaves the core, dissolves back to the seed.
