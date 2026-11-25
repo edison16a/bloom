@@ -37,3 +37,15 @@ void surface(int i, int n, vec4 rnd, inout Pt p)
 `count` 200k-400k for an object, 500k-700k with `samples: 4`. `blend: "add"` for light and streaks: then `p.alpha` is energy per point, .001-.1, and the engine keeps brightness the same at every canvas size. `triangles: true` draws indexed geometry solid. Geometry can be `() => Geometry`, built on first use: do that for anything heavy or that touches a canvas, so importing stays cheap and works in SSR.
 
 Normals for a parametric surface: evaluate it at `q`, `q+du`, `q+dv`, cross the differences, then `faceView(n, pos)`.
+
+## Flags
+
+| `flag` | Meaning |
+|---|---|
+| 0 | normal |
+| .2-.6 (use .4) | iridescent stripes, with `style.color.iridescence` |
+| above .6 (use 1) | loose particle: drawn from `looseChars`, skips edges, glitch and detail |
+
+## Uniforms
+
+`u_time` s, `u_phase` 0..1, `u_loop`, `u_grid` cols/rows, `u_aspect`, `u_eye`, `u_view`, `u_viewProj`, `u_clip`, `u_pointer` (xy -1..1, z presence). `p`, `uv` and `u_pointer` are y up; `focus`, `fade.hole` and overlay rows are y down. Your own: `uniforms: { name: 0.5 | [x,y,z] | (t) => value }`, declared for you. Textures: `textures: { u_img: { src } | { image, dynamic } | { data, width, height } }`, with `u_img_size`. `data` textures are single channel floats (read `.r`), uploaded once; use an `image` canvas with `dynamic` for anything that changes. Functions and constants go in `common`, and can be shared by passing the same string to two sources.
