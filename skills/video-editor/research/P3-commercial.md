@@ -206,3 +206,20 @@ All numbers come from metrics.json. Anything marked *(inf.)* is my inference fro
 - Audio: 126.5 BPM, speech share 0.33 (commentary/VO calls over music).
 
 ## 3. Batch synthesis
+
+### Typical ranges (n = 25; median, IQR)
+| Metric | Median | IQR | Min–max |
+|---|---|---|---|
+| Cuts/min | 29.9 | 18.8–41.7 | 3.4*–108.2 |
+| Median shot (s) | 1.54 | 0.77–2.26 | 0.36–5.13 |
+| BPM (as detected) | 85 | 75–106 | 71–160 (many likely half-time → ~140–160) |
+| Beat strength | 2.35 | 1.95–3.10 | 1.59–7.70 |
+| LUFS | -15.0 | -16.4 to -13.7 | -24.1 to -8.9 |
+| Hits/min | 41 | 32–56 | 14–96 |
+| % cuts on beat | 14% | 8–20% | 0–44% |
+| % cuts with a hit | 14% | 7–27% | 0–47% |
+
+Three tempo families appear in this batch:
+- **Hype/sports edits** (16, 21, 22, 23, 25 plus 02 and 05 by the end): 50–110 cuts/min, median shot 0.36–0.7 s, loud (-9 to -15 LUFS).
+- **Brand films/stories** (03, 04, 06, 08, 10, 17, 18, 19): 22–42 cuts/min, median shot 0.75–2.2 s.
+- **Single-idea spots** (01, 09, 11, 12, 14, 15, 20, 24): ≤ 30 cuts/min with long holds. In 14 and 15 the motion lives inside the frame (kinetic type, UI) rather than in cuts.
