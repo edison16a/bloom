@@ -32,3 +32,21 @@ Nothing is a template. Every symbol is drawn fresh for the name, and the choices
 | ![Lumen Labs](docs/screenshots/lumen-labs.png) | ![Ferrite](docs/screenshots/ferrite.png) |
 
 These are made up companies from test runs: a savings app, a developer tool, an AI accounting company and a chip maker. Each was designed by an agent that only read the skill. This repo's own logo was made the same way.
+
+## Technical details
+
+**The research.** 8,332 logo files from 6,259 brands: every simple-icons brand with its official hex, gilbarbara/logos, svgl's modern tech and AI set, 1,703 YC companies that reached Series A or later or were acquired, and 246 Wikidata tech companies (Wikimedia rate limits stopped that download early). Every file was measured from pixels in headless Chrome (shape, color clusters, symmetry, lockup proportions) and labeled by eye from contact sheets (symbol kind, container, style, simplicity, craft, and for wordmarks the typeface class, case, weight, tracking and custom detail). Fifty iconic brands such as NVIDIA, SpaceX, Anthropic, OpenAI, Stripe and Linear have written case studies.
+
+**What it found** (`research/patterns.md`):
+
+| Finding | Number |
+|---|---|
+| Simplest symbols rated professional (craft 4+) | 42%, against 8% for intricate ones |
+| Flat or cut out style rated professional | 41%, against 21% for detailed or shaded |
+| Strong symbols with no container | 62% |
+| Strong full color logos using one or two colors | 74% |
+| Tight tracking in strong wordmarks | 42%, against 14% in weak ones |
+| Light weight wordmarks rated strong | 0 of 23 |
+| Gap between symbol and word in real lockups | about 0.20 of the symbol height |
+
+**The builder** (`scripts/build_brand.py`) reads a `brand.json`, sets the wordmark from 43 bundled SIL Open Font License fonts with real GPOS kerning (fontTools), converts it to outlines, measures each symbol's ink in Chrome so every lockup is optically balanced, and writes 18 SVGs, 42 PNGs, an offline `brand-board.html` (color pickers, any export size, client side zip) and a `<name>-brand-kit.zip`.
