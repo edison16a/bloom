@@ -129,3 +129,58 @@ class Font:
 def apply_case(text, case):
     return {"lower": text.lower(), "upper": text.upper(), "title": " ".join(w[:1].upper() + w[1:].lower() for w in text.split(" "))}.get(case, text)
 
+
+def set_wordmark(wm, symbol_cache):
+    """Outline the wordmark. Coordinates: baseline at y=0, cap height = 100 units."""
+    font = Font(wm["font"])
+    text = apply_case(wm.get("text") or wm["_name"], wm.get("case", "as-is"))
+    k = 100.0 / font.cap
+    track = float(wm.get("tracking", 0)) * font.upm  # tracking is in em
+    custom = {int(i): g for i, g in (wm.get("custom_glyphs") or {}).items()}
+    accent = set(int(i) for i in (wm.get("accent_chars") or []))
+    x, prev, parts, bx0, by0, bx1, by1 = 0.0, None, [], 1e9, 1e9, -1e9, -1e9
+    for i, ch in enumerate(text):
+        if ch == " ":
+            sp = font.cmap.get(32)
+            x += (font.f["hmtx"][sp][0] if sp else font.upm * 0.25) + track
+            prev = None
+            continue
+        if i in custom:
+            # custom glyph: drawn in a box "w" wide (default 100) by 100 tall, scaled so 100 = cap (or x) height;
+            # spaced with the side bearings of H so it sits in the word like a real letter
+            cg = custom[i]
+            h = 100.0 if cg.get("height", "cap") == "cap" else font.xh * k
+            s_ = h / 100.0
+            bw = float(cg.get("w", 100))
+            lsb, rsb = font.sidebearings("H")
+            gx = x * k + lsb * k
+            body = token_fill(cg["svg"], "{T%d}" % i)
+            parts.append({"i": i, "svg": '<g transform="translate(%s %s) scale(%s)">%s</g>' % (
+                fnum(gx), fnum(-h), fnum(s_), body), "accent": i in accent, "custom": True})
+            bx0, bx1 = min(bx0, gx), max(bx1, gx + bw * s_)
+            by0, by1 = min(by0, -h), max(by1, 0)
+            x += (lsb + rsb) + bw * s_ / k + track
+            prev = None
+            continue
+        g = font.cmap.get(ord(ch))
+        if not g:
+            sys.exit("Font %s has no glyph for %r" % (wm["font"], ch))
+        if prev:
+            x += font.kerning(prev, g)
+        pen = SVGPathPen(font.gs, ntos=fnum)
+        tp = TransformPen(pen, (k, 0, 0, -k, x * k, 0))
+        font.gs[g].draw(tp)
+        bp = BoundsPen(font.gs)
+        font.gs[g].draw(TransformPen(bp, (k, 0, 0, -k, x * k, 0)))
+        d = pen.getCommands()
+        if d:
+            parts.append({"i": i, "d": d, "accent": i in accent})
+        if bp.bounds:
+            bx0, by0 = min(bx0, bp.bounds[0]), min(by0, bp.bounds[1])
+            bx1, by1 = max(bx1, bp.bounds[2]), max(by1, bp.bounds[3])
+        x += font.f["hmtx"][g][0] + track
+        prev = g
+    has_tall = any(c.isupper() or c.isdigit() or c in "bdfhklt" for c in text) or bool(custom)
+    zone_top = -100.0 if has_tall else -font.xh * k
+    return {"parts": parts, "bbox": (bx0, by0, bx1, by1), "zone_top": zone_top, "text": text, "font": wm["font"]}
+
