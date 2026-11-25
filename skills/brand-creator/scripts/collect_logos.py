@@ -87,3 +87,33 @@ def rows_gb():
             yield dict(brand=x["name"], source="gb", kind=kind, file=f, hex="", url=x.get("url", ""),
                        category="", basis="listed in gilbarbara/logos")
 
+
+def rows_svgl():
+    base = os.path.join(CACHE, "svgl", "svgl-main")
+    ts = open(os.path.join(base, "src", "data", "svgs.ts"), encoding="utf-8").read()
+    for block in re.findall(r"\{\s*title:.*?\n  \}", ts, re.S):
+        title = re.search(r'title:\s*"([^"]+)"', block)
+        if not title:
+            continue
+        sub = re.search(r'subTitle:\s*"([^"]+)"', block)
+        if sub:  # skip monochrome and alternate duplicates
+            continue
+        cats = re.findall(r'"([^"]+)"', (re.search(r"category:\s*(\[[^\]]*\]|\"[^\"]*\")", block) or [None, ""])[1] if re.search(r"category:", block) else "")
+        url = re.search(r'\burl:\s*"([^"]+)"', block)
+
+        def pick(field):
+            m = re.search(field + r':\s*"([^"]+)"', block)
+            if m:
+                return m.group(1)
+            m = re.search(field + r':\s*\{\s*light:\s*"([^"]+)"', block, re.S)
+            return m.group(1) if m else None
+
+        for field, kind in (("route", "icon"), ("wordmark", "wordmark")):
+            p = pick(field)
+            if not p:
+                continue
+            f = os.path.join("svgl", "svgl-main", "static", p.lstrip("/"))
+            if os.path.exists(os.path.join(CACHE, f)):
+                yield dict(brand=title.group(1), source="svgl", kind=kind, file=f, hex="",
+                           url=url.group(1) if url else "", category="; ".join(cats), basis="listed in svgl")
+
