@@ -94,3 +94,10 @@ def share_table(groups, key, order=None, title=None, note=""):
         out.append("| %s | %s |" % (v, " | ".join(cells)))
     return "\n".join(out) + ("\n\n" + note if note else "")
 
+
+def q(vals, p):
+    vals = sorted(vals)
+    if not vals:
+        return float("nan")
+    return vals[min(len(vals) - 1, int(p * len(vals)))]
+
