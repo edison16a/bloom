@@ -122,3 +122,59 @@ def run_chunk(chrome, items, tmpdir, idx):
     import html
     return json.loads(html.unescape(m.group(1)))
 
+
+def main():
+    chrome = find_chrome()
+    cat = list(csv.DictReader(open(os.path.join(ROOT, "research", "catalog.csv"))))
+    static, items = {}, []
+    for r in cat:
+        p = os.path.join(CACHE, r["file"])
+        try:
+            blob = open(p, "rb").read()
+        except OSError:
+            continue
+        mime = sniff(blob)
+        if not mime:
+            continue
+        if mime == "image/svg+xml":
+            text = blob.decode("utf-8", "replace")
+            static[r["id"]] = static_svg(text)
+            if r["source"] == "si" and "fill=" not in text[:400]:
+                pass  # simple-icons glyphs render black; their brand color is the catalog hex
+        items.append({"id": r["id"], "src": "data:%s;base64,%s" % (mime, base64.b64encode(blob).decode())})
+    tmpdir = tempfile.mkdtemp(prefix="logo-an-")
+    results = {}
+    vec = [x for x in items if x["src"].startswith("data:image/svg")]
+    ras = [x for x in items if not x["src"].startswith("data:image/svg")]
+    batches = [vec[i:i + CHUNK] for i in range(0, len(vec), CHUNK)] + [ras[i:i + 40] for i in range(0, len(ras), 40)]
+    for bi, batch in enumerate(batches):
+        got = run_chunk(chrome, batch, tmpdir, bi)
+        if not got and len(batch) > 1:  # retry one by one so a single bad file cannot sink the batch
+            got = [m for it in batch for m in run_chunk(chrome, [it], tmpdir, bi)]
+        for m in got:
+            results[m["id"]] = m
+    print("measured batches:", len(batches), file=sys.stderr)
+    shutil.rmtree(tmpdir, ignore_errors=True)
+    cols = ["id", "key", "brand", "source", "kind", "hex", "err", "w", "h", "bbox_aspect", "coverage", "n_colors",
+            "palette", "dominant_hex", "dominant_h", "dominant_s", "dominant_l", "sym_lr", "sym_tb", "parts", "complexity", "lock_gap", "lock_text_h", "lock_text_mid",
+            "svg_gradient", "svg_text", "svg_elements", "svg_path_chars", "svg_declared_colors", "svg_filter", "svg_image"]
+    ok = 0
+    with open(os.path.join(ROOT, "research", "metrics.csv"), "w", newline="") as f:
+        w = csv.DictWriter(f, cols)
+        w.writeheader()
+        for r in cat:
+            m = results.get(r["id"], {"err": "unreadable"})
+            row = {c: r.get(c, "") for c in ("id", "key", "brand", "source", "kind", "hex")}
+            row.update({k: v for k, v in m.items() if k in cols and k != "palette"})
+            pal = m.get("palette") or []
+            row["palette"] = " ".join("%s:%s" % (p["hex"], p["share"]) for p in pal)
+            if pal:
+                row.update(dominant_hex=pal[0]["hex"], dominant_h=pal[0]["h"], dominant_s=pal[0]["s"], dominant_l=pal[0]["l"])
+            row.update(static.get(r["id"], {}))
+            ok += "err" not in m
+            w.writerow(row)
+    print("measured ok:", ok, "of", len(cat))
+
+
+if __name__ == "__main__":
+    main()
