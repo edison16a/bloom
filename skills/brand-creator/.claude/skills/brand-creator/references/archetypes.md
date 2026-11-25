@@ -29,3 +29,19 @@ Default: lowercase or title case, bold, tight; a clean word led logo with a smal
 
 Case studies: NVIDIA (uppercase, green #76B900, eye mark), SpaceX (uppercase word only, swoop X), Tesla (uppercase, T symbol), AMD, Arm, Intel, Anduril (uppercase Helvetica Now, black), Etched (uppercase wordmark). 6 of the 7 uppercase wordmarks among the 50 case studies are in this group.
 Default: UPPERCASE wordmark, bold or black weight, normal to slightly wide tracking (wide is the one place it works), often word led with no symbol or one hard geometric symbol. Black led, or one strong saturated color.
+
+## Consumer app, social, marketplace
+
+Data: 217 successful YC consumer companies: blue, red, orange lead; initial letterforms (62) and pictorial symbols (48). 35 svgl social logos: blue led, initial letterforms (13).
+Leaders: Airbnb (Bélo, Rausch red), Spotify (green), Discord (Blurple), Snapchat, Duolingo.
+Default: rounded or geometric sans, lowercase, bold; a friendly simple symbol that works as an app icon first. Warm saturated color.
+
+## Healthcare and bio
+
+Data: 195 successful YC healthcare companies: blue 33%, teal 14%, orange 10%; initial letterform (47) and pictorial (40) symbols.
+Default: calm, title case or lowercase humanist or geometric sans, medium weight; teal, green or a warm accent rather than hospital blue; avoid crosses, hearts and DNA clichés.
+
+## Industrial, climate, energy, logistics
+
+Data: 108 successful YC industrials companies: blue, black, green, red; initial letterforms and simple objects.
+Default: uppercase or title case, bold neo grotesk or geometric; black led or one strong signal color; a hard edged geometric symbol.
