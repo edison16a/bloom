@@ -113,3 +113,19 @@ Product films also load `launch-video/assets/motion.jsx` (windows, camera moves,
 - `doc_save` and `doc_export` reject `index` in bridge mode, so omit it.
 - Font weight: `type.create`'s `style` key is ignored. Use `type.setStyle {fontStyle:"Heavy"}`. Check that text fits the canvas after changing its size.
 - `layer.removeBackground` can leave the background in. For cutouts, verify the result and fall back to OpenCV GrabCut plus colour cleanup.
+
+## ffmpeg recipes
+- **Contact sheet:** `ffmpeg -ss A -t D -i in.mp4 -vf "fps=7.5,scale=180:-1,tile=6x2" -frames:v 1 sheet.png`. Note that `drawtext` isn't available in this ffmpeg build.
+- **Two-pass loudness:** measure with `loudnorm=I=-14:TP=-1.5:LRA=11:print_format=json`. Then apply with the `measured_*` values plus `linear=true`, using `-c:v copy -c:a aac -b:a 320k`, and re-measure with `print_format=summary`.
+- **Finding a sound's peak:** decode to mono 8 kHz float32 with numpy and take the argmax of an RMS envelope with a 25 ms window. Offset `adelay` so the peak lands on the visual frame.
+- **zsh:** it doesn't word-split `$var`. Run loops over "src dst" pairs inside `bash -c` or use arrays.
+
+## More commands worth knowing
+- `command.describe {command: "<id>"}` takes `command`, not `id`.
+- `layer.timing` for real trims and moves, `keys.setEase`, `layer.addTextAnimator`, `layer.newCamera`, `comp.setSwitch {switch: motionBlur}`.
+- `command_list` and `text.fonts` return more than 70k characters. Filter the saved result with python instead of reading it whole.
+
+## Checks while building
+- `render_frame` at the start, middle and end of every overlay, on both sides of every change, and 1 frame before and after each swap.
+- Contact sheets with ffmpeg: `fps=2,scale=320:-1,tile=6x6`. This ffmpeg has no `drawtext`.
+- Blur layers with `ADBE Gaussian Blur 2`. Fades are Opacity keys. Nothing needs a plugin.
