@@ -17,3 +17,16 @@ s = max(W / sw, H / sh); rw, rh = round(sw * s), round(sh * s); x0 = (rw - W) //
 fit = lambda im: cv2.resize(im, (rw, rh), interpolation=cv2.INTER_CUBIC)[y0:y0 + H, x0:x0 + W]
 def guided(I, q, r, eps):
     box = lambda z: cv2.boxFilter(z, -1, (2 * r + 1, 2 * r + 1)); mi, mq = box(I), box(q); A_ = (box(I * q) - mi * mq) / (box(I * I) - mi * mi + eps); return box(A_) * I + box(mq - A_ * mi)
+def clean(m, f):
+    """Soft measured edge, solid inside, and the edge follows real hair in the picture."""
+    m = m[:, :, 1]; b = (m > 110).astype(np.uint8); b = cv2.morphologyEx(b, cv2.MORPH_CLOSE, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (41, 41)))
+    cs, _ = cv2.findContours(b, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE); u = np.zeros_like(b)
+    if cs: cv2.drawContours(u, [max(cs, key=cv2.contourArea)], -1, 1, -1)
+    soft = np.maximum(cv2.GaussianBlur(m, (0, 0), 1.5).astype(np.float32) / 255 * cv2.dilate(u, np.ones((15, 15))), 0)
+    core = cv2.erode(u, cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (19, 19))).astype(np.float32)
+    g = guided(cv2.cvtColor(f, cv2.COLOR_BGR2GRAY).astype(np.float32) / 255, np.maximum(soft, core), 9, 6e-4)
+    k = np.clip((np.linspace(0, 1, m.shape[0], dtype=np.float32) - a.hair) / -.08 , 0, 1)[:, None]      # hair follows the picture, clothes keep the measured edge
+    plain = np.clip((cv2.erode(soft, np.ones((5, 5))) - .15) / .75, 0, 1); g = np.clip((g - .12) / .80, 0, 1) * k + plain * (1 - k)
+    out = cv2.GaussianBlur(np.maximum(g, cv2.GaussianBlur(core, (0, 0), 3)), (0, 0), .7)
+    return np.clip(out, 0, 1) * cv2.GaussianBlur(cv2.dilate(u, np.ones((11, 11))).astype(np.float32), (0, 0), 2)
+PAD = 48
