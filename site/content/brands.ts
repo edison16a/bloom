@@ -18,3 +18,15 @@ export interface Brand {
 }
 
 const media = (slug: string, file: string) => `/media/brands/${slug}/${file}`;
+
+export const brandFiles = (slug: string) => ({
+  logo: media(slug, "logo-horizontal-reverse.svg"),
+  logoColor: media(slug, "logo-horizontal-color.svg"),
+  stacked: media(slug, "logo-stacked-reverse.svg"),
+  symbol: media(slug, "symbol-color.svg"),
+  symbolWhite: media(slug, "symbol-white.svg"),
+  wordmark: media(slug, "wordmark-reverse.svg"),
+  appIcon: media(slug, "app-icon.svg"),
+  options: media(slug, "options.webp"),
+  board: media(slug, "board.webp"),
+});
