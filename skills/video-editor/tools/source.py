@@ -270,3 +270,16 @@ def cmd_sfx(a):
             print(f'  {w:14s} {os.path.basename(f)}  {inf["dur"]:.2f}s  onset {s:.3f}  peak {pk:.3f}  ({x["source"]}, {x["licence"]})')
         if not got: print(f"  {w}: nothing found, try a synonym")
 
+
+def save_video(a, name, url, meta):
+    ext = os.path.splitext(urllib.parse.urlparse(url).path)[1] or ".mp4"
+    f = os.path.join(adir(a.job, "video"), slug(name) + ext)
+    try:
+        if not fetch(url, f, a.max_mb): return False
+    except Exception as e: warn(name, e); return False
+    i = probe(f); rel = os.path.relpath(f, ROOT); log(a.job, file=rel, kind="video", **meta)
+    sheet = f + ".jpg"; step = max(i["dur"] / 24, 0.2)
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", f, "-vf", f"fps=1/{step:.3f},scale=320:-2,tile=6x4", "-frames:v", "1", sheet])
+    print(f'  {rel}  {i["w"]}x{i["h"]}  {i["dur"]:.1f}s  {"sound" if i["audio"] else "silent"}  {meta["licence"]}  sheet: {os.path.basename(sheet)}')
+    return True
+
