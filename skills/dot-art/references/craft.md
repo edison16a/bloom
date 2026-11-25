@@ -33,3 +33,12 @@ Score a render against this before showing it. Every line should pass.
 - Cap weights at 700 for cells under 5 px. 800 closes up the counters.
 - `edges: 1` on solid objects with clear overlaps. 0 on fur, foliage, glass.
 - `rowShift` coprime with the message length so the phrase steps diagonally, never in stripes.
+
+## Motion
+
+- Loop 6-12 s for objects, 20-40 s for backgrounds described as slow. Full rotations are 8 s or longer.
+- Layer three rates: slow drift (1 cycle), medium (2-3), sparkle (4+). All integers.
+- Objects never only spin. Add breathing, a light sweep, particles leaving, or a story.
+- Anticipate and overshoot: `eback` for arrivals, `ein` for departures, `eio` for morphs.
+- Stagger with a per-point or per-part delay. Nothing large starts on one frame.
+- Particles leave along one wind direction plus curl. Keep few (`alpha` falls fast) so the shape they left stays legible.
