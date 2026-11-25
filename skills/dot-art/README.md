@@ -27,3 +27,21 @@ Things typeset in their own words.
 > **Saturn in ASCII, with rings of drifting characters**
 
 ![Saturn](assets/saturn.gif)
+
+## Dot objects
+
+> **Our nine product icons as inflated 3D shapes floating on a dark LED wall**
+
+![Emblems](assets/emblems.gif)
+
+> **An iridescent torus knot in hexagons, turning slowly**
+
+![Knot](assets/knot.gif)
+
+> **A glowing jellyfish made of octagons, drifting upward**
+
+![Jellyfish](assets/jelly.gif)
+
+> **A blue morpho butterfly flapping, in LED squares**
+
+![Morpho](assets/morpho.gif)
