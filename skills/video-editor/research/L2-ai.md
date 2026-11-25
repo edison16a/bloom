@@ -159,3 +159,14 @@ Frame counts assume 30 fps. Easing is my reading of the sheets (inference): most
 10. **Slam title-card interjections.** Between demo shots, insert 12–30 frame black cards with bold condensed caps, one phrase fragment per card ("AND EVEN A" / "CANVAS?"). Cut in on a hit (an impact or riser end), with no fade. Optionally a 6–9 frame circle wipe on the first card. SFX: a sub-boom or snare on each card. (Pika; Arc uses calmer 36-frame blue cards with white sans.)
 
 Bonus logo-outro pattern used by almost all 25: drop the music 3–6 dB about 2–4 s before the end, then have the glyph appear and the wordmark slide out from it (12–18 frames). The URL appears small beneath it, then hold 1–2 s and cut or fade to black. The visual lift of the logo comes with a +10 to +30 dB stinger relative to the dip before it.
+
+### Amateur tells that the pros avoid
+- **Raw full-screen screen recordings at 1:1** with small unreadable UI. Pros crop, scale 1.5–4× or inset on a matte; Replit is the one film that shows long raw recordings with a PiP, and it reads as a webinar.
+- **Static holds over 2 s with nothing moving.** Even "slow" films (Linear, Claude Code) keep a drift, scroll or typing going.
+- **Cutting on every beat** in a demo film. Pros cut on sentences (doc films) or on the bar (sizzles) and put the per-beat energy into element entrances.
+- **SFX on every cut / whoosh spam.** Only 20% of cuts carry a hit. SFX belong to *interactions* (clicks, typing, pops).
+- **Mixed motion directions** (cards entering from random sides). Pros hold one axis per section.
+- **Many fonts and effects.** Every film uses one family (plus an optional emphasis style), one background system (gradient mesh, solid matte or dark field) and one accent colour.
+- **Word-pop karaoke captions, emoji or sticker graphics:** absent from all 25.
+- **A front half that is slower than the back half without a hook.** Every film shows either the product or a bold claim within 3 s. Runway's 10 s disclaimer is the lone exception, and it is deliberate framing.
+- **Flat loudness through the logo.** Pros dip before the logo and land a stinger on it.
