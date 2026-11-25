@@ -145,3 +145,15 @@ void main(){
   v_color=max(p.color,0.);
   v_d=vec4(sat(p.tone),sat((d-u_clip.x)/(u_clip.y-u_clip.x)),p.flag,p.alpha);
 }`;
+
+export const SURFACE_FS = `#version 300 es
+precision highp float;
+in vec3 v_color; in vec4 v_d;
+uniform float u_add;
+layout(location=0) out vec4 o_color;
+layout(location=1) out vec4 o_data;
+void main(){
+  float a=u_add>0.?v_d.w*u_add:1.;
+  o_color=vec4(v_color*a,a);
+  o_data=vec4(v_d.x*a,v_d.y*a,v_d.z*a,a);
+}`;
