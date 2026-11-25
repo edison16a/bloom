@@ -121,3 +121,18 @@ Flags: `--at 3.2` picks the moment, `--from 2 --to 4` zooms into a beat, `--tile
 With a reference, put it side by side with your frame and list the differences in words before editing. Pass bar: shown both, a designer would not say which is the copy.
 
 **Text objects need resolution.** Default to `cell: [4, 7]`, `samples: 4`, `detail: 0.8`, `under: 0.2`. `detail` clips letters to the real silhouette at 4x the letter grid, and `under` puts a dim render behind them, so the shape reads instantly. This is the most common failure: letters too large for the shape.
+
+### 7. Mount
+
+```tsx
+"use client";
+import { DotArt } from "@/components/dot-art/react";
+import { aurora } from "@/components/dot-art/scenes/aurora";
+
+<section style={{ position: "relative", height: "80vh" }}>
+  <div style={{ position: "absolute", inset: 0 }}><DotArt scene={aurora} /></div>
+  <h1 style={{ position: "relative" }}>Headline</h1>
+</section>
+```
+
+Import the scene file directly so only that scene ships. Scenes hold functions, so a server component cannot pass one as a prop: import it inside a client component. Behind a headline, set `fade.hole` so the copy sits in a calm area. Give object scenes `camera.minAspect` so phones do not crop them.
