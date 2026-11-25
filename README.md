@@ -62,3 +62,11 @@ cp -R /tmp/bloom/skills/dot-art ~/.claude/skills/dot-art && cd ~/.claude/skills/
 ```
 
 For Codex, use `~/.codex/skills` instead. Launch Video and Brand Creator are workspaces with their own scripts, so copy them to a folder such as `~/bloom` and link the skill inside (`.claude/skills/<name>`) into your skills folder. Each one's README lists what it needs.
+
+## How it works
+
+Each skill is a folder with a `SKILL.md` that tells the agent how to work, plus the scripts and references it uses. The skills were copied into this repo as they are and are never edited by the site.
+
+- **Dot Art** is a WebGL2 engine with no runtime dependencies. A scene describes what is drawn with a little GLSL, a photo, a shape or a model. The engine renders it into a low resolution grid and draws each cell as a mark or a letter. Every loop is seamless.
+- **Launch Video** turns a direction into a one page plan, records the real product, finds music with `tools/source.py`, builds the film in EffectCraft through MCP, and checks the render with `gate.py` for loudness, peaks and black frames.
+- **Brand Creator** writes a brief, renders candidates, shows three to five finished options, then builds the chosen one into 18 SVGs, 42 PNGs, a brand board and a zip with `scripts/build_brand.py`.
