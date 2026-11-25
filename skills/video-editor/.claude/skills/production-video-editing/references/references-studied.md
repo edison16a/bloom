@@ -65,3 +65,17 @@ Fiction. Three short white lines in empty wall space, one after another, and the
 **Atlog (compilation, 59 to 115 s).** Period spot, real actors, 4:3, one costume, one room per idea, no text at all until "atlog.ai" over the last shot. The product is on a monitor in the same warm room and the camera only drifts in.
 
 **Donna (compilation, 964 to 1022 s).** Archive interview, word by word white text beside the speaker. The interview blurs behind one sentence. Black with one short line. A famous speaker clip with its caption, and two plain lines over it. Then a search field typing, one result at a time, tilted in slight perspective. The archive returns for the close.
+
+## Type 2: product films
+
+**Artificial Societies.**
+Opens on paintings and archive speeches with their real sound. White words follow the speech, small sans at first, then large Courier crossing 4:3 footage. Hateful comments pile up. One thin line runs through the film as the single motif. Logo, a network of nodes, then "Just simulate it". That sentence becomes a button, the button becomes part of the composer, typing, a click, results with bars. Ends on the logo with the URL. Small captions all the way.
+
+**Hue.**
+0 to 8 s: keynote clips in one duotone grade, white words landing on the spoken word. 9 to 17 s: real posts and articles as cards on white, hard hits with silence between. 18 to 40 s: real archive footage (aircraft, lunar lander, crash tests, simulator, rocket) in a soft edged frame on white with two short lines at the left. Rivals as plain logos (40 to 43). "And they have nowhere safe to fail." (50) "Until now." (53.5). The logo builds from coloured strips. Rows fan out diagonally with small paper labels (58 to 60). UI sits on natural textures (stone, wheat, cloud) and swaps by a pixel dissolve, the window settles, the camera moves to the click. Ends on the strips with one sentence (89 to 92), then the logo.
+
+**Ghostship.** Black to blue field. One or two words at a time, small and large alternating, rising and fading about 0.1 s apart and leaving the same way. Letters of the name wave in. UI tilted in 3D that settles flat in about 1 s, one notification, one code window, logo, one line, a button clicked by a pointer.
+
+**0.email (compilation, 338 to 390 s).** Text typed on an old CRT, a talk clip captioned "Paul Graham, 2012.", macro shots of a real inbox, then black and white single lines in turn: "Lots of spam.", "Secure? not really.", "We're fixing that." The name large, then small. Dark UI in a soft tilt with one list building.
+
+**The AI job film (compilation, 1136 to 1164 s, more seen small up to 1264 s).** Fast archive and news montage, then black, "Take a breath.", "AI isn't here to take your job." on a soft field. A laptop in a real room, the camera moving around it.
