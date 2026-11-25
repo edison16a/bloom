@@ -7,3 +7,11 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const site = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const skill = path.resolve(site, "../skills/dot-art");
+
+// The installer needs the skill's own script dependencies (esbuild). They are gitignored there.
+if (!existsSync(path.join(skill, "scripts/node_modules"))) {
+  execFileSync("npm", ["ci", "--no-fund", "--no-audit"], { cwd: path.join(skill, "scripts"), stdio: "inherit" });
+}
+
+execFileSync("node", [path.join(skill, "scripts/install.mjs"), site, "--reset"], { stdio: ["ignore", "ignore", "inherit"] });
