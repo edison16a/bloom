@@ -74,3 +74,10 @@ export function distanceField(mask: Float32Array, size: number): Float32Array {
   for (let i = 0; i < out.length; i++) out[i] = Math.sqrt(Math.min(g[i], 1e8));
   return out;
 }
+
+function blur(src: Float32Array, n: number, r: number): Float32Array {
+  const t = new Float32Array(src.length), o = new Float32Array(src.length);
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) { let s = 0, w = 0; for (let k = -r; k <= r; k++) { const X = x + k; if (X < 0 || X >= n) continue; s += src[y * n + X]; w++; } t[y * n + x] = s / w; }
+  for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) { let s = 0, w = 0; for (let k = -r; k <= r; k++) { const Y = y + k; if (Y < 0 || Y >= n) continue; s += t[Y * n + x]; w++; } o[y * n + x] = s / w; }
+  return o;
+}
