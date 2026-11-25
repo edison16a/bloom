@@ -136,3 +136,12 @@ import { aurora } from "@/components/dot-art/scenes/aurora";
 ```
 
 Import the scene file directly so only that scene ships. Scenes hold functions, so a server component cannot pass one as a prop: import it inside a client component. Behind a headline, set `fade.hole` so the copy sits in a calm area. Give object scenes `camera.minAspect` so phones do not crop them.
+
+### 8. Export
+
+```bash
+node <skill>/scripts/render.mjs aurora.ts --out aurora.mp4 --size 1920x1080          # 60 fps, dpr 2
+node <skill>/scripts/render.mjs aurora.ts --out aurora.gif --size 720x450 --max-mb 6
+```
+
+For type in a GIF use `--size 800x500 --dpr 1.5`: at dpr 1 small letters turn to noise.
