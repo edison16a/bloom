@@ -22,8 +22,6 @@ export default function LogoPage() {
       <PageHero scene="eclipse">
         <SectionIntro
           as="h1"
-          number={skill.number}
-          name={skill.name}
           title={skill.headline}
           text={skill.summary}
           actions={<SetupPrompt prompt={setupPrompt("logo")} showPrompt={false} bare />}

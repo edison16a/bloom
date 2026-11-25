@@ -19,8 +19,6 @@ export default function ArtPage() {
       <PageHero scene="keys">
         <SectionIntro
           as="h1"
-          number={skill.number}
-          name={skill.name}
           title={skill.headline}
           text={skill.summary}
           actions={<SetupPrompt prompt={setupPrompt("art")} showPrompt={false} bare />}

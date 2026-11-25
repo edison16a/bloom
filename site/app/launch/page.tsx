@@ -20,8 +20,6 @@ export default function LaunchPage() {
       <PageHero scene="tunnel">
         <SectionIntro
           as="h1"
-          number={skill.number}
-          name={skill.name}
           title={skill.headline}
           text={skill.summary}
           actions={<SetupPrompt prompt={setupPrompt("launch")} showPrompt={false} bare />}

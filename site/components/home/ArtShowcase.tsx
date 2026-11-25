@@ -16,8 +16,6 @@ export function ArtShowcase() {
     <section id="art" className={`container ${styles.section}`}>
       <div className={styles.top}>
         <SectionIntro
-          number={skill.number}
-          name={skill.name}
           title={skill.headline}
           text={skill.summary}
           actions={

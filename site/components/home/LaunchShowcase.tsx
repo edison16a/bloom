@@ -19,8 +19,6 @@ export function LaunchShowcase() {
       <div className="container">
         <div className={styles.layout}>
           <SectionIntro
-            number={skill.number}
-            name={skill.name}
             title={skill.headline}
             text={`${skill.summary} Trained on 250 launch videos, built in EffectCraft.`}
             actions={

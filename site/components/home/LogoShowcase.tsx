@@ -14,7 +14,7 @@ export function LogoShowcase() {
   return (
     <section id="logo" className={`container ${styles.section}`}>
       <div className={styles.head}>
-        <SectionIntro number={skill.number} name={skill.name} title={skill.headline} text={skill.summary} />
+        <SectionIntro title={skill.headline} text={skill.summary} />
         <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
           <SetupPrompt prompt={setupPrompt("logo")} showPrompt={false} bare />
           <LinkButton href={skill.route}>See every brand</LinkButton>
