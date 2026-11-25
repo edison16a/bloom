@@ -39,3 +39,33 @@ async function go(p, url, settle = 2500, css = "") {
   await p.evaluate(() => document.fonts && document.fonts.ready).catch(() => {});
   await sleep(settle);
 }
+
+async function survey() {
+  const out = A.out; fs.mkdirSync(out, { recursive: true });
+  const { b, p } = await open({ scale: 3, scheme: A.scheme, viewport: [+(A.w || 1440), +(A.h || 900)] });
+  await go(p, A.url);
+  await p.screenshot({ path: path.join(out, "first-screen.png") });
+  const H = await p.evaluate(() => document.documentElement.scrollHeight);
+  for (let y = 0; y < Math.min(H, 12000); y += 600) { await p.evaluate((v) => window.scrollTo(0, v), y); await sleep(180); }
+  await p.evaluate(() => window.scrollTo(0, 0)); await sleep(500);
+  await p.screenshot({ path: path.join(out, "full-page.jpg"), fullPage: H < 14000, type: "jpeg", quality: 80, scale: "css" });
+  const d = await p.evaluate(() => {
+    const vis = (e) => { const r = e.getBoundingClientRect(), s = getComputedStyle(e); return r.width > 8 && r.height > 8 && s.visibility !== "hidden" && s.opacity !== "0"; };
+    const sel = (e) => { if (e.id && /^[a-z][\w-]*$/i.test(e.id)) return "#" + e.id; const t = e.getAttribute("data-testid"); if (t) return `[data-testid="${t}"]`; const a = e.getAttribute("aria-label"); if (a) return `${e.tagName.toLowerCase()}[aria-label="${a}"]`; const x = (e.innerText || "").trim().split("\n")[0]; if (x && x.length < 40 && /^(BUTTON|A)$/.test(e.tagName)) return `${e.tagName.toLowerCase()}:has-text("${x}")`; const c = [...e.classList].find((k) => /^[a-z][\w-]{2,30}$/i.test(k)); return e.tagName.toLowerCase() + (c ? "." + c : ""); };
+    const box = (e) => { const r = e.getBoundingClientRect(); return [r.x, r.y + scrollY, r.width, r.height].map(Math.round); };
+    const els = [...document.querySelectorAll("button,a,input,textarea,select,[role=button],[role=dialog],section,article,form,table,[class*=card i],img,video")].filter(vis).slice(0, 260)
+      .map((e) => ({ tag: e.tagName.toLowerCase(), sel: sel(e), text: (e.innerText || e.alt || e.placeholder || "").trim().replace(/\s+/g, " ").slice(0, 90), box: box(e) }));
+    const count = {}, add = (c, n) => { if (c && !/rgba\(0, 0, 0, 0\)|transparent/.test(c)) count[c] = (count[c] || 0) + n; };
+    const fonts = {};
+    for (const e of [...document.querySelectorAll("body *")].slice(0, 2500)) { if (!vis(e)) continue; const s = getComputedStyle(e), r = e.getBoundingClientRect(); add(s.backgroundColor, Math.sqrt(r.width * r.height)); if (e.innerText && !e.children.length) { add(s.color, 20); const f = s.fontFamily.split(",")[0].replace(/["']/g, ""); fonts[f + " " + s.fontWeight] = (fonts[f + " " + s.fontWeight] || 0) + 1; } }
+    const top = (o, n) => Object.entries(o).sort((a, b) => b[1] - a[1]).slice(0, n).map((x) => x[0]);
+    const meta = (n) => (document.querySelector(`meta[property="${n}"],meta[name="${n}"]`) || {}).content || null;
+    const logo = document.querySelector("header svg, nav svg, a[href='/'] svg"), limg = document.querySelector("header img, nav img, a[href='/'] img");
+    return { els, links: [...new Set([...document.links].map((l) => l.href))].filter((h) => h.startsWith(location.origin)).slice(0, 80),
+      brand: { url: location.href, title: document.title, description: meta("description") || meta("og:description"), og: meta("og:image"), theme: meta("theme-color"), headings: [...document.querySelectorAll("h1,h2,h3")].map((h) => h.innerText.trim().replace(/\s+/g, " ")).filter(Boolean).slice(0, 40),
+        colors: top(count, 12), fonts: top(fonts, 8), logoSvg: logo ? logo.outerHTML : null, logoImg: limg ? limg.src : null, icon: (document.querySelector("link[rel~=icon]") || {}).href || null } };
+  });
+  if (d.brand.logoSvg) fs.writeFileSync(path.join(out, "logo.svg"), d.brand.logoSvg);
+  fs.writeFileSync(path.join(out, "brand.json"), JSON.stringify(d.brand, null, 1)); fs.writeFileSync(path.join(out, "elements.json"), JSON.stringify(d.els, null, 1)); fs.writeFileSync(path.join(out, "links.json"), JSON.stringify(d.links, null, 1));
+  console.log(d.brand.title, "|", d.els.length, "elements |", d.links.length, "links | page", H, "px"); await b.close();
+}
