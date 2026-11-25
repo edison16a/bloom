@@ -93,3 +93,30 @@ Eyeballed visual-state changes/min (overview sheets, lower bound) for the films 
 **25 Introducing Lovable Cloud & AI (Lovable, 2025).** Hook: a doc-style wide of a dad with a laptop next to his son on a sofa (warm tungsten, bokeh fairy lights), then a CU of the dad. At 6.4 s a hard cut to the "Lovable Cloud" title on a dark field with a rising blue and pink glow. Title animation (transitions sheet): the heart icon drops in, the wordmark reveals letter by letter left to right (about 0.4 s), "Cloud" follows, and later "Cloud" **rolls vertically like a slot machine** into "AI" (about 0.2 s). Structure: interview soundbites (dad, son "10 year old Theo" with a large left-aligned name super) intercut with split-screen UI-plus-face compositions. The math-app build is shown via prompts; a "Publish" button sits on a red and blue radial glow. Cuts double in Q4 (8.5/min). −20.9 LUFS, voice-led; a +11.8 dB lift at 107 s for the end logo.
 
 ## 3. Batch synthesis
+
+### Typical ranges (n = 25)
+| Metric | Median | IQR | Range | Note |
+|---|---|---|---|---|
+| Length | 80 s | 55–127 s | 18–234 s | Most launch films are 45–130 s |
+| Cuts/min (scdet) | 5.3 | 1.1–10.0 | 0–48.5 | Undercounts motion design; eyeballed state changes for those films run 11–34/min, typically ~19 |
+| Median shot | 5.8 s | 2.9–32 s | 0.9–110 s | Bimodal: sizzles 0.9–2.9 s, interview films 4–6 s, canvas films "one shot" |
+| BPM | 97 | 78–113 | 70–135 | Fast-energy films sit at 106–135 (Granola, Lovable, Cursor, Notion, Deep Research, ElevenLabs ×2, Glean, Arc) |
+| Beat strength | 3.1 | 2.1–4.2 | 1.6–11.1 | All tracks have a clear pulse |
+| LUFS | −16.7 | −21.6 to −15.2 | −32.3 to −9.0 | Sizzles −9 to −15; VO films about −16; dev-tool "quiet" films −26 to −32 |
+| Hits/min | 62 | 50–83 | 5–137 | Kinetic UI films 80–137; pure footage sizzle (Runway) 5 |
+| % cuts with hit | 0.20 | 0.16–0.33 | 0–1.0 | Only Pika (0.59) and Arc (0.54) put a hit on most cuts |
+
+Clusters:
+- **A. Model sizzle reel** (Sora 2, Runway, Midjourney, Pika): 13–48 cuts/min, music only, loud (−9 to −16 LUFS), no VO.
+- **B. Kinetic-type plus UI motion film** (Lovable 2.0, ElevenLabs ×2, Comet, Deep Research, v0, Notion, Cursor, Cowork, Glean, Arc): few hard cuts, but a new visual state every 2–4 s, 100–135 BPM, 60–137 hits/min.
+- **C. Founder or engineer doc film** (ChatGPT agent, Claude Code, Opus 4.5, Gamma, Granola, Devin, Replit, Lovable Cloud): speech-led, 4–21 cuts/min, music at −16 to −26 LUFS under the VO.
+
+### How pacing changes across the video
+- Two patterns dominate. **Accelerate** (Runway 20→40; Lovable 2.0 6→18; Granola 5.5→11; Lovable Cloud 4→8.5; Sora 2 12→25 in Q3) or **front-load the hook** (Pika 75→35; Gamma 20→1; Comet 17→0). Nobody starts slow and stays slow, except Replit and Devin, the two least-crafted or most "webinar" films.
+- A **final breath** before the logo is universal. The last shot or card runs 2–4× the median (Sora 2 final shot 8.6 s; Runway cloud-sea end 5+ s; Midjourney a 5.2 s hold). Mean energy in Q4 is ≥1 dB below Q3 in 19 of 25 films and ≥3 dB below in 10 (up to −7.8 dB), because the music fades out under the end card.
+- Text films use a **0.2–0.4 s per word** reveal rate, then hold the full line for about 1–1.5 s before it is replaced. Nothing sits static for more than about 2 s without a camera drift, scroll or element entering.
+
+### How cuts relate to the beat
+- The measured on-beat share is near chance for most films (median 0.20). **Most launch films do NOT cut on the beat.** They cut on speech or on visual motion.
+- The exceptions are deliberate. Midjourney cuts **every bar** (2.6 s = 4 beats at 92 BPM, 0.61 on-beat), Sora 2 gets 0.54 (≈3× chance) and Arc Max 0.46. When a brand beat-cuts, it does it on the bar or the half-bar, not every beat.
+- In the fast type films the *beat* is carried by the **text and UI events**, not by cuts: a word, chip or click lands per beat while the "camera" never cuts (Lovable, Cursor, Notion; inference from hits on the beat at 0.28–0.94 while cuts are few).
