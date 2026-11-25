@@ -9,3 +9,10 @@ import { skillById, skills, type Skill, type SkillId } from "@/content/skills";
 
 const TMP = "/tmp/bloom-setup";
 const WORKSPACE = "~/bloom";
+
+const fetchStep = (paths: string[]) =>
+  [
+    "Get only the folders you need from the Bloom repo:",
+    `   git clone --depth 1 --filter=blob:none --sparse ${site.cloneUrl} ${TMP}`,
+    `   git -C ${TMP} sparse-checkout set ${paths.join(" ")}`,
+  ].join("\n");
