@@ -38,3 +38,11 @@ The plate is split into `room` and `person` (`tools/matte/split.py`). Put panels
 | Motion | Only what happens inside: a cursor, a scroll, typing, a live feed |
 
 Crop the capture tight to what is being said, so it reads at that size. Never zoom into it. Nothing else overlaps the content: no label is needed when the words already say it.
+
+### Other overlays from the references
+- **Message or notification:** real one, captured as an element (`capture.cjs element`) or shown as a screenshot. Frosted pill, 64 px tall, real app icon left, bold title, one line. Icon first, text 3 frames later. Stack one at a time, 12 px apart.
+- **Phone:** the real recording in a rounded frame, beside the panel or over its corner, never across the face.
+- **Asset pair:** two rounded rectangles either side of the head, when two things are named.
+- **Photo, article or post:** the real capture, straight, with the same frame. No rotation, no tape, no shadow pile.
+- **Drawn line or circle:** thin white 2 px, drawn on over 12 frames, only to point at something real in the picture.
+- **Logo:** plain, on its own, no shine.
