@@ -150,3 +150,37 @@ For one project, clone into that project's `.claude/skills/dot-art` instead.
 The render scripts use Node 20+, an installed Chrome, and ffmpeg. The engine itself needs none of them.
 
 Then ask. More prompts, including the ones that recreate each reference: [examples/prompts.md](examples/prompts.md).
+
+## Use it without Claude
+
+```bash
+node scripts/install.mjs ~/code/my-next-app --scenes bloom,ribbons
+```
+
+```tsx
+"use client";
+import { DotArt } from "@/components/dot-art/react";
+import { bloom } from "@/components/dot-art/scenes/bloom";
+
+export const Hero = () => <div style={{ height: "80vh" }}><DotArt scene={bloom} label="A flower made of letters" /></div>;
+```
+
+Change the surface:
+
+```ts
+import { looks, withLook } from "@/components/dot-art";
+const tiles = withLook(bloom, looks.hex({ cell: 9 }), { id: "tiles" });
+```
+
+Export:
+
+```bash
+node scripts/render.mjs bloom --out bloom.mp4 --size 1920x1080
+node scripts/render.mjs bloom --out bloom.gif --size 800x500 --dpr 1.5 --max-mb 8
+```
+
+See all of it in a Next.js app:
+
+```bash
+cd examples/gallery && npm install && npm run sync && npm run dev
+```
