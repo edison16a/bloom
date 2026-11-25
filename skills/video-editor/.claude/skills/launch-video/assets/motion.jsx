@@ -14,3 +14,10 @@ function field(c1, c2, a, z) {
   }
   return L;
 }
+// Real footage or a photo as a quiet backdrop, filling the frame.
+function backdrop(file, blur, a, z) {
+  var src = kitFoot(file), L = K.comp.layers.add(src), sc = Math.max(K.w / src.width, K.h / src.height) * 104;
+  L.startTime = a; span(L, a, z); try { L.audioEnabled = false; } catch (e) {}
+  tr(L, 'scale').setValue([sc, sc]); tr(L, 'pos').setValue([K.w / 2, K.h / 2]);
+  if (blur) blurOf(L).setValue(blur); return L;
+}
