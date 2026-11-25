@@ -283,3 +283,60 @@ def save_video(a, name, url, meta):
     print(f'  {rel}  {i["w"]}x{i["h"]}  {i["dur"]:.1f}s  {"sound" if i["audio"] else "silent"}  {meta["licence"]}  sheet: {os.path.basename(sheet)}')
     return True
 
+
+def cmd_video(a):
+    srcs = a.src.split(","); left = min(a.n, CAP)
+    per = max(1, math.ceil(left / len(srcs)))
+    for src in srcs:
+        got = 0
+        try:
+            if src == "stock":
+                s = ""
+                for p in (slug(a.q) + "/", "discover/" + slug(a.q) + "/"):
+                    try: s = get("https://mixkit.co/free-stock-video/" + p); break
+                    except Exception as e: warn("mixkit " + p, e)
+                ids = []
+                for m in re.finditer(r"assets\.mixkit\.co/videos/(\d+)/", s):
+                    if m[1] not in ids: ids.append(m[1])
+                names = dict((m[2], m[1]) for m in re.finditer(r'/free-stock-video/([a-z0-9-]+)-(\d+)/', s))
+                for i in ids:
+                    if got >= per: break
+                    for q in ("1080", "720"):
+                        if save_video(a, f"stock-{names.get(i, a.q)}-{i}", f"https://assets.mixkit.co/videos/{i}/{i}-{q}.mp4",
+                                      dict(title=names.get(i, a.q), by="Mixkit", source="Mixkit", licence=MIXKIT, credit=None, page=f"https://mixkit.co/free-stock-video/{names.get(i,'')}-{i}/")):
+                            got += 1; break
+            elif src == "nasa":
+                r = jget("https://images-api.nasa.gov/search?" + urllib.parse.urlencode({"q": a.q, "media_type": "video", "page_size": 12}))["collection"]["items"]
+                for it in r:
+                    if got >= per: break
+                    files = json.loads(get(it["href"].replace("http://", "https://").replace(" ", "%20")))
+                    mp4 = [f for f in files if f.endswith(".mp4")]
+                    pick = next((f for k in ("~large", "~medium", "~orig") for f in mp4 if k in f), mp4[0] if mp4 else None)
+                    if pick and save_video(a, "nasa-" + it["data"][0]["title"], pick.replace("http://", "https://").replace(" ", "%20"),
+                                           dict(title=it["data"][0]["title"], by="NASA", source="NASA", licence="Public domain (NASA media guidelines: no logo or astronaut endorsement)", credit="Footage: NASA", page=it["href"])): got += 1
+            elif src == "commons":
+                u = "https://commons.wikimedia.org/w/api.php?" + urllib.parse.urlencode({"action": "query", "generator": "search", "gsrsearch": "filetype:video " + a.q, "gsrnamespace": 6, "gsrlimit": 15,
+                     "prop": "videoinfo", "viprop": "url|extmetadata|size|derivatives", "format": "json"})
+                pages = sorted(jget(u).get("query", {}).get("pages", {}).values(), key=lambda p: p["index"])
+                for p in pages:
+                    if got >= per: break
+                    vi = (p.get("videoinfo") or [{}])[0]; em = vi.get("extmetadata", {}); lic = em.get("LicenseShortName", {}).get("value", "?")
+                    if not re.search(r"public domain|^PD|CC0|CC BY(?! ?-?NC)", lic, re.I) or re.search(r"\bSA\b|NC|ND", lic): continue   # share-alike would bind the whole edit
+                    der = [x for x in vi.get("derivatives", []) if "webm" in x.get("type", "") and (x.get("height") or 0) <= 1080]
+                    url = max(der, key=lambda x: x.get("height") or 0)["src"] if der else vi["url"]
+                    by = re.sub("<[^>]+>", "", em.get("Artist", {}).get("value", ""))[:80]
+                    if save_video(a, "commons-" + p["title"][5:], url, dict(title=p["title"], by=by, source="Wikimedia Commons", licence=lic, credit=None if re.search("domain|CC0|PD", lic, re.I) else f"{by}, {lic}, via Wikimedia Commons", page=vi.get("descriptionurl"))): got += 1
+            elif src == "archive":
+                q = f'({a.q}) AND mediatype:movies AND (collection:prelinger OR licenseurl:*publicdomain* OR collection:usgovfilms OR collection:newsandpublicaffairs AND licenseurl:*publicdomain*)'
+                u = "https://archive.org/advancedsearch.php?" + urllib.parse.urlencode({"q": q, "fl[]": "identifier", "rows": 10, "output": "json", "sort[]": "downloads desc"})
+                for doc in jget(u)["response"]["docs"]:
+                    if got >= per: break
+                    m = jget("https://archive.org/metadata/" + doc["identifier"]); md = m["metadata"]
+                    fs = sorted([f for f in m["files"] if f["name"].endswith(".mp4") and float(f.get("size", 0)) < a.max_mb * 1e6], key=lambda f: -float(f.get("size", 0)))
+                    if not fs: continue
+                    lic = md.get("licenseurl") or "Prelinger / public domain collection (check the item page)"
+                    if save_video(a, "archive-" + doc["identifier"], f'https://archive.org/download/{doc["identifier"]}/' + urllib.parse.quote(fs[0]["name"]),
+                                  dict(title=md.get("title"), by=str(md.get("creator", "")), source="Internet Archive", licence=lic, credit=None, page="https://archive.org/details/" + doc["identifier"])): got += 1
+        except Exception as e: warn(src, e)
+        if not got: print(f"  {src}: nothing usable for '{a.q}'")
+
