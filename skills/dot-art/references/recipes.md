@@ -29,3 +29,18 @@ Find the nearest row, open that scene, copy it, change the subject.
 | One phrase filling the page | `scenes/liquid.ts` | `fill: "message"`, light folds |
 | Tunnel, corridor, city | `scenes/tunnel.ts` | analytic planes, hashed panels |
 | "Same thing but in hexagons / octagons / text" | `withLook(scene, looks.hex())` | one line |
+
+## Surface pairs that work
+
+| Mood | Look | Palette |
+|---|---|---|
+| Product, technical | led, neon | #12d6c5 #2f7bff #7a4dff #ff3fb4 |
+| Editorial, print | octagon or halftone, angle 22 | #4a1440 #98284f #e34a45 #ff8c42 #ffc56e #fff0cf |
+| Retro computing | dither | #09090f #2a35d8 #5468ff #ffffff |
+| Poetic | type, detail .8 | wine, hot pink, blush, one gold accent |
+| Terminal | glyph ramp, boxAbove .7 | greys with iridescent rims |
+| Organic, biotech | hex | indigo, cyan, white |
+
+## Asking back
+
+Ask only if the subject itself is unknown. Choose look, palette, loop and motion yourself, and say what you chose.
