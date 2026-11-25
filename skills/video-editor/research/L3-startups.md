@@ -138,3 +138,26 @@
 - UI is shown at a 3D tilt of about 20-35 degrees while travelling, then flattened to front-on when the viewer must read it (VibeFlow, WithAI's task reel, Cluely's overlay punch-in, Anvil's retro screens).
 - Exit direction matches entry: Lance's founder walks out of frame right, the camera whips right, and the logo builds. Cards that rise from below leave upward.
 - Zooms are motivated by the cursor: auto-zoom toward the click target, ease-in-out, with motion blur (Weave, Sim). Punch-in scale on the UI is about 1.3-2x.
+
+### Human-to-UI transition patterns (the user's focus)
+How the 18 videos with people on camera get from the person to the product, in order of how often they appear and how well they work:
+1. **Hard cut to a branded neutral canvas, then the UI materialises.**
+   - Seen in Wildcard (warm grey), Sim Series A (blue vignette), VibeFlow (navy plus cyan glow), WithAI (off-white with logo), TrueMile (cream).
+   - The canvas is empty for 2-6 frames, then the first UI element fades and de-blurs up or expands from a pill (Sim: pill to chip in about 5 frames).
+   - It is the cleanest and most common pattern, especially in agency work (Unveil, Hinnacle, Office of Tomorrow).
+2. **UI composited onto the human shot first, then full-screen.**
+   - Tenera, TrueMile and Wildcard put glass cards, stat cards and app icons beside the founder before any full-screen UI.
+   - The viewer meets the product as an object in the founder's space, which softens the cut.
+   - Tenera saves full-screen UI for an "Introducing [logo]" white card at about 60% through.
+3. **Screen in the shot, then the screen fills the frame (a motivated cut).**
+   - Palmier: rack-focus from a branded bottle to the monitor behind, then a hard cut to the full-screen dock.
+   - TrueMile: over-the-shoulder on a dispatcher's spreadsheet.
+   - Dash: an over-the-shoulder laptop shot, then the UI, then hands typing, then a reaction shot, repeating like shot/reverse-shot.
+   - Cascade: a monitor in the shot shows the real dashboard.
+   - Knowlify: fire inside a CRT monitor, matched to a white room with a CRT that boots up.
+4. **Continuous camera glide into a UI world.** Lance moves from a walk-and-talk lobby into a dark-teal 3D space where cards float and the camera keeps travelling. This takes the most craft and has the most flow.
+5. **Picture-in-picture shrink.** Weave: the founder's full-frame webcam shrinks to a rounded corner bubble while the app takes over. Anvil and Morgen keep a circle-masked founder on screen the whole time. These are functional and low-energy.
+6. **HUD overlay on the person.** Cascade types the product's evaluation checklist as translucent text over the protagonist at his desk. Mbodi overlays dashed detection boxes on the robot's table. The product appears inside the live-action world.
+7. **Title-card bridge.** Cluely dissolves (3-4 frames) to black cards with italic text and an icon. Comena and VibeFlow use one-line text cards ("Let's see it in action") as the hinge. Hold 1-1.5 s with a slow scale-down, then cut to the first UI frame.
+- **Return to the human:** most films go back to the founder for the close (Wildcard, Tenera, TrueMile, Sim A, WithAI, Lance, Cluely) and end with the logo over the founder or a separate end card.
+- **Rhythm:** human and UI alternate every 5-15 s in founder-led films. Pure demos without a person, longer than about 30 s, are where the energy drops.
