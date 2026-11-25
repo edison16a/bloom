@@ -1,0 +1,19 @@
+* { box-sizing: border-box; margin: 0 }
+html { background: #08080b; color: #ececf1; font: 15px/1.5 ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased }
+a { color: inherit; text-decoration: none }
+main { max-width: 1440px; margin: 0 auto; padding: 0 24px 96px }
+.hero { position: relative; height: min(86vh, 820px); margin: 0 calc(50% - 50vw); width: 100vw; display: grid; place-items: center; text-align: center }
+.hero > :first-child { position: absolute !important; inset: 0 }
+.hero div.copy { position: relative; z-index: 2; padding: 0 24px }
+h1 { font-size: clamp(40px, 7vw, 92px); line-height: 1; letter-spacing: -.045em; font-weight: 600; text-wrap: balance }
+.copy p { margin-top: 18px; color: #b6b7c6; font-size: 18px }
+section { padding-top: 72px }
+h2 { font-size: 26px; letter-spacing: -.02em; font-weight: 600 }
+section > p { color: #8f90a0; margin: 4px 0 24px }
+.grid { display: grid; gap: 20px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 420px), 1fr)) }
+.card { display: block }
+.card .stage { height: 320px; border-radius: 14px; overflow: hidden }
+.card strong { display: block; font-weight: 550; margin-top: 12px }
+.card span { color: #8f90a0 }
+.full { position: fixed; inset: 0 }
+.full a { position: absolute; z-index: 3; left: 24px; top: 20px; color: #b6b7c6 }
