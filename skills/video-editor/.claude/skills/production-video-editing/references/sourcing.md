@@ -21,3 +21,18 @@ Music, effects, stock video, archive video, YouTube, a spoken phrase out of a cl
 - `phrase FILE "words"` finds the spoken phrase in a clip and cuts the moment out, with word times.
 - `credits` prints what must be published.
 - Third party clips (`youtube --url … --third-party "reason"`) only when the direction asks for that clip. 12 s at most, logged UNLICENSED, named in the delivery note, so the user can decide.
+
+## Intros that are not the person
+**Archive or speech opening (Hue, Artificial Societies, 0.email):**
+1. One sentence that says what changed or what is wrong. From it, pick 3 to 5 real moments in history or culture that make the point.
+2. Search each with `source.py video`, then pull the spoken line with `phrase`. Prefer public domain. Keep the real sound.
+3. Show the clip full frame or as a 4:3 frame with soft edges. One grade for all (muted, or duotone).
+4. White words follow the voice, appearing on the word. Or two short lines at the left that say what the clip means.
+5. Hard stop and silence, then the one line that turns, then the product.
+
+**Fiction opening (Cascade, Atlog):** needs real actors or footage the user supplies. Never fake it with generated people.
+
+**Plain opening:** the person says the first line. The right choice for updates.
+
+## Licences to write down
+Per item: title, author, source, licence, link, credit line if required. The delivery note lists only what must be credited and anything unlicensed.
