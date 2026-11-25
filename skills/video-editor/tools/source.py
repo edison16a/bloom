@@ -243,3 +243,30 @@ def cmd_music(a):
     if out: print("PICK:", out[0]["file"])
     else: sys.exit("no usable track: widen --mood/--genre/--bpm")
 
+
+def onset(path):
+    import numpy as np
+    x, sr = pcm(path, 16000)
+    if not len(x): return 0.0, 0.0
+    e = np.sqrt(np.convolve(x ** 2, np.ones(160) / 160, "same")); pk = e.max()
+    i = int(np.argmax(e > pk * 0.12)); return max(0, i / sr - 0.004), float(np.argmax(e) / sr)
+
+
+def cmd_sfx(a):
+    d = adir(a.job, "sfx")
+    for w in a.words[:15]:
+        c = mixkit_audio("free-sound-effects", [slug(w) + "/"], 12) or mixkit_audio("free-sound-effects", [f"discover/{slug(w)}/"], 12)
+        if a.long: c = sorted(c, key=lambda x: -x["dur"])
+        c += openverse(w, "sound_effect", 0, "cc0")
+        got = 0
+        for x in c:
+            if got >= a.n: break
+            f = os.path.join(d, slug(w) + f"-{got+1}-" + slug(x["title"])[:30] + ".mp3")
+            try:
+                if not fetch(x["url"], f, 12): continue
+            except Exception as e: warn(x["title"], e); continue
+            s, pk = onset(f); got += 1; inf = probe(f)
+            log(a.job, file=os.path.relpath(f, ROOT), kind="sfx", title=x["title"], by=x["by"], source=x["source"], licence=x["licence"], credit=x.get("credit"), onset=round(s, 3), peak=round(pk, 3))
+            print(f'  {w:14s} {os.path.basename(f)}  {inf["dur"]:.2f}s  onset {s:.3f}  peak {pk:.3f}  ({x["source"]}, {x["licence"]})')
+        if not got: print(f"  {w}: nothing found, try a synonym")
+
