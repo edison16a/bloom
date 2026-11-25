@@ -79,3 +79,18 @@ def load():
         rows.append(r)
     return rows
 
+
+def share_table(groups, key, order=None, title=None, note=""):
+    cols = list(groups)
+    counts = {g: Counter(r[key] for r in rs if r[key] != "") for g, rs in groups.items()}
+    vals = order or [v for v, _ in Counter().__class__(sum((counts[g] for g in cols), Counter())).most_common()]
+    out = ["| %s | %s |" % (title or key, " | ".join("%s (n=%d)" % (g, sum(counts[g].values())) for g in cols)),
+           "|---|" + "---|" * len(cols)]
+    for v in vals:
+        cells = []
+        for g in cols:
+            n = sum(counts[g].values())
+            cells.append("%d%%" % round(100 * counts[g][v] / n) if n else "")
+        out.append("| %s | %s |" % (v, " | ".join(cells)))
+    return "\n".join(out) + ("\n\n" + note if note else "")
+
