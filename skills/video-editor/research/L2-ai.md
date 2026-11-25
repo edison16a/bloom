@@ -126,3 +126,12 @@ Clusters:
 - Pure footage sizzles use almost no SFX (Runway 5/min) and let the generated clips' own audio or the music carry them. Sora 2 uses native per-shot sound instead of a music-only mix.
 - Hits on cuts: 20% median. Big "impact + cut" moments are reserved for title-card slams (Pika 59%, Arc 54%). Practical rule: put an SFX on every *element entrance or interaction*, and on only about a fifth of the cuts.
 - End-card **stinger lift**: +11 to +32 dB jumps at the logo (Comet +32.5 dB at 65 s, Gamma +14.5 at 162 s, Lovable Cloud +11.8 at 107 s, Claude Code +18.5 at 185 s after a deliberate 4-s drop).
+
+### Text animation conventions
+- **Word-by-word reveal** is the default (Cowork, Comet, Lovable, Deep Research, ElevenLabs, Linear, v0). Each word fades from about 0–30% opacity, often with a blur-to-sharp and a 10–20 px rise, staggered 0.15–0.25 s per word (≈4–6 frames at 24 fps). The line completes in 0.6–1.2 s.
+- **Character typing** with a caret is used for prompts and taglines (Cursor about 40 chars/s; ChatGPT agent and Notion prompts typed at giant 3–4× scale; Granola and Pika wordmarks typed with a caret).
+- **One emphasis word** gets a style change: italic serif inside a sans line (Deep Research), a gradient fill (ElevenLabs "AI agents that can speak", Lovable), or red (Gamma "BILLION-DOLLAR").
+- **Scale contrast**: one word huge (cropped at the frame edges) that shrinks to its resting size in about 0.4–0.5 s (Lovable "kno|", Gamma "THE NEXT"); bold condensed caps for slam cards (Pika).
+- **Vertical roll swaps**: a word or list item rolls up to the next item like a slot machine (Comet list, v0 placeholder carousel, Lovable "Cloud→AI", ElevenLabs language cycling, Linear spec). About 0.2–0.4 s per step.
+- Placement: centre-frame, single line, plenty of empty space. The font is a neutral grotesk (most), or a brand serif (Anthropic, Comet, Deep Research emphasis). Lower thirds are only for real people (name / title / company, small, bottom left, fade).
+- Captions in talking-head films: one sentence per box, bottom centre, small, dark rounded plate (Opus 4.5, Granola). No word-pop captions anywhere in this category.
