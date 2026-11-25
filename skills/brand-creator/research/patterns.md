@@ -33,3 +33,14 @@ Labels are judgments by vision models, about plus or minus 5 points. The craft s
 | X | 13% | 14% | 13% | 14% |
 
 G abstract geometric, LI letterform of the initial, LM monogram or other letter, P pictorial object, C character or animal, R lines bars or waves, D dots or grid, N negative space trick, X text only.
+
+### Composition
+
+| comp | all (n=8183) | craft 4+ (n=2950) | craft 1-2 (n=519) | YC (n=1703) |
+|---|---|---|---|---|
+| S | 73% | 75% | 65% | 77% |
+| W | 10% | 12% | 9% | 9% |
+| SW | 11% | 9% | 19% | 7% |
+| B | 5% | 5% | 8% | 7% |
+
+S symbol only, W lettering only, SW symbol plus word, B badge.
