@@ -21,3 +21,18 @@ function backdrop(file, blur, a, z) {
   tr(L, 'scale').setValue([sc, sc]); tr(L, 'pos').setValue([K.w / 2, K.h / 2]);
   if (blur) blurOf(L).setValue(blur); return L;
 }
+
+// One app window made of its real states. states: [{f, t}] with t in film seconds. Returns {comp, w, h}.
+// The whole window is one layer later, so a tilt or a shadow moves all of it.
+function uiWindow(name, w, h, states) {
+  var old = kitItem(name); if (old) old.remove();
+  var C = app.project.items.addComp(name, w, h, 1, K.dur, K.fps);
+  for (var i = 0; i < states.length; i++) {
+    var s = states[i], src = kitFoot(s.f), L = C.layers.add(src), sc = w / src.width * 100;
+    L.startTime = Math.max(0, s.t - (s.src || 0)); span(L, s.t, K.dur); tr(L, 'anchor').setValue([0, 0]); tr(L, 'pos').setValue([0, 0]); tr(L, 'scale').setValue([sc, sc]);
+    if (i) anim(tr(L, 'op'), [[s.t, 0], [s.t + (s.d || 0.15), 100]], OUT);
+  }
+  return { comp: C, w: w, h: h };
+}
+// A camera. Everything parented to it moves as one.
+function camera(a, z) { var N = K.comp.layers.addNull(); N.name = 'camera'; span(N, a, z); tr(N, 'anchor').setValue([0, 0]); tr(N, 'pos').setValue([0, 0]); return N; }
