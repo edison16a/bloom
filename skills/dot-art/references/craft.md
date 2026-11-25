@@ -19,3 +19,9 @@ Score a render against this before showing it. Every line should pass.
 - Square the diffuse (`d*d`) for solid objects. Linear diffuse looks flat after quantising.
 - Less than 8% of cells at pure white. If highlights merge into a slab, use `1.-exp(-x*k)` instead of clipping.
 - Dark ground is tinted (#04050c, #09090f, #1a0818), never #000 unless the piece is pure light.
+
+## Colour
+
+- Pick shadow, body and highlight as a ramp in one direction (indigo to cyan to white; wine to hot pink to blush). Add at most one accent far away on the wheel, in under 5% of cells (gold stamens in a pink flower).
+- Space gradients need four stops and `highlight` around .75 so bright cells still reach white.
+- LED looks: constant size, brightness follows tone (`size: [.74,.74]`, `shade: 1`) plus a faint `ghost` grid. Print looks: size follows tone (`size: [.18, 1.04]`, `shade` under .3), no ghost. For solid objects in hex or octagon, keep size near-constant (`[.85,.95]`) and let `shade: .85` carry depth.
