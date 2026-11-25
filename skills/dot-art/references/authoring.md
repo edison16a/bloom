@@ -107,3 +107,13 @@ if(age>0.){ p.flag=1.; p.pos+=wind*(age*.5+age*age*2.5)+curl(p.pos*1.2)*.15*age;
 ```
 
 The last number is the share of points left floating. Scale it to count: about 1500 points in the air at once (.004 of 400k, .0013 of 1.2M).
+
+## Building a believable object
+
+- **Allocate points by part**: `int part=i%20;` then give each part a share close to its area.
+- **Body of a creature**: a spine curve through 7 knots, plus two radius tables (height and width). Sweep a circle along it. Catmull-Rom between knots.
+- **Motion blur** (wings, wheels): give each point its own instant, `u=rnd.z`, pose it at that instant, and draw additively. Dwell at stroke ends with `.5-.5*cos(PI*u)`.
+- **Petals and leaves**: march a centre line in 10-12 steps, changing lean angle per step. Blend closed and opened angles.
+- **Curtains, smoke, aurora**: 30-40 steps up the ray, density from the distance to a noise zero line divided by its gradient, so width stays even.
+- **Lighting a text object**: one key is not enough. Add a camera-facing fill (`.24*fl*fl`), alternate tone between neighbours (`mix(.66,1.,mod(k,2.))`), darken throats, light the margins, fade the far side. Finish with `1.-exp(-tone*1.6)`.
+- **Tone, not colour, drives brightness** when `shade` is near 1. Do not also darken the colour ramp or shadows multiply twice.
