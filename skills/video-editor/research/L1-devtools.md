@@ -92,3 +92,12 @@
 **25 Retool, "Build Anything, Govern Everything."** *Hook:* "Anyone can vibe code apps" built word by word: each word blurs in from grey to white over ~0.2 s, on a dark charcoal field with a purple horizon glow at the bottom. *Structure:* problem ("But vibe-coded apps aren't production ready", with dashboards and alert toasts tiling behind) → "Introducing the new Retool app builder" → UI → "serious apps" → "Build from anywhere" (logo row: ChatGPT, Cursor, Claude, Lovable, v0) → MCP diagram → "Connect resources / APIs / databases" with an integration-logo wall that tiles in → "Governance lives in the platform" with floating keyword tags (SOC 2, SSO, RBAC) → "It doesn't matter who [or what] wrote the code" with circular portrait bubbles → "Build anything. Govern everything." → logo glyph-scramble "Reto01" → "Retool" → waitlist line. *Music:* hits every 0.375 s from 12.5 s (102/min); first lift at 6 s on "But". *Text:* centred thin sans, blur-in per word, blur-out per phrase. *Transitions:* blur dissolves between phrases (scdet saw only 2 cuts; ~22 phrase changes by eye).
 
 ## 3. Batch synthesis
+
+### Typical ranges (n = 25)
+- **Length:** median 55 s (IQR 37–75 s). Most single-feature launches run 30–60 s; keynote-style or founder films run 90–150 s.
+- **Cuts/min (scdet):** median 9.7 (IQR 2.2–15.9). **Scene changes/min (visual-corrected):** median 14.4 (IQR 12–24). The extremes: Figma Config 2025 at 68, Arc on Windows at 54, and the Raycast and Arc montages at 31–33.
+- **Median shot (or scene) length:** 3.7 s (IQR 2.0–9.8 s) for hard cuts. Inside those "shots", the UI changes state every 1–2 s, so the *visual event rate* is far higher than the cut rate.
+- **BPM:** median 103 (IQR 80–118); several readings are probably half-time, so the real tempo cluster is about 100–130. Beat strength median 4.0 (IQR 2.7–6.0), so most films have a clear beat.
+- **LUFS:** median -16.4 (IQR -18.7 to -13.2). The energetic ones (Arc Windows -9.8, Loom -10.3, Vercel Ship -11.1, Arc 1.0 -11.5, Superhuman -11.6, Config 2026 -11.9) sit around -10 to -12. Calm and VO films sit at -17 to -29.
+- **Hits/min:** median 54 (IQR 44–84). The busiest are Cursor 2.0 (112), Retool (102), v0 (101), Notion AI (100) and Config 2025 (99). The outliers are Framer 3.0 (0.8) and the Linear dark films (10–13).
+- **Speech share:** median 0.03. Most are music-only; VO or founder pieces (Warp, Cursor 3, Zed, Arc 1.0) run 0.3–0.5.
