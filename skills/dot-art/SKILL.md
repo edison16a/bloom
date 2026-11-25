@@ -100,3 +100,24 @@ Three loop rules that cannot be broken:
 1. Drive motion with `u_phase` (0 to 1) as whole cycles: `sin(TAU*u_phase*k)`, k an integer.
 2. Noise over time is `lnoise(p, u_phase, r)`, never `snoise(vec3(p, u_time))`.
 3. A story scene may use `u_time`, if the first and last frames match.
+
+### 4-6. Look, judge, repeat
+
+```bash
+node <skill>/scripts/sheet.mjs components/dot-art/scenes/aurora.ts --n 1 --size 1200x750 --dpr 2 --out /tmp/a.png
+node <skill>/scripts/sheet.mjs components/dot-art/scenes/aurora.ts --n 9 --out /tmp/a9.png
+```
+
+Flags: `--at 3.2` picks the moment, `--from 2 --to 4` zooms into a beat, `--tile 800` enlarges sheet tiles, `--id x` picks a scene in a file with several, `--assets public` says where `/photo.jpg` lives. Judge at the size and dpr it will ship at: a smaller frame has fewer cells.
+
+**Open the PNG and look at it every time.** Compiling is not done. Expect four to eight rounds. Judge in this order, since each hides the next:
+
+1. **Form.** Squint. Can you name it in one second? If not: fewer, larger features; more contrast between lit and shadow side; smaller cells; subject bigger (60-80% of frame height).
+2. **Tone.** The whole range gets used: true black, a few pure highlights, most of it between. Mush means `gamma` up or `shade` up. Washed out means less ambient.
+3. **Colour.** Two or three related hues plus white. Highlights go to near-white, shadows keep hue.
+4. **Texture.** Marks crisp, no moire, letters readable at 100%.
+5. **Motion.** Step the 9-up. Something changes between every frame, nothing pops, last flows into first.
+
+With a reference, put it side by side with your frame and list the differences in words before editing. Pass bar: shown both, a designer would not say which is the copy.
+
+**Text objects need resolution.** Default to `cell: [4, 7]`, `samples: 4`, `detail: 0.8`, `under: 0.2`. `detail` clips letters to the real silhouette at 4x the letter grid, and `under` puts a dim render behind them, so the shape reads instantly. This is the most common failure: letters too large for the shape.
