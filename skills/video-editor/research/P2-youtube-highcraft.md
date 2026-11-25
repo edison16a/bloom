@@ -287,3 +287,13 @@ Frame counts are at 24–30 fps, read off 5–10 fps sheets, so ±1–2 frames.
 10. **Chapter re-entry: drop, then hit** (01, 03, 09, 02).
     - Pull the music out for one spoken line (RMS falls about 10–25 dB), then hard-enter the next chapter on a title card or montage with music back at full level (+15–40 dB lift measured).
     - SFX: impact or reverse-cymbal into the re-entry.
+
+### Amateur tells these pros avoid
+- **A uniform pace.** Pros front-load (first 3 min about 27% faster than overall) and put fast bursts inside slow sections. A uniformly slow edit is exactly the "too slow" complaint.
+- **Slow fades on text.** Pros pop text on in 1–2 frames and cut it off. Long fade-ins/outs of labels were not seen.
+- **Too many fonts and colours.** Every channel holds to 2–3 brand colours and 1–2 type families across all graphics.
+- **Moving the camera on the talking head for "energy".** Pros keep the A-roll locked (60–79% static) and put motion in the B-roll and graphic layers.
+- **Generic stock between every line.** B-roll is specific: the real product, the actual document, the actual satellite location. Montage bursts are thematic lists, not filler.
+- **Beat-locking every cut** under VO. Pros cut on the sentence or punchline; music sits in the bed and is used for chapter-level drops and re-entries.
+- **Graphics that don't recur.** Pros reuse one navigation device (levels bar, blueprint, split template, scoreboard card) so viewers learn it.
+- **Quiet, flat masters.** Talking-head/entertainment channels deliver about −12 to −17 LUFS integrated with true peak near 0 dBTP (MrBeast, Veritasium, Mrwho, MKBHD, Vox).
