@@ -187,3 +187,10 @@ export const bloomHex = defineScene({
   style: { cell: 8, mark: "hex", size: [0.84, 0.92], gamma: 0.9, gain: 1.05, ghost: 0.045, ghostColor: "#3a1526", color: { by: "source", shade: 0.85 } },
   bloom: { strength: 0.5 },
 });
+
+/** The same flower in octagons: mosaic tiles on a square grid, with diamond gaps between them. */
+export const bloomOctagon = defineScene({
+  ...bloom, id: "bloomOctagon", title: "Bloom, in octagons", overlay: undefined,
+  style: { cell: 7, mark: "octagon", size: [0.86, 0.95], gamma: 0.9, gain: 1.05, ghost: 0.045, ghostColor: "#3a1526", color: { by: "source", shade: 0.85 } },
+  bloom: { strength: 0.5 },
+});
