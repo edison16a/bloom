@@ -393,3 +393,22 @@ def cmd_phrase(a):
         if os.path.abspath(os.path.join(ROOT, r["file"])) == os.path.abspath(a.file): log(a.job, **{**r, "file": os.path.relpath(out, ROOT)}); break
     print(f"  {os.path.relpath(out, ROOT)}  {e-s:.2f}s  match {best[0]:.0%}  word times in .words.json")
 
+
+def cmd_credits(a):
+    p = os.path.join(ROOT, "work", a.job, "assets", "licences.json"); rows = json.load(open(p)) if os.path.exists(p) else []
+    for r in rows: print(f'{r["kind"]:6s} {os.path.basename(r["file"])}: {r["licence"]}')
+    cr = sorted({r["credit"] for r in rows if r.get("credit")}); bad = [r for r in rows if "UNLICENSED" in r["licence"]]
+    if cr: print("\nCREDITS TO PUBLISH (only for files used in the cut)\n" + "\n".join(cr))
+    if bad: print("\nNOT LICENSED, TELL THE USER\n" + "\n".join(r["file"] + " <- " + (r.get("page") or "") for r in bad))
+
+
+p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter); sp = p.add_subparsers(dest="c", required=True)
+q = sp.add_parser("music"); q.add_argument("--job", required=True); q.add_argument("--mood", default="energetic"); q.add_argument("--genre", default="electronic"); q.add_argument("--tag", default="")
+q.add_argument("--avoid", default="vocals"); q.add_argument("--bpm", default="112-135"); q.add_argument("--need", type=float, default=60); q.add_argument("--n", type=int, default=6); q.set_defaults(f=cmd_music)
+q = sp.add_parser("sfx"); q.add_argument("--job", required=True); q.add_argument("words", nargs="+"); q.add_argument("--n", type=int, default=2); q.add_argument("--long", action="store_true"); q.set_defaults(f=cmd_sfx)
+q = sp.add_parser("video"); q.add_argument("--job", required=True); q.add_argument("q"); q.add_argument("--from", dest="src", default="stock,nasa,commons,archive"); q.add_argument("--n", type=int, default=4); q.add_argument("--max-mb", type=int, default=250); q.set_defaults(f=cmd_video)
+q = sp.add_parser("youtube"); q.add_argument("--job", required=True); q.add_argument("q", nargs="?", default=""); q.add_argument("--url"); q.add_argument("--section"); q.add_argument("--third-party", dest="third_party"); q.add_argument("--n", type=int, default=3); q.add_argument("--max-mb", type=int, default=250); q.set_defaults(f=cmd_youtube)
+q = sp.add_parser("phrase"); q.add_argument("--job", required=True); q.add_argument("file"); q.add_argument("text"); q.add_argument("--pad", type=float, default=0.15); q.set_defaults(f=cmd_phrase)
+q = sp.add_parser("credits"); q.add_argument("--job", required=True); q.set_defaults(f=cmd_credits)
+if __name__ == "__main__":
+    a = p.parse_args(); a.f(a)
