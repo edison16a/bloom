@@ -1,0 +1,50 @@
+{
+ "name": "Halo",
+ "tagline": "Agents that answer support tickets",
+ "rationale": "Two discs overlapping, the halo shown as the light left around a shadow.",
+ "colors": {
+  "primary": "#FF6A00",
+  "accent": "#FF6A00",
+  "ink": "#0E0E10",
+  "paper": "#FFFFFF",
+  "idea": "Ember #FF6A00."
+ },
+ "symbol": {
+  "svg": "<mask id='m{U}'><circle r='46' fill='#fff'/><circle cx='12' cy='-10' r='40' fill='#000'/></mask><circle r='46' fill='{P}' mask='url(#m{U})'/>",
+  "idea": "Two discs overlapping, the halo shown as the light left around a shadow."
+ },
+ "wordmark": {
+  "font": "geist-800",
+  "case": "lower",
+  "tracking": -0.05,
+  "accent_chars": [],
+  "custom_glyphs": {},
+  "idea": "Heavy, tight lowercase in the style of the category leaders."
+ },
+ "lockup": {
+  "cap_ratio": 0.8,
+  "gap": 0.24
+ },
+ "app_icon": {
+  "inset": 0.2,
+  "symbol_color": "#FFFFFF"
+ },
+ "alternatives": [
+  {
+   "label": "Option 2: Open ring",
+   "why": "A thick ring with one slice taken out, where the answer leaves. Black led with an orange accent.",
+   "symbol": {
+    "svg": "<mask id='m{U}'><circle r='48' fill='#fff'/><circle r='26' fill='#000'/><path d='M0 0 L60 -26 L60 26Z' fill='#000'/></mask><circle r='48' fill='{P}' mask='url(#m{U})'/><circle cx='42' cy='0' r='9' fill='{A}'/>"
+   },
+   "wordmark": {
+    "font": "inter-800",
+    "case": "lower",
+    "tracking": -0.05
+   },
+   "colors": {
+    "primary": "#1F5BFF",
+    "accent": "#FF6A00"
+   }
+  }
+ ]
+}
