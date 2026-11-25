@@ -207,3 +207,42 @@ def cmd_gen(a):
         print(f"L{i:02d} pick t{best['take']}  " + "  ".join(f"t{x['take']}:{x['speech']}s/{x['wpm']}wpm/wer{x['wer']}" for x in takes) + flag)
     json.dump(report, open(os.path.join(a.out, "report.json"), "w"), indent=1)
 
+
+def cmd_assemble(a):
+    rep = json.load(open(os.path.join(a.dir, "report.json")))
+    picks = json.load(open(a.pick)) if a.pick else {}
+    cd = os.path.join(a.dir, "clean"); os.makedirs(cd, exist_ok=True)
+    chain = ("silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.02,areverse,"
+             "silenceremove=start_periods=1:start_threshold=-50dB:start_silence=0.06,areverse,"
+             "highpass=f=75,deesser=i=0.35,acompressor=threshold=-21dB:ratio=2.5:attack=6:release=90:makeup=2,"
+             "afade=t=in:d=0.01")
+    files, timeline, t = [], [], 0.0
+    for ln in rep["lines"]:
+        k = picks.get(ln["id"], ln["pick"])
+        src = next(x["file"] for x in ln["takes"] if x["take"] == k)
+        out = os.path.join(cd, ln["id"] + ".wav")
+        sh(["ffmpeg", "-v", "error", "-y", "-i", src, "-af", chain, "-ar", "48000", "-ac", "1", out])
+        d = float(sh(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", out]).stdout.strip())
+        timeline.append({"id": ln["id"], "text": ln["text"], "take": k, "start": round(t, 3), "end": round(t + d, 3), "file": out})
+        files.append(out); t += d + a.gap
+    gap = os.path.join(cd, "_gap.wav")
+    sh(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", str(a.gap), gap])
+    lst = os.path.join(cd, "list.txt")
+    with open(lst, "w") as f:
+        for i, x in enumerate(files): f.write(f"file '{os.path.abspath(x)}'\n" + (f"file '{os.path.abspath(gap)}'\n" if i < len(files) - 1 else ""))
+    vo = os.path.join(a.dir, "vo.wav")
+    sh(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, "-af", "loudnorm=I=-16:TP=-2", "-ar", "48000", vo])
+    words = transcribe(vo, words=True) or []
+    json.dump({"lines": timeline, "words": [{"start": s, "end": e, "w": w} for s, e, w in words]}, open(os.path.join(a.dir, "words.json"), "w"), indent=1)
+    s = stats(vo)
+    print(f"vo.wav {s['dur']}s  {s['lufs']} LUFS  peak {s['peak']}  lines {len(files)}  words {len(words)}")
+    for x in timeline: print(f"  {x['id']} {x['start']:6.2f}-{x['end']:6.2f}  t{x['take']}  {x['text'][:60]}")
+
+
+ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+sp = ap.add_subparsers(dest="cmd", required=True)
+p = sp.add_parser("audition"); p.add_argument("--text", required=True); p.add_argument("--voices", required=True); p.add_argument("--out", required=True); p.add_argument("--seed", type=int, default=7); p.add_argument("--only"); p.add_argument("--say", action="append")
+p = sp.add_parser("gen"); p.add_argument("--script", required=True); p.add_argument("--voice", required=True); p.add_argument("--out", required=True); p.add_argument("--takes", type=int, default=3); p.add_argument("--seed", type=int, default=1000); p.add_argument("--say", action="append"); p.add_argument("--wpm", type=int, default=160)
+p = sp.add_parser("assemble"); p.add_argument("--dir", required=True); p.add_argument("--pick"); p.add_argument("--gap", type=float, default=0.28)
+a = ap.parse_args()
+{"audition": cmd_audition, "gen": cmd_gen, "assemble": cmd_assemble}[a.cmd](a)
