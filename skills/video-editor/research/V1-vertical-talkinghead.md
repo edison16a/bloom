@@ -227,3 +227,14 @@
 - The camera is mostly locked off. Motion comes from **scale changes** (punch-ins between 2–3 sizes), **window-shape changes** (Williamson), and **handheld B-roll** (MKBHD).
 - Direction continuity shows up only in Ali's whip-pan (a left-to-right blur matched across the cut) and in MKBHD's product handling. It isn't a governing rule in this genre.
 - Layout systems are kept fixed for the whole video so the eye stays put. Examples: Starter Story's top headline + window + caption stack, GaryVee and Williamson's centred window on black, and DOAC's fixed caption band. All movement happens *inside* a stable frame.
+
+### Hooks (first 1–2 s)
+Six hook types appear:
+1. **Claim straight to camera** with the caption already on frame 1 (Hormozi #01, YC #22).
+2. **Question card**: a DM screenshot, title box or interviewer question (Hormozi #03, Leila #16/#17, Codie #25, Huberman).
+3. **Black-screen VO text** for 3–6 s (Dan Koe). This one is risky, but it's their signature.
+4. **Product or visual first** with giant type (MKBHD "DUO").
+5. **Newsjack split-screen** by 0.8 s (Codie GTA: "This is wild." then a logo on top).
+6. **Big-number stamp** on the founder at 0 s ("$115K", "$1M", Starter Story).
+
+Every hook puts readable text on screen at frame 0–12. None opens with a logo or a slow fade-in.
