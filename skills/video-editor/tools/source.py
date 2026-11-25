@@ -62,3 +62,30 @@ def adir(job, kind):
 def slug(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-")[:60] or "x"
 
+
+def log(job, **row):
+    p = os.path.join(ROOT, "work", job, "assets", "licences.json"); os.makedirs(os.path.dirname(p), exist_ok=True)
+    rows = json.load(open(p)) if os.path.exists(p) else []
+    rows = [r for r in rows if r["file"] != row["file"]] + [row]
+    json.dump(rows, open(p, "w"), indent=1)
+
+
+def fetch(url, path, max_mb=250):
+    if os.path.exists(path) and os.path.getsize(path) > 10000: return True
+    with opener(url, 60) as r:
+        n = int(r.headers.get("Content-Length") or 0)
+        if n > max_mb * 1e6: print(f"  skip {os.path.basename(path)}: {n/1e6:.0f} MB > {max_mb}"); return False
+        ct = r.headers.get("Content-Type", "")
+        if "html" in ct: print(f"  skip {url}: got a web page"); return False
+        with open(path + ".part", "wb") as f:
+            got = 0
+            while True:
+                b = r.read(1 << 18)
+                if not b: break
+                got += len(b)
+                if got > max_mb * 1e6: f.close(); os.remove(path + ".part"); print("  skip: too big"); return False
+                f.write(b)
+    os.replace(path + ".part", path)
+    if not probe(path): os.remove(path); return False      # must really be media
+    return True
+
