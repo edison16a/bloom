@@ -3,7 +3,6 @@ export type SkillId = "art" | "launch" | "logo";
 
 export interface Skill {
   id: SkillId;
-  number: number;
   name: string;
   /** Folder inside the monorepo. */
   path: string;
@@ -17,7 +16,6 @@ export interface Skill {
 export const skills: Skill[] = [
   {
     id: "art",
-    number: 1,
     name: "Dot Art",
     path: "skills/dot-art",
     installName: "dot-art",
@@ -27,7 +25,6 @@ export const skills: Skill[] = [
   },
   {
     id: "launch",
-    number: 2,
     name: "Launch Video",
     path: "skills/video-editor",
     installName: "video-editor",
@@ -37,7 +34,6 @@ export const skills: Skill[] = [
   },
   {
     id: "logo",
-    number: 3,
     name: "Brand Creator",
     path: "skills/brand-creator",
     installName: "brand-creator",
