@@ -80,3 +80,10 @@ function phrase(lines, x, y, size, times, z) {
     fadeIn(L, times[i], 6); fadeOut(L, z, 6);
   }
 }
+function listText(rows, x, y, size, lead, times, z) {
+  for (var i = 0; i < rows.length; i++) {
+    var L = kitText(rows[i], size, 'Inter', 'Medium'); tr(L, 'pos').setValue([x, y + i * lead]); span(L, times[i], z); softShadow(L, 45, 36);
+    var b = blurOf(L); if (b) anim(b, [[times[i], 10], [times[i] + fr(7), 0]], OUT);
+    fadeIn(L, times[i], 7); fadeOut(L, z, 6);
+  }
+}
