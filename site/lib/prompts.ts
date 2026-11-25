@@ -54,3 +54,11 @@ function skillSteps(skill: Skill): string[] {
       ];
   }
 }
+
+const tryLine: Record<SkillId, string> = {
+  art: '"Put a pink flower made of letters behind my hero"',
+  launch: '"Make a 35 second launch film for my site"',
+  logo: '"Create a brand for Acme, we make payroll software"',
+};
+
+const number = (lines: string[]) => lines.map((line, i) => `${i + 1}. ${line}`).join("\n");
