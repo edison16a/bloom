@@ -23,3 +23,12 @@ for (let i = 0; i < argv.length; i += 2) A[argv[i].replace(/^--/, "")] = argv[i 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const HIDE = "*{cursor:none!important;caret-color:auto}::-webkit-scrollbar{display:none!important}html{scrollbar-width:none!important;scroll-behavior:auto!important}";
 const BANNERS = ["#onetrust-banner-sdk", "#CybotCookiebotDialog", "[id*=cookie-banner]", "[class*=cookie-banner]", "[class*=CookieBanner]", "[aria-label*=cookie i][role=dialog]", "#intercom-container", ".intercom-lightweight-app", "nextjs-portal", "[data-nextjs-toast]"];
+
+async function open(o = {}) {
+  const b = await chromium.launch({ channel: "chrome", headless: !o.headed, args: ["--hide-scrollbars", "--force-color-profile=srgb", "--font-render-hinting=none"] });
+  const [w, h] = o.viewport || [1440, 900];
+  const c = await b.newContext({ viewport: { width: w, height: h }, deviceScaleFactor: o.scale || 2, colorScheme: o.scheme || "light", isMobile: w < 600, hasTouch: w < 600, storageState: o.storage && fs.existsSync(o.storage) ? o.storage : undefined });
+  if (o.init) await c.addInitScript(o.init);
+  const p = await c.newPage(); p.on("pageerror", (e) => console.error("  page error:", e.message.slice(0, 160)));
+  return { b, c, p };
+}
