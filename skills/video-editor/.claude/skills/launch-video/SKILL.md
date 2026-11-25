@@ -15,3 +15,14 @@ Paths that start with `tools/` are in the video-editor repository (`edison16a/vi
 3. `../production-video-editing/references/references-studied.md`: the films the user chose. Name the closest one in the plan. The notes are enough. Open its links only when the user asks you to.
 4. `../production-video-editing/references/look.md`: the NEVER list also applies here.
 5. As needed: `../production-video-editing/references/` `sound.md`, `sourcing.md`, `effectcraft.md`, `vertical.md`, and `references/voiceover.md` when nobody speaks.
+
+## From a link to a film
+| Given | You make |
+|---|---|
+| A website | Brand, colours, fonts, logo, product clips (`capture.cjs survey` and `run`), the copy that is true |
+| A repo | What the product does, recent changes, a running local copy to record |
+| A direction | The one sentence the film is about, the script, the type and length |
+| Nothing spoken | A local AI voice, or text only. Pick the default voice, say it is AI |
+| A founder clip | A hybrid: person first (production skill rules), one product block |
+
+Everything is automatic: installs, downloads, capture, music, sounds, footage, voice. Keep the licence log and report it once at the end.
