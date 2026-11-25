@@ -87,3 +87,11 @@ Glyph: `ramp message fill messageAbove scroll rowShift weights font fontScale ed
 - `boxAbove`: brighter cells become filled boxes with the glyph knocked out.
 - `glitch` s: newly lit cells scramble, until `glitchUntil` (scene time). Cells already lit at the loop point stay still.
 - `scroll` letters/s: `scroll * loop` should be a multiple of the message length for a perfect loop.
+
+## Geometry
+
+- `inflate(shape, { count, depth, bevel, bevelWidth })` from `{ path, viewBox }`, `{ paths }`, `{ path, stroke }`, `{ text, font, weight }`, `{ draw(ctx,size) }`, `{ image, width, height }`. Pillow: wide `bevelWidth`, depth 0. Slab: depth .1, narrow bevel.
+- `parseOBJ parseGLB normalizeGeometry samplePoints loadModel`. GLB: positions, normals, vertex and base colours, node transforms. Textures, Draco, meshopt and skinning are not read.
+- `morphPair(a, b)`: same point count, second position arrives in `p.color`.
+- `emblemScene([{ shape, at, size, color }])`: several logos on an LED wall.
+- `objectScene(geometry, {...})`: light, colour and motion for your own points.
