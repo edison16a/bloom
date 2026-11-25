@@ -14,3 +14,10 @@ from collections import Counter
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 R = os.path.join(ROOT, "research")
 
+
+def hsl(hexv):
+    h = hexv.lstrip("#")
+    r, g, b = [int(h[i:i + 2], 16) / 255 for i in (0, 2, 4)]
+    H, L, S = colorsys.rgb_to_hls(r, g, b)
+    return H * 360, S, L
+
