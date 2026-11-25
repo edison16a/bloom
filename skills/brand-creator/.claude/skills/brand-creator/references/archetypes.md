@@ -18,3 +18,14 @@ Default: lowercase or sentence case neo grotesk, tight. Symbol is one geometric 
 Data: 341 svgl Software logos (blue 26%, black 22%, red, green) and 860 successful YC B2B companies (blue 32%, black 14%). Letterform of the initial is the most common symbol (246 in YC B2B), then geometric.
 Leaders: Stripe (lowercase bold geo, Blurple), Notion, Figma, Slack, Rippling, Attio, Ramp.
 Default: lowercase bold geometric or neo grotesk, tight. Blue is the most crowded color; pick purple, green, orange or black led to stand out, or own a precise blue.
+
+## Fintech
+
+Data: 223 successful YC fintech companies: blue 35%, green 14%, black 10%; initial letterform symbols lead (69), and 38 are word only.
+Leaders: Stripe, Ramp (yellow, word led), Brex (orange), Coinbase (blue, lowercase), Mercury.
+Default: lowercase or title case, bold, tight; a clean word led logo with a small symbol. Trust colors are blue and green; yellow, orange or black read as modern.
+
+## Hardware, chips, space, defense, robotics, deep tech
+
+Case studies: NVIDIA (uppercase, green #76B900, eye mark), SpaceX (uppercase word only, swoop X), Tesla (uppercase, T symbol), AMD, Arm, Intel, Anduril (uppercase Helvetica Now, black), Etched (uppercase wordmark). 6 of the 7 uppercase wordmarks among the 50 case studies are in this group.
+Default: UPPERCASE wordmark, bold or black weight, normal to slightly wide tracking (wide is the one place it works), often word led with no symbol or one hard geometric symbol. Black led, or one strong saturated color.
