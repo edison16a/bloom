@@ -143,3 +143,13 @@ From 860 labeled wordmark and full logo files (svgl wordmarks and gilbarbara ful
 | mono | 2% | 1% | 3% |
 
 neo neo grotesk (Helvetica, Inter), geo geometric sans, hum humanist sans, round rounded sans, display custom or stylized.
+
+### Case
+
+| case | all (n=860) | craft 4+ (n=351) | craft 1-2 (n=37) |
+|---|---|---|---|
+| lower | 37% | 38% | 35% |
+| title | 27% | 34% | 24% |
+| upper | 22% | 17% | 11% |
+| camel | 14% | 11% | 27% |
+| mixed | 1% | 0% | 3% |
