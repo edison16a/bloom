@@ -202,3 +202,11 @@ The brief asks for 2023–2026 videos. Five picks are older, but they are kept a
 - **Shape:** a fast cold open (0–30 s, often 30–70 cpm in montage bursts) → settle into explanation at 8–15 cpm → a short burst at each chapter break → the sponsor read is often cut faster than the content (HAI, Wendover).
 - **MrBeast is the exception:** flat 33–41 cpm in every quarter. No "settle" phase.
 - **Bursts inside slow sections:** Johnny Harris, Yes Theory and Cleo drop in 1–3 s montage bursts at 3–6-frame shots (photo stacks, currency macros, nature lists) inside 5–15 cpm sections. The ear hears a sustained VO line while the eye gets a flurry. Inference: this is how they keep energy without speeding the VO.
+
+### How cuts relate to the beat
+- Beat strength is low (median 1.33) and cuts-on-beat is 15–29% where measurable, near chance (a ±60 ms window on a 0.5–0.75 s beat period ≈ 16–24% chance).
+- **Conclusion:** in this category the music is a bed under the VO. Cuts follow the narration (word and sentence boundaries) and the visual punchline, not the beat grid. Exceptions:
+  - HAI 04: 42% on beat with strength 1.64.
+  - Cleo 11 and Trahan 18: 26%.
+- Music energy is used structurally, not rhythmically. The large `biggest_lifts` (+15 to +40 dB) sit at chapter turns and right after silent beats (01 at 76 s, 03 at 98 s and 183 s, 09 at 14 s and 26 s). Inference: the recurring move is "music drops out for a line, then re-enters with a hit on the new chapter or title".
+- **Implication for the "too slow / not energetic" complaint (inference):** these creators get energy from (a) front-loaded 30–70 cpm cold-open montages, (b) 3–6-frame micro-montage bursts, (c) graphics changing state every 0.5–1 s inside a "single shot", and (d) music re-entries at chapter turns. They do not get it from a loud, beat-locked track under the whole video.
