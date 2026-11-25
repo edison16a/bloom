@@ -21,3 +21,13 @@ Paste any of these into Claude Code with the skill installed.
 
 **The same flower in hexagons**
 > Same flower, honeycomb tiles instead of letters. Keep the depth.
+
+## Dot objects
+
+> Our logo (logo.svg) as a thick inflated hexagon-dot object, brushed chrome with pink and cyan reflections, turning 20 degrees each way.
+
+> Turn /public/shoe.glb into an octagon mosaic that assembles from scattered tiles as I scroll.
+
+> A glowing jellyfish in octagons drifting upward, tentacles trailing a beat behind the bell.
+
+> A hummingbird hovering at a flower, LED squares, emerald throat that flashes as it turns.
