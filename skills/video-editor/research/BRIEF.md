@@ -53,3 +53,9 @@ python3 -I tools/measure.py "https://www.youtube.com/watch?v=<id>" <batch>/<nn>-
    - the 10 most reusable concrete moves, each as a recipe with frames, easing and SFX
    - amateur tells that the pros avoid
 4. Keep it factual. Mark inferences as inferences. Don't invent numbers. If a measurement looks broken, say so.
+
+## Rules
+- Read-only research. Don't post, log in, or sign up for anything.
+- Downloads go only through `measure.py`, which deletes them. Don't keep any video files.
+- Don't edit the skills. Only write inside your `<batch>/` folder.
+- Your final reply: a 15-line summary of the synthesis with the key numbers.
