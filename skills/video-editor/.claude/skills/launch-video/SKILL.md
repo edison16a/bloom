@@ -26,3 +26,19 @@ Paths that start with `tools/` are in the video-editor repository (`edison16a/vi
 | A founder clip | A hybrid: person first (production skill rules), one product block |
 
 Everything is automatic: installs, downloads, capture, music, sounds, footage, voice. Keep the licence log and report it once at the end.
+
+## Steps
+1. **Find the sentence.** One true thing the product changes. Everything else supports it. Write it in the plan.
+2. **Pick the shape** (`structure.md`), the closest reference, the length (20 to 75 s, default 35) and the music brief.
+3. **Script.** 6 to 10 lines, 3 to 7 words each. Plain words, no marketing. The lines that are spoken or shown are the whole film.
+4. **Record the product.** Real UI, real demo data, one click or state per moment, 2x, stills before and after every click. If the product cannot run, use what the site shows, never a fake UI.
+5. **Find the intro.** Real footage for the argument (`sourcing.md`). If the film needs no intro, start on the product.
+6. **Pick the music** with `source.py music`. Note its tempo, its lift and where the silence goes. Cut to its grid for silent films.
+7. **Voice** if needed, then time to `words.json`.
+8. **Build in EffectCraft** with `../production-video-editing/assets/lib.jsx` and `kit.jsx`, then `assets/motion.jsx` (copy all three beside `build.jsx`). Check every beat.
+9. **Sound.** Music with the stop and lift, clicks and keys from `events.json`, master.
+10. **Render, gate, look.** `../production-video-editing/scripts/gate.py output/JOB.mp4 --script build.jsx --type product`, then a contact sheet, checked against the reference's notes, or beside its frames if the user asked you to open it. Fix and render again.
+11. **Deliver.** MP4, a vertical cut if asked, licences, honest notes. Save and close apps.
+
+## Not allowed, ever
+The whole NEVER list: no AI look, no middle dots or dashes on screen, no boxed name cards, no fake UI, no generated music, sound or footage.
