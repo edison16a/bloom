@@ -126,3 +126,28 @@ anim.property("ADBE Text Animator Properties").addProperty("ADBE Text Tracking A
 tracking: key 0 at in → +30 at in+5s (linear or very gentle ease)   // base Character tracking ~600 for trailer look; +5 for subtle (Ignace)
 ```
 Pair with R4 opacity/blur per character. Paul's reel uses this for every title card, with the hold card lasting 2–3 s.
+
+### R4. Per-character fade + blur reveal (B3 Jake, B4 Ignace): the base reusable animator
+```
+A   = L.Text.Animators.addProperty("ADBE Text Animator"); A.name = "Reveal";
+S_in= A.property("ADBE Text Selectors").addProperty("ADBE Text Selector");     // Range Selector "In"
+props = A.property("ADBE Text Animator Properties");
+props.addProperty("ADBE Text Opacity").setValue(0);
+props.addProperty("ADBE Text Blur").setValue([50,50]);          // Ignace: blur 50
+// optional: ADBE Text Scale 3D = [0,0,0] (Jake), ADBE Text Position 3D = [0,40,0]
+adv = S_in.property("ADBE Text Range Advanced");
+adv.property("ADBE Text Range Shape").setValue(2);              // 2 = Ramp Up
+adv.property("ADBE Text Levels Min Ease").setValue(100);        // "Ease Low" 100 (Jake)
+adv.property("ADBE Text Range Type2").setValue(1);              // 1 chars, 3 words
+off = S_in.property("ADBE Text Percent Offset");
+off.setValueAtTime(t0, -100); off.setValueAtTime(t0 + f(30), 100);   // Jake: 30 f; use 12–20 f for social pace
+// out: duplicate selector → S_out, Shape = 3 (Ramp Down), offset keys shifted to the exit
+// tighter cascade: End = 25–50 % (Jake: "25% … happens a lot more tightly")
+// scale from centre: L.Text.property("ADBE Text More Options").property("ADBE Text Anchor Point Align") = [0, -capHeight/2]
+```
+For word-by-word captions, set `Range Type2 = 3` (words). For talking heads at roughly 150–180 wpm, synced builds need **~5–7 f per word at 30 fps** (08 Kanda measured ~0.2 s/word).
+
+### R5. Typewriter with human timing, or word-by-word with hold keys (B2)
+Typewriter preset = range selector `Start` keyed 0→100. Add mid keys with irregular spacing: bursts and pauses. For one word at a time, put keys at each word boundary and set them to hold: `P.setInterpolationTypeAtKey(i, KeyframeInterpolationType.HOLD)`.
+- Centre-out typing: key the layer's Position so its left edge starts at comp centre and ends centred, with the same ease as the selector.
+- SFX: one key-click per character, or one per word for the hold variant, at -20 dB under VO (inferred level).
