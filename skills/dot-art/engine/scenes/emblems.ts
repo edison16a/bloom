@@ -38,3 +38,26 @@ export const hexRing = "M12 1.2 L21.4 6.6 V17.4 L12 22.8 L2.6 17.4 V6.6Z M12 6.6
 export const moon = "M14.2 2 A10.2 10.2 0 1 0 22 15.6 A8.4 8.4 0 0 1 14.2 2Z";
 const burst: ShapeInput = { draw: (c, s) => { c.translate(s / 2, s / 2); c.lineWidth = s * 0.062; for (let i = 0; i < 12; i++) { const a = (i / 12) * Math.PI * 2, r = s * (i % 2 ? 0.34 : 0.43); c.beginPath(); c.moveTo(Math.cos(a) * s * 0.06, Math.sin(a) * s * 0.06); c.lineTo(Math.cos(a) * r, Math.sin(a) * r); c.stroke(); } } };
 const orbit: ShapeInput = { draw: (c, s) => { c.translate(s / 2, s / 2); c.lineWidth = s * 0.06; for (let i = 0; i < 3; i++) { c.save(); c.rotate((i * Math.PI) / 3); c.beginPath(); c.ellipse(0, 0, s * 0.42, s * 0.16, 0, 0, 7); c.stroke(); c.restore(); } c.beginPath(); c.arc(0, 0, s * 0.075, 0, 7); c.fill(); } };
+
+/** Build a floating-emblem scene from your own shapes. */
+export function emblemScene(list: EmblemSpec[], over: Partial<Scene> = {}): Scene {
+  return {
+    id: "emblems", title: "Emblems", loop: 8, background: "#02030a", samples: 3,
+    camera: { eye: [0, 0, 5], fov: 35, near: 3, far: 7 },
+    sources: [
+      { // the wall: a breath of light behind each emblem plus stray lit pixels
+        type: "shader",
+        glsl: /* glsl */ `void scene(vec2 uv,vec2 p,inout Cell c){
+          float g=.10*exp(-dot(p,p)*.55); vec2 id=cellId(uv);
+          float h=hash12(id); float tw=.5+.5*sin(TAU*(u_phase*floor(1.+3.*hash12(id+9.))+hash12(id+4.)));
+          float star=step(.9968,h)*tw*.5;
+          c.tone=sat(g*.55+star); c.color=mix(vec3(.12,.2,.5),vec3(.35,.55,.95),star*2.); c.alpha=1.; }`,
+      },
+      ...list.map((e, i) => emblem(e, i)),
+    ],
+    style: { cell: 4, mark: "square", size: [0.74, 0.74], ghost: 0.16, ghostColor: "#101a3c", color: { by: "source", shade: 1 }, gamma: 0.95 },
+    bloom: { strength: 0.6 },
+    pointer: { mode: "glow", radius: 150, strength: 0.5 },
+    ...over,
+  };
+}
