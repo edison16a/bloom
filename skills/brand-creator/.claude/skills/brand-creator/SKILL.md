@@ -137,3 +137,19 @@ Tell the user, in plain sentences:
 - What is in the kit: horizontal and stacked logo, symbol and wordmark, each in color, black, white and reverse, as SVG with the type converted to outlines and as transparent PNG at 1024 and 2048 px; app icons at 180, 512 and 1024 px; favicons at 16, 32, 48 and 192 px.
 - The alternatives on the board, and that they can ask for any change.
 - That a trademark search before using the name and logo is their job.
+
+## Changes the user may ask for
+
+Edit `brand.json` and rebuild; never hand edit the generated files.
+
+| Request | What to do |
+|---|---|
+| "Make the color different", "more blue", "darker" | Change `colors` (keep saturation and lightness in the research range unless they insist), rebuild, show the new hero PNG. |
+| "Option 2", "I like 3" (answering the options sheet) | Build that option (step 7). |
+| "Symbol of 2 with the type of 1" | Combine those parts as the main logo, render the options sheet again with the mix as option 1 if it is not obvious it works, otherwise build. |
+| "None of these", "show me more" | Back to steps 3 to 6 with new ideas; show a new options sheet. |
+| "Use option 3" (after the kit is built) | Move that alternative into the main `symbol`, `wordmark` or `colors`, put the old main into the alternatives, rebuild. |
+| "Give me the full assets", "black and white versions", "transparent PNG" | They already exist: point to the zip and the `assets` folders; rebuild first if anything changed. |
+| "Bigger text", "closer", "more space" | Adjust `lockup.cap_ratio` or `lockup.gap`. |
+| "Just a wordmark" | Keep the main symbol for the app icon only and recommend the wordmark file as the logo. |
+| "Different style", "more playful", "more serious" | Go back to steps 3 to 6 with new candidates and show a new options sheet. |
