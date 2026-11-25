@@ -46,3 +46,9 @@ Crop the capture tight to what is being said, so it reads at that size. Never zo
 - **Photo, article or post:** the real capture, straight, with the same frame. No rotation, no tape, no shadow pile.
 - **Drawn line or circle:** thin white 2 px, drawn on over 12 frames, only to point at something real in the picture.
 - **Logo:** plain, on its own, no shine.
+
+## Picture
+- One constant framing per real angle. Scale only to fill the frame, and only once. Protect hair and chin.
+- Neutral skin, a little contrast, matched cameras. Blur and darken the room gently if it is messy.
+- Cut on breath. If a jump is visible, use a short optical flow blend, not a zoom.
+- Leave the speaker alone on screen for the first line, any personal line, the turn and the last line.
