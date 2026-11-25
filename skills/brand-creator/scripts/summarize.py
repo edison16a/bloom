@@ -36,3 +36,17 @@ def family(hexv):
         if h < lim:
             return n
 
+
+def brand_color(r):
+    """The logo's main non neutral color: the official hex for simple-icons, else the largest saturated palette entry."""
+    if r["source"] == "si":
+        return r["hex"]
+    best = None
+    for part in (r["palette"] or "").split():
+        hx, share = part.split(":")
+        h, s, l = hsl(hx)
+        if s >= 0.16 and 0.14 <= l <= 0.93:
+            return hx
+        best = best or hx
+    return best or ""
+
