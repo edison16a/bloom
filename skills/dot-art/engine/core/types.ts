@@ -156,3 +156,29 @@ export type Source = ShaderSource | SurfaceSource;
 /** A typed cell. `color` is 0-1 rgb, snapped to a 6-level cube. Default white. */
 export interface OverlayCell { col: number; row: number; char: string; tone?: number; color?: Vec3 }
 export interface GridInfo { cols: number; rows: number }
+
+export interface Scene {
+  id: string;
+  title: string;
+  /** Loop length in seconds. `u_phase` runs 0→1 over it, and every bundled scene loops exactly. */
+  loop: number;
+  background: string | "transparent";
+  sources: Source[];
+  style: Style;
+  bloom?: Bloom;
+  fade?: Fade;
+  camera?: Camera | ((t: number, aspect: number) => Camera);
+  /** Scene supersampling per cell. Default 2. */
+  samples?: number;
+  /** Typed characters written straight onto the grid (glyph mark only). Row 0 is the top. */
+  overlay?: (t: number, grid: GridInfo) => OverlayCell[];
+  /** Pointer response. */
+  pointer?: { mode: "glow" | "lens" | "ripple"; radius?: number; strength?: number };
+  /** Frame used for posters and reduced motion, in seconds. Default loop * 0.5. */
+  poster?: number;
+}
+
+export function defineScene(s: Scene): Scene { return s; }
+
+/** A scene that needs something fetched first, such as a 3D model. */
+export interface LazyScene { id: string; title: string; background: string; load: () => Promise<Scene> }
