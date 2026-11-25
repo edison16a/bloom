@@ -26,9 +26,10 @@ export function SetupSection() {
               <SetupPrompt prompt={setupPrompt(s.id)} bare />
             </div>
           ))}
-        </div>
-        <div className={styles.all}>
-          <SetupPrompt prompt={setupAllPrompt()} label="Copy setup prompt for all three" />
+          <div className={styles.card}>
+            <h3><span>1 2 3</span>All three</h3>
+            <SetupPrompt prompt={setupAllPrompt()} bare />
+          </div>
         </div>
       </div>
     </section>
