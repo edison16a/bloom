@@ -81,3 +81,44 @@ function blur(src: Float32Array, n: number, r: number): Float32Array {
   for (let y = 0; y < n; y++) for (let x = 0; x < n; x++) { let s = 0, w = 0; for (let k = -r; k <= r; k++) { const Y = y + k; if (Y < 0 || Y >= n) continue; s += t[Y * n + x]; w++; } o[y * n + x] = s / w; }
   return o;
 }
+
+/**
+ * Turn any logo, SVG path, word or silhouette into a solid, evenly covered 3D point surface.
+ * `extra` = (distance to edge 0..1, wall 0/1, u, v).
+ */
+export function inflate(input: ShapeInput, o: InflateOptions = {}): Geometry {
+  const n = o.resolution ?? 384, count = o.count ?? 30000;
+  const depth = o.depth ?? 0.1, bevel = o.bevel ?? 0.16, width = o.bevelWidth ?? 0.22;
+  const mask = rasterize(input, n), raw = distanceField(mask, n), df = blur(raw, n, 2);
+  const inside: number[] = [], edge: number[] = [];
+  for (let i = 0; i < mask.length; i++) if (mask[i] > 0.5) { inside.push(i); if (raw[i] < 1.6) edge.push(i); }
+  if (!inside.length) throw new Error("dot-art: inflate() got an empty shape. Check the path, viewBox or font.");
+  const s = 2 / n, bw = (width * n) / 2;
+  const pos = new Float32Array(count * 3), nrm = new Float32Array(count * 3), ext = new Float32Array(count * 4);
+  const faceArea = inside.length * 2, wallArea = edge.length * ((depth * 2) / s);
+  const walls = depth > 0 ? Math.floor((count * wallArea) / (faceArea + wallArea)) : 0;
+  const at = (x: number, y: number) => df[Math.min(n - 1, Math.max(0, y)) * n + Math.min(n - 1, Math.max(0, x))];
+  let seed = 7; const rnd = () => { seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0; return seed / 4294967296; };
+  for (let i = 0; i < count; i++) {
+    const wall = i < walls, list = wall ? edge : inside;
+    const px = list[Math.floor(((i * 0.7548776662466927 + 0.5) % 1) * list.length)];
+    const X = px % n, Y = Math.floor(px / n), jx = rnd() - 0.5, jy = rnd() - 0.5;
+    let gx = at(X + 2, Y) - at(X - 2, Y), gy = at(X, Y + 2) - at(X, Y - 2);
+    const gl = Math.hypot(gx, gy) || 1;
+    const t = Math.min(1, df[px] / bw), side = i & 1 ? 1 : -1;
+    const cap = bevel * Math.sqrt(Math.max(0, 1 - (1 - t) * (1 - t)));
+    pos[i * 3] = (X + 0.5 + jx) * s - 1; pos[i * 3 + 1] = 1 - (Y + 0.5 + jy) * s;
+    if (wall) {
+      pos[i * 3 + 2] = (rnd() * 2 - 1) * depth;
+      nrm.set([-gx / gl, gy / gl, 0], i * 3);
+    } else {
+      pos[i * 3 + 2] = side * (depth + cap);
+      const slope = (bevel * (1 - t)) / Math.max(0.12, Math.sqrt(Math.max(0, 1 - (1 - t) * (1 - t)))) / width;
+      const k = Math.min(2.4, slope) * Math.min(1, gl / 2);
+      const nx = (-gx / gl) * k, ny = (gy / gl) * k, l = Math.hypot(nx, ny, 1);
+      nrm.set([nx / l, ny / l, side / l], i * 3);
+    }
+    ext.set([t, wall ? 1 : 0, (X + 0.5) / n, 1 - (Y + 0.5) / n], i * 4);
+  }
+  return { position: pos, normal: nrm, extra: ext };
+}
