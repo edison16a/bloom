@@ -265,3 +265,36 @@ def comp_stacked(sym, wmo, lk):
     word = '<g transform="translate(%s %s) scale(%s)">%s</g>' % (fnum((W - ww) / 2 - x0 * s), fnum(base_y), fnum(s), wordmark_body(wmo, "{W}", "{WA}"))
     return sym_t + word, (0, 0, W, base_y + y1 * s)
 
+
+def comp_appicon(sym, inset):
+    r = 22.5
+    pad = 100 * float(inset)
+    sc = (100 - 2 * pad) / 100
+    inner = comp_symbol(sym)[0]
+    return ('<rect width="100" height="100" rx="%s" fill="{BG}"/><g transform="translate(%s %s) scale(%s)">%s</g>'
+            % (r, fnum(pad), fnum(pad), fnum(sc), inner)), (0, 0, 100, 100)
+
+
+def svg_doc(inner, vb, pad_ratio=0.02):
+    x, y, w, h = vb
+    p = max(w, h) * pad_ratio
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="%s %s %s %s" width="%s" height="%s">%s</svg>' % (
+        fnum(x - p), fnum(y - p), fnum(w + 2 * p), fnum(h + 2 * p), fnum(w + 2 * p), fnum(h + 2 * p), inner)
+
+
+def paint(tpl, m):
+    for k in ("{S1}", "{S2}", "{S3}", "{WA}", "{W}", "{BG}"):
+        tpl = tpl.replace(k, m.get(k, "#000000"))
+    return tpl
+
+
+def contrast(a, b):
+    """WCAG contrast ratio of two #RRGGBB colors."""
+    def lum(h):
+        h = h.lstrip("#")
+        v = [int(h[i:i + 2], 16) / 255.0 for i in (0, 2, 4)]
+        v = [x / 12.92 if x <= 0.03928 else ((x + 0.055) / 1.055) ** 2.4 for x in v]
+        return 0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]
+    la, lb = sorted((lum(a), lum(b)), reverse=True)
+    return (la + 0.05) / (lb + 0.05)
+
