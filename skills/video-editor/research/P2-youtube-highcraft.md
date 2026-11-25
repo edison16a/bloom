@@ -210,3 +210,11 @@ The brief asks for 2023–2026 videos. Five picks are older, but they are kept a
   - Cleo 11 and Trahan 18: 26%.
 - Music energy is used structurally, not rhythmically. The large `biggest_lifts` (+15 to +40 dB) sit at chapter turns and right after silent beats (01 at 76 s, 03 at 98 s and 183 s, 09 at 14 s and 26 s). Inference: the recurring move is "music drops out for a line, then re-enters with a hit on the new chapter or title".
 - **Implication for the "too slow / not energetic" complaint (inference):** these creators get energy from (a) front-loaded 30–70 cpm cold-open montages, (b) 3–6-frame micro-montage bursts, (c) graphics changing state every 0.5–1 s inside a "single shot", and (d) music re-entries at chapter turns. They do not get it from a loud, beat-locked track under the whole video.
+
+### SFX density and placement (inferred from the visuals; the tool can't confirm)
+- The detector can't separate SFX from VO here. `cuts_with_hit_share` is at chance. Rules below are inferred from what the sheets show; they should be checked by ear.
+- **Logo and title stings** carry their own stacked sound: MKBHD 0–2 s (−7 to −10 dB RMS, much louder than the body); Cleo's HUGE*; Vox's search-bar typing.
+- **Pop-on graphics** (callout tags, pins, price numerals, location tags, counters ×98 → ×97) are the natural place for a short pop/click. They appear in 1–2 frames, with no slow fade.
+- **Whooshes** belong to the move, not the cut: slit wipes, slide-ups, whip pans (MrBeast, Trahan), map push-ins (Wendover). Live-action hard cuts in VO sections mostly appear to carry no SFX (inference from the 2–9% hit share in 07, 13, 14, 15, 20, 23).
+- **Micro-montages** (09, 22, 25) are probably carried by a riser or a ticking/shutter texture, not one hit per frame (inference).
+- **Countdown/timer HUDs** (17, 25) imply a tick bed (inference).
