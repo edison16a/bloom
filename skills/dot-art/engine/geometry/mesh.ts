@@ -109,3 +109,10 @@ export function parseGLB(buf: ArrayBuffer): Geometry {
   const hasN = N.some((x) => x !== 0);
   return { position: new Float32Array(P), normal: hasN ? new Float32Array(N) : undefined, color: new Float32Array(C), index: new Uint32Array(I) };
 }
+
+/** Fetch, parse, centre and scatter a .glb or .obj in one call. */
+export async function loadModel(url: string, count = 120000): Promise<Geometry> {
+  const r = await fetch(url); if (!r.ok) throw new Error(`dot-art: ${url} returned ${r.status}`);
+  const g = /\.obj(\?|$)/i.test(url) ? parseOBJ(await r.text()) : parseGLB(await r.arrayBuffer());
+  return samplePoints(normalizeGeometry(g), count);
+}
