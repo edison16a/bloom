@@ -87,3 +87,9 @@ export async function withScene({ scene, id, width = 960, height = 600, dpr = 1,
     return await fn(page, info);
   } finally { await browser.close(); srv.close(); rmSync(dir, { recursive: true, force: true }); }
 }
+
+/** One deterministic frame as a PNG buffer. Glitch history needs frames in order, so step forward. */
+export async function frame(page, t) {
+  const url = await page.evaluate((t) => { window.__r.render(t); return window.__r.canvas.toDataURL("image/png"); }, t);
+  return Buffer.from(url.split(",")[1], "base64");
+}
