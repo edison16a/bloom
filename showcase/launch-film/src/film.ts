@@ -140,3 +140,55 @@ function cut(id: string, t: number, a: number, b: number, fadeOut = 0) {
   el.style.opacity = on ? String(1 - (fadeOut ? seg(t, b, b + fadeOut) : 0)) : "0";
   return on;
 }
+
+// ---------------------------------------------------------------- frame
+export async function renderFrame(t: number) {
+  blurAmount = 0;
+  line("L1", t, 0.5, 2.0);
+  line("L2", t, 2.35, 3.5);
+  logo(t);
+  line("L3", t, bar(1), bar(2) - 0.45);
+
+  const w1 = window1(t, bar(4));
+  // Line four pushes up from below as window one leaves.
+  const l4 = $("L4");
+  const p4 = pushOffset(t, bar(4));
+  if (t >= bar(4) && t < bar(5) - 0.0) {
+    l4.style.opacity = String(1 - seg(t, bar(5) - 0.25, bar(5)));
+    l4.style.transform = `translateY(${(1 - p4) * 1080}px)`;
+    l4.style.filter = "none";
+  } else l4.style.opacity = "0";
+
+  window2(t, bar(5), bar(8));
+
+  const l5 = $("L5");
+  const p5 = pushOffset(t, bar(8));
+  if (t >= bar(8) && t < bar(9)) {
+    l5.style.opacity = String(1 - seg(t, bar(9) - 0.25, bar(9)));
+    l5.style.transform = `translateY(${(1 - p5) * 1080}px)`;
+  } else l5.style.opacity = "0";
+
+  // Five cuts, one every two beats.
+  const c = bar(9), step = BEAT * 2;
+  const r = cut("C0", t, c, c + step);
+  cut("C1", t, c + step, c + 2 * step);
+  cut("C2", t, c + 2 * step, c + 3 * step);
+  const e = cut("C3", t, c + 3 * step, c + 4 * step);
+  cut("C4", t, c + 4 * step, c + 5 * step, 0.3);
+
+  const endLine = c + 5 * step + 0.4;
+  line("L6", t, endLine, endLine + 2.0);
+  const endAt = endLine + 2.5;
+  const end = $("end");
+  end.style.opacity = String(seg(t, endAt, endAt + 0.4));
+  $("url").style.opacity = String(seg(t, endAt + 0.8, endAt + 1.2));
+
+  // Motion blur on whatever is pushing.
+  const blur = document.getElementById("mbBlur")!;
+  blur.setAttribute("stdDeviation", `0 ${blurAmount.toFixed(1)}`);
+  for (const id of ["W1", "W2", "L4", "L5"]) $(id).style.filter = blurAmount > 0.5 ? "url(#mb)" : "none";
+
+  if (w1) art.funnel.renderer.render(Math.max(0, t - bar(2)));
+  if (r) art.rocket.renderer.render(t - c + 2);
+  if (e) art.eclipse.renderer.render(t - c + 4);
+}
