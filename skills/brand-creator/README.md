@@ -50,3 +50,12 @@ These are made up companies from test runs: a savings app, a developer tool, an 
 | Gap between symbol and word in real lockups | about 0.20 of the symbol height |
 
 **The builder** (`scripts/build_brand.py`) reads a `brand.json`, sets the wordmark from 43 bundled SIL Open Font License fonts with real GPOS kerning (fontTools), converts it to outlines, measures each symbol's ink in Chrome so every lockup is optically balanced, and writes 18 SVGs, 42 PNGs, an offline `brand-board.html` (color pickers, any export size, client side zip) and a `<name>-brand-kit.zip`.
+
+## How it works
+
+1. **Brief.** Claude writes five lines: what the company does, its category archetype, three adjectives, a color strategy and how competitors look.
+2. **References.** `scripts/examples.py` pulls matching strong logos from the research set into a contact sheet to study proportions and restraint.
+3. **Candidates.** 10 to 16 wordmarks and 16 to 24 original symbols, rendered by `scripts/preview.py` in color, one color, as an app icon and at 32 and 16 px, so weak ideas show themselves.
+4. **Color.** Black led or one named saturated color, tried on the best lockup.
+5. **Build and review.** The kit is built, the board is rendered to a PNG, and Claude checks it against a checklist until it passes.
+6. **Deliver.** One recommendation with the reason, the board, the zip, and three to five ranked alternatives.
