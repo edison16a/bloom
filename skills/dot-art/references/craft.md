@@ -42,3 +42,9 @@ Score a render against this before showing it. Every line should pass.
 - Anticipate and overshoot: `eback` for arrivals, `ein` for departures, `eio` for morphs.
 - Stagger with a per-point or per-part delay. Nothing large starts on one frame.
 - Particles leave along one wind direction plus curl. Keep few (`alpha` falls fast) so the shape they left stays legible.
+
+## Backgrounds
+
+- 70% of the frame is quiet. One bright idea, off centre.
+- Composed for type on top: `fade.hole`, or keep the copy side dark.
+- No detail frequency near the headline's stroke width.
