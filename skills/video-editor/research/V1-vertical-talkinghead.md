@@ -186,3 +186,20 @@
 - The largest lift (+14.4 dB at 25 s) lands at the peak line (louder delivery, maybe plus music, inference).
 
 ## 3. Batch synthesis
+
+### Typical ranges (n = 25; median [IQR])
+- Length: 41 s [35–69].
+- Cuts/min, as measured (angle or source changes only): **8.6 [1.7–14.8]**, range 0–26.4. Edit-dense creators (Williamson, Codie, DOAC, Starter Story, Ali's essay) sit at **13–26/min**. Founder or podcast single-takes (Hormozi, Leila, Koe, Huberman) sit at 0–4/min measured, but they still change the picture every 3–6 s with punch-ins that scdet can't see.
+- Median shot: **5.3 s [3.1–17.8]**. For the edit-dense group it's **1.8–4.0 s**.
+- Caption swap interval, read from the 5 fps open sheets (not a waveform metric): **0.25–0.35 s** for 1-word styles (GaryVee, DOAC, Williamson), **0.5–0.8 s** for 2–3-word chunks (Hormozi, Codie, Koe), and about **0.2 s per highlighted word** for karaoke styles (Ali, Starter Story). Even "static" videos change something on screen about 2× per second.
+- LUFS: **−17.1 [−21.7 to −14.7]**. That splits into two clusters: the mastered group at **−14.3 to −16.6** (Hormozi Q&A, Koe #08, Codie #25, DOAC, Leila, Williamson, Starter Story) and the un-normalised group at −20 to −25 (Ali, MKBHD, YC, Huberman, Hormozi #01). GaryVee is hottest at −10.8. True peaks reach −0.0 to −1.0 dBTP in the mastered group.
+- BPM / beat strength / hits/min: 78 [74–91] / 2.21 [2.06–2.56] / 62 [56–65]. **Unreliable here (speech artefacts).** Only #10 shows a clear musical beat (7.19). Visually, none of the 25 videos cut to a music grid: % cuts on beat is 0.12 [0.03–0.19], which is chance level.
+
+### How pacing changes across the video
+- Median cuts/min by quarter: 9.4 → 7.4 → 7.4 → 6.8. **Most are front-loaded.** The hook section is the busiest (title card + first B-roll + first angle change all inside 0–4 s), then the body settles.
+- Exceptions that accelerate: Ali #05 (0 → 45/min, a calm essay into a fast montage), Starter Story #21 (6.9 → 20.7), Codie #25 (15 → 23), Williamson #19 (13.9 → 17.4 at the end). Only 7 of 25 clips have Q4 > Q1.
+- The common "second wind" is a burst of 3–5 fast cuts or inserts around 55–70% of the runtime (DOAC #13 Q2 spike, Williamson #20 Q2, Ali #06 graphics block at 40–60%). It re-hooks the viewer before the payoff.
+
+### How cuts relate to the beat
+- They don't. In this genre the **speech is the metronome**. Cuts land on phrase boundaries, on the stressed word, or on a counted list. DOAC #12 (the dropped orange-juice clip) cut on every spoken number, "five / six / seven / eight", about 0.9 s apart, alternating hand insert and face. Music, when present, is a low bed under the voice: no drops, no lifts timed to visuals. The visual energy comes from caption cadence, punch-ins and inserts, not from the soundtrack.
+- (Inference for the skill:) if music is added to a talking-head vertical, keep it low (−20 to −25 dB under the voice), and sync the *inserts* to stressed words rather than to bars.
