@@ -95,3 +95,15 @@ Glyph: `ramp message fill messageAbove scroll rowShift weights font fontScale ed
 - `morphPair(a, b)`: same point count, second position arrives in `p.color`.
 - `emblemScene([{ shape, at, size, color }])`: several logos on an LED wall.
 - `objectScene(geometry, {...})`: light, colour and motion for your own points.
+
+## The story pattern
+
+```glsl
+float born=.3+delay*2., end=8.;                      // per-part delay gives the stagger
+if(t<born){ p.alpha=0.; return; }                    // not here yet
+float g=eback(seg(t,born,born+.7));                  // arrive
+float rel=end+(1.-side)*.45+rnd.z*.2, age=t-rel;     // wind front crosses the object
+if(age>0.){ p.flag=1.; p.pos+=wind*(age*.5+age*age*2.5)+curl(p.pos*1.2)*.15*age; p.alpha=.5*exp(-age*7.)+.004*exp(-age); }
+```
+
+The last number is the share of points left floating. Scale it to count: about 1500 points in the air at once (.004 of 400k, .0013 of 1.2M).
