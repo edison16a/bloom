@@ -90,3 +90,14 @@
   - Single-take films (Lance, Wildcard, Tenera) stay flat on cuts and carry their energy in animation density instead.
 - Best practice seen: chaos to calm. sieve's quarters 97/19/8/0 tie the edit rate to the story (problem = frantic, product = calm and confident).
 - The Palmier pattern is a slow, comedic setup (shots of 3-7 s) that pays off with a 3 s strobe climax under one fixed caption. The burst works because of the slow build before it.
+
+### How cuts relate to the beat
+- Only about 14% of cuts land on the beat grid. The pros cut on speech phrases and on UI-event completion (a click lands, a panel settles), not on bars.
+- The beat is felt through **animation landings** instead: the hits/min (median 53) are mostly UI pops, chip pops and counter ticks.
+- Big structural moments sit on **music lifts** (all from energy_db_per_s):
+  - +27.5 dB at 6 s in 02, at the Create click and reveal.
+  - +19 dB at 27 s in 09 Comena, as the product demo starts.
+  - +16 dB at 2 s and +14.8 dB at 32 s in 14 Cluely, the second on the "$15 Million" reveal.
+  - +33 dB at 61 s in 20 Cascade, music re-entering after a silence beat at the story's resolution.
+  - +19.7 dB at 1 s in 25 sieve and +19.8 dB at 1 s in 12 WithAI: music slams in on frame 1 to 30 of the cold open.
+- Rule (inferred): put the turn ("Introducing X", "Let's see it in action", the money number) on a music lift, usually after 0.3-1 s of near-silence.
