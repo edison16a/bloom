@@ -373,3 +373,11 @@ void main(){
     s+=c*k; w+=k; }
   o=s/w;
 }`;
+
+export const COMPOSE_FS = `#version 300 es
+precision highp float;
+in vec2 v_uv; uniform sampler2D u_base,u_b1,u_b2; uniform float u_k; out vec4 o;
+void main(){ vec4 b=texture(u_base,v_uv); vec3 g=texture(u_b1,v_uv).rgb*.65+texture(u_b2,v_uv).rgb*.85;
+  vec3 r=b.rgb+g*u_k; float a=max(b.a,clamp(max(r.r,max(r.g,r.b)),0.,1.)); 
+  // Soft shoulder so bloom lifts colour without clipping it to flat white.
+  r=r/(1.+max(r-1.,0.)*.8); o=vec4(r,a); }`;
