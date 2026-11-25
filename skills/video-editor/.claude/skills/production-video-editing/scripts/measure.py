@@ -83,3 +83,54 @@ def motion(fr):
         ga = np.abs(np.diff(a, axis=1)).mean(); gb = np.abs(np.diff(b, axis=1)).mean()
         out.append((x, y, float(np.abs(b - a).mean()), float(np.log((gb + 1e-3) / (ga + 1e-3)))))
     return np.array(out) if out else np.zeros((0, 4))
+
+def audio(p, dur):
+    SR = 22050
+    x = np.frombuffer(subprocess.run(['ffmpeg', '-v', 'error', '-i', p, '-ac', '1', '-ar', str(SR), '-f', 'f32le', '-'],
+                                     capture_output=True).stdout, np.float32)
+    if len(x) < SR:
+        return {}
+    eb = run(['ffmpeg', '-hide_banner', '-nostats', '-i', p, '-af', 'ebur128=peak=true', '-f', 'null', '-']).stderr
+    g = lambda k: (re.findall(k + r':\s*(-?[0-9.]+)', eb) or [None])[-1]
+    n, h = 1024, 256
+    k = (len(x) - n) // h
+    F = np.abs(np.fft.rfft(x[np.arange(n)[None, :] + h * np.arange(k)[:, None]] * np.hanning(n), axis=1))
+    f = np.fft.rfftfreq(n, 1 / SR); fr = SR / h
+    low = np.maximum(np.diff(np.log1p(F[:, f < 150]), axis=0), 0).sum(1)
+    full = np.maximum(np.diff(np.log1p(F), axis=0), 0).sum(1)
+    hi = np.maximum(np.diff(np.log1p(F[:, f > 3000]), axis=0), 0).sum(1)
+    # tempo by comb search on low+full flux
+    o = low / (low.std() + 1e-9) + full / (full.std() + 1e-9)
+    o = np.maximum(o - np.convolve(o, np.ones(32) / 32, 'same'), 0)
+    best = (0, 0, 0)
+    for bpm in np.arange(70, 180, 0.25):
+        per = 60 / bpm * fr; m = int(len(o) / per) - 1
+        if m < 8: continue
+        for ph in np.arange(0, per, 2):
+            s = o[(ph + per * np.arange(m)).astype(int)].mean()
+            if s > best[0]: best = (s, bpm, ph / fr)
+    bpm, phase = best[1], best[2]
+    strength = best[0] / (o.mean() + 1e-9)  # >1.6 ≈ clear beat
+    # transient hits (SFX / impacts): peaks of hi+full flux well above local median
+    t = full + hi
+    loc = np.convolve(t, np.ones(int(fr)) / int(fr), 'same')
+    pk = np.where((t[1:-1] > 3 * loc[1:-1]) & (t[1:-1] > np.percentile(t, 97)) & (t[1:-1] >= t[:-2]) & (t[1:-1] >= t[2:]))[0] / fr
+    hits = []
+    for v in pk:
+        if not hits or v - hits[-1] > 0.25: hits.append(float(v))
+    # energy per second (dB) and biggest jumps (drops/lifts)
+    sec = [float(20 * np.log10(np.sqrt(np.mean(x[i:i + SR] ** 2)) + 1e-9)) for i in range(0, len(x) - SR + 1, SR)]
+    e = np.array(sec)
+    jumps = sorted([(float(e[i + 1] - e[i]), i + 1) for i in range(len(e) - 1)], reverse=True)[:4]
+    # speech share: fraction of seconds with strong 300-3000 Hz modulation at syllable rate (~4 Hz)
+    band = F[:, (f > 300) & (f < 3000)].sum(1)
+    sp = 0; tot = 0
+    for i in range(0, len(band) - int(fr), int(fr)):
+        seg = band[i:i + int(fr)]; seg = seg - seg.mean()
+        S = np.abs(np.fft.rfft(seg)); fq = np.fft.rfftfreq(len(seg), 1 / fr)
+        r4 = S[(fq > 2.5) & (fq < 7)].sum() / (S[(fq > 0.5)].sum() + 1e-9)
+        sp += r4 > 0.35; tot += 1
+    return dict(lufs=g(r'\bI'), lra=g('LRA'), true_peak=g('Peak'), bpm=round(bpm, 2), beat_phase=round(phase, 3),
+                beat_strength=round(float(strength), 2), hits_per_min=round(len(hits) / dur * 60, 1),
+                hits=[round(v, 2) for v in hits[:200]], energy_db_per_s=[round(v, 1) for v in sec],
+                biggest_lifts=[{'t': i, 'db': round(d, 1)} for d, i in jumps], speech_share=round(sp / max(tot, 1), 2))
