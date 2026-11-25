@@ -147,3 +147,18 @@ def qc(text, wav, say=None):
     st["wpm"] = round(len(norm_words(text)) / max(0.1, st["speech"]) * 60)
     return st
 
+
+# ---------------- commands ----------------
+def read_script(p):
+    lines, say = [], {}
+    for l in open(p):
+        l = l.strip()
+        m = re.match(r"#\s*say:\s*(.+?)\s*=\s*(.+)$", l)
+        if m: say[m.group(1)] = m.group(2)
+        elif l and not l.startswith("#"): lines.append(l)
+    return lines, say
+
+
+def parse_say(items):
+    return dict(x.split("=", 1) for x in (items or []))
+
