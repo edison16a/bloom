@@ -39,3 +39,16 @@ function anim(prop, keys, curve) {
     if (spatial) { try { prop.setSpatialTangentsAtKey(idx[k2], [0, 0, 0], [0, 0, 0]); } catch (e2) {} }
   }
 }
+function hold(prop, keys) {
+  for (var i = 0; i < keys.length; i++) {
+    prop.setValueAtTime(keys[i][0], keys[i][1]);
+    try { prop.setInterpolationTypeAtKey(prop.nearestKeyIndex(keys[i][0]), KeyframeInterpolationType.HOLD); } catch (e) {}
+  }
+}
+function tr(L, name) {
+  var m = { pos: 'ADBE Position', scale: 'ADBE Scale', op: 'ADBE Opacity', rot: 'ADBE Rotate Z', anchor: 'ADBE Anchor Point', rotX: 'ADBE Rotate X' };
+  return L.property('ADBE Transform Group').property(m[name]);
+}
+function hex(h) { h = h.replace('#', ''); return [parseInt(h.substr(0, 2), 16) / 255, parseInt(h.substr(2, 2), 16) / 255, parseInt(h.substr(4, 2), 16) / 255]; }
+function span(L, a, z) { L.inPoint = a; L.outPoint = z; }
+function fx(L, match) { return L.property('ADBE Effect Parade').addProperty(match); }
