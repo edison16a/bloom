@@ -25,3 +25,11 @@ Score a render against this before showing it. Every line should pass.
 - Pick shadow, body and highlight as a ramp in one direction (indigo to cyan to white; wine to hot pink to blush). Add at most one accent far away on the wheel, in under 5% of cells (gold stamens in a pink flower).
 - Space gradients need four stops and `highlight` around .75 so bright cells still reach white.
 - LED looks: constant size, brightness follows tone (`size: [.74,.74]`, `shade: 1`) plus a faint `ghost` grid. Print looks: size follows tone (`size: [.18, 1.04]`, `shade` under .3), no ghost. For solid objects in hex or octagon, keep size near-constant (`[.85,.95]`) and let `shade: .85` carry depth.
+
+## Texture
+
+- Sizes: hex 6.5-9 px, octagon 7-8 at `size` .88+ (smaller reads as round), LED squares 4-5, dither 4, letters 4x7 to 6x11.
+- Letters: ramp runs from sparse to dense with two leading spaces, so near-black is empty. Message only in lit areas (`messageAbove` .55-.75) on objects; everywhere (`fill: "message"`) on backgrounds.
+- Cap weights at 700 for cells under 5 px. 800 closes up the counters.
+- `edges: 1` on solid objects with clear overlaps. 0 on fur, foliage, glass.
+- `rowShift` coprime with the message length so the phrase steps diagonally, never in stripes.
