@@ -75,3 +75,20 @@ export function setupPrompt(id: SkillId): string {
     `When you are done, tell me in two lines what you installed and anything I still need to do. Then suggest one thing to try, like ${tryLine[id]}.`,
   ].join("\n");
 }
+
+/** The prompt that installs all three skills in one go. */
+export function setupAllPrompt(): string {
+  const steps = [
+    fetchStep(skills.map((s) => s.path)),
+    skillsFolderStep,
+    ...skills.flatMap((skill) => skillSteps(skill).map((step) => `${skill.name}: ${step}`)),
+    `Delete ${TMP}.`,
+  ];
+  return [
+    `Set up all three Bloom skills (${site.repoUrl}) on this machine: ${skills.map((s) => s.name).join(", ")}.`,
+    "",
+    number(steps),
+    "",
+    "When you are done, give me one line per skill with what is ready and anything I still need to do.",
+  ].join("\n");
+}
