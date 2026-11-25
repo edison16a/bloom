@@ -89,3 +89,21 @@ def fetch(url, path, max_mb=250):
     if not probe(path): os.remove(path); return False      # must really be media
     return True
 
+
+def probe(path):
+    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration:stream=codec_type,width,height", "-of", "json", path],
+                       capture_output=True, text=True)
+    try: d = json.loads(r.stdout)
+    except Exception: return None
+    if not d.get("streams"): return None
+    v = [s for s in d["streams"] if s["codec_type"] == "video"]
+    return {"dur": float(d.get("format", {}).get("duration") or 0), "w": v[0].get("width") if v else 0, "h": v[0].get("height") if v else 0,
+            "audio": any(s["codec_type"] == "audio" for s in d["streams"])}
+
+
+# ---------------------------------------------------------------- measuring music
+def pcm(path, sr=22050):
+    import numpy as np
+    r = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"], capture_output=True)
+    return np.frombuffer(r.stdout, dtype=np.float32), sr
+
