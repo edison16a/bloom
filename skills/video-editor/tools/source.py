@@ -366,3 +366,30 @@ def cmd_youtube(a):
             print("  saved", os.path.relpath(f, ROOT), inf.get("uploader"))
     if not n: print("  no CC BY result. Try nasa, commons or archive.")
 
+
+def words(path):
+    m = next((w for w in WHISPER if w and os.path.exists(w)), None)
+    if not m: sys.exit("no whisper model")
+    with tempfile.TemporaryDirectory() as td:
+        w = os.path.join(td, "a.wav"); subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", path, "-ar", "16000", "-ac", "1", w], check=True)
+        subprocess.run(["whisper-cli", "-m", m, "-f", w, "-oj", "-of", os.path.join(td, "t"), "-np", "-l", "en", "-ml", "1", "-sow"], capture_output=True)
+        seg = json.load(open(os.path.join(td, "t.json")))["transcription"]
+    return [(s["offsets"]["from"] / 1000, s["offsets"]["to"] / 1000, s["text"].strip()) for s in seg if s["text"].strip()]
+
+
+def cmd_phrase(a):
+    norm = lambda s: re.sub(r"[^a-z0-9']", "", s.lower())
+    ws = words(a.file); want = [norm(w) for w in a.text.split()]; toks = [norm(w[2]) for w in ws]; best = (0, 0)
+    for i in range(len(toks) - len(want) + 1):
+        m = sum(x == y for x, y in zip(toks[i:i + len(want)], want)) / len(want)
+        if m > best[0]: best = (m, i)
+    if best[0] < 0.6: sys.exit(f"not found (best match {best[0]:.0%}). Heard: " + " ".join(w[2] for w in ws)[:1500])
+    sel = ws[best[1]:best[1] + len(want)]; s = max(0, sel[0][0] - a.pad); e = sel[-1][1] + a.pad
+    out = os.path.join(adir(a.job, "video"), "phrase-" + slug(a.text)[:40] + ".mp4")
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", f"{s:.3f}", "-to", f"{e:.3f}", "-i", a.file, "-c:v", "libx264", "-crf", "14", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "256k", out], check=True)
+    json.dump({"src": a.file, "in": s, "out": e, "words": [[round(w[0] - s, 3), round(w[1] - s, 3), w[2]] for w in sel]}, open(out + ".words.json", "w"), indent=1)
+    p = os.path.join(ROOT, "work", a.job, "assets", "licences.json")
+    for r in (json.load(open(p)) if os.path.exists(p) else []):
+        if os.path.abspath(os.path.join(ROOT, r["file"])) == os.path.abspath(a.file): log(a.job, **{**r, "file": os.path.relpath(out, ROOT)}); break
+    print(f"  {os.path.relpath(out, ROOT)}  {e-s:.2f}s  match {best[0]:.0%}  word times in .words.json")
+
