@@ -323,3 +323,41 @@ As a population, showreel cuts sit near chance on the beat (0.28). The beat-lock
 - Montage pieces alternate lateral directions (04). Brand reels drift leftward (12).
 - Speed ramps can be reversed at the tail so a clip's motion matches the next clip's direction (B8).
 - Line-led camera scrolls (13) and in-world 3D text (11) move the viewer *through* the copy instead of cutting.
+
+### The 10 most reusable moves
+Times assume 30 fps.
+
+1. **Word-synced build beside the speaker (08).**
+   - Text: per-word layers, or R4 with Range Type = words. Each word 2–3 f opacity 0→100 plus blur 8→0, expo-out, and no travel.
+   - Layout: stacked left in the open third, with the keyword scaled ~2×.
+   - SFX: a soft pop on the keyword only.
+2. **Name behind the head (08, 04).**
+   - Setup: roto or segment the speaker; text sits between the plate and the cut-out.
+   - Text: huge bold sans in the upper third, revealed word by word (R4, words, 4 f each) or sliding up out of a matte (10 f, expo-out).
+   - SFX: a sub boom on the first word.
+3. **Kinetic opener (02, 11, 03).**
+   - Text: one word per beat (14–15 f), background invert per word, rotating entry styles (sink 104→100 / rotate 30°→0 / tracking blur).
+   - SFX: a tick or whoosh on every beat, alternating samples.
+4. **Text out of a line (B1, 11, 13).**
+   - Line: a trim path draws from the centre over 12 f, expo-out.
+   - Text: an alpha-matted text block rises 60 px from behind the line, starting at f4.
+   - Copy below: an inverted matte, moving down.
+   - SFX: a swish, then a tick.
+5. **Stat counter or badge swap (01, 15).**
+   - Text: a slider-driven count over 15–25 f, expo-out, with a scale pop of 100→108→100 over 6 f on the final value.
+   - SFX: digit ticks and a final ding.
+6. **Impact shake on a punchline (B5).**
+   - Shake: `wiggle(15, amp)` with amp decaying 10→0 px over 10 f, plus motion blur and Motion Tile at 125% with mirror edges.
+   - SFX: impact on the same frame, plus a 1 f white flash (optional, seen in 10).
+7. **Zoom-through-letter or whip exit (14, 10).**
+   - Exit: a 2 f directional-blur whip, then a 4–6 f expo-in scale to 2000% on a letter or eye, then cut.
+   - SFX: the whoosh leads by 1 f; a riser under the zoom; an impact on the new shot's first frame.
+8. **Strobe burst behind a locked logo or title (12, 07).**
+   - Picture: 6–8 one-frame shots, then a 1–2 s hold.
+   - SFX: a riser across the burst, then an impact.
+9. **3D or tracked in-world text (11, 13, B2, B6).**
+   - Tracking: track a surface or the nose, parent the text to a null, and offset it into the open space (below the chin or beside the head).
+   - Cadence: in fly-throughs, one word per facade at about 1.2–1.4 s.
+10. **Speed ramp into a beat (B8).**
+    - Time remap: peak speed at the segment start, decelerating to normal on the downbeat. Reverse the tail to match the next shot's direction, and add Pixel Motion Blur.
+    - SFX: a whoosh whose peak sits on the max-velocity frame.
