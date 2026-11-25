@@ -17,7 +17,7 @@ export function Hero() {
             <span className={styles.bloom}>Bloom</span> your idea into success
           </h1>
           <p className={styles.sub}>
-            Art, a launch film and a logo. Three skills for your agent.
+            Three AI agents that help you make your site art, your launch film and your logo.
           </p>
           <div className={styles.actions}>
             <SetupPrompt prompt={setupAllPrompt()} label="Copy setup prompt" showPrompt={false} bare />
