@@ -149,3 +149,36 @@ def analyse(path):
             "events_per_min": round(ev), "range_db": round(float(np.percentile(rms, 95) - np.percentile(rms, 10)), 1),
             "curve": " ".join(str(int(round(v))) for v in rms[:180])}
 
+
+def score(a, lo, hi, need):
+    s = 0.0; b = a["bpm"]
+    near = min(abs(b * m - min(max(b * m, lo), hi)) / 10 for m in (0.5, 1, 2))
+    s -= 1.6 * min(near, 2)
+    s += 2.0 * min(a["beat_strength"], 1.0)                       # a clear pulse to cut on
+    s += 0.14 * min(a["lift_db"], 12)                             # something to turn on
+    s += 1.0 if a["bass_share"] > 0.16 else 0
+    s += min(a["events_per_min"], 220) / 220
+    s += 0.5 if a["range_db"] >= 4 else -0.3                      # some shape, not a flat loop
+    s -= 1.5 if a["dur"] < need else 0
+    s -= 0.05 * max(0, a["intro_s"] - 12)
+    return round(s, 2)
+
+
+# ---------------------------------------------------------------- Mixkit
+def mixkit_audio(kind, paths, limit=40):
+    out = []
+    for p in paths:
+        try: s = get(f"https://mixkit.co/{kind}/{p}")
+        except Exception as e: warn("mixkit " + p, e); continue
+        for card in s.split('data-test-id="audio-player"')[1:limit + 1]:
+            u = re.search(r'preview-url-value="([^"]+)"', card); t = re.search(r'card__title">\s*(.*?)\s*<', card, re.S)
+            d = re.search(r'data-test-id="duration">\s*(\d+):(\d+)', card); by = re.search(r"by ([^<\n]+)", card)
+            if not u or not t: continue
+            tags = re.findall(r'meta-links__link"[^>]*>([^<]+)<', card)
+            out.append({"url": html.unescape(u[1]), "title": html.unescape(t[1]), "dur": int(d[1]) * 60 + int(d[2]) if d else 0, "by": (by[1].strip() if by else "Mixkit"),
+                        "tags": tags, "source": "Mixkit", "licence": MIXKIT, "page": "https://mixkit.co/" + kind + "/" + p})
+    seen, u = set(), []
+    for c in out:
+        if c["url"] not in seen: seen.add(c["url"]); u.append(c)
+    return u
+
