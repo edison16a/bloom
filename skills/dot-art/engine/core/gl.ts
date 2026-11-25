@@ -64,3 +64,15 @@ export function createTarget(gl: GL, w: number, h: number, o: { count?: number; 
   gl.clear(gl.COLOR_BUFFER_BIT);
   return { fbo, tex, w, h, depth };
 }
+
+export function deleteTarget(gl: GL, t?: Target) {
+  if (!t) return;
+  t.tex.forEach((x) => gl.deleteTexture(x));
+  if (t.depth) gl.deleteRenderbuffer(t.depth);
+  gl.deleteFramebuffer(t.fbo);
+}
+
+/** Fullscreen triangle, no buffers. */
+export const VS_FULL = `#version 300 es
+out vec2 v_uv;
+void main(){ vec2 p=vec2((gl_VertexID<<1)&2, gl_VertexID&2); v_uv=p; gl_Position=vec4(p*2.-1.,0.,1.); }`;
