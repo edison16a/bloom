@@ -117,3 +117,31 @@ def rows_svgl():
                 yield dict(brand=title.group(1), source="svgl", kind=kind, file=f, hex="",
                            url=url.group(1) if url else "", category="; ".join(cats), basis="listed in svgl")
 
+
+def rows_yc():
+    """YC companies listed in research/yc_successful.csv (Series A or later, public, acquired, or a YC top company)."""
+    src = os.path.join(ROOT, "research", "yc_successful.csv")
+    if not os.path.exists(src):
+        return
+    d = os.path.join(CACHE, "yc")
+    os.makedirs(d, exist_ok=True)
+
+    def dl(r):
+        f = os.path.join("yc", r["slug"] + ".img")
+        p = os.path.join(CACHE, f)
+        if not os.path.exists(p):
+            try:
+                blob = get(r["logo_url"], 30)
+            except Exception:
+                return None
+            open(p, "wb").write(blob)
+        basis = "YC %s, %s%s" % (r["batch"], r["outcome"] if r["outcome"] == "public" else r["highest_round"],
+                                 ", YC top company" if r["top_company"] == "True" else "")
+        return dict(brand=r["name"], source="yc", kind="raster", file=f, hex="", url=r["website"],
+                    category=r["industry"], basis=basis)
+
+    with ThreadPoolExecutor(8) as ex:
+        for row in ex.map(dl, list(csv.DictReader(open(src)))):
+            if row:
+                yield row
+
