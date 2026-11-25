@@ -50,3 +50,15 @@ function pushOffset(t: number, at: number): number {
 
 // ---------------------------------------------------------------- dot art renderers
 interface Live { renderer: DotRenderer; canvas: HTMLCanvasElement; scene: Scene }
+async function live(id: string, scene: Scene, w: number, h: number): Promise<Live> {
+  const canvas = $(id) as unknown as HTMLCanvasElement;
+  const renderer = new DotRenderer(canvas, scene, { quality: 1 });
+  renderer.resize(w, h, 1);
+  await renderer.ready;
+  return { renderer, canvas, scene };
+}
+
+let art: { funnel: Live; rocket: Live; eclipse: Live };
+
+// ---------------------------------------------------------------- logo
+let stem: SVGRectElement, petal: SVGGElement, word: SVGGElement, wordBase = "";
