@@ -340,3 +340,29 @@ def cmd_video(a):
         except Exception as e: warn(src, e)
         if not got: print(f"  {src}: nothing usable for '{a.q}'")
 
+
+def cmd_youtube(a):
+    d = adir(a.job, "video"); base = ["yt-dlp", "--no-playlist", "--no-warnings", "-f", "bv*[height<=1080]+ba/b[height<=1080]", "--merge-output-format", "mp4"]
+    if a.url:
+        if not a.third_party or not a.section: sys.exit("--url needs --section A-B (12 s max) and --third-party 'reason'")
+        s, e = [float(v) for v in a.section.split("-")]
+        if e - s > 12: sys.exit("excerpt longer than 12 s")
+        inf = json.loads(subprocess.run(["yt-dlp", "--no-warnings", "-J", a.url], capture_output=True, text=True).stdout)
+        f = os.path.join(d, slug("yt-" + inf["title"]) + f"-{int(s)}.mp4"); cc = "creative commons" in (inf.get("license") or "").lower()
+        subprocess.run(base + ["--download-sections", f"*{s}-{e}", "--force-keyframes-at-cuts", "-o", f, a.url], check=True)
+        log(a.job, file=os.path.relpath(f, ROOT), kind="video", title=inf["title"], by=inf.get("uploader"), source="YouTube", page=a.url,
+            licence="CC BY" if cc else "UNLICENSED excerpt of a third-party video (" + a.third_party + ")", credit=f'{inf["title"]}, {inf.get("uploader")}' if cc else None)
+        print("  saved", os.path.relpath(f, ROOT), "CC BY" if cc else "UNLICENSED: list it in the delivery note"); return
+    u = "https://www.youtube.com/results?" + urllib.parse.urlencode({"search_query": a.q, "sp": "EgIwAQ=="})      # YouTube's Creative Commons filter
+    r = subprocess.run(["yt-dlp", "--flat-playlist", "--no-warnings", "-J", "--playlist-end", "12", u], capture_output=True, text=True)
+    n = 0
+    for e in (json.loads(r.stdout or "{}").get("entries") or []):
+        if n >= min(a.n, CAP) or (e.get("duration") or 0) > 1800: continue
+        inf = json.loads(subprocess.run(["yt-dlp", "--no-warnings", "-J", e["url"]], capture_output=True, text=True).stdout or "{}")
+        if "creative commons" not in (inf.get("license") or "").lower(): continue
+        f = os.path.join(d, slug("yt-" + inf["title"]) + ".mp4"); subprocess.run(base + ["--max-filesize", f"{a.max_mb}M", "-o", f, e["url"]])
+        if os.path.exists(f):
+            n += 1; log(a.job, file=os.path.relpath(f, ROOT), kind="video", title=inf["title"], by=inf.get("uploader"), source="YouTube", licence="CC BY 3.0 (as marked by the uploader)", credit=f'{inf["title"]}, {inf.get("uploader")}, CC BY', page=e["url"])
+            print("  saved", os.path.relpath(f, ROOT), inf.get("uploader"))
+    if not n: print("  no CC BY result. Try nasa, commons or archive.")
+
