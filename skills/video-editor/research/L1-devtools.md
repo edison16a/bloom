@@ -154,3 +154,16 @@
 10. **Social-proof stutter burst before the end card.** In the last 15% of the film, flash 8–12 tweets, testimonials or logos at 6–8 frames each (0.2–0.27 s), one hit per card on 8ths, then cut to the calm logo card and let the music ring out for 3–4 s. (Warp 2.0 125–130 s; Zed meetup photos; Config's final collage.)
 
 Bonus moves: brand-colour full-bleed flips per feature (Notion, Superhuman, Config), with each feature getting its own background colour, swapped on the downbeat. Mono caps feature list ("NEW / COMPACT MODE …", ~1 s per item, hard swaps; Raycast) as a closing rapid-fire recap.
+
+### Amateur tells the pros avoid
+- **Flat, quiet beds with no transient layer.** Pros run either a loud, flat bed (-10 to -12 LUFS, LRA 2–7) or a deliberate silence used as a device. Nobody sits at a timid -20 LUFS with no ticks unless it is a calm teaser.
+- **Cutting every shot exactly on the beat:** pros only place ~20–30% of cuts on the beat. Rhythm comes from SFX on the grid and from in-shot UI events.
+- **Hard cuts between UI screens of the same product.** Pros use morphs, camera travel, rack focus or slide-ups so the product feels like one continuous space (8 of 25 films have ≤2 hard cuts).
+- **Long holds on static full-screen UI.** In pro films the UI is always moving: cursor, typing, panels building, slow push. A static screenshot held more than ~2 s does not occur in this batch.
+- **Text that pops in all at once with a generic fade.** Pros reveal per word or per character, or use a mask or rise, and keep text to 2–7 words.
+- **Busy multi-font typography.** One grotesk family plus one accent (mono for tech, serif for heritage); never more.
+- **Reversing camera direction mid-sequence.** Direction changes only at chapter breaks.
+- **Logo end card with the music still at full level.** Pros fade the music out over 3–5 s (20–40 dB) under a held logo, and drop the URL in 0.5–1 s after the logo.
+
+### Note for the user's "too slow, not energetic" problem
+The energetic references in this batch are Config 2025 (68 cuts/min, 130 BPM, -15.7 LUFS, 99 hits/min), Arc on Windows (54 cuts/min, 125 BPM, -9.8 LUFS), Notion 3.0 (120 BPM, beat strength 7.4, 83 hits/min), Loom AI (-10.3 LUFS, 87 hits/min) and Superhuman (130 BPM, -11.6 LUFS). The shared formula: tempo 120–130, a loud flat bed (around -10 to -13 LUFS), a transient on every 8th note, and a visual event (cut, morph, type, pop) every 0.5–1 s, even when there are few hard cuts. The calm Linear and Framer pieces are the ones to avoid copying for that brief.
