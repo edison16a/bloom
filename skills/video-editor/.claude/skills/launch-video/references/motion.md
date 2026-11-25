@@ -36,3 +36,17 @@ One per film: the product's own soft brand colour, plain black, plain white, or 
 | Caption over a demo | 34 px, bottom |
 
 3 to 7 words. On screen 1.4 to 2.5 s. Then nothing for at least 0.5 s. Sentence case, full stop allowed. `line(...)` makes it.
+
+## Rhythm
+- A 35 s film has 9 to 14 picture events. Not more. Moves that help the story are events, decoration is not.
+- With music: start each move so it **lands** on the beat. Cut the sentence film (0.email) on every beat or second beat. Cut the window film on the bar.
+- The turn: 0.4 to 1.5 s of black or white with no sound, then the product with the music.
+- Never hold a moving camera under a line that has to be read.
+
+## Endings (seen in all of them)
+1. The last picture fades or becomes the field, 0.3 s.
+2. Logo alone, centred, 0.4 s fade. No shine or bounce. A line drawn logo (Ghost) is allowed if it is the real mark.
+3. One line or the URL under it 0.8 s later. Hold 1.5 to 2.5 s.
+
+## From the references, but leave out
+These work in those films and look generated when copied: 0.email's purple glow, spinning ring and wall of repeated words; Emergent's glowing teal words; floating clouds of app icons; Donna's hour counter with stacked panels; white shine on a logo.
