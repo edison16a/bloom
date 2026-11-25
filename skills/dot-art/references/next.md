@@ -16,3 +16,14 @@
 | `className` `css` `fallback` `onReady` `onError` | | |
 
 It fills its parent, so the parent needs a height.
+
+## Pass ids from server components
+
+Scenes hold functions, which cannot cross the server boundary.
+
+```tsx
+"use client";
+import { DotArt } from "@/components/dot-art/react";
+import { bloom } from "@/components/dot-art/scenes/bloom";
+export const Flower = () => <DotArt scene={bloom} label="A pink flower made of letters" />;
+```
