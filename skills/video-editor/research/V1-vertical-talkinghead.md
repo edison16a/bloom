@@ -238,3 +238,10 @@ Six hook types appear:
 6. **Big-number stamp** on the founder at 0 s ("$115K", "$1M", Starter Story).
 
 Every hook puts readable text on screen at frame 0–12. None opens with a logo or a slow fade-in.
+
+### Loop endings
+- True seamless loops are rare (none confirmed). Common endings:
+  - an **open question** (MKBHD "So… what happened there.")
+  - a **scaled-up payoff caption** that mirrors the title (Williamson "YOU ARE.", Hormozi "has to add **zeros**")
+  - a **CTA button** (Codie subscribe click, Starter Story "Chris to come break this down")
+- Endings are abrupt: the last word lands and the video cuts out within about 0.3–0.5 s. There are no outros, end cards or fades.
