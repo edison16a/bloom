@@ -10,3 +10,16 @@
 - **No text on top of a face,** and nothing that flickers on for under 1.5 s.
 - **No sound on text or panels.** No whoosh, pop or riser in an update or interview.
 - **Never generate music, sound or footage.** Find real ones (`sourcing.md`).
+
+## Text
+| Use | Style |
+|---|---|
+| Name | One line, 44 to 48 px semibold, white. Role below in 32 px regular. Bottom left on the safe margin. No box. In at 0.5 s over 8 frames, out at 4 to 5 s |
+| Spoken phrase | 72 to 92 px medium white sans, two or three short lines on the empty side. Each word lands on the spoken word (opacity over 6 frames with a little blur). Exactly one word in an italic serif (Instrument Serif Italic), white or the brand colour. At most one phrase every 12 to 15 s |
+| List | 38 to 44 px medium white. One line per spoken item, same left edge, each appearing as it is said. No numbers, bullets or icons |
+| Caption | 34 px medium white, centred at the bottom, one or two lines, soft shadow, no background. Match the spoken words exactly. Hide it while a phrase or list shows the same words |
+| End line | One sentence, or just the logo |
+
+Fonts: the product's own typeface if it is installed, otherwise Inter. At most one serif italic accent. White on picture, near black on white. One family, two weights. All text must read at a glance on a phone: if it doesn't, make the words fewer, not the font fancier.
+
+If the background is bright, darken and soften the room behind the person (`tools/matte/split.py --room 0.45 --near 0.88 --blur 10`), so plain white text just works. Keep the wall bright near the person (`--near`) and let it fall off: a flat grey room with a hard hair edge looks like a cut out.
