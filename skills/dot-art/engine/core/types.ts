@@ -120,3 +120,13 @@ export type TextureInput =
   | { image: TexImageSource | (() => TexImageSource); dynamic?: boolean; linear?: boolean; flipY?: boolean }
   | { src: string; dynamic?: boolean; linear?: boolean; flipY?: boolean }
   | { data: Float32Array; width: number; height: number; linear?: boolean; dynamic?: boolean };
+
+interface SourceBase {
+  uniforms?: Record<string, UniformValue | ((t: number) => UniformValue)>;
+  textures?: Record<string, TextureInput>;
+  /** Extra GLSL functions shared by the hook. */
+  common?: string;
+}
+
+/** Full-frame GLSL: `void scene(vec2 uv, vec2 p, inout Cell c)`. */
+export interface ShaderSource extends SourceBase { type: "shader"; glsl: string; blend?: "over" | "add" }
