@@ -61,3 +61,12 @@ function settleFlat(L, t, dur, lean) {
   anim(tr(L, 'op'), [[t, 0], [t + 0.3, 100]], OUT);
   var b = blurOf(L); anim(b, [[t, 14], [t + 0.55, 0]], OUT);
 }
+// Panel arriving over the window: 60 px travel, fade, small blur. No overshoot.
+function arrive(L, t, dir, dist) {
+  var p = tr(L, 'pos').value, d = dist || 60, v = { up: [0, d], down: [0, -d], left: [d, 0], right: [-d, 0] }[dir || 'up'];
+  anim(tr(L, 'pos'), [[t, [p[0] + v[0], p[1] + v[1]]], [t + 0.7, [p[0], p[1]]]], EXPO);
+  anim(tr(L, 'op'), [[t, 0], [t + 0.28, 100]], OUT); mb(L);
+}
+function leave(L, t) { anim(tr(L, 'op'), [[t, 100], [t + 0.25, 0]], INOUT); var b = blurOf(L); anim(b, [[t, 0], [t + 0.25, 14]], INOUT); }
+// Rows fanning in one after another: 0.07 s apart.
+function fan(layers, t, gap) { for (var i = 0; i < layers.length; i++) arrive(layers[i], t + i * (gap || 0.07), 'up', 46); }
