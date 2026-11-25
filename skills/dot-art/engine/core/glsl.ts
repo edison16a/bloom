@@ -114,3 +114,9 @@ void main(){
   o_color=vec4(max(c.color,0.)*a,a);
   o_data=vec4(sat(c.tone)*a,c.depth*a,c.flag*a,a);
 }`;
+
+const PT = /* glsl */ `
+struct Pt { vec3 pos; vec3 nrm; vec3 color; float tone; float size; float flag; float alpha; vec4 extra; };
+/** Flip a normal to face the camera: thin surfaces are lit on both sides. */
+vec3 faceView(vec3 n, vec3 pos){ return dot(n,u_eye-pos)<0.?-n:n; }
+`;
