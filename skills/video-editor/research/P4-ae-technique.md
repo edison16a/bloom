@@ -290,3 +290,36 @@ The exceptions build up instead: 03 goes 13 → 45/min, and 10's middle montage 
 
 ### Cuts vs beat
 As a population, showreel cuts sit near chance on the beat (0.28). The beat-locked parts are the **kinetic-type intros** (02 at .52) and the **agency montage** (12 at .42). Narrative or demo sections cut on content (action and speech) and land a **transient on the cut instead**: 03 .57, 08 .60, 04 .48. The practical rule is that each cut should be either on the beat or carry an SFX. Bare off-beat cuts are rare in the polished pieces (inference from the two shares adding up to ~0.6–0.9 in 03, 04, 05, 08 and 09).
+
+### SFX density and placement
+- About 1 transient per second (52–80/min IQR); the high-energy reels run 93–112/min (03, 04, 09).
+- Mix level: overall -9 to -12 LUFS for music-led reels, -14 for talking head with VO, and -17.5 for the long doc.
+- Placement: on cuts (29% median, up to 60%), on each kinetic word (beat), and on UI or number ticks.
+- The quiet-but-effective case is 02: only 15 hits/min, with the energy coming from a loud (-7.2 LUFS) music track and word swaps.
+- For transition SFX, use the W1/W2 timings (whoosh leads by about 0–1 f, impact lags by 1–2 f).
+
+### Text animation conventions (from sheets and Half B)
+- **Entry duration:** about 8–15 f for a title (R1/R2). Kinetic words hold one beat (~14 f @30). Talking-head word builds run ~5–7 f per word, with a 2–3 f opacity/blur-in and *no* positional travel, so the eye stays on the face.
+- **Easing:** strong expo-out into rest everywhere. Linear motion was not seen except for slow tracking drifts and 3D camera dollies.
+- **Exits:** usually a hard cut or a 2-frame blur whip. Graceful fade-outs are rare in the fast pieces.
+- **Polish layers:** blur 20–50 → 0, a colour flash on entry (red → white), and tracking +5…+30 drift during the hold.
+- **Type classes:**
+  - heavy geometric sans: Poppins/Montserrat class, most common for talking head
+  - condensed display: Bebas/Anton class, for doc and YouTube two-tier lockups
+  - wide-tracked thin caps: trailer style
+  - editorial serif with italic accent: 07, 12
+  - handwritten script plus connector lines: 08, 04
+- **Lockups:** two-tier (small regular over large bold keyword, often yellow); a keyword at 2× size inside a stacked phrase; outline/fill echo stacks; a giant 20%-opacity background word behind a small foreground line (05).
+
+### Text placement around faces (observed in 08, 13, 15, 04, 06)
+- **Name or title behind the head:** upper third, large, partly occluded by the head (requires a roto/segmentation layer).
+- **Explanatory copy in the open third:** left- or right-aligned stacked lines in the negative space beside the speaker, at roughly eye-to-shoulder height. Never over the face.
+- **Captions or single words:** chest height, centred under the chin, about 1 word at a time.
+- **Stat badge** beside the face at cheek height (15). Tracked labels sit *below* the chin (B6).
+- **Cut-out speaker on a graphic band**, with copy in two columns either side (08). Person-silhouette with a vertical word inside (08).
+
+### Flow and direction
+- Measured flow is mostly static or lateral (← → dominate in 04, 05, 09, 12). Forward Z+ appears in fly-through openers (01, 11).
+- Montage pieces alternate lateral directions (04). Brand reels drift leftward (12).
+- Speed ramps can be reversed at the tail so a clip's motion matches the next clip's direction (B8).
+- Line-led camera scrolls (13) and in-world 3D text (11) move the viewer *through* the copy instead of cutting.
