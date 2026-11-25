@@ -15,3 +15,12 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CACHE = os.path.join(ROOT, "research", "cache")
 CHUNK = 400
 
+
+def find_chrome():
+    for c in [os.environ.get("CHROME", ""), "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome",
+              "/Applications/Chromium.app/Contents/MacOS/Chromium", shutil.which("google-chrome") or "",
+              shutil.which("chromium") or "", shutil.which("chromium-browser") or ""]:
+        if c and os.path.exists(c):
+            return c
+    sys.exit("Chrome not found. Set CHROME=/path/to/chrome")
+
