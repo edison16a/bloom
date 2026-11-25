@@ -42,3 +42,21 @@ export function samplePoints(g: Geometry, count = 120000): Geometry {
   }
   return { position: pos, normal: nrm, color: col };
 }
+
+export function parseOBJ(text: string): Geometry {
+  const v: number[] = [], n: number[] = [], P: number[] = [], N: number[] = [];
+  for (const line of text.split("\n")) {
+    const t = line.trim().split(/\s+/);
+    if (t[0] === "v") v.push(+t[1], +t[2], +t[3]);
+    else if (t[0] === "vn") n.push(+t[1], +t[2], +t[3]);
+    else if (t[0] === "f") {
+      const c = t.slice(1).map((s) => s.split("/").map((x) => (x ? parseInt(x, 10) : 0)));
+      const at = (i: number, len: number) => (i < 0 ? len / 3 + i : i - 1);
+      for (let i = 1; i + 1 < c.length; i++) for (const k of [c[0], c[i], c[i + 1]]) {
+        const a = at(k[0], v.length) * 3; P.push(v[a], v[a + 1], v[a + 2]);
+        if (k[2]) { const b = at(k[2], n.length) * 3; N.push(n[b], n[b + 1], n[b + 2]); }
+      }
+    }
+  }
+  return { position: new Float32Array(P), normal: N.length === P.length ? new Float32Array(N) : undefined };
+}
