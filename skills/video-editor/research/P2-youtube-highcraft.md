@@ -178,3 +178,16 @@ The brief asks for 2023–2026 videos. Five picks are older, but they are kept a
 - Music: 139 BPM at strength 1.55. It is the highest-tempo VO piece in the batch, and its first-3-min cpm (19) exceeds its overall cpm (16.6).
 
 ## 3. Batch synthesis
+
+### Typical ranges (24 valid videos; 17 excluded from cut stats)
+- **Cuts/min, whole video:** median 11.8, IQR about 8.0–16.6.
+- **Cuts/min, first 3 min:** median 15.0, IQR 9.3–19.5.
+- **Cuts/min, first 30 s:** median 16.
+- **Median shot:** median 2.86 s, IQR 1.62–4.42 s.
+  - MKBHD and Mrwhosetheboss sit at 5.4–5.7 s.
+  - MrBeast, Vox montage, Yes Theory and Johnny Harris sit at 1.1–1.6 s.
+- **BPM:** median 90, IQR 81.5–117.5. **Beat strength:** median 1.33, IQR 1.26–1.46. Only 4 of 25 are above 1.6, and those are HAI and the stylised explainers.
+- **LUFS:** median −17.4, IQR −20.1 to −14.7.
+  - Loudest: Veritasium −11.9, MrBeast −12.2, Mrwhosetheboss −13.2.
+  - Quietest: HAI and Wendover at −23 to −25 (unverified, see caveats).
+- **Hits/min:** median 55, IQR 51–70. Not meaningful as SFX density (VO-saturated). Only the MrBeast and Nick Shirley vlogs (23–35) differ.
