@@ -57,3 +57,10 @@ def render(voice, lines):
     p = subprocess.run([py, os.path.join(HERE, worker), f.name], text=True, capture_output=True)
     if p.returncode: sys.exit(p.stderr[-3000:])
 
+
+# ---------------- measuring (we can't listen, so every take is measured) ----------------
+def whisper_model():
+    for m in WHISPER_MODELS:
+        if m and os.path.exists(m): return m
+    return None
+
