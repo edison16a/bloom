@@ -41,3 +41,13 @@ Paste any of these into Claude Code with the skill installed.
 > Streams of light squeezing through a narrow waist, LED pixels, calm middle.
 
 > Aurora over a black treeline, 8 px hexagons, green into violet, very slow.
+
+## Text objects
+
+> A cherry bonsai under a low moon spelling hanami, petals fall and drift off.
+
+> A DNA double helix typed only in G A T C, rungs light up in sequence.
+
+> Saturn in ASCII, the message wraps the planet and the rings drift.
+
+> A hot-air balloon made of the passenger names, envelope stripes in two colours.
