@@ -27,3 +27,18 @@ function prepLine(el: HTMLElement) {
   const line = el.querySelector(".line") as HTMLElement;
   line.innerHTML = line.textContent!.split(" ").map((w) => `<span>${w}</span>`).join("");
 }
+function line(id: string, t: number, tin: number, tout: number) {
+  const el = $(id);
+  if (t < tin - 0.01 || t > tout + 0.26) { el.style.opacity = "0"; return; }
+  el.style.opacity = "1";
+  const leave = seg(t, tout, tout + 0.25);
+  el.style.filter = leave > 0 ? `blur(${leave * 8}px)` : "none";
+  el.querySelectorAll<HTMLElement>(".line span").forEach((w, i) => {
+    const k = out(seg(t, tin + i * 0.1, tin + i * 0.1 + 0.45));
+    w.style.opacity = String(k * (1 - leave));
+    w.style.transform = `translateY(${(1 - k) * 22}px)`;
+  });
+}
+
+// ---------------------------------------------------------------- push up (scene change, motion blur)
+let blurAmount = 0;
