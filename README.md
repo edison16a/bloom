@@ -42,3 +42,23 @@ Bloom is a monorepo of three skills for Claude Code and Codex. You bring the ide
 | 3 | Brand Creator | A logo, wordmark and full brand kit from a company name, based on research on 8,332 real tech logos | `skills/brand-creator` |
 
 The site in `site/` shows each skill with real work it made: every dot art scene running live, a launch film, and five brands built with the brand builder (Vela, Bloom, Kite, Halo and Tessel). Bloom's own logo came out of Brand Creator.
+
+## Set up a skill
+
+The quickest way is the site: every skill has a **Copy setup prompt** button. Paste the prompt into Claude Code or Codex and the agent clones only that skill's folder from this repo, installs it in the right skills folder for itself, checks what it needs and tells you what is missing. The prompts are built in `site/lib/prompts.ts`.
+
+To do it by hand, for example for Dot Art in Claude Code:
+
+```bash
+git clone --depth 1 --filter=blob:none --sparse https://github.com/edison16a/bloom.git /tmp/bloom
+```
+
+```bash
+git -C /tmp/bloom sparse-checkout set skills/dot-art
+```
+
+```bash
+cp -R /tmp/bloom/skills/dot-art ~/.claude/skills/dot-art && cd ~/.claude/skills/dot-art/scripts && npm install
+```
+
+For Codex, use `~/.codex/skills` instead. Launch Video and Brand Creator are workspaces with their own scripts, so copy them to a folder such as `~/bloom` and link the skill inside (`.claude/skills/<name>`) into your skills folder. Each one's README lists what it needs.
