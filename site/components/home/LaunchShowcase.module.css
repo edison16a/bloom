@@ -1,0 +1,5 @@
+.section { position: relative; margin-top: 128px; padding: 128px 0; overflow: hidden; isolation: isolate; scroll-margin-top: 60px; }
+.art { position: absolute; inset: 0; z-index: -2; opacity: 0.9; }
+.veil { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, var(--bg) 0%, rgba(6, 6, 9, 0.55) 18%, rgba(6, 6, 9, 0.55) 82%, var(--bg) 100%); }
+.layout { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 8fr); gap: 48px; align-items: center; }
+@media (max-width: 1000px) { .layout { grid-template-columns: 1fr; } }
