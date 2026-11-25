@@ -86,3 +86,15 @@ A = pipe(a.out + "/room.mov", "bgr24", ["-vf", "scale=out_color_matrix=bt709", "
 from concurrent.futures import ThreadPoolExecutor
 from collections import deque
 cv2.setNumThreads(1); ex = ThreadPoolExecutor(max_workers=max(2, (os.cpu_count() or 4) - 2)); q_ = deque(); pm = None; i = 0; done = False
+def drain():
+    global pm
+    r, q, al = q_.popleft().result(); al = al if pm is None else np.where(np.abs(al - pm) < .25, .6 * al + .4 * pm, al); pm = al
+    A.stdin.write((r * 255).astype(np.uint8).tobytes()); B.stdin.write(np.dstack([(q * 255).astype(np.uint8), (al * 255).astype(np.uint8)]).tobytes())
+while not done:
+    ok, f = cap.read(); ok2, m = mc.read()
+    if ok and ok2: q_.append(ex.submit(frame, f, m, i)); i += 1
+    else: done = True
+    while q_ and (done or len(q_) > ex._max_workers + 4): drain()
+for z in (A, B): z.stdin.close(); z.wait()
+print("frames", i)
+if abs(i - N) > 2: raise SystemExit(f"expected {N} frames, wrote {i}")
