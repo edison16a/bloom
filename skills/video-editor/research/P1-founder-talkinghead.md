@@ -229,3 +229,9 @@ The user's "too slow" complaint maps onto tier C. A founder launch film should s
 - **Front-loaded is the norm.** 15 of 25 have Q1 as their fastest quarter (e.g. #04 35.6→20.2, #08 27.9→6.2, #23 31.9→9.1, #05 16.8→5.8). The hook runs at roughly 1.5–3× the body rate.
 - **Exception: story or sizzle pieces build toward the end** (#14 11.7→22.0, #22 0→45.4, #01 3.7→6.3, #15 jumps in Q4 for the ad).
 - Rule: either open hot and settle, or (for a launch or sizzle) build steadily into the reveal or CTA. Never start slow and stay flat.
+
+### Cuts vs beat
+- In speech-led pieces cuts follow **words, not the beat**: median on-beat 18%, which is at chance.
+- Only the music-driven montages lock to the beat: GaryVee 51% at 130 BPM, Codie sizzle 45% at 120 BPM, both with beat strength >2.2.
+- Rule: cut talking-head sections on phrase ends or breaths; inside B-roll or montage runs, snap cuts to the beat grid.
+- Beds are mostly 70–100 BPM with clear pulses (strength ~1.5–2.9), sitting about 15–25 dB under the voice (inference from speech dominance and low LRA). The faster montage pieces use 113–130 BPM.
