@@ -45,3 +45,21 @@ Things typeset in their own words.
 > **A blue morpho butterfly flapping, in LED squares**
 
 ![Morpho](assets/morpho.gif)
+
+## Dot backgrounds
+
+> **Dithered ribbons of blue light on near-black, four colours only**
+
+![Ribbons](assets/ribbons.gif)
+
+> **Desert dunes at golden hour as a newspaper print, merging octagons**
+
+![Dunes](assets/dunes.gif)
+
+> **Streams of light squeezing through a narrow waist, LED pixels, calm centre for a headline**
+
+![Funnel](assets/funnel.gif)
+
+> **A total eclipse in octagons with a breathing corona**
+
+![Eclipse](assets/eclipse.gif)
