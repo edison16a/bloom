@@ -182,3 +182,36 @@ def mixkit_audio(kind, paths, limit=40):
         if c["url"] not in seen: seen.add(c["url"]); u.append(c)
     return u
 
+
+def incompetech(moods, lo, hi, need):
+    """Kevin MacLeod, CC BY 4.0: needs a credit line."""
+    try: data = jget("https://incompetech.com/music/royalty-free/pieces.json")
+    except Exception as e: warn("incompetech", e); return []
+    out = []
+    for p in data:
+        try: bpm = float(p["bpm"])
+        except Exception: continue
+        h, m, s = (p["length"] or "0:0:0").split(":"); dur = int(h) * 3600 + int(m) * 60 + int(s)
+        feel = ((p.get("feel") or "") + " " + (p.get("description") or "") + " " + (p.get("instruments") or "")).lower()
+        hit = sum(w in feel for w in moods)
+        if not (lo <= bpm <= hi) or dur < need or not hit: continue
+        out.append({"url": "https://incompetech.com/music/royalty-free/mp3-royaltyfree/" + urllib.parse.quote(p["filename"]), "title": p["title"], "dur": dur, "by": "Kevin MacLeod",
+                    "tags": [p.get("feel") or ""], "source": "Incompetech", "licence": "CC BY 4.0", "hit": hit, "page": "https://incompetech.com",
+                    "credit": f'"{p["title"]}" Kevin MacLeod (incompetech.com), licensed under CC BY 4.0'})
+    return sorted(out, key=lambda c: -c["hit"])
+
+
+def openverse(q, category, need=0, licence="cc0,by"):
+    u = "https://api.openverse.org/v1/audio/?" + urllib.parse.urlencode({"q": q, "license": licence, "category": category, "page_size": 20})
+    try: r = jget(u)["results"]
+    except Exception as e: warn("openverse", e); return []
+    out = []
+    for p in r:
+        d = (p.get("duration") or 0) / 1000
+        if need and d < need: continue
+        lic = p["license"].upper(); lic = "CC0" if lic == "CC0" else f"CC {lic} {p.get('license_version') or ''}".strip()
+        out.append({"url": p["url"], "title": p["title"], "dur": d, "by": p.get("creator") or "", "tags": [t["name"] for t in p.get("tags") or []][:8],
+                    "source": p.get("provider"), "licence": lic, "page": p.get("foreign_landing_url"),
+                    "credit": None if lic == "CC0" else f'"{p["title"]}" {p.get("creator")}, {lic}'})
+    return out
+
