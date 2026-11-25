@@ -115,3 +115,20 @@ def wer(ref, hyp):
             prev, d[j] = d[j], cur
     return d[len(h)] / max(1, len(r))
 
+
+def stats(wav):
+    o = sh(["ffmpeg", "-hide_banner", "-nostats", "-i", wav, "-af", "silencedetect=n=-45dB:d=0.25,ebur128=peak=true", "-f", "null", "-"]).stderr
+    dur = float(sh(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", wav]).stdout.strip() or 0)
+    lufs = re.findall(r"I:\s+(-?[\d.]+) LUFS", o); peak = re.findall(r"Peak:\s+(-?[\d.]+) dBFS", o)
+    ss = [float(x) for x in re.findall(r"silence_start: (-?[\d.]+)", o)]; se = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", o)]
+    lead = se[0] if ss and ss[0] <= 0.01 and se else 0.0
+    tail = dur - ss[-1] if ss and (len(se) < len(ss)) else 0.0
+    inner = [e - s for s, e in zip(ss, se) if s > 0.01]
+    return {"dur": round(dur, 2), "speech": round(dur - lead - tail, 2), "lufs": float(lufs[-1]) if lufs else None,
+            "peak": float(peak[-1]) if peak else None, "max_pause": round(max(inner), 2) if inner else 0.0}
+
+
+def apply_say(text, say):
+    for k, v in say.items(): text = re.sub(r"\b%s\b" % re.escape(k), v, text, flags=re.I)
+    return text
+
