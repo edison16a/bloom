@@ -41,3 +41,10 @@ def fetch(src, tmp):
     if not vids:
         raise SystemExit('download failed: ' + (r.stderr or '')[-400:])
     return os.path.join(tmp, vids[0]), meta
+
+def probe(p):
+    j = json.loads(run(['ffprobe', '-v', 'error', '-show_entries', 'stream=codec_type,width,height,r_frame_rate:format=duration',
+                        '-of', 'json', p]).stdout)
+    v = [s for s in j['streams'] if s['codec_type'] == 'video'][0]
+    n, d = v['r_frame_rate'].split('/')
+    return float(j['format']['duration']), int(v['width']), int(v['height']), float(n) / float(d), any(s['codec_type'] == 'audio' for s in j['streams'])
