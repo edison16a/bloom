@@ -18,3 +18,12 @@ export const dahlia = defineScene({
   style: { cell: 6.5, mark: "hex", size: [0.18, 1.04], gamma: 0.9, color: { by: "source", shade: 0.25 } },
   bloom: { strength: 0.35 }, pointer: { mode: "lens", radius: 150, strength: 0.6 },
 });
+
+/** Photo -> type. The picture is set in its own caption. */
+export const rocket = defineScene({
+  id: "rocket", title: "Rocket, typeset", loop: 8, background: "#04060e", samples: 3,
+  sources: [imageSource({ src: "/images/rocket.jpg", focus: [0.5, 0.6], zoom: 1.15, black: 0.24, white: 0.8, gamma: 1.0, local: 1.2, edge: 0.9, fill: 0.9, saturation: 1.4 })],
+  style: { cell: [4, 7], mark: "glyph", gamma: 0.85, color: { by: "source", shade: 0.5 },
+    glyph: { ramp: "  ..··::--=+", message: "t-minus ten nine eight seven six five four three two one ", fill: "hybrid", detail: 0.9, under: 0.16, messageAbove: 0.3, rowShift: 13, weights: [400, 600, 800] } },
+  bloom: { strength: 0.5 }, pointer: { mode: "glow", radius: 150, strength: 0.8 },
+});
