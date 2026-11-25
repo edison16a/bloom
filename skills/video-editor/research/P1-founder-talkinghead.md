@@ -204,3 +204,28 @@ Category: professionally edited real-person videos where a founder, CEO or creat
 - Hit count (94.5/min) reflects his clipped consonants plus a clear beat bed (2.82).
 
 ## 3. Batch synthesis
+
+### Typical ranges (n=25; cut numbers are floors for jump-cut talking heads)
+| Metric | Median | IQR | Range |
+|---|---|---|---|
+| Cuts/min | 11.1 | 4.9–21.1 | 2.4–58.5 |
+| Median shot length (s) | 3.23 | 2.0–4.8 | 0.75–9.83 |
+| BPM | 82.75 | 74–90 | 70–130 |
+| Beat strength | ~1.9 | 1.53–2.43 | 1.28–2.94 |
+| LUFS integrated | -18.3 | -21.1 to -15.4 | -28.3 to -11.8 |
+| LRA (LU) | ~3.6 | 3.1–5.4 | 1.3–12.9 |
+| Hits/min | 56.7 | 49.9–68.2 | 27.3–94.5 (speech-inflated) |
+| Cuts on beat | 18% | 11–23% | 0–51% |
+| Cuts with hit | 17% | 10–26% | 0–75% |
+
+The batch splits into three pacing tiers:
+- **A. Music-led founder or brand films** (a16z, Hormozi trailer, Mark Rober, GaryVee): 33–59 cuts/min, median shot 0.75–1.0 s, music in front, speech share .10–.37.
+- **B. Edited creator explainers** (Leila, Hormozi 2022, YC supercuts, Simon Squibb, Ali Short, Kimi, Codie and Colin & Samir shorts): 11–25 cuts/min, median shot 1.0–3.3 s, a graphic or insert every 3–8 s.
+- **C. Minimal talking heads** (Dan Koe long-form, Garry Tan, Valuetainment, Hormozi 2026 shorts): 2–6 cuts/min, and speech carries everything. Even these jump-cut and reframe every few seconds (more than scdet sees).
+
+The user's "too slow" complaint maps onto tier C. A founder launch film should sit in tier A for its montage sections and tier B for the talking sections.
+
+### Pacing across the video
+- **Front-loaded is the norm.** 15 of 25 have Q1 as their fastest quarter (e.g. #04 35.6→20.2, #08 27.9→6.2, #23 31.9→9.1, #05 16.8→5.8). The hook runs at roughly 1.5–3× the body rate.
+- **Exception: story or sizzle pieces build toward the end** (#14 11.7→22.0, #22 0→45.4, #01 3.7→6.3, #15 jumps in Q4 for the ad).
+- Rule: either open hot and settle, or (for a launch or sizzle) build steadily into the reveal or CTA. Never start slow and stay flat.
