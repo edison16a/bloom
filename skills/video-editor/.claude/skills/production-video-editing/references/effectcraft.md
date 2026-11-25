@@ -72,3 +72,38 @@ Product films also load `launch-video/assets/motion.jsx` (windows, camera moves,
 - Render with `renderQueue.add {comp, format: "prores", proresProfile: "422hq", audio: "on", sampleRate: 48000, output}`, then `renderQueue.render {wait: false}`. Poll with `renderQueue.list` (about 2 minutes for 40 s at 1080p60).
 - Finish in ffmpeg: H.264 plus loudnorm.
 
+
+## Commands and VFX notes
+- **Batching:** `mcp__effectcraft__batch {steps:[{command, params}]}` runs as one undo step. Use `"$N.layer"` to reference an earlier step's result. Set `atomic:false` for render steps.
+- **Property commands:**
+  - `prop.set {layer,path,value}`
+  - `prop.addKey {layer,path,time,value}` (times are comp seconds)
+  - `prop.setExpression {layer,path,expression}`
+- **Layer commands:**
+  - `layer.newSolid`, `layer.newAdjustment`, `layer.newNull`
+  - `layer.addItem {comp,item,time,index}`. `time` is the layer start and snaps to the frame.
+  - `layer.replaceSource {comp,layer,item}`
+  - `layer.settings {layer,name}` renames a layer.
+  - `layer.setBlendMode {layers,mode}`
+  - `layer.arrange {layers, above: id}`
+  - `layer.setParent {layers,parent,compensate:true}`
+  - `layer.setSwitch {layers,switch:"video",value}`
+- **Footage and effects:**
+  - `file.import {paths}` returns item IDs.
+  - `file.replaceFootage {item,path}` swaps an audio or video source in place.
+  - `effect.apply {layer,effect:"Display Name"}`. Read the parameter paths with `get_layer {flat:true}`.
+- **Masks:**
+  - `mask.new {layer,vertices,closed:true,mode:"Add"}` uses layer-space pixels.
+  - `mask.setVertex {layer,mask,index,point}` moves a vertex.
+  - Feather path: `masks/#1/feather` as `[x,y]`.
+- **Rendering:** `renderQueue.add {comp,format:"h264",output,quality:"best",resolution:"full",timeSpan:"comp",audio:"on",bitrate:16000}`, then `renderQueue.render {wait:true}`. Delete the `_RenderLog.txt` it leaves next to the output.
+- **Trimming by expression** (use `layer.timing` when you can): `t=time; t<6.94?0:(t<6.97?linear(t,6.94,6.97,0,100):(t<7.35?100:linear(t,7.35,7.65,100,0)))`.
+- **Expressions:** they're JS. Use `add(a,b)` for vector maths, because `+` concatenates. `linear()` and `ease()` are available.
+- **Darkening:** Exposure on an adjustment layer barely affects the result. For a storm or night darken, use a dark tinted solid in Normal mode with keyed opacity instead.
+- **Camera shake:** there's no Transform effect. Build shake as a Null with a decaying position and scale expression, then parent the plate and its elements to it.
+  - Position: `a=t<T?0:34*Math.exp(-(t-T)*5); add(value,[a*Math.sin(t*97),a*Math.cos(t*73)])`
+  - Scale: a small decaying push-in, about 6%, to hide the edges.
+- **Keying:** Linear Color Key in **Hue** mode with low tolerance (about 4.5, 5.5, softness about 2.5) cleanly keyed a beige blind without eating the skin. RGB and Chroma modes ate the hand.
+- **Shatter:** the simulation starts at layer time 0. Hold `force1Radius` at 0 and key it up at the break time. Use a low depth (about 0.05) and strength (about 1.5), or the pieces vanish toward the camera in a frame.
+- **Corner pin:** the Corner Pin effect plus per-frame tracked keys on `effects/#1/ul|ur|lr|ll`, with the layer anchor and position at 0, put a replacement plate into a tracked quad. It keeps working after `layer.replaceSource` to a source of a different size.
+- **Stock frame rates:** 25 fps clips work fine in a 30 fps comp.
