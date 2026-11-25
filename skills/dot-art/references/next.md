@@ -27,3 +27,28 @@ import { DotArt } from "@/components/dot-art/react";
 import { bloom } from "@/components/dot-art/scenes/bloom";
 export const Flower = () => <DotArt scene={bloom} label="A pink flower made of letters" />;
 ```
+
+## Scroll scrub
+
+```tsx
+const [t, setT] = useState(0);
+useEffect(() => { const f = () => { const r = ref.current!.getBoundingClientRect(); setT(Math.min(1, Math.max(0, (innerHeight - r.top) / (innerHeight + r.height))) * bloom.loop * 0.6); };
+  addEventListener("scroll", f, { passive: true }); f(); return () => removeEventListener("scroll", f); }, []);
+<DotArt scene={bloom} time={t} />
+```
+
+## Fonts
+
+Glyph scenes use a monospace stack. For a `next/font` face, pass its family name: `glyph: { font: geistMono.style.fontFamily }`. The atlas redraws when fonts finish loading.
+
+## Images and models
+
+Put them in `/public` and use root paths. Cross-origin images need CORS headers. Models load when first shown.
+
+## Performance
+
+A full-screen scene should sit under 4 ms of GPU time on a laptop. Costs, largest first: raymarch steps x `samples`^2, `count`, dpr. To cut: `samples` 2, `fps={30}`, `maxDpr={1.5}`, fewer march steps. Two heavy scenes per viewport at most.
+
+## Checks before shipping
+
+`tsc --noEmit`, `next build`, load it, resize to 390 px, scroll away and back, no console errors.
