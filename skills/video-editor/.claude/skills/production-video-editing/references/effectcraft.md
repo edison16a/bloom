@@ -107,3 +107,9 @@ Product films also load `launch-video/assets/motion.jsx` (windows, camera moves,
 - **Shatter:** the simulation starts at layer time 0. Hold `force1Radius` at 0 and key it up at the break time. Use a low depth (about 0.05) and strength (about 1.5), or the pieces vanish toward the camera in a frame.
 - **Corner pin:** the Corner Pin effect plus per-frame tracked keys on `effects/#1/ul|ur|lr|ll`, with the layer anchor and position at 0, put a replacement plate into a tracked quad. It keeps working after `layer.replaceSource` to a source of a different size.
 - **Stock frame rates:** 25 fps clips work fine in a 30 fps comp.
+
+## PhotoCraft
+- `doc_place`, `doc_close` and `doc_select` don't work in bridge mode. To combine documents, open each one, then use `layer.copyToDocument {document:0}`.
+- `doc_save` and `doc_export` reject `index` in bridge mode, so omit it.
+- Font weight: `type.create`'s `style` key is ignored. Use `type.setStyle {fontStyle:"Heavy"}`. Check that text fits the canvas after changing its size.
+- `layer.removeBackground` can leave the background in. For cutouts, verify the result and fall back to OpenCV GrabCut plus colour cleanup.
