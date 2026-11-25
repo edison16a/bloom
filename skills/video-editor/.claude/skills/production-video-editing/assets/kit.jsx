@@ -19,3 +19,16 @@ function softShadow(L, op, soft) {
   var e = fx(L, 'ADBE Drop Shadow'), o = fxProp(e, 'Opacity'), d = fxProp(e, 'Distance'), s = fxProp(e, 'Softness');
   if (o) o.setValue(op); if (d) d.setValue(0); if (s) s.setValue(soft);
 }
+function rrShape(x, y, w, h, r) {
+  var k = 0.5523 * r, s = new Shape();
+  s.vertices = [[x + r, y], [x + w - r, y], [x + w, y + r], [x + w, y + h - r], [x + w - r, y + h], [x + r, y + h], [x, y + h - r], [x, y + r]];
+  s.inTangents = [[-k, 0], [0, 0], [0, -k], [0, 0], [k, 0], [0, 0], [0, k], [0, 0]];
+  s.outTangents = [[0, 0], [k, 0], [0, 0], [0, k], [0, 0], [-k, 0], [0, 0], [0, -k]];
+  s.closed = true; return s;
+}
+function rmask(L, x, y, w, h, r) { var m = L.property('ADBE Mask Parade').addProperty('ADBE Mask Atom'); m.property('ADBE Mask Shape').setValue(rrShape(x, y, w, h, r)); return m; }
+function blurOf(L) { var e = fx(L, 'ADBE Gaussian Blur 2'); return fxProp(e, 'Blurriness'); }
+function fadeIn(L, t, n) { tr(L, 'op').setValueAtTime(t, 0); tr(L, 'op').setValueAtTime(t + fr(n), 100); }
+function fadeOut(L, t, n, from) { tr(L, 'op').setValueAtTime(t - fr(n), from == null ? 100 : from); tr(L, 'op').setValueAtTime(t, 0); }
+
+function plate(file) { var L = K.comp.layers.add(kitFoot(file)); L.startTime = 0; L.inPoint = 0; L.outPoint = K.plateEnd; try { L.audioEnabled = false; } catch (e) {} tr(L, 'pos').setValue([K.w / 2, K.h / 2]); return L; }
