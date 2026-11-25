@@ -37,3 +37,26 @@ Everything is built in **EffectCraft**, driven by Claude through MCP. Product cl
    - "Cut a vertical version."
    - "Use Vendo as the reference." The [reference films](.claude/skills/production-video-editing/references/references-studied.md) are linked. Claude works from its notes on them and only opens a film when you ask.
 4. Claude shows a one page plan, keeps going, checks its own output and puts the film in `output/`, with a list of licences. Project files are in `work/<job>/`.
+
+## What is in here
+```
+CLAUDE.md                        the workflow and the never list
+setup.sh                         checks the requirements
+.claude/skills/
+  production-video-editing/      person with overlays: look, reference films, sound, sourcing, EffectCraft, vertical, VFX, gate
+  launch-video/                  product films: shapes, motion, AI voice
+tools/
+  source.py                      finds and downloads music, effects, footage and spoken phrases, with licences
+  capture/                       records a website or app at 2x, with click times
+  matte/                         separates person and room so overlays sit between them
+  voice/                         local AI voice (Qwen3-TTS, Chatterbox)
+  fonts/                         Instrument Serif (OFL)
+  measure.py                     cuts, tempo, loudness, contact sheets
+input/  output/  work/           your files, finished films, per job projects (not committed)
+research/                        old measurements, kept as history, not used by the skills
+```
+
+## Limits
+- Claude cannot hear. Sound is chosen and checked by measurement.
+- A webcam in a bedroom will not look like a film set. A window, a lamp or a second angle helps more than any effect.
+- Clips from other people's videos are only used when you ask, and are listed as unlicensed.
