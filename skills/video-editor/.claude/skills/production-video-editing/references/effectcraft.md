@@ -18,3 +18,25 @@ Copy `assets/lib.jsx` (easing) and `assets/kit.jsx` (pieces) beside your build s
 | `logoEnd(file, size, t)` | logo on black |
 
 Product films also load `launch-video/assets/motion.jsx` (windows, camera moves, lines, pointer). See `launch-video/references/motion.md`.
+
+## Scripting
+`command_run {id: "script.run", params: {code}}` runs After Effects-style JavaScript, returning `{ok, result, output, error}`. Verified on EffectCraft 0.24.1:
+- **Available:**
+  - `app.project.items.addComp(name, w, h, par, dur, fps)`
+  - `importFile(new ImportOptions(new File(p)))`
+  - `comp.layers.add/addText/addShape/addSolid/addNull`
+  - `layer.parent`, `threeDLayer`, `motionBlur`, `inPoint/outPoint/startTime`, `moveAfter`, `sourceRectAtTime`
+  - `setValueAtTime`, `setTemporalEaseAtKey` with `KeyframeEase`, `setInterpolationTypeAtKey(HOLD)`, `setSpatialTangentsAtKey`
+  - expressions
+  - effects by matchName (`ADBE Gaussian Blur 2`, `ADBE Ramp`, `ADBE Drop Shadow`, `ADBE Linear Wipe`)
+  - masks via `new Shape()`
+  - shape contents (`ADBE Vector Group`, `… Shape - Rect/Ellipse/Group`, Fill, Stroke, `ADBE Vector Filter - Trim`)
+  - text animators: `ADBE Text Animator`, with properties Opacity, Blur and Position 3D
+  - `TextDocument` with `font` ('Inter'), `fontStyle` ('SemiBold'), `fontSize`, `fillColor`, `tracking`, `justification`
+  - audio layers with `ADBE Audio Group` › `ADBE Audio Levels` (dB)
+- **Not available:** `app.fonts` (use `command_run text.fonts {query}` instead) and `SolidSource`.
+- **Brand fonts:** check with `text.fonts {query}`. Inter and Instrument Serif (in `tools/fonts`, copy to `~/Library/Fonts`, then `rescan: true`) are installed. If the brand font is free, download and install it automatically and log it. Otherwise use the closest installed one.
+- **Text animator selector quirk:** the Advanced group's matchName is `advanced`. Its children are `basedOn` (1 chars, 3 words), `shape`, `smoothness`, `easeHigh` and `easeLow`.
+- **Layer order:** new layers go on top, so build from the bottom up.
+- **File access:** `$.evalFile()` and `File.read` only work inside the **saved project's folder**. Save the `.ecproj` into the job's `ec/` folder first, then keep `build.jsx` and `lib.jsx` there and run `script.run {code: "$.evalFile('<abs>/ec/build.jsx')"}`. The build script deletes the comp and rebuilds it, so it can be re-run safely.
+- **Vector logos and icons:** use `command_run edit.pasteSvg {comp, svg, name}`, which gives a crisp shape layer. Centre the anchor afterwards with `sourceRectAtTime`. Don't import SVGs as footage, because they rasterise at their small native size.
