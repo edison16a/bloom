@@ -282,3 +282,9 @@ Batch of 25. Videos 01–15 are big-tech software and feature films: Apple, Goog
   3. **U-shape** (fast open sizzle, calm middle feature, fast close recap): #02 WWDC 21.6 → 10.8 → 23.5; #11 Stripe recap.
   4. **Fast open then decelerate** (reels that end on a breath): #20 Ordinary Folk 55 → 21; #24 iMac Pro.
 - **Endcards are always held.** Last 2–5 s: logo on a flat colour, with no cuts.
+
+### Cuts versus the beat
+- Measured on-beat share is modest (median 24%), even in the energetic pieces. Pros don't put every cut on the beat; they put the important cuts on it.
+- The highest on-beat shares come from trailers and few-cut spots: #17 at 67% (only 3 cuts, all on downbeats), #12 at 60%, #08 at 42%, #21 at 42%, #20 at 41%.
+- Dialogue-led films cut to speech instead: Pixel 0%, Spotify 8%, Stripe 12%.
+- **Inference:** in UI trailers, in-frame animations (card lands, word swaps, number ticks) land on the beat. That is why hits per min (90–104) is far higher than cuts per min (8–19). The beat is "hit" by animation events, not only by cuts.
