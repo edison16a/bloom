@@ -10,3 +10,19 @@ A WebGL2 engine (no runtime dependencies) plus a way of working. You describe **
 ```
 source (3D points, raymarch, photo, model)  ->  grid of tone + colour  ->  marks or letters  ->  bloom
 ```
+
+## Map
+
+| Path | What |
+|---|---|
+| `engine/` | The engine. Copied into the user's project, then theirs. |
+| `engine/scenes/` | 16 finished scenes in four families. **Read the closest one before writing your own.** |
+| `engine/looks.ts` | Ready surface treatments: `led neon halftone hex octagon dither type words marks` |
+| `scripts/` | `install` `new` `sheet` `render` (Node 20+, Chrome, ffmpeg) |
+| `references/recipes.md` | Request to technique: which source, look and numbers to start from |
+| `references/authoring.md` | GLSL hooks, every uniform and helper, loop rules, full style options |
+| `references/craft.md` | What separates great from cheap, with numeric targets. Read before judging a render. |
+| `references/next.md` | `<DotArt>` props, heroes, scroll scrubbing, mobile, performance |
+| `examples/` | Photo scenes, four more finished scenes in `examples/scenes/`, prompts, and a Next.js gallery app |
+
+First use: `cd <skill>/scripts && npm install` (esbuild and playwright-core).
