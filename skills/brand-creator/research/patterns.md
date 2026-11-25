@@ -197,3 +197,43 @@ neo neo grotesk (Helvetica, Inter), geo geometric sans, hum humanist sans, round
 ### Lockup proportions (measured)
 
 In 992 horizontal logos with a symbol on the left, measured in units of the symbol height: the gap between symbol and word has median 0.20 (middle half 0.12 to 0.30); the word's ink height has median 0.92 (middle half 0.65 to 1.05); the word's vertical center sits 0.00 symbol heights from the symbol's center (median, positive is lower). The builder defaults (`cap_ratio` 0.66, `gap` 0.24) reproduce these.
+
+## What separates strong logos
+
+Share of logos rated craft 4 or 5 when a trait is present. Baseline for symbols: 36%.
+
+| symbol trait | craft 4+ rate | n |
+|---|---|---|
+| flat or cut style | 41% | 5902 |
+| detailed or gradient style | 21% | 888 |
+| simplicity 1 or 2 | 42% | 6349 |
+| simplicity 4 or 5 | 8% | 437 |
+| abstract geometric | 37% | 1551 |
+| initial letterform | 47% | 1936 |
+| pictorial object | 28% | 1643 |
+| character or animal | 25% | 697 |
+| no container | 38% | 4864 |
+| circle container | 34% | 1111 |
+| shield container | 41% | 69 |
+| badge (word in a shape) | 33% | 441 |
+| 1 or 2 colors | 45% | 1924 |
+| 4 or more colors | 40% | 448 |
+
+Baseline for wordmarks: 41%.
+
+| wordmark trait | craft 4+ rate | n |
+|---|---|---|
+| tight tracking | 62% | 235 |
+| wide tracking | 29% | 94 |
+| lowercase | 42% | 322 |
+| uppercase | 32% | 187 |
+| neo grotesk | 44% | 192 |
+| geometric sans | 39% | 382 |
+| display lettering | 41% | 177 |
+| serif | 36% | 28 |
+| medium or bold weight | 44% | 459 |
+| light weight | 0% | 23 |
+| one custom detail | 42% | 188 |
+| no custom detail | 40% | 672 |
+
+These are associations in this sample, not proof that a trait causes quality.
