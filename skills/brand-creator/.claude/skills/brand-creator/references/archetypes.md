@@ -12,3 +12,9 @@ Default: black led wordmark in a neo grotesk at medium to bold weight, tight tra
 
 Data: 36 devtool logos: black led (11), then blue, teal, yellow; letterform of the initial (10) and geometric (7) symbols. Case studies: Vercel (triangle, Geist), Linear, Supabase (green bolt), Raycast, GitHub, Replit, Cursor.
 Default: lowercase or sentence case neo grotesk, tight. Symbol is one geometric shape or a cut initial. Black or near black with one bright accent (green, orange, electric blue).
+
+## B2B software and SaaS
+
+Data: 341 svgl Software logos (blue 26%, black 22%, red, green) and 860 successful YC B2B companies (blue 32%, black 14%). Letterform of the initial is the most common symbol (246 in YC B2B), then geometric.
+Leaders: Stripe (lowercase bold geo, Blurple), Notion, Figma, Slack, Rippling, Attio, Ramp.
+Default: lowercase bold geometric or neo grotesk, tight. Blue is the most crowded color; pick purple, green, orange or black led to stand out, or own a precise blue.
