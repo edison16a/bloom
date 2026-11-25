@@ -28,3 +28,43 @@ function hatch(c: CanvasRenderingContext2D, w: number, h: number, d: number) {
   const n = 4, s = w / n, M = [0, 8, 2, 10, 12, 4, 14, 6, 3, 11, 1, 9, 15, 7, 13, 5];
   for (let y = 0; y < Math.ceil(h / s); y++) for (let x = 0; x < n; x++) if (M[(y % 4) * 4 + x] / 16 < d) c.fillRect(x * s, y * s, s, s);
 }
+
+export function buildAtlas(tileW: number, tileH: number, g: GlyphStyle): Atlas {
+  const chars: string[] = [];
+  for (let i = 32; i < 127; i++) chars.push(String.fromCharCode(i));
+  const add = (s?: string) => { if (s) for (const ch of s) if (!chars.includes(ch)) chars.push(ch); };
+  add(g.ramp); add(g.message); add(g.glitchChars); add(g.looseChars);
+  const weights = g.weights ?? [400, 500, 700];
+  const stride = chars.length, total = stride * weights.length;
+  const cols = Math.min(64, Math.max(16, Math.floor(4096 / tileW)));
+  const rows = Math.ceil(total / cols);
+  const canvas = document.createElement("canvas");
+  canvas.width = cols * tileW; canvas.height = rows * tileH;
+  const c = canvas.getContext("2d")!;
+  c.fillStyle = c.strokeStyle = "#fff";
+  c.textAlign = "center"; c.textBaseline = "alphabetic";
+  const family = g.font ?? DEFAULT_FONT;
+  weights.forEach((wt, wi) => {
+    // Fit the em box to the tile: never let a wide mono glyph bleed into its neighbour.
+    let px = tileH * (g.fontScale ?? 0.92);
+    c.font = `${wt} ${px}px ${family}`;
+    const m = c.measureText("M").width;
+    if (m > tileW * 1.02) px *= (tileW * 1.02) / m;
+    c.font = `${wt} ${px}px ${family}`;
+    const mt = c.measureText("Hg");
+    const asc = mt.fontBoundingBoxAscent ?? px * 0.8, desc = mt.fontBoundingBoxDescent ?? px * 0.2;
+    const base = Math.round((tileH + asc - desc) / 2);
+    chars.forEach((ch, i) => {
+      const n = i + wi * stride, x = (n % cols) * tileW, y = Math.floor(n / cols) * tileH;
+      c.save();
+      c.beginPath(); c.rect(x, y, tileW, tileH); c.clip();
+      c.translate(x, y);
+      const geo = GEO[ch];
+      if (geo) geo(c, tileW, tileH, Math.max(1, tileW * (0.1 + wi * 0.04)));
+      else c.fillText(ch, tileW / 2, base);
+      c.restore();
+    });
+  });
+  const map = new Map(chars.map((ch, i) => [ch, i]));
+  return { canvas, tileW, tileH, cols, rows, stride, index: (ch) => map.get(ch) ?? 0 };
+}
