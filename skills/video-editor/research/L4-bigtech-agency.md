@@ -310,3 +310,14 @@ Batch of 25. Videos 01–15 are big-tech software and feature films: Apple, Goog
 6. **Supers in live action.** Tiny, centred or lower, fade in and out (#03, #09). Never animated flashily.
 7. **Lower thirds (event recaps).** Name, thin vertical rule, title; bottom-left; white thin sans (#10, #11).
 8. **Bouncy brand type** (playful brands): per-letter overshoot and stagger (#15 Duolingo, #22 "TIME OFF").
+
+### Flow and direction rules
+- **Lock one transition direction per piece:**
+  - #17 Airbnb Services: every location change is a whip-down (↓).
+  - #08 Copilot: a constant leftward drift (24 of 60 s "←").
+  - #03 VoiceOver: walking right-to-left.
+  - #02 WWDC: phones always enter from screen-right and the strip pans up.
+- **Reels are the exception.** BUCK and Ordinary Folk shift direction almost every second but keep continuity through object continuation (cloud, explosion, shape morph).
+- **Graphic match cuts on UI components.** The same rounded capsule in the same screen position across cuts (#01 tab bar → camera pill → slide-to-answer). Record icon → full-frame record button (#05).
+- **Push in to the cursor, then cut to the isolated element on black or a gradient** (#05, #12). Zoom continuity replaces the cut.
+- **Static holds are allowed** when something animates inside the frame. The "." share is high in Apple and Google films, but the motion lives in UI morphs.
