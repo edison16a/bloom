@@ -7,3 +7,23 @@ import { brands, featuredBrand } from "@/content/brands";
 import { skillById } from "@/content/skills";
 import { setupPrompt } from "@/lib/prompts";
 import styles from "./LogoShowcase.module.css";
+
+export function LogoShowcase() {
+  const skill = skillById("logo");
+  const others = brands.filter((b) => b.slug !== featuredBrand.slug);
+  return (
+    <section id="logo" className={`container ${styles.section}`}>
+      <div className={styles.head}>
+        <SectionIntro number={skill.number} name={skill.name} title={skill.headline} text={skill.summary} />
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 12 }}>
+          <SetupPrompt prompt={setupPrompt("logo")} showPrompt={false} bare />
+          <LinkButton href={skill.route}>See every brand</LinkButton>
+        </div>
+      </div>
+      <FeaturedBrand brand={featuredBrand} />
+      <div className={styles.grid}>
+        {others.map((b) => <BrandCard key={b.slug} brand={b} />)}
+      </div>
+    </section>
+  );
+}
