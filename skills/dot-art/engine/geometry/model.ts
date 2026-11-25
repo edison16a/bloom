@@ -62,3 +62,13 @@ export function objectScene(geometry: Geometry | (() => Geometry), o: ObjectOpti
     style: look.style, bloom: look.bloom, pointer: { mode: "glow", radius: 150, strength: 0.5 },
   };
 }
+
+/** A .glb or .obj file as a dot object. Loads when first shown. */
+export const modelScene = (o: ObjectOptions & { url: string; count?: number }): LazyScene => ({
+  id: o.id, title: o.title ?? o.id, background: o.background ?? "#03040a",
+  load: async () => objectScene(await loadModel(o.url, o.count ?? 160000), o),
+});
+
+/** A logo, SVG path, icon or word inflated into a dot object. */
+export const logoScene = (o: ObjectOptions & { shape: ShapeInput; inflate?: InflateOptions }): Scene =>
+  objectScene(() => inflate(o.shape, { count: 110000, depth: 0.08, bevel: 0.16, bevelWidth: 0.22, resolution: 512, ...o.inflate }), { motion: "sway", scale: "text" in o.shape ? 1.75 : 1.2, ...o });
