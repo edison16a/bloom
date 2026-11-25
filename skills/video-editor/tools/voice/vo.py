@@ -132,3 +132,18 @@ def apply_say(text, say):
     for k, v in say.items(): text = re.sub(r"\b%s\b" % re.escape(k), v, text, flags=re.I)
     return text
 
+
+def qc(text, wav, say=None):
+    st = stats(wav)
+    t = transcribe(wav)
+    heard = " ".join(x[2] for x in t) if t else ""
+    st["heard"] = heard
+    if t is not None:
+        n = len(norm_words(text)); errs = wer(text, heard) * n
+        forgive = sum(len(re.findall(r"\b%s\b" % re.escape(k), text, flags=re.I)) for k in (say or {}))
+        st["wer"] = round(max(0.0, errs - forgive) / max(1, n), 3)
+    else:
+        st["wer"] = None
+    st["wpm"] = round(len(norm_words(text)) / max(0.1, st["speech"]) * 60)
+    return st
+
