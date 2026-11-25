@@ -1,3 +1,10 @@
 # L2-ai: AI product launch and feature films (2023–2026)
 
 25 official launch or feature videos from OpenAI, Anthropic, Perplexity, ElevenLabs, Runway, Midjourney, Gamma, Granola, Lovable, Vercel v0, Replit, Cognition (Devin), Glean, Cursor, Notion, Linear, Pika and The Browser Company (Arc). All come from the brands' own channels, run 18 s to 3:54, and were uploaded between Oct 2023 and Mar 2026. All were measured with `tools/measure.py`. A local copy of it was used, changed only so that a subtitle HTTP 429 error does not abort the download (`--ignore-errors`). Harvey was searched for, but no official launch film turned up, so it was left out.
+
+## Measurement caveats (read first)
+- **`cuts_per_min` undercounts badly for motion-design films.** scdet (threshold 12) catches hard cuts only. Morphs, dissolves, pans across one continuous canvas and UI that slides in all count as "no cut". v0 (0 cuts), Devin (0), Linear (0), Cowork (3), Deep Research (1), Glean (4) and Cursor (1) all change layout every 2–4 s on the overview sheets. For those films I added an eyeballed **visual-state changes/min** taken from the overview sheet. It is a lower bound because the sheet samples only every 1–4 s, and it is marked "eyeballed".
+- **`speech_share` looks broken for this batch.** The GPT-4o demo is wall-to-wall dialogue (subtitle estimate 255 wpm) but reads 0.12. Talking-head films read 0.2–0.38. Treat it as a relative signal only. `subtitle_wpm_estimate` is more trustworthy for "is there VO".
+- **Chance level for `cuts_on_beat_share`** (±60 ms window) is about 0.12/beat-period, which is ≈0.16 at 80 BPM, ≈0.20 at 100 BPM and ≈0.26 at 130 BPM. A share near those numbers means *not* beat-cut.
+- **BPM:** the search floor is 70 BPM. ChatGPT agent read exactly 70.0, so it may be clipped. Values of 70–80 may be half-time readings of 140–160 tracks. Beat strength stayed ≥1.56 in every video.
+- `hits_per_min` counts every sharp transient. In beat-driven tracks (Cursor, Arc Max) the hits sit on the beat (hit-on-beat share 0.94 and 0.92), so there they mostly measure percussion, not SFX.
