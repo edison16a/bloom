@@ -127,3 +127,13 @@ Read `brands/<slug>/board.png` (the whole board on a light theme; add `--theme d
 - No gradient, shadow, outline or more than three colors anywhere.
 - The build printed no contrast warning, and the on brand color tiles and app icon read clearly.
 - It does not resemble a famous logo or a direct competitor's.
+
+### 9. Deliver
+
+Tell the user, in plain sentences:
+
+- The logo they chose and the one line reason (symbol idea, type, color name and hex).
+- Where everything is: `brands/<slug>/brand-board.html` (open it in a browser: every version, the color pickers, single file downloads, and Full kit zip), `brands/<slug>/<slug>-brand-kit.zip`, and the `assets/svg` and `assets/png` folders.
+- What is in the kit: horizontal and stacked logo, symbol and wordmark, each in color, black, white and reverse, as SVG with the type converted to outlines and as transparent PNG at 1024 and 2048 px; app icons at 180, 512 and 1024 px; favicons at 16, 32, 48 and 192 px.
+- The alternatives on the board, and that they can ask for any change.
+- That a trademark search before using the name and logo is their job.
