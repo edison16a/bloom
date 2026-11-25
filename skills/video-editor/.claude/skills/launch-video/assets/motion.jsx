@@ -70,3 +70,16 @@ function arrive(L, t, dir, dist) {
 function leave(L, t) { anim(tr(L, 'op'), [[t, 100], [t + 0.25, 0]], INOUT); var b = blurOf(L); anim(b, [[t, 0], [t + 0.25, 14]], INOUT); }
 // Rows fanning in one after another: 0.07 s apart.
 function fan(layers, t, gap) { for (var i = 0; i < layers.length; i++) arrive(layers[i], t + i * (gap || 0.07), 'up', 46); }
+
+// One plain line. Words rise 0.1 s apart and leave together. o: {size, color, style, left, x, hold}
+function line(str, y, a, z, o) {
+  o = o || {}; var size = o.size || 72, L = kitText(str, size, o.font || 'Inter', o.style || 'Medium', hex(o.color || '#FFFFFF'), o.left ? ParagraphJustification.LEFT_JUSTIFY : ParagraphJustification.CENTER_JUSTIFY);
+  tr(L, 'pos').setValue([o.x == null ? K.w / 2 : o.x, y + size * 0.36]); span(L, a, z); mb(L);
+  var tp = L.property('ADBE Text Properties'), an = tp.property('ADBE Text Animators').addProperty('ADBE Text Animator'), ap = an.property('ADBE Text Animator Properties');
+  ap.addProperty('ADBE Text Opacity').setValue(0); ap.addProperty('ADBE Text Blur').setValue([8, 8]); ap.addProperty('ADBE Text Position 3D').setValue([0, size * 0.18, 0]);
+  var sel = an.property('ADBE Text Selectors').addProperty('ADBE Text Selector'), adv = sel.property('advanced');
+  adv.property('basedOn').setValue(3); adv.property('smoothness').setValue(100);
+  anim(sel.property('ADBE Text Percent Start'), [[a, 0], [a + 0.35 + 0.1 * str.split(' ').length, 100]], OUT);
+  if (!o.hold) leave(L, z - 0.25);
+  return L;
+}
