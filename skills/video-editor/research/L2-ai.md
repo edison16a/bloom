@@ -135,3 +135,11 @@ Clusters:
 - **Vertical roll swaps**: a word or list item rolls up to the next item like a slot machine (Comet list, v0 placeholder carousel, Lovable "Cloud→AI", ElevenLabs language cycling, Linear spec). About 0.2–0.4 s per step.
 - Placement: centre-frame, single line, plenty of empty space. The font is a neutral grotesk (most), or a brand serif (Anthropic, Comet, Deep Research emphasis). Lower thirds are only for real people (name / title / company, small, bottom left, fade).
 - Captions in talking-head films: one sentence per box, bottom centre, small, dark rounded plate (Opus 4.5, Granola). No word-pop captions anywhere in this category.
+
+### Flow and direction rules
+- **Pick one travel direction and hold it.** ElevenLabs Productions spends 24 of its 66 s moving ←, Lovable 2.0 40 of 80 s ←, and Glean pans ← and ↑ along its node graph. New cards enter from the right and old ones exit left, so the eye reads the film like a line of text.
+- **Vertical (↑) means "progress/list"**: terminals scrolling (Claude Code, 44 s of ↑), checklists building (Cowork), list rolls (Comet), chat bubbles stacking (ElevenLabs Conversational).
+- **Z+ push-in means "focus on a detail"**, and **Z− pull-back means "reveal the product frame"** (Deep Research and Devin both open UI full-screen and then pull back to a framed window).
+- **Motion-matched cuts in sizzles**: Runway chains forward-moving FPV shots so the push continues across each cut. Sora 2 links shots by subject action.
+- **Graphic match transitions**: the period dot becomes an iris (Comet); a toggle pill morphs into the logo (Cowork); a line expands into a pill that becomes the prompt field (v0); the glyph becomes the wordmark (Opus 4.5, Lovable Cloud).
+- The camera re-centres on the **newest element** every time. UI is never shown at 1:1 full screen for long: it is scaled 1.5–4× onto the active region, or inset on a coloured or gradient matte with a shadow or glow border (Claude Code coral, Notion blue, Lovable and Gamma glows, Deep Research gradient border).
