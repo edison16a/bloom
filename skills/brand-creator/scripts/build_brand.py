@@ -213,3 +213,25 @@ def check_symbol(svg, label):
     if BAD.search(svg):
         sys.exit("%s: no scripts, text, images, gradients, filters or style blocks allowed" % label)
 
+
+class Uniq:
+    n = 0
+
+    @classmethod
+    def ids(cls, svg):
+        cls.n += 1
+        return svg.replace("{U}", "u%d" % cls.n)
+
+
+# ---------------------------------------------------------------- compositions
+# Each composition returns (template_svg_inner, viewbox) where colors are tokens:
+#   {S1} symbol primary, {S2} symbol accent, {S3} symbol ink, {W} word, {WA} word accent, {BG} tile background
+
+def comp_symbol(sym):
+    return '<g>%s</g>' % sym.replace("{P}", "{S1}").replace("{A}", "{S2}").replace("{I}", "{S3}"), (0, 0, 100, 100)
+
+
+def comp_wordmark(wmo):
+    x0, y0, x1, y1 = wmo["bbox"]
+    return wordmark_body(wmo, "{W}", "{WA}"), (x0, y0, x1 - x0, y1 - y0)
+
