@@ -9,3 +9,10 @@ export interface ArtPiece {
   /** Seconds into the loop to start, for scenes that build up from nothing. */
   start?: number;
 }
+
+export interface ArtGroup {
+  id: string;
+  name: string;
+  note: string;
+  pieces: ArtPiece[];
+}
