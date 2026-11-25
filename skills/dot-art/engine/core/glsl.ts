@@ -120,3 +120,28 @@ struct Pt { vec3 pos; vec3 nrm; vec3 color; float tone; float size; float flag; 
 /** Flip a normal to face the camera: thin surfaces are lit on both sides. */
 vec3 faceView(vec3 n, vec3 pos){ return dot(n,u_eye-pos)<0.?-n:n; }
 `;
+
+export const SURFACE_VS = (common: string, hook: string, decls: string, geo: boolean) => `#version 300 es
+precision highp float; precision highp int; precision highp sampler2D;
+${geo ? "in vec3 a_pos; in vec3 a_nrm; in vec3 a_col; in vec4 a_extra;" : ""}
+uniform int u_count; uniform float u_px; uniform float u_isPoint; uniform float u_add;
+out vec3 v_color; out vec4 v_d;
+${UNIFORMS}${decls}${LIB}${PT}
+${common}
+${hook}
+void main(){
+  int i=gl_VertexID;
+  // R2 sequence: even coverage with far fewer points than white noise.
+  vec4 w=hash41(float(i)+.5);
+  vec4 rnd=vec4(fract(.5+float(i)*.7548776662466927),fract(.5+float(i)*.5698402909980532),w.z,w.w);
+  ${geo
+    ? "Pt p=Pt(a_pos,a_nrm,a_col,0.5,1.5,0.,1.,a_extra);"
+    : "Pt p=Pt(vec3(0.),vec3(0.,0.,1.),vec3(1.),0.5,1.5,0.,1.,vec4(0.));"}
+  surface(i,u_count,rnd,p);
+  gl_Position=u_viewProj*vec4(p.pos,1.);
+  float d=-(u_view*vec4(p.pos,1.)).z;
+  if(u_isPoint>.5 && (p.alpha<=0.||u_add<=0.&&p.alpha<rnd.w)) gl_Position=vec4(2.,2.,2.,1.);
+  gl_PointSize=max(1.,p.size*u_px);
+  v_color=max(p.color,0.);
+  v_d=vec4(sat(p.tone),sat((d-u_clip.x)/(u_clip.y-u_clip.x)),p.flag,p.alpha);
+}`;
