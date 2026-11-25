@@ -183,3 +183,17 @@ neo neo grotesk (Helvetica, Inter), geo geometric sans, hum humanist sans, round
 | dot | 2% | 2% | 0% |
 | cut | 0% | 0% | 0% |
 | symbol | 5% | 4% | 16% |
+
+### Symbol position
+
+| position | all (n=860) | craft 4+ (n=351) | craft 1-2 (n=37) |
+|---|---|---|---|
+| left | 67% | 65% | 57% |
+| none | 23% | 29% | 27% |
+| top | 2% | 2% | 8% |
+| inside | 4% | 3% | 5% |
+| right | 4% | 1% | 3% |
+
+### Lockup proportions (measured)
+
+In 992 horizontal logos with a symbol on the left, measured in units of the symbol height: the gap between symbol and word has median 0.20 (middle half 0.12 to 0.30); the word's ink height has median 0.92 (middle half 0.65 to 1.05); the word's vertical center sits 0.00 symbol heights from the symbol's center (median, positive is lower). The builder defaults (`cap_ratio` 0.66, `gap` 0.24) reproduce these.
