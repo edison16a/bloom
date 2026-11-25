@@ -30,3 +30,10 @@ export function multiply(a: Mat4, b: Mat4): Mat4 {
     o[c * 4 + r] = a[r] * b[c * 4] + a[4 + r] * b[c * 4 + 1] + a[8 + r] * b[c * 4 + 2] + a[12 + r] * b[c * 4 + 3];
   return o;
 }
+
+export function resolveCamera(cam: Camera | undefined, aspect: number) {
+  const c: Required<Camera> = { eye: [0, 0, 5], target: [0, 0, 0], fov: 35, near: 0.1, far: 30, roll: 0, minAspect: 0, ...cam };
+  if (aspect < c.minAspect) c.fov = (Math.atan((Math.tan((c.fov * Math.PI) / 360) * c.minAspect) / aspect) * 360) / Math.PI;
+  const view = lookAt(c.eye, c.target, c.roll);
+  return { ...c, view, viewProj: multiply(perspective(c.fov, aspect, c.near, c.far), view) };
+}
