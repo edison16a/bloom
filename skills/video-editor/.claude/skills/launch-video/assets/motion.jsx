@@ -95,3 +95,8 @@ function pointer(path, clicks, a, z) {
   var sk = []; for (var c = 0; c < clicks.length; c++) sk.push([clicks[c] - 0.06, [100, 100]], [clicks[c] + 0.03, [88, 88]], [clicks[c] + 0.22, [100, 100]]);
   if (sk.length) anim(tr(L, 'scale'), sk, INOUT); return L;
 }
+// Scene change: everything in `out` blurs up and away, everything in `inn` arrives from below. 0.5 s. Use once or twice in a film.
+function pushUp(out, inn, t) {
+  for (var i = 0; i < out.length; i++) { var p = tr(out[i], 'pos').valueAtTime(t, false); anim(tr(out[i], 'pos'), [[t, [p[0], p[1]]], [t + 0.5, [p[0], p[1] - K.h]]], INOUT); mb(out[i]); }
+  for (var j = 0; j < inn.length; j++) { var q = tr(inn[j], 'pos').valueAtTime(t, false); anim(tr(inn[j], 'pos'), [[t, [q[0], q[1] + K.h]], [t + 0.5, [q[0], q[1]]]], INOUT); mb(inn[j]); }
+}
