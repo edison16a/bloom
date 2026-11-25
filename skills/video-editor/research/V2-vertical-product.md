@@ -258,3 +258,11 @@ Compared with the three excluded long tutorials (6–16 cuts/min, −25 to −17
 - **Emphasis by style switch inside a line:** an italic word in a bold line (Arc "the *fastest way*"), or a 2x size word (Runway "problem").
 - Captions sit clear of the bottom 15–20% (platform UI) and the top 10%. Hero text sits mid-frame or on negative space such as sky or a flat field.
 - Exits are mostly cuts (text disappears with the shot). Fades out are rare.
+
+### UI framing in 9:16 (the core category question)
+1. **Crop to the element, never the whole screen.** Desktop UI is shown one panel at a time, scaled so its text is about caption-sized (Notion, Arc, Grammarly, ElevenLabs). Showing a whole landscape window (Raycast) reads tiny.
+2. **Floating card on a flat or gradient field**, with a rounded mask and soft shadow (Notion, ElevenLabs, Gemini, Pixel Tag). The background colour is the brand palette: cream, lilac, navy, warm white or a pink-blue gradient.
+3. **Phone UI:** either a device mockup centred at about 60–75% of frame height (Pixel Ask Photos, Figma phone frame) or the bezel cropped off by the frame edge so the UI is larger (Gemini avatar). Mockups hand off to full-bleed when the content becomes the hero.
+4. **Push from device to full-bleed:** start on a real phone (desk top-down, in hand) and Z+ until the screen fills the frame (Circle to Search, Ask Photos).
+5. **Presenter plus UI stacks:** UI card in the top 55–65%, presenter cutout in the bottom 35–45% (ElevenLabs, Gemini Argon, Figma tutorials), or a 50/50 split (Framer Wireframer). Captions go on the seam.
+6. **In-camera UI** (iPad top-down, phone held to camera) for lifestyle or celebrity pieces (Canva stickers, Messi, Arc Voice).
