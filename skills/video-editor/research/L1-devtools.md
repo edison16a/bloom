@@ -114,3 +114,10 @@
 - Median cuts on the beat is only 22%; median cuts with a hit is 27%. **These editors do not cut every shot on the beat.** The beat lives in the music and in rhythmic UI SFX; picture changes are free-timed.
 - What *does* lock to the grid: (a) the drop or lift moment, which coincides with the first big visual change in every "quiet hook" film; (b) SFX ticks, which run on exact 8th notes (Linear for Agents 0.28 s, v0 0.30 s, Retool 0.375 s, Loom 0.39 s, Config 0.46 s, Cursor 2.0 0.53 s quarters); (c) stat or title swaps in short bursts (Config 2026, Notion Mail at 59% on the beat).
 - Inference: the "energy" comes from a constant 8th-note transient layer plus a loud, flat (LRA 2–7) music bed, not from cutting faster.
+
+### SFX density and placement rules
+- 44–84 transients per minute is the norm, about one per beat or per 8th. Most map to UI events: clicks, key-taps while text types, selection pops, cards landing.
+- Typing is always sonified (clusters of ticks at roughly 10–15 per second in Raycast and Warp).
+- Near-silent films (Linear Releases, Linear Agent, Framer 3.0) feel premium but low-energy. That is the user's complaint, so avoid this profile for an "energetic" brief.
+- One big impact or swell per film, at the reveal: Raycast Focus +19 dB at 43 s, Raycast Windows +38 dB from silence, Vercel Ship +12 dB at 11 s.
+- End cards: music fades out over 3–5 s (energy drops 20–40 dB in the last 4 s of almost every film); no SFX on the logo except a soft final hit in some.
