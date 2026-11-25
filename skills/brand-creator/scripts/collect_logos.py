@@ -50,3 +50,12 @@ def safe_extract(blob, dest, want):
             with open(out, "wb") as f:
                 f.write(t.extractfile(m).read())
 
+
+def fetch_archives():
+    for k, url in SOURCES.items():
+        d = os.path.join(CACHE, k)
+        if os.path.isdir(d) and os.listdir(d):
+            continue
+        print("downloading", k, file=sys.stderr)
+        safe_extract(get(url, 300), d, lambda n: n.endswith((".svg", ".json", "svgs.ts")))
+
