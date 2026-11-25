@@ -12,7 +12,7 @@ export function SiteFooter() {
           <img src="/media/bloom-logo.svg" alt="Bloom" width={90} height={24} />
         </div>
         <div className={styles.col}>
-          <h2>Skills</h2>
+          <h2>Agents</h2>
           <ul>
             {skills.map((s) => (
               <li key={s.id}>

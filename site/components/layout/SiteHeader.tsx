@@ -10,7 +10,7 @@ export function SiteHeader() {
         <Link href="/" className={styles.brand} aria-label="Bloom home">
           <img src="/media/bloom-logo.svg" alt="Bloom" width={90} height={24} />
         </Link>
-        <nav className={styles.nav} aria-label="Skills">
+        <nav className={styles.nav} aria-label="Agents">
           {nav.map((item) => (
             <Link key={item.href} href={item.href} className={styles.link}>
               {item.label}
