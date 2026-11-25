@@ -1,0 +1,1367 @@
+[
+  {
+    "brand": "NVIDIA",
+    "symbol": "The eye (NVIDIA calls it the eyemark): a green field with a stylized eye and spiral. The original split eye mark dates to 1993.",
+    "wordmark": "NVIDIA in uppercase bold sans since the 2006 redesign (the 1993 version used serif capitals and a cursive n).",
+    "wordmark_case": "uppercase",
+    "has_symbol": true,
+    "lockup": "Vertical (preferred) and horizontal formats; eyemark and wordmark may never be moved, broken or scaled independently.",
+    "wordmark_typeface": null,
+    "brand_typeface": "NVIDIA Sans (custom family, licensed by NVIDIA under its own EULA)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "NVIDIA Green", "hex": "#76B900"},
+      {"name": "Dark gray (per 2019 trademark guidelines as reported by secondary sources)", "hex": "#1E1E1E"}
+    ],
+    "primary_color_family": "green",
+    "designer": null,
+    "year": "2006 (current wordmark); eye introduced 1993",
+    "rationale": "NVIDIA has not documented a meaning; the eye is commonly read as vision and the name is linked to invidia (envy). Treat both readings as interpretation.",
+    "mono_rules": "Two color logo is default; one color versions exist for use on NVIDIA green or when two colors cannot be reproduced. Clear space on all sides equals the height of the n. Minimum sizes exist but values are not public on the usage page. No recreation, effects, or busy backgrounds.",
+    "why_it_works": "A single saturated green plus an abstract eye gives instant recognition on hardware, packaging and keynote slides without needing the name.",
+    "notes": "Pantone references conflict across secondary sources (802 C vs 376 C). Wordmark typeface not named in official material.",
+    "sources": [
+      "https://www.nvidia.com/en-us/about-nvidia/legal-info/logo-brand-usage/",
+      "https://fabrikbrands.com/branding-matters/logofile/nvidia-logo-history-symbol-meaning-and-evolution/",
+      "https://raytracing-docs.nvidia.com/iray/ext/fonts/nvidia-sans/NVIDIA_Sans_EULA_20220602_FINAL.pdf",
+      "https://madegooddesigns.com/nvidia-font/"
+    ]
+  },
+  {
+    "brand": "SpaceX",
+    "symbol": null,
+    "wordmark": "SPACEX in custom uppercase geometric lettering; the X has an extended swooping stroke.",
+    "wordmark_case": "uppercase",
+    "has_symbol": false,
+    "lockup": "Word only.",
+    "wordmark_typeface": "Custom lettering; structure resembles Eurostile or Bank Gothic but no typeface is published.",
+    "brand_typeface": null,
+    "typeface_custom": true,
+    "colors": [],
+    "primary_color_family": null,
+    "designer": null,
+    "year": null,
+    "rationale": "Musk said the swoop of the X represents the rocket's arc to orbit; he also said he agonized over the Tesla and SpaceX lettering.",
+    "mono_rules": null,
+    "why_it_works": "One gesture inside the letterforms (the swoosh) tells the whole story of the company without adding a separate symbol.",
+    "notes": "A claim that RO Studio (New Jersey) drew the original logo appears on 1000logos but is unconfirmed. Fast Company reported a new SpaceXAI mark in 2026.",
+    "sources": [
+      "https://www.tweaktown.com/news/88182/elon-musk-reveals-hidden-meaning-behind-the-swooping-in-spacex/index.html",
+      "https://businessinsider.nl/elon-musk-says-he-somewhat-agonized-over-the-font-design-for-tesla-and-spacex-revealing-the-hidden-meaning-behind-the-swooping-x/",
+      "https://madegooddesigns.com/?p=48804",
+      "https://www.fastcompany.com/91570200/spacexais-logo-design-grok-critique"
+    ]
+  },
+  {
+    "brand": "Anthropic (and Claude)",
+    "symbol": "Claude uses a terracotta starburst or spark; the Anthropic corporate logo has no symbol.",
+    "wordmark": "ANTHROP\\C in uppercase, a purely typographic logo where a slash stands in for a letter.",
+    "wordmark_case": "uppercase",
+    "has_symbol": true,
+    "lockup": "Anthropic: word only. Claude: spark plus the word Claude.",
+    "wordmark_typeface": null,
+    "brand_typeface": "Styrene (Commercial Type, Berton Hasebe) for headlines and Tiempos (Klim Type Foundry) for body",
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Claude orange (third party, consistently cited)", "hex": "#D97757"},
+      {"name": "Dark (third party)", "hex": "#141413"},
+      {"name": "Light (third party)", "hex": "#FAF9F5"}
+    ],
+    "primary_color_family": "orange",
+    "designer": "Geist (studio); work spanned about two and a half years from stealth to the Claude launch",
+    "year": "c. 2023 (identity finished around the Claude launch in mid 2023)",
+    "rationale": "Geist says the slash links to the code underneath AI and to the future ahead, and the warm color system was meant to show a human centered mission next to technical craft and to step away from intimidating AI visuals.",
+    "mono_rules": null,
+    "why_it_works": "One small typographic intervention plus a warm, non blue palette makes it look nothing like its AI rivals.",
+    "notes": "The trademark filing and the Geist page differ on which character the slash replaces. Hex values come from third party reconstructions, not an official Anthropic page.",
+    "sources": [
+      "https://geist.co/work/anthropic",
+      "https://type.today/en/journal/anthropic",
+      "https://abduzeedo.com/node/88673",
+      "https://www.designrush.com/best-designs/logo/claude-logo-design-the-ai-mark-built-to-look-none-of-its-rivals",
+      "https://axios.com/2026/07/21/anthropic-abnormal-ai-logos-lawsuit",
+      "https://skill-wiki.github.io/atom/frontend-design/fact-anthropic-brand-palette"
+    ]
+  },
+  {
+    "brand": "OpenAI (and ChatGPT)",
+    "symbol": "The Blossom: a six sided knot of interlaced strokes pairing circles with right angles; redrawn in 2025 with uniform stroke weight and a larger center. ChatGPT uses the Blossom as its icon.",
+    "wordmark": "OpenAI set in OpenAI Sans with a perfectly circular O (round outside, deliberately imperfect inside).",
+    "wordmark_case": "mixed",
+    "has_symbol": true,
+    "lockup": "Wordmark and Blossom are not combined; the wordmark leads and the Blossom is used sparingly.",
+    "wordmark_typeface": "OpenAI Sans",
+    "brand_typeface": "OpenAI Sans (custom, with ABC Dinamo; five weights plus italics)",
+    "typeface_custom": true,
+    "colors": [],
+    "primary_color_family": null,
+    "designer": "In house team led by Veit Moeller and Shannon Jager, with ABC Dinamo (type) and Studio Dumbar (motion); original Blossom credited by secondary sources to Ben Barry and Ludwig Pettersson around 2016",
+    "year": "2025 (February refresh)",
+    "rationale": "The company wanted one system and one identity after years of inconsistent fonts and marks, and aimed for something more organic and more human; the Blossom's circles stand for human warmth and its right angles for technical precision.",
+    "mono_rules": "Clear space required but no measurement published; no added colors, effects or busy backgrounds on the Blossom; no stretching or cropping the wordmark.",
+    "why_it_works": "A geometric but hand corrected symbol plus a custom geometric sans gives a calm, almost neutral brand that recedes behind the product.",
+    "notes": "The ChatGPT green #10A37F was not confirmed by any source found.",
+    "sources": [
+      "https://openai.com/brand/",
+      "https://www.fastcompany.com/91273217/open-ai-rebrand-chat-gpt-logo",
+      "https://www.creativebloq.com/design/openais-bold-new-rebrand-is-surprisingly-human",
+      "https://wallpaper.com/tech/openai-has-undergone-its-first-ever-rebrand-giving-fresh-life-to-chatgpt-interactions",
+      "https://www.designrush.com/best-designs/logo/chatgpt-logo"
+    ]
+  },
+  {
+    "brand": "Etched",
+    "symbol": null,
+    "wordmark": null,
+    "wordmark_case": null,
+    "has_symbol": null,
+    "lockup": null,
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [],
+    "primary_color_family": null,
+    "designer": null,
+    "year": null,
+    "rationale": null,
+    "mono_rules": null,
+    "why_it_works": null,
+    "notes": "No official brand guide, press kit or agency case study was found. The word mark ETCHED was filed by Etched.AI, Inc. on December 5, 2023, and SOHU (its chip) is a pending trademark. A Made Good page is an unofficial homage and was ignored.",
+    "sources": [
+      "https://trademark.justia.com/owners/etched-ai-inc-5723431",
+      "https://markinton.com/trademark/sohu-99266088",
+      "https://madegooddesigns.com/?p=156786"
+    ]
+  },
+  {
+    "brand": "Tesla",
+    "symbol": "A stylized T that Musk describes as a cross section of an electric motor (stator on top, rotor below).",
+    "wordmark": "TESLA in custom uppercase lettering not derived from any retail font.",
+    "wordmark_case": "uppercase",
+    "has_symbol": true,
+    "lockup": "Symbol and wordmark used separately or together; the early version placed both inside a shield.",
+    "wordmark_typeface": "Custom lettering",
+    "brand_typeface": "Gotham historically, later custom sans (secondary source)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Tesla red (third party, unverified)", "hex": "#E82127"}
+    ],
+    "primary_color_family": "red",
+    "designer": null,
+    "year": null,
+    "rationale": "The T doubles as a motor cross section, paralleling SpaceX's X as a rocket trajectory.",
+    "mono_rules": null,
+    "why_it_works": "A single letter that is also a piece of engineering lets the badge carry the product story on the car itself.",
+    "notes": "RO Studio is credited by some sources for the earlier shield version; the current mark's designer is unconfirmed.",
+    "sources": [
+      "https://www.logodesignlove.com/tesla-logo",
+      "https://www.motor1.com/news/134480/elon-musk-tesla-logo-explained/",
+      "https://www.creativebloq.com/design/logos-icons/the-history-of-the-tesla-logo-from-car-badge-to-global-tech-brand",
+      "https://madegooddesigns.com/tesla-brand-guidelines/"
+    ]
+  },
+  {
+    "brand": "Apple",
+    "symbol": "An apple silhouette with a bite taken from the right side and a detached leaf.",
+    "wordmark": null,
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Symbol only; resellers must use the full channel signature, never the logo alone.",
+    "wordmark_typeface": null,
+    "brand_typeface": "SF Pro (designed in house)",
+    "typeface_custom": true,
+    "colors": [],
+    "primary_color_family": "black/mono",
+    "designer": "Rob Janoff, art director at Regis McKenna",
+    "year": "1977 (rainbow original); monochrome version from about 1998",
+    "rationale": "The bite was added so the shape reads as an apple and not a cherry at small sizes.",
+    "mono_rules": "Channel signatures are all black or all white only; gray Apple logos are reserved for Apple. Clear space is half the logo height (2019 reseller guide; 2009 used full height). Minimum 8 mm print or 35 px screen (2013 guide).",
+    "why_it_works": "A silhouette anyone can draw from memory, with one deliberate cut that removes ambiguity at any size.",
+    "notes": "Clear space figures differ between guideline versions.",
+    "sources": [
+      "https://wikipedia.com/wiki/Rob_Janoff",
+      "https://appleinsider.com/articles/22/03/29/how-apples-logo-started-out-as-the-most-expensive-and-became-the-most-iconic",
+      "https://www.apple.com/legal/sales-support/certification/docs/logo_guidelines.pdf",
+      "https://www.canny-creative.com/brand-breakdown/brand/apple/"
+    ]
+  },
+  {
+    "brand": "Google",
+    "symbol": "A four color G taken from the logotype's G with heavier weight for small sizes; the system also includes animated dots.",
+    "wordmark": "Google in a geometric sans with four colors on white.",
+    "wordmark_case": "sentence",
+    "has_symbol": true,
+    "lockup": "Three parts used separately: logotype, dots, and the standalone G.",
+    "wordmark_typeface": "Product Sans (custom geometric sans)",
+    "brand_typeface": "Google Sans (named in later Google brand guidelines)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Blue (widely cited, third party)", "hex": "#4285F4"},
+      {"name": "Red (one third party set)", "hex": "#EA4335"},
+      {"name": "Yellow (one third party set)", "hex": "#FBBC04"},
+      {"name": "Green (one third party set)", "hex": "#34A853"}
+    ],
+    "primary_color_family": "multicolor",
+    "designer": "In house: Creative Lab and Material Design team in a New York sprint",
+    "year": "2015",
+    "rationale": "Moving from serif to geometric sans kept the logo legible at tiny mobile sizes; red, green and yellow were made more vibrant because adjacent colors optically blend and dim.",
+    "mono_rules": null,
+    "why_it_works": "A plain geometric word plus a fixed order of four primaries is recognizable even when reduced to a single letter.",
+    "notes": "Red, yellow and green hex values differ between third party sets (another set lists #DB4437, #F4B400, #0F9D58). No official palette page was found.",
+    "sources": [
+      "https://www.fastcompany.com/3050613/how-google-designed-its-new-logo",
+      "https://blog.google/technology/design/google-update/",
+      "https://design.google/library/google-logo-brand-robert-wong",
+      "https://thenextweb.com/news/google-created-an-entirely-new-typeface-for-its-snappy-logo-redesign",
+      "https://www.w3schools.com/colors/colors_brands.asp"
+    ]
+  },
+  {
+    "brand": "Microsoft",
+    "symbol": "Four equal squares in a 2 by 2 grid: red, green, blue, yellow.",
+    "wordmark": "Microsoft in gray Segoe (reported as Segoe UI Semibold).",
+    "wordmark_case": "sentence",
+    "has_symbol": true,
+    "lockup": "Symbol left of word.",
+    "wordmark_typeface": "Segoe (Segoe UI Semibold per secondary source)",
+    "brand_typeface": "Segoe",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Red", "hex": "#F25022"},
+      {"name": "Green", "hex": "#7FBA00"},
+      {"name": "Blue", "hex": "#00A4EF"},
+      {"name": "Yellow", "hex": "#FFB900"},
+      {"name": "Wordmark gray (single source)", "hex": "#737373"}
+    ],
+    "primary_color_family": "multicolor",
+    "designer": null,
+    "year": "2012 (August 23), first change in 25 years",
+    "rationale": null,
+    "mono_rules": null,
+    "why_it_works": "The simplest possible symbol (four squares) built from four flat brand colors works as a favicon and as a building sign.",
+    "notes": "Designer credit is contested: some secondary sources name Jason Wells, others the in house team; Pentagram is linked to the Windows mark, not clearly the corporate one. No primary rationale was retrieved.",
+    "sources": [
+      "https://www.core77.com/posts/23261/microsoft-unveils-new-logo-first-update-in-25-years-23261",
+      "https://brandpalettes.com/microsoft-color-codes/",
+      "https://www.fontsinuse.com/uses/2007/the-new-microsoft-logo",
+      "https://learn.microsoft.com/en-us/archive/blogs/seliot/microsoft-and-design-the-new-logo"
+    ]
+  },
+  {
+    "brand": "Meta",
+    "symbol": "A continuous loop drawn as a single line in 3D space; reads as an M from one angle and an infinity sign from another.",
+    "wordmark": "Meta in the company typeface introduced in 2019 (exaggerated x height, single story a).",
+    "wordmark_case": "sentence",
+    "has_symbol": true,
+    "lockup": "Symbol left of word.",
+    "wordmark_typeface": "Company typeface designed with Dalton Maag (name not given officially; Optimistic is cited by third parties)",
+    "brand_typeface": "Same company typeface (Dalton Maag, 2019)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Blue gradient start (third party)", "hex": "#0668E1"},
+      {"name": "Blue gradient end (third party)", "hex": "#1877F2"}
+    ],
+    "primary_color_family": "blue",
+    "designer": "In house brand and product teams",
+    "year": "2021",
+    "rationale": "Meta means beyond; the loop was designed to be viewed from different angles and to live in 2D and 3D, and its blue gradient pulls from the core products to connect future and origins.",
+    "mono_rules": null,
+    "why_it_works": "A symbol designed for motion and 3D first, so it survives the jump from app icons to headsets.",
+    "notes": "Critics called the infinity loop a common trope; Dalton Maag does not list the project publicly.",
+    "sources": [
+      "https://www.meta.com/design-at-meta/blog/designing-our-new-company-brand-meta/",
+      "https://www.itsnicethat.com/news/creative-x-facebook-meta-branding-graphic-design-081121",
+      "https://www.dezeen.com/2021/11/03/meta-facebook-rebrand-infinity-loop/",
+      "https://designharder.substack.com/p/the-metaverse-loop"
+    ]
+  },
+  {
+    "brand": "Amazon",
+    "symbol": "The smile: an orange arrow from a to z under the word that also reads as a smile; refreshed in 2025 with a wider shaft and point.",
+    "wordmark": "amazon in lowercase; since 2025 drawn in a custom alphabet called Amazon Logo Sans.",
+    "wordmark_case": "lowercase",
+    "has_symbol": true,
+    "lockup": "Smile under the wordmark; the smile also stands alone (app icon, boxes).",
+    "wordmark_typeface": "Amazon Logo Sans (custom, 2025)",
+    "brand_typeface": "Amazon Ember Modern (with type foundry NaN, about 364 languages)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Amazon Orange", "hex": "#FF9900"},
+      {"name": "Squid Ink", "hex": "#232F3E"}
+    ],
+    "primary_color_family": "orange",
+    "designer": "Turner Duckworth (2000 smile); Koto with the in house team (2025 refresh)",
+    "year": "2000; refreshed 2025",
+    "rationale": "The arrow says Amazon sells everything from a to z while giving the brand a smile; the 2025 refresh made the smile more smiley and more vibrant and built a logo architecture for more than 50 sub brands.",
+    "mono_rules": "2017 global guidelines: Amazon Orange and Squid Ink as primary colors, Smile no smaller than 0.5 in, clear space tied to the height of the Smile.",
+    "why_it_works": "A double meaning hidden in one stroke, simple enough to print on every box.",
+    "notes": "The 2017 guideline clear space wording is garbled in the extract; product sub brands use different clear space rules.",
+    "sources": [
+      "https://www.phaidon.com/blogs/stories/how-turner-duckworth-created-the-amazon-smile-logo",
+      "https://www.thedrum.com/news/2025/04/29/fractured-navigable-new-amazon-identity-looks-balance-personality-and-clarity",
+      "https://www.dezeen.com/2025/05/09/amazon-rebrand-2025-koto-xcm/amp/",
+      "https://www.fastcompany.com/91325883/amazon-global-brand-refresh-koto",
+      "https://pages.awscloud.com/rs/112-TZM-766/images/Amazon%20Global_Brand%20Guidelines_DF_v3.pdf"
+    ]
+  },
+  {
+    "brand": "Netflix",
+    "symbol": "The N: a red ribbon letter with a darker inner fold, added in 2016 for mobile apps.",
+    "wordmark": "NETFLIX in flat red uppercase with an arched baseline; drop shadow and red box removed in 2014.",
+    "wordmark_case": "uppercase",
+    "has_symbol": true,
+    "lockup": "Wordmark or the N used alone, not combined.",
+    "wordmark_typeface": "Custom lettering reported as based on Gotham Book and Gotham Bold",
+    "brand_typeface": "Netflix Sans (Dalton Maag with the in house team, 2018)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Netflix Red (third party)", "hex": "#E50914"},
+      {"name": "Inner fold red (third party)", "hex": "#B20710"},
+      {"name": "Black", "hex": "#000000"}
+    ],
+    "primary_color_family": "red",
+    "designer": "Gretel (2014 wordmark, 2016 N)",
+    "year": "2014 wordmark; 2016 N",
+    "rationale": "The flat wordmark kept the curve of the old emblem while stripping effects for screens; the N gave a compact icon for apps; Netflix Sans echoes the wordmark's curve in its t.",
+    "mono_rules": null,
+    "why_it_works": "One red on black, and a curve borrowed from cinema screens, read as Netflix even at thumbnail size.",
+    "notes": "Some sources say the 2014 type is Graphique; most attribute Graphique to the pre 2014 logo.",
+    "sources": [
+      "https://www.logodesignlove.com/netflix-identity-design",
+      "https://www.itsnicethat.com/news/netflix-sans-typeface-dalton-maag-graphic-design-210318",
+      "https://www.fastcompany.com/3052867/netflixs-new-brand",
+      "https://madegooddesigns.com/netflix-brand-guidelines/",
+      "https://www.fontsinuse.com/uses/6067/netflix-logo-1997-2014"
+    ]
+  },
+  {
+    "brand": "Spotify",
+    "symbol": "A green circle with three curved bars (sound waves).",
+    "wordmark": "Spotify; the wordmark may never appear without the icon.",
+    "wordmark_case": "sentence",
+    "has_symbol": true,
+    "lockup": "Icon left of wordmark (full logo); icon may stand alone where space is tight.",
+    "wordmark_typeface": null,
+    "brand_typeface": "Circular (Lineto; Lineto lists a bespoke Spotify version from 2015 to 2017)",
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Spotify Green (third party)", "hex": "#1ED760"},
+      {"name": "Classic green (third party)", "hex": "#1DB954"},
+      {"name": "Playback background (official fallback)", "hex": "#191414"}
+    ],
+    "primary_color_family": "green",
+    "designer": "Collins is linked to the 2013 and 2015 work in secondary sources; the in house team refined the 2015 logo",
+    "year": "2015 (brighter green)",
+    "rationale": null,
+    "mono_rules": "Approved colorways are green (only on black or white), black, white, and monochrome everywhere else. Clear space is half the icon height. Minimum full logo 70 px or 20 mm; icon 21 px or 6 mm.",
+    "why_it_works": "A neon green reserved for the logo and a simple sound wave icon make it the most visible tile on any home screen.",
+    "notes": "Spotify Mix typeface and the Collins attribution were not confirmed from primary sources.",
+    "sources": [
+      "https://developer.spotify.com/documentation/design",
+      "https://lineto.com/bespoke/spotify",
+      "https://www.fastcompany.com/3043547/spotifys-new-look-signals-its-identity-shift",
+      "https://www.designrush.com/best-designs/logo/spotify-logo"
+    ]
+  },
+  {
+    "brand": "Airbnb",
+    "symbol": "The Bélo: one continuous line forming a person with arms raised, a location pin, an upside down heart, and the letter A.",
+    "wordmark": "airbnb in lowercase.",
+    "wordmark_case": "lowercase",
+    "has_symbol": true,
+    "lockup": "Bélo left of wordmark.",
+    "wordmark_typeface": "Custom version of Circular (2014)",
+    "brand_typeface": "Airbnb Cereal (with Dalton Maag, 2018, six weights)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Rausch, legacy 2014 (community reconstruction)", "hex": "#FF5A5F"},
+      {"name": "Rausch, current UI (community reconstruction)", "hex": "#FF385C"}
+    ],
+    "primary_color_family": "red",
+    "designer": "DesignStudio",
+    "year": "2014",
+    "rationale": "Built around belonging; the goal was a mark anyone can draw, something you could draw in the sand with your toe. Rausch is named after the street where Airbnb started and meant to feel like passion without the aggression of pure red.",
+    "mono_rules": null,
+    "why_it_works": "A single drawable line with four meanings, mocked at launch and now owned outright.",
+    "notes": "Airbnb publishes no official public hex palette; values are community reconstructions.",
+    "sources": [
+      "https://www.designweek.co.uk/issues/july-2014/designstudio-creates-symbol-of-belonging-for-airbnb-rebrand/",
+      "https://www.dezeen.com/2014/07/16/airbnb-rebrand-designstudio/",
+      "https://creativebloq.com/news/the-new-airbnb-logo-was-widely-mocked-in-2014-heres-how-the-brand-had-the-last-laugh",
+      "https://www.dezeen.com/2018/05/16/airbnb-new-scaleable-typeface-dalton-maag-design/",
+      "https://www.superdesign.dev/blog/airbnb-design-system"
+    ]
+  },
+  {
+    "brand": "Uber",
+    "symbol": null,
+    "wordmark": "Uber with a capital U and the rest lowercase, in Uber Move, white on black.",
+    "wordmark_case": "sentence",
+    "has_symbol": false,
+    "lockup": "Word only (the 2016 circle in a square icon was dropped).",
+    "wordmark_typeface": "Uber Move",
+    "brand_typeface": "Uber Move (Display and Text), by Wolff Olins with MCKL (Jeremy Mickel) and the Uber design team",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Black", "hex": "#000000"},
+      {"name": "White", "hex": "#FFFFFF"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": "Wolff Olins",
+    "year": "2018",
+    "rationale": "High contrast black and white for legibility; the type drew on transport signage such as Highway Gothic and DIN, and the story moved from cars to global mobility after the criticized 2016 icon.",
+    "mono_rules": "Primary brand colors are black and white; partner lockups use the vertical bar glyph from Uber Move Display Light as a divider.",
+    "why_it_works": "Retreating to a plain wordmark in a signage inspired face made the brand feel like infrastructure.",
+    "notes": "Reported project length differs (nine or ten months).",
+    "sources": [
+      "https://www.dezeen.com/2018/09/14/uber-rebrand-wolff-olins-black-white-wordmark-logo-typography/amp/",
+      "https://fortune.com/2018/09/13/uber-new-logo-brand-cmo/",
+      "https://www.designweek.co.uk/issues/17-23-september-2018/uber-rebrand-looks-to-reflect-how-the-taxi-app-is-changing",
+      "https://typewolf.com/uber-move",
+      "https://cdn.shopify.com/s/files/1/0565/3423/7349/files/Uber_2018.pdf"
+    ]
+  },
+  {
+    "brand": "Stripe",
+    "symbol": "Since September 2025: a single white diagonal stroke inside a blue square, derived from the slanted dot of the i (replaced the earlier slanted S icon).",
+    "wordmark": "stripe in custom lowercase lettering; the dot of the i is a slanted square.",
+    "wordmark_case": "lowercase",
+    "has_symbol": true,
+    "lockup": "Wordmark leads; the square symbol is used for apps and products.",
+    "wordmark_typeface": "Custom lettering (FF Fago is also claimed by one source, unverified)",
+    "brand_typeface": "Söhne (Klim Type Foundry, Kris Sowersby), adopted around 2020; earlier Camphor",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Blurple (third party)", "hex": "#635BFF"},
+      {"name": "Slate (third party)", "hex": "#0A2540"}
+    ],
+    "primary_color_family": "purple",
+    "designer": "In house (2016 wordmark)",
+    "year": "2016 wordmark; 2025 symbol",
+    "rationale": "The 2025 symbol was meant to be simple and scalable across product lines, since the earlier square lacked recognition as a standalone mark.",
+    "mono_rules": "Wordmark only in slate or blurple on light backgrounds and white on dark; no other colors.",
+    "why_it_works": "A plain lowercase word with one custom detail, and a color named and owned (blurple).",
+    "notes": null,
+    "sources": [
+      "https://stripe.com/newsroom/brand-assets",
+      "https://designcompass.org/en/2025/09/25/extremely-minimal-new-symbol-of-stripe",
+      "https://madegooddesigns.com/stripe-brand-guidelines/",
+      "https://www.designrush.com/best-designs/logo/stripe"
+    ]
+  },
+  {
+    "brand": "Linear",
+    "symbol": "Logomark: a circle cut by diagonal lines (app icon is a blue circle with white diagonals).",
+    "wordmark": "Linear, always one word with a capital L.",
+    "wordmark_case": "sentence",
+    "has_symbol": true,
+    "lockup": "Wordmark wherever space allows; logomark for tight layouts; separate icon chip for social.",
+    "wordmark_typeface": null,
+    "brand_typeface": "Inter and Inter Display (in product, per secondary source)",
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Brand blue (simple icons database, unofficial)", "hex": "#5E6AD2"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": "Karri Saarinen (cofounder) per secondary source",
+    "year": "2019; refined 2024 (secondary)",
+    "rationale": "Linear says the wordmark has stronger recognition than the logomark; secondary sources say the geometric mark is meant to signal precision rather than cleverness.",
+    "mono_rules": "Monochrome wordmark preferred, using light and dark accents; brand blue reserved mostly for backgrounds; plenty of room around assets but no measurement.",
+    "why_it_works": "Restraint: a monochrome wordmark and a mark that looks like motion through a sphere fit a tool that sells calm and speed.",
+    "notes": null,
+    "sources": [
+      "https://linear.app/brand",
+      "https://www.designyourway.net/blog/linear-logo/",
+      "https://www.figma.com/blog/karri-saarinens-10-rules-for-crafting-products-that-stand-out/",
+      "https://www.stfo.io/research/audits/linear/"
+    ]
+  },
+  {
+    "brand": "Vercel",
+    "symbol": "A solid upward pointing triangle.",
+    "wordmark": "Vercel logotype, redrawn alongside the Geist typeface.",
+    "wordmark_case": "sentence",
+    "has_symbol": true,
+    "lockup": "Full logo (triangle plus logotype) preferred; triangle alone only in tight spaces or symbol grids.",
+    "wordmark_typeface": null,
+    "brand_typeface": "Geist Sans and Geist Mono (Basement Studio with Vercel, open source, 2023)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Black", "hex": "#000000"},
+      {"name": "White", "hex": "#FFFFFF"},
+      {"name": "Accent blue (third party)", "hex": "#0070F3"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": "Basement Studio (logo redesign and Geist, from late 2022)",
+    "year": "2023",
+    "rationale": "Geist was built for simplicity, minimalism and speed with Swiss design as inspiration, and the logo was redrawn so mark and type work together.",
+    "mono_rules": "Black and white versions only; choose by background, not browser theme. Clear space is defined by the height of the triangle symbol.",
+    "why_it_works": "The simplest geometric shape in pure black and white, backed by an owned typeface that developers now use everywhere.",
+    "notes": null,
+    "sources": [
+      "https://vercel.com/geist/brands",
+      "https://basement.studio/post/the-birth-of-geist-a-typeface-crafted-for-the-web",
+      "https://basement.studio/post/scaling-vercel-years-of-building-refining-and-elevating",
+      "https://madegooddesigns.com/vercel-brand-guidelines/"
+    ]
+  },
+  {
+    "brand": "Figma",
+    "symbol": "Five colored shapes (circles and rounded half shapes) stacked on a modular grid, built from three simple shapes.",
+    "wordmark": "Figma.",
+    "wordmark_case": "sentence",
+    "has_symbol": true,
+    "lockup": "Symbol left of word; mono outline variant exists.",
+    "wordmark_typeface": null,
+    "brand_typeface": "Figma Sans (with Grilli Type, 2024), plus Condensed, Mono and Hand companions",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Red (secondary)", "hex": "#F24E1E"},
+      {"name": "Purple (secondary)", "hex": "#A259FF"},
+      {"name": "Blue (secondary)", "hex": "#1ABCFE"},
+      {"name": "Green (secondary)", "hex": "#0ACF83"},
+      {"name": "Orange (secondary)", "hex": "#FF7262"}
+    ],
+    "primary_color_family": "multicolor",
+    "designer": "Chris Hamamoto with Johan Prag and Rasmus Andersson (in house)",
+    "year": "2017 (icon); 2024 brand refresh",
+    "rationale": "The icon celebrates design fundamentals (points, lines, shapes), encourages play like children's building blocks, and shows design as a system of reusable components.",
+    "mono_rules": "Full color icon or mono outline variant.",
+    "why_it_works": "The logo is literally a component system, which is what the product sells.",
+    "notes": "Hex values come from a secondary guide, not an official palette page.",
+    "sources": [
+      "https://www.figma.com/blog/figmas-new-icon/",
+      "https://www.figma.com/blog/the-story-of-creating-figma-sans/",
+      "https://type-01.com/figma-rebrands-with-a-fresh-custom-font-by-grilli-type/",
+      "https://www.itsnicethat.com/features/figma-brand-refresh-graphic-design-spotlight-160924",
+      "https://www.designyourway.net/blog/figma-logo/"
+    ]
+  },
+  {
+    "brand": "Notion",
+    "symbol": "A thick outlined cube or block with a serif N on its face.",
+    "wordmark": "Notion; a 2025 update inserts the block shape into the wordmark.",
+    "wordmark_case": "sentence",
+    "has_symbol": true,
+    "lockup": "Block plus the word Notion (official logo page).",
+    "wordmark_typeface": "Inter (per Design Compass); serif N is custom or Lyon depending on source",
+    "brand_typeface": "Inter (per Design Compass)",
+    "typeface_custom": null,
+    "colors": [],
+    "primary_color_family": "black/mono",
+    "designer": "Unofficially attributed to cofounder Ivan Zhao; illustrations by Roman Muradov",
+    "year": "2016 (relaunch); updated 2025",
+    "rationale": null,
+    "mono_rules": null,
+    "why_it_works": "A black and white block that looks hand made, matched by sketchy illustrations, makes a software tool feel like a notebook.",
+    "notes": "Typeface claims conflict across secondary sources.",
+    "sources": [
+      "https://notion.notion.site/Logos-6331ef1fc18241f8bae8a4b923b05ce4",
+      "https://designcompass.org/en/2025/04/08/make-with-notion-notion-first-face-to-face-conference/",
+      "https://www.notion.com/blog/the-thinking-behind-our-latest-brand-campaign",
+      "https://madegooddesigns.com/?p=57432"
+    ]
+  },
+  {
+    "brand": "Slack",
+    "symbol": "An octothorpe built on a grid from two shapes, a speech bubble and a lozenge, in four colors.",
+    "wordmark": "slack in lowercase.",
+    "wordmark_case": "lowercase",
+    "has_symbol": true,
+    "lockup": "Symbol left of word; the symbol's parts also work as standalone graphic elements.",
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Four logo primaries (hex not confirmed by sources)", "hex": null},
+      {"name": "Aubergine purple accent (hex not confirmed)", "hex": null}
+    ],
+    "primary_color_family": "multicolor",
+    "designer": "Pentagram, Michael Bierut, with Slack's in house design and brand team",
+    "year": "2019",
+    "rationale": "The old logo used 11 colors and needed a precise 18 degree rotation, so it broke on any background; the new mark keeps the hashtag for brand equity, reduces to four colors, and uses the speech bubble to signal communication.",
+    "mono_rules": null,
+    "why_it_works": "It fixed reproduction problems while keeping the shape people already knew, and turned the mark into a kit of parts.",
+    "notes": "Common hex values (36C5F0, 2EB67D, ECB22E, E01E5A, 4A154B) were not confirmed by any source found.",
+    "sources": [
+      "https://www.pentagram.com/work/slack/story",
+      "https://slack.com/blog/news/say-hello-new-logo",
+      "https://www.designweek.co.uk/pentagrams-michael-bierut-gives-slack-its-first-ever-rebrand/",
+      "https://www.dezeen.com/2019/01/17/slack-logo-rebrand-pentagram/amp/"
+    ]
+  },
+  {
+    "brand": "Discord",
+    "symbol": "Clyde, the game controller face mascot, freed from its speech bubble in 2021 with rounder shoulders.",
+    "wordmark": "Custom lettering based on Ginto (ABC Dinamo).",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Logo in color, black or white; Clyde alone only where the brand is already clear.",
+    "wordmark_typeface": "Custom, based on Ginto (Ginto Nord Bold modified per Logopedia)",
+    "brand_typeface": null,
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Blurple", "hex": "#5865F2"},
+      {"name": "Light Blurple", "hex": "#E0E3FF"},
+      {"name": "Black", "hex": "#000000"}
+    ],
+    "primary_color_family": "blue-violet",
+    "designer": null,
+    "year": "2021",
+    "rationale": "A brighter, more saturated blurple and a playful custom wordmark to go with the new Clyde.",
+    "mono_rules": "Color, black or white versions; do not recolor or reconfigure; brand assets for digital use only.",
+    "why_it_works": "A friendly character plus a coined color name (blurple) give a community brand something to rally around.",
+    "notes": "Logopedia reports an additional darker blurple (#161CBB) from a 2024 gaming focused refresh. Studio Koto is credited by one source, unconfirmed.",
+    "sources": [
+      "https://discord.com/branding",
+      "https://discord.com/blog/happy-blurpthday-to-discord-a-place-for-everything-you-can-imagine",
+      "https://logos.fandom.com/wiki/Discord",
+      "https://www.designrush.com/best-designs/logo/discord-logo-design"
+    ]
+  },
+  {
+    "brand": "Palantir",
+    "symbol": "An orb resting on a stand (a filled circle over two angled strokes), after Tolkien's seeing stones.",
+    "wordmark": "Custom sans lettering (semibold, per secondary sources).",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Symbol with wordmark; logomark reserved for Palantir's own use.",
+    "wordmark_typeface": "Custom lettering, no retail font named",
+    "brand_typeface": null,
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Palantir Black (third party)", "hex": "#101113"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": "Garry Tan (early employee), per secondary sources",
+    "year": "Early 2000s; structurally unchanged (one source says refined around 2014)",
+    "rationale": "The name and mark reference the palantír, a stone for seeing far away, fitting a data analysis company.",
+    "mono_rules": null,
+    "why_it_works": "A tiny literary reference drawn as two strokes and a dot feels both ominous and precise.",
+    "notes": "Dates and designer are from secondary sources only.",
+    "sources": [
+      "https://www.designrush.com/best-designs/logo/palantir",
+      "https://www.designyourway.net/blog/palantir-logo/",
+      "https://madegooddesigns.com/?p=46590",
+      "https://logoheritage.com/?p=3370"
+    ]
+  },
+  {
+    "brand": "Anduril",
+    "symbol": "A black geometric mark of intertwined angular shapes.",
+    "wordmark": "ANDURIL in bold uppercase.",
+    "wordmark_case": "uppercase",
+    "has_symbol": true,
+    "lockup": "Symbol above wordmark (per logo.dev description).",
+    "wordmark_typeface": null,
+    "brand_typeface": "Helvetica Now (Fonts In Use)",
+    "typeface_custom": false,
+    "colors": [
+      {"name": "Near white (logo.dev)", "hex": "#FEFEFE"},
+      {"name": "Near black (logo.dev)", "hex": "#040404"},
+      {"name": "Gray (logo.dev)", "hex": "#858585"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": "In house design team",
+    "year": null,
+    "rationale": null,
+    "mono_rules": null,
+    "why_it_works": "Monochrome, angular and uppercase reads like defense hardware rather than consumer tech.",
+    "notes": null,
+    "sources": [
+      "https://fontsinuse.com/uses/32662/anduril-industries",
+      "https://www.logo.dev/search/brands/anduril.com",
+      "https://www.fastcompany.com/91527326/anduril-redesigning-future-of-warfare"
+    ]
+  },
+  {
+    "brand": "Scale AI",
+    "symbol": null,
+    "wordmark": null,
+    "wordmark_case": null,
+    "has_symbol": null,
+    "lockup": null,
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [],
+    "primary_color_family": null,
+    "designer": "Sid Lee (Montreal); creative director Simon Chénier-Gauvreau",
+    "year": null,
+    "rationale": "Sid Lee says the logo and the whole graphic platform are built on a scale bar, with a dynamic grid that stands for the relationships AI enables; bold colors because the main touchpoints are digital.",
+    "mono_rules": null,
+    "why_it_works": "Building the identity on a measuring device turns the company name into a visual system.",
+    "notes": "Sid Lee's client may be a different Scale AI (an innovation hub description appears on the page); confirm before relying on it for scale.com.",
+    "sources": [
+      "https://sidlee.com/en/work/scale-ai/scale-ai",
+      "https://weandthecolor.com/?p=114372",
+      "https://abduzeedo.com/node/86677"
+    ]
+  },
+  {
+    "brand": "Perplexity",
+    "symbol": "An abstract symbol whose angles are echoed by the x in the display typeface.",
+    "wordmark": "perplexity in lowercase, set in FK Display.",
+    "wordmark_case": "lowercase",
+    "has_symbol": true,
+    "lockup": "Symbol with lowercase wordmark.",
+    "wordmark_typeface": "FK Display (Florian Karsten)",
+    "brand_typeface": "FK Grotesk and FK Grotesk Neue for long text",
+    "typeface_custom": false,
+    "colors": [],
+    "primary_color_family": null,
+    "designer": "Smith & Diction (Phi Hoang)",
+    "year": null,
+    "rationale": "The brand was meant to feel like a Scandinavian subway system; the agency wanted a grotesk with some character that works across many languages, and set the name lowercase to match how people type searches.",
+    "mono_rules": null,
+    "why_it_works": "Retail type chosen for one glyph that rhymes with the symbol gives a custom feel without a custom font.",
+    "notes": null,
+    "sources": [
+      "https://medium.com/smith-diction/branding-perplexity-ai-70eb2cb2ef48",
+      "https://www.ebaqdesign.com/news/perplexity-rebrand",
+      "https://offmenu.substack.com/p/perplexity-the-ai-brand-everyone"
+    ]
+  },
+  {
+    "brand": "Mistral AI",
+    "symbol": "A capital M built from rectangular pixel blocks; the brand page calls the emblem an abstract pixel cat.",
+    "wordmark": "Full logo lockup with the name (details not published).",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Full logo lockup and standalone icon, each in gradient, black and white (and inverted for the lockup).",
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Mistral Orange (third party)", "hex": "#FA520F"}
+    ],
+    "primary_color_family": "orange",
+    "designer": "Sylvain Boyer Studio, Paris (secondary sources)",
+    "year": "2025 (February)",
+    "rationale": "The pixel structure reflects modular models and the cat nods to the company's role in early machine learning; model icons extend the M as one system.",
+    "mono_rules": "Yellow to orange gradient preferred; monochrome on busy backgrounds; no recoloring, frames or colored backgrounds.",
+    "why_it_works": "Pixel blocks in a warm gradient look retro and European in a field of cold blue AI marks.",
+    "notes": "Typeface claims (Arial, Faculty Glyphic) conflict and are unverified.",
+    "sources": [
+      "https://www.mistral.ai/brand",
+      "https://logos-world.net/mistral-ai-unveils-new-logo-and-brand-identity/",
+      "https://open-design.ai/systems/mistral-ai/",
+      "https://www.designyourway.net/blog/mistral-ai-logo/"
+    ]
+  },
+  {
+    "brand": "Cursor (Anysphere)",
+    "symbol": "A cube (Ben Barry's original) with a cursor corner, in 2D, 2.5D and 3D versions with slightly rounded corners.",
+    "wordmark": "Cursor set in Cursor Gothic; the logo and lockups are built into the typeface as ligatures.",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Horizontal lockup preferred, vertical available, cube and wordmark separately.",
+    "wordmark_typeface": "Cursor Gothic (custom, based on Waldenburg)",
+    "brand_typeface": "Cursor Gothic, with condensed companion Custer Gothic",
+    "typeface_custom": true,
+    "colors": [],
+    "primary_color_family": null,
+    "designer": "Chimera (also spelled Kimera) with Cursor; cube by Ben Barry",
+    "year": "2025",
+    "rationale": "Keep the existing mark but make it screen friendly; embedding the off center logo in the font solved alignment next to text and conveys sophistication with human warmth.",
+    "mono_rules": "2D default, 2.5D for large applications; light and dark app icons.",
+    "why_it_works": "Shipping the logo inside the font means every lockup is correct by construction.",
+    "notes": null,
+    "sources": [
+      "https://cursor.com/brand",
+      "https://designcompass.org/en/2025/11/27/typographically-focused-branding-of-ai-tool-cursors/"
+    ]
+  },
+  {
+    "brand": "xAI",
+    "symbol": null,
+    "wordmark": "xAI drawn as a geometric mark of three connected strokes rather than set type.",
+    "wordmark_case": "mixed",
+    "has_symbol": false,
+    "lockup": "Word only.",
+    "wordmark_typeface": "None published; drawn strokes",
+    "brand_typeface": null,
+    "typeface_custom": true,
+    "colors": [],
+    "primary_color_family": null,
+    "designer": "In house; attributed to Toby Pohlen (single source)",
+    "year": "2023",
+    "rationale": null,
+    "mono_rules": null,
+    "why_it_works": "Stroke based letters echo the X brand family without needing a typeface.",
+    "notes": "xAI was reported rebranded as SpaceXAI in 2026. Grok has its own changing product marks.",
+    "sources": [
+      "https://fastcompanybrasil.com/tech/nem-o-grok-aprovou-o-novo-logo-da-spacex/",
+      "https://www.designrush.com/best-designs/logo/grok-ai",
+      "https://gizmodo.com/xai-is-dead-long-live-spacexai-2000782034"
+    ]
+  },
+  {
+    "brand": "Databricks",
+    "symbol": "Stacked layered blocks (parallelepipeds) in red orange.",
+    "wordmark": "databricks in lowercase.",
+    "wordmark_case": "lowercase",
+    "has_symbol": true,
+    "lockup": "Horizontal, stacked and icon only versions.",
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Red Orange (third party)", "hex": "#FF3621"},
+      {"name": "Gable Green (third party)", "hex": "#1B3139"},
+      {"name": "Spring Wood (third party)", "hex": "#F9F7F4"}
+    ],
+    "primary_color_family": "orange",
+    "designer": null,
+    "year": "2020 (brand evolution)",
+    "rationale": "Databricks said its brand had always been implicit in its values before it formalized it in 2020.",
+    "mono_rules": "Brand portal covers clear space and minimum size (values not retrieved); do not alter mark, wordmark or lockups.",
+    "why_it_works": "Stacked layers literally picture the lakehouse data stack.",
+    "notes": null,
+    "sources": [
+      "https://brand.databricks.com/databricks-logo",
+      "https://www.databricks.com/blog/2020/04/29/evolving-the-databricks-brand.html",
+      "https://select.dev/posts/databricks-logo-brand-guidelines-and-icons-2026",
+      "https://www.designyourway.net/blog/databricks-logo/"
+    ]
+  },
+  {
+    "brand": "Snowflake",
+    "symbol": "The snowflake bug: a crystalline mark made of arrow legs; must carry the registration mark.",
+    "wordmark": "snowflake in lowercase.",
+    "wordmark_case": "lowercase",
+    "has_symbol": true,
+    "lockup": "Bug left of wordmark; partner lockups center aligned and optically equal.",
+    "wordmark_typeface": null,
+    "brand_typeface": "Texta (headlines, Heavy for buttons) and Lato (body)",
+    "typeface_custom": false,
+    "colors": [
+      {"name": "Snowflake Blue", "hex": "#29B5E8"},
+      {"name": "Mid Blue", "hex": "#11567F"},
+      {"name": "Midnight", "hex": "#000000"},
+      {"name": "Star Blue", "hex": "#71D3DC"},
+      {"name": "Valencia Orange", "hex": "#FF9F36"},
+      {"name": "Purple Moon", "hex": "#7D44CF"},
+      {"name": "First Light", "hex": "#D45B90"},
+      {"name": "Windy City", "hex": "#8A999E"}
+    ],
+    "primary_color_family": "blue",
+    "designer": null,
+    "year": null,
+    "rationale": null,
+    "mono_rules": "Snowflake Blue logo on white; white logo on full bleed blue or images. Clear space equals the x height of the logotype; minimum size based on bug height.",
+    "why_it_works": "A literal name drawn as data arrows in an icy blue is easy to remember and hard to confuse.",
+    "notes": null,
+    "sources": [
+      "https://www.snowflake.com/brand-guidelines",
+      "https://www.snowflake.com/wp-content/uploads/2023/10/Powered_by_Snowflake_Brand_Guidelines_2023.pdf"
+    ]
+  },
+  {
+    "brand": "Coinbase",
+    "symbol": "A blue circle with a centered square cutout (a coin and a hint of C).",
+    "wordmark": "coinbase in lowercase.",
+    "wordmark_case": "lowercase",
+    "has_symbol": true,
+    "lockup": "Symbol left of word; symbol alone as app icon.",
+    "wordmark_typeface": null,
+    "brand_typeface": "Coinbase Sans (bespoke, 36 styles, Optical, Display, Text, Micro and Mono)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Coinbase Blue (third party citing press kit)", "hex": "#0052FF"}
+    ],
+    "primary_color_family": "blue",
+    "designer": "Moniker",
+    "year": "2021 to 2022 (agency article April 2022)",
+    "rationale": "Blend digital finance with the trust of traditional banking; the blue was kept and brightened because it was one of the few recognizable elements of the old identity; type drew on blue collar modernist faces.",
+    "mono_rules": null,
+    "why_it_works": "The simplest coin shape plus one owned blue reads as a bank and an app at the same time.",
+    "notes": null,
+    "sources": [
+      "https://the-brandidentity.com/project/moniker-combine-function-and-flair-in-their-lively-identity-refresh-for-crypto-platform-coinbase",
+      "https://www.itsnicethat.com/news/moniker-coinbase-rebrand-graphic-design-250322",
+      "https://brandfetch.com/blog/coinbase-new-logo-and-brand",
+      "https://brand-atoms.pages.dev/brands/coinbase"
+    ]
+  },
+  {
+    "brand": "Ramp",
+    "symbol": null,
+    "wordmark": "Custom logo based on TWK Lausanne (campaign page).",
+    "wordmark_case": null,
+    "has_symbol": null,
+    "lockup": null,
+    "wordmark_typeface": "Custom, based on TWK Lausanne",
+    "brand_typeface": "TWK Lausanne (Weltkern, Nizar Kazan)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Solar yellow (hex not published)", "hex": null}
+    ],
+    "primary_color_family": "yellow",
+    "designer": "In house brand team (about 10 people); Bakkenbaeck and Red Antler did system work",
+    "year": null,
+    "rationale": null,
+    "mono_rules": null,
+    "why_it_works": "A single loud yellow and one retail grotesk used with discipline became the reference brand in fintech.",
+    "notes": null,
+    "sources": [
+      "https://fontsinuse.com/uses/56961/ramp-2023-campaign",
+      "https://pt.linkedin.com/in/henriquemeyrelles",
+      "https://bakkenbaeck.com/case/ramp",
+      "https://redantler.com/work/ramp"
+    ]
+  },
+  {
+    "brand": "Brex",
+    "symbol": "A flag, a nod to Neil Armstrong planting a flag on the Moon.",
+    "wordmark": null,
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": null,
+    "wordmark_typeface": null,
+    "brand_typeface": "Inter (third party design system analysis)",
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Brex orange (third party)", "hex": "#FF5900"}
+    ],
+    "primary_color_family": "orange",
+    "designer": "In house team",
+    "year": "2020 (per Transform; Brex post undated)",
+    "rationale": "The old brand was too limiting for a company now serving businesses beyond startups; the flag stands for customers planting their flag.",
+    "mono_rules": null,
+    "why_it_works": "Orange stands apart from the blue and white of finance, and the flag gives an ambitious story in one shape.",
+    "notes": "Transform magazine credits JKR and Mono45 Headline, but the snippet may refer to another brand; unconfirmed.",
+    "sources": [
+      "https://www.brex.com/journal/rebranding-brex",
+      "https://www.transformmagazine.net/articles/2020/transformtuesday-3-november/",
+      "https://www.shadcn.io/design/brex"
+    ]
+  },
+  {
+    "brand": "Rippling",
+    "symbol": null,
+    "wordmark": null,
+    "wordmark_case": null,
+    "has_symbol": null,
+    "lockup": null,
+    "wordmark_typeface": null,
+    "brand_typeface": "Frere-Jones Type families Magnet and Exchange are credited on Brand New's In-house In-Focus page",
+    "typeface_custom": false,
+    "colors": [],
+    "primary_color_family": "purple",
+    "designer": "In house brand team led by creative director Nick Wiesner",
+    "year": "2020 (four month in house rebrand)",
+    "rationale": "Rippling rebuilt the brand in house in about four months rather than pay for an agency rebrand.",
+    "mono_rules": null,
+    "why_it_works": null,
+    "notes": "Deep plum and gold palette is from an unofficial guide only.",
+    "sources": [
+      "https://rippling.com/blog/how-we-pulled-off-an-in-house-rebrand-in-four-months",
+      "https://underconsideration.com/inhouseinfocus/rippling",
+      "https://madegooddesigns.com/?p=112395"
+    ]
+  },
+  {
+    "brand": "Supabase",
+    "symbol": "A lightning bolt, green on top shading to darker green below.",
+    "wordmark": "supabase lettering paired with the bolt (no lettering only file exists).",
+    "wordmark_case": "lowercase",
+    "has_symbol": true,
+    "lockup": "Bolt plus lettering; bolt alone in small spaces.",
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Supabase green", "hex": "#3ECF8E"},
+      {"name": "Dark gray", "hex": "#1C1C1C"},
+      {"name": "Light gray", "hex": "#F8F8F8"},
+      {"name": "Bolt shade (third party)", "hex": "#249361"}
+    ],
+    "primary_color_family": "green",
+    "designer": null,
+    "year": null,
+    "rationale": null,
+    "mono_rules": "One color black or white wordmarks for single color printing; black lettering on light, white on dark; never repaint the files.",
+    "why_it_works": "A bolt says speed and a single bright green owns the dark mode developer screen.",
+    "notes": null,
+    "sources": [
+      "https://supabase.com/brand.md",
+      "https://supabase.com/brand"
+    ]
+  },
+  {
+    "brand": "Raycast",
+    "symbol": "App style logo mark in Raycast red, with dark and light versions.",
+    "wordmark": "Raycast wordmark used next to the logo when the name should appear.",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Logo left of wordmark.",
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Brand Red", "hex": "#FF6363"},
+      {"name": "Background", "hex": "#151515"},
+      {"name": "Background Alt", "hex": "#202123"}
+    ],
+    "primary_color_family": "red",
+    "designer": null,
+    "year": null,
+    "rationale": null,
+    "mono_rules": "Dark version only on dark backgrounds, light only on light; dark backgrounds preferred; do not alter app icon colors.",
+    "why_it_works": "One coral red on near black makes a keyboard launcher feel like a premium Mac app.",
+    "notes": null,
+    "sources": [
+      "https://raycast.com/press"
+    ]
+  },
+  {
+    "brand": "Arc (The Browser Company)",
+    "symbol": "A colorful gradient arc shape (secondary description).",
+    "wordmark": null,
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": null,
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [],
+    "primary_color_family": "multicolor",
+    "designer": null,
+    "year": "2022",
+    "rationale": null,
+    "mono_rules": null,
+    "why_it_works": null,
+    "notes": "No official brand guide or design credit found. Arc development stopped in May 2025 in favor of Dia; Atlassian acquired the company in September 2025.",
+    "sources": [
+      "https://www.designyourway.net/blog/arc-browser-logo/",
+      "https://en.wikipedia.org/wiki/Arc_(web_browser)"
+    ]
+  },
+  {
+    "brand": "Intel",
+    "symbol": null,
+    "wordmark": "intel in lowercase, flat, with the e pulled back in line with the other letters; the swirl was dropped.",
+    "wordmark_case": "lowercase",
+    "has_symbol": false,
+    "lockup": "Word only.",
+    "wordmark_typeface": "Intel One (custom)",
+    "brand_typeface": "Intel One (replacing Intel Clear by Red Peak and Dalton Maag)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Classic Blue (most cited, third party)", "hex": "#0068B5"},
+      {"name": "Energy Blue (third party)", "hex": "#00C7FD"}
+    ],
+    "primary_color_family": "blue",
+    "designer": "VMLY&R (Andrew Mirakian, per Logopedia and Hatchwise)",
+    "year": "2020 (September 2)",
+    "rationale": "The new wordmark harks back to the 1968 original and pares the brand down to a flat word with an extended palette.",
+    "mono_rules": null,
+    "why_it_works": "Dropping the swirl and leaning on a bespoke lowercase word made a 50 year old brand look current.",
+    "notes": "Some sources give #0071C5 as the primary blue.",
+    "sources": [
+      "https://thenextweb.com/news/intel-just-changed-its-logo-for-the-first-time-since-2006",
+      "https://www.itpro.com/hardware/357009/intel-debuts-new-logo-that-harks-back-to-the-1968-original",
+      "https://creativebloq.com/news/intel-new-logo",
+      "https://logos.fandom.com/wiki/Intel",
+      "https://brand-atoms.pages.dev/brands/intel"
+    ]
+  },
+  {
+    "brand": "AMD",
+    "symbol": "The AMD Arrow: an arrow made of two smaller arrow shapes pointing up and to the right, placed after the name.",
+    "wordmark": "AMD in bold geometric uppercase.",
+    "wordmark_case": "uppercase",
+    "has_symbol": true,
+    "lockup": "Wordmark followed by arrow.",
+    "wordmark_typeface": "Proprietary, not named",
+    "brand_typeface": null,
+    "typeface_custom": true,
+    "colors": [],
+    "primary_color_family": "black/mono",
+    "designer": null,
+    "year": "Arrow paired with the wordmark from the mid 1990s; black since 2013 (secondary)",
+    "rationale": null,
+    "mono_rules": null,
+    "why_it_works": "An arrow pointing forward after the name makes even a three letter acronym feel like motion.",
+    "notes": "Red hex values circulating online are not official.",
+    "sources": [
+      "https://www.amd.com/en/corporate/trademarks",
+      "https://blog.logomyway.com/?p=16892",
+      "https://1000logos.net/amd-logo/amp/"
+    ]
+  },
+  {
+    "brand": "Arm",
+    "symbol": null,
+    "wordmark": "arm in lowercase; the name is written Arm in running text.",
+    "wordmark_case": "lowercase",
+    "has_symbol": false,
+    "lockup": "Word only, horizontal only.",
+    "wordmark_typeface": "Not named; the logotype may not be recreated in another typeface",
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Arm corporate black", "hex": "#080225"},
+      {"name": "White", "hex": "#FFFFFF"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": "DEPT says it created the Arm visual identity as global creative agency (timing unclear)",
+    "year": "2017 (August)",
+    "rationale": null,
+    "mono_rules": "Only Arm corporate black or white; clear space equals half the letter height; minimum width 12 mm; never angled.",
+    "why_it_works": "A three letter lowercase word in near black is humble enough to sit on billions of chips.",
+    "notes": null,
+    "sources": [
+      "https://arm.com/company/policies/trademarks/guidelines-corporate-logo",
+      "https://linuxgizmos.com/arm-becomes-arm-or-is-it-arm/",
+      "https://www.deptagency.com/?p=4326494"
+    ]
+  },
+  {
+    "brand": "Framer",
+    "symbol": "An angular geometric F icon.",
+    "wordmark": "Framer wordmark.",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Icon and wordmark; partnership lockups pair icon with icon and wordmark with wordmark.",
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Black", "hex": "#000000"},
+      {"name": "White", "hex": "#FFFFFF"},
+      {"name": "Framer Blue (not for the logo)", "hex": "#0099FF"},
+      {"name": "Framer Deep Blue (not for the logo)", "hex": "#0055FF"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": null,
+    "year": null,
+    "rationale": null,
+    "mono_rules": "No colored logos and no old colored versions; no low contrast backgrounds; no outlines, rotation or skew; do not use the icon as the letter F.",
+    "why_it_works": "A black and white mark that moved color out of the logo and into the product.",
+    "notes": null,
+    "sources": [
+      "https://www.framer.com/brand"
+    ]
+  },
+  {
+    "brand": "Midjourney",
+    "symbol": "A sailboat.",
+    "wordmark": null,
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": null,
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [],
+    "primary_color_family": null,
+    "designer": null,
+    "year": "2022 (public launch, one primary mark since)",
+    "rationale": "Commonly read as a voyage into the unknown and the creative process; no official explanation was found.",
+    "mono_rules": null,
+    "why_it_works": "A boat is an unexpected, poetic object for an AI tool, which makes it memorable.",
+    "notes": "Meaning comes from low authority sites only.",
+    "sources": [
+      "https://www.logodesign.org/the-midjourney-logo-design-meaning-and-visual-identity/",
+      "https://1000logos.net/midjourney-logo/"
+    ]
+  },
+  {
+    "brand": "Hugging Face",
+    "symbol": "The hugging face emoji: a yellow smiling face with hands.",
+    "wordmark": "Hugging Face, offered as a logo with title variant.",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Symbol alone or symbol with title.",
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Yellow", "hex": "#FFD21E"},
+      {"name": "Orange", "hex": "#FF9D00"},
+      {"name": "Gray", "hex": "#6B7280"}
+    ],
+    "primary_color_family": "yellow",
+    "designer": null,
+    "year": null,
+    "rationale": "The company was named after the emoji when it started as a chatbot.",
+    "mono_rules": "Monochrome variant and a playful pirate variant are provided.",
+    "why_it_works": "Using an emoji everyone already knows made an open source AI hub feel friendly.",
+    "notes": "Source Sans and IBM Plex Mono are claimed only by unofficial design system sites.",
+    "sources": [
+      "https://huggingface.co/brand",
+      "https://huggingface.co/datasets/huggingface/brand-assets/tree/main",
+      "https://fastcompany.com/90949987/how-clem-delangue-became-the-public-face-of-open-source-ai"
+    ]
+  },
+  {
+    "brand": "Cohere",
+    "symbol": "Three cells at different stages of expansion joining into an abstract C, with slightly irregular geometry.",
+    "wordmark": "Built on the Cohere typeface, with openings in the letters that form cell like shapes.",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Symbol with wordmark.",
+    "wordmark_typeface": "Cohere Headline (custom, Voronoi cell cuts that disperse as you type)",
+    "brand_typeface": "Cohere family: Headline, Text, Outline, Mono (306 languages)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Coniferous green", "hex": null},
+      {"name": "Mushroom grey", "hex": null},
+      {"name": "Volcanic black", "hex": null},
+      {"name": "Simulated coral", "hex": null},
+      {"name": "Synthetic quartz", "hex": null},
+      {"name": "Acrylic blue", "hex": null}
+    ],
+    "primary_color_family": null,
+    "designer": "Pentagram London, Jody Hudson-Powell and Luke Powell (type collaborators include NaN)",
+    "year": "2023 (approached 2021)",
+    "rationale": "New nature: nature's fluidity and imperfection meeting computing's efficiency, so language AI feels like a practical business tool; the Voronoi pattern comes from giraffe coats and dragonfly wings.",
+    "mono_rules": null,
+    "why_it_works": "One generative motif (Voronoi cells) runs through symbol, type and palette, so everything feels related.",
+    "notes": null,
+    "sources": [
+      "https://www.pentagram.com/work/cohere/story",
+      "https://www.creativeboom.com/news/pentagram-cohere/",
+      "https://bpando.org/2023/06/29/ai-branding-cohere-pentagram/",
+      "https://www.nan.xyz/custom/cohere/"
+    ]
+  },
+  {
+    "brand": "Runway",
+    "symbol": "A symbol used only in small applications.",
+    "wordmark": "The primary logo; drawn lettering that must never be typed out in a font.",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "No lockup: the wordmark always stands alone and the symbol is never placed next to or stacked with it, nor used to replace the r.",
+    "wordmark_typeface": null,
+    "brand_typeface": "ABC Normal (community design files, unconfirmed)",
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Black", "hex": "#000000"},
+      {"name": "White", "hex": "#FFFFFF"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": null,
+    "year": null,
+    "rationale": "Minimum sizes and clear space protect legibility; black or white maximizes contrast.",
+    "mono_rules": "Black on light, white on dark or complex images. Minimum 24 px tall digital, 1 in wide print. Clear space equals the leg height x plus 0.5x for the descender.",
+    "why_it_works": "A strict word only rule keeps the brand editorial, like a film credit.",
+    "notes": null,
+    "sources": [
+      "https://runway.com/brand-guidelines",
+      "https://raw.githubusercontent.com/VoltAgent/awesome-design-md/664b3e78fd1a298ba11973822da988483256d4b4/design-md/runwayml/DESIGN.md"
+    ]
+  },
+  {
+    "brand": "ElevenLabs",
+    "symbol": "The 11 icon: two plain vertical bars that abstract the number eleven and echo the pause button.",
+    "wordmark": "ElevenLabs as one word; platform names (ElevenAgents, ElevenCreative, ElevenAPI, ElevenMusic) have their own logotypes.",
+    "wordmark_case": "mixed",
+    "has_symbol": true,
+    "lockup": "Primary logo in black or white; icon alone for social and app contexts in circles or squares.",
+    "wordmark_typeface": null,
+    "brand_typeface": null,
+    "typeface_custom": null,
+    "colors": [
+      {"name": "Black", "hex": "#000000"},
+      {"name": "White", "hex": "#FFFFFF"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": "basement.studio (2025 visual rebrand; logotype kept)",
+    "year": "2025 (visual system)",
+    "rationale": "The company moved from research lab to enterprise and needed a brand for boardrooms while keeping creative energy; visuals use Chladni sound patterns.",
+    "mono_rules": "Clear space at least equal to the logo height; icon clear space three times its height; never rebuild the icon from capital I or the number 11.",
+    "why_it_works": "Two bars carry the name, the number and the audio pause symbol at once.",
+    "notes": "Sub brands use their own colors (blue for Agents, orange for Creative, monochrome for API).",
+    "sources": [
+      "https://elevenlabs.io/brand",
+      "https://basement.studio/showcase/elevenlabs-visual-rebrand-for-the-voice-of-ai.md"
+    ]
+  },
+  {
+    "brand": "Replit",
+    "symbol": "Connected speech like shapes with subtly rounded forms.",
+    "wordmark": "Replit wordmark; never used without the symbol.",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Primary horizontal lockup and stacked lockup; symbol may stand alone.",
+    "wordmark_typeface": "Diatype (earlier wordmarks were monospace)",
+    "brand_typeface": "Diatype and Diatype Semi-Mono (Dinamo)",
+    "typeface_custom": false,
+    "colors": [
+      {"name": "Orange", "hex": "#FF3C00"},
+      {"name": "Off White", "hex": "#FAF6F1"},
+      {"name": "Off Black", "hex": "#181818"},
+      {"name": "Older logo orange (older brand kit)", "hex": "#F26207"}
+    ],
+    "primary_color_family": "orange",
+    "designer": "In house (2024 rebrand led by Haya Odeh per secondary); Oddfellows for the later motion identity",
+    "year": "2024 (refresh); earlier logomark 2022",
+    "rationale": "The shapes suggest a move from code to natural conversation and uninterrupted dialogue between people and technology; the older orange came from PLATO plasma displays.",
+    "mono_rules": "Full color, reverse, light and dark versions; clear space x on sides and top, 0.5x below; no black lockup on orange; no recoloring.",
+    "why_it_works": "A warm orange and conversational shapes moved the brand from programmer tool to anyone who can talk.",
+    "notes": null,
+    "sources": [
+      "https://replit.com/brand",
+      "https://replit.com/blog/new-logo",
+      "https://designcompass.org/en/2026/08/31/replit-rebranding-oddfellows-visual-identity-ai-coding-platform/",
+      "https://www.designyourway.net/blog/replit-logo/"
+    ]
+  },
+  {
+    "brand": "GitHub",
+    "symbol": "The Invertocat: the Octocat silhouette inside a circle.",
+    "wordmark": "GitHub, one word with capital G and H.",
+    "wordmark_case": "mixed",
+    "has_symbol": true,
+    "lockup": "Invertocat plus wordmark is the default; Invertocat alone in GitHub owned spaces; wordmark only for navigation; product lockups for sub brands.",
+    "wordmark_typeface": null,
+    "brand_typeface": "Mona Sans (GitHub, open source) replacing Alliance No.1 and No.2; Monaspace for code",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Black", "hex": "#000000"},
+      {"name": "White", "hex": "#FFFFFF"}
+    ],
+    "primary_color_family": "black/mono",
+    "designer": null,
+    "year": "Invertocat has changed little since creation; logotype and Invertocat versions archived as of 2025",
+    "rationale": null,
+    "mono_rules": "Only white or black, grey or green in a few cases; high contrast; no effects, shadows, gradients or busy backgrounds.",
+    "why_it_works": "A mascot silhouette compressed into a circle gives a playful brand a serious, stampable mark.",
+    "notes": null,
+    "sources": [
+      "https://brand.github.com/foundations/logo",
+      "https://brand.github.com/foundations/typography",
+      "https://github.com/logos"
+    ]
+  },
+  {
+    "brand": "Dropbox",
+    "symbol": "The glyph: an open box built from diamond shapes, flattened and simplified in 2017.",
+    "wordmark": "Custom logotype drawn by Sharp Type on Sharp Grotesk.",
+    "wordmark_case": null,
+    "has_symbol": true,
+    "lockup": "Glyph left of wordmark.",
+    "wordmark_typeface": "Custom logotype based on Sharp Grotesk",
+    "brand_typeface": "Sharp Grotesk (Sharp Type)",
+    "typeface_custom": true,
+    "colors": [
+      {"name": "Dropbox Blue (third party)", "hex": "#0061FF"}
+    ],
+    "primary_color_family": "blue",
+    "designer": "Collins with Dropbox's in house Brand Studio (Sharp Type, Instrument, Animade supporting)",
+    "year": "2017",
+    "rationale": "Show Dropbox as more than file storage and court creatives; the logo color can change by situation instead of always being blue.",
+    "mono_rules": null,
+    "why_it_works": "Keeping the box glyph while letting color and type go wild kept recognition during a big repositioning.",
+    "notes": null,
+    "sources": [
+      "https://www.designweek.co.uk/issues/2-8-october-2017/dropbox-rebrands-show-just-file-storage/",
+      "https://www.sharptype.co/case-studies/dropbox",
+      "https://techcrunch.com/2017/10/03/dropbox-brand-update-streamlines-its-logo-and-takes-aim-at-creatives/",
+      "https://madegooddesigns.com/dropbox-brand-guidelines/"
+    ]
+  }
+]
