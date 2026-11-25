@@ -1,0 +1,86 @@
+{
+ "name": "Vela",
+ "tagline": "Reusable launch for small satellites",
+ "rationale": "Vela is Latin for sail, so the mark is one sail cut by the line of an orbit. An uppercase Archivo wordmark with an open A, like a nose cone, puts it with the hardware and space leaders.",
+ "colors": {
+  "primary": "#FF4F1A",
+  "accent": "#FFB300",
+  "ink": "#0E0E10",
+  "paper": "#FFFFFF",
+  "idea": "Ignition Orange #FF4F1A: the color of a burn at lift off, warm against the white and blue of most space brands."
+ },
+ "symbol": {
+  "svg": "<mask id='m{U}'><path d='M-32 52 L-32 -60 C 8 -36, 36 6, 44 52Z' fill='#fff'/><path d='M-70 16 C -20 0, 26 2, 76 22 L76 32 C 26 12, -20 10, -70 26Z' fill='#000'/></mask><path d='M-32 52 L-32 -60 C 8 -36, 36 6, 44 52Z' fill='{P}' mask='url(#m{U})'/>",
+  "idea": "A sail cut by the line of an orbit."
+ },
+ "wordmark": {
+  "font": "archivo-800",
+  "case": "upper",
+  "tracking": 0.02,
+  "custom_glyphs": {
+   "3": {
+    "svg": "<path d='M0 100 L38 0 L62 0 L100 100 L76 100 L50 30 L24 100Z' fill='{I}'/>",
+    "w": 100,
+    "height": "cap"
+   }
+  },
+  "accent_chars": [],
+  "idea": "Archivo 800 in capitals, with the A drawn open like a nose cone."
+ },
+ "lockup": {
+  "cap_ratio": 0.62,
+  "gap": 0.24
+ },
+ "app_icon": {
+  "inset": 0.2,
+  "symbol_color": "#FFFFFF"
+ },
+ "alternatives": [
+  {
+   "label": "Option 2: Cut disc",
+   "why": "A planet with a V taken out of it, heavy enough to hold at 16 px, in a bright beacon amber.",
+   "symbol": {
+    "svg": "<mask id='m{U}'><circle r='46' fill='#fff'/><path d='M-30 -50 L-14 -50 L0 -6 L14 -50 L30 -50 L0 40Z' fill='#000'/></mask><circle r='46' fill='{P}' mask='url(#m{U})'/>"
+   },
+   "wordmark": {
+    "font": "archivo-800",
+    "case": "upper",
+    "tracking": 0.02
+   },
+   "colors": {
+    "primary": "#FFB300",
+    "accent": "#0E0E10"
+   }
+  },
+  {
+   "label": "Option 3: Trajectory",
+   "why": "The arc a rocket draws after lift off, ending in its payload, in a deep cobalt.",
+   "symbol": {
+    "svg": "<path d='M-48 50 C -40 0, -10 -30, 36 -44 L40 -30 C 0 -18, -26 8, -32 50Z' fill='{P}'/><circle cx='46' cy='-48' r='10' fill='{P}'/>"
+   },
+   "wordmark": {
+    "font": "geist-800",
+    "case": "upper",
+    "tracking": 0.02
+   },
+   "colors": {
+    "primary": "#2340FF"
+   }
+  },
+  {
+   "label": "Option 4: Horizon",
+   "why": "A rocket rising off the curve of the earth, simple and literal, for a company that wants to read instantly.",
+   "symbol": {
+    "svg": "<path d='M-46 46 A46 46 0 0 1 46 46Z' fill='{P}'/><path d='M0 -58 L10 -10 L10 30 L-10 30 L-10 -10Z' fill='{P}' transform='translate(0 -4)'/>"
+   },
+   "wordmark": {
+    "font": "schibsted-grotesk-800",
+    "case": "upper",
+    "tracking": 0.02
+   },
+   "colors": {
+    "primary": "#E8341C"
+   }
+  }
+ ]
+}
