@@ -192,3 +192,22 @@ export async function renderFrame(t: number) {
   if (r) art.rocket.renderer.render(t - c + 2);
   if (e) art.eclipse.renderer.render(t - c + 4);
 }
+
+// ---------------------------------------------------------------- boot
+async function boot() {
+  for (const id of ["L1", "L2", "L3", "L4", "L5", "L6", "C2"]) prepLine($(id));
+  await buildLogo($("logo"), true);
+  await buildLogo($("endLogo"), false);
+  art = {
+    funnel: await live("funnel", aurora, 1440, 810),
+    rocket: await live("rocket", rocket, 1920, 1080),
+    eclipse: await live("eclipse", eclipse, 1920, 1080),
+  };
+  await document.fonts.ready;
+  for (const img of Array.from(document.images)) if (!img.complete) await new Promise((r) => (img.onload = r));
+  // Let the photo texture land, then mark ready.
+  await new Promise((r) => setTimeout(r, 1500));
+  (window as unknown as { renderFrame: typeof renderFrame; filmReady: boolean; DURATION: number }).renderFrame = renderFrame;
+  Object.assign(window, { filmReady: true, DURATION });
+}
+boot();
