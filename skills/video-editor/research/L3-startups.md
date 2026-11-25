@@ -81,3 +81,12 @@
 | cuts on beat | 14% | 0-20% | cuts follow speech or animation, not the bar line |
 | cuts with a hit | 20% | 8-33% | hits sit on UI events more than on cuts |
 | speech share | 0.25 | 0.13-0.31 | most use VO or captions over a continuous music bed |
+
+### How pacing changes across the video
+- Cuts/min by quarter: medians 11.1 / 6.1 / 8.1 / 4.4, means 16.6 / 8.2 / 9.3 / 14.6. The first quarter is the busiest in 44% of videos.
+- The dominant shape is a **cold-open burst, then a slower demo, then a final lift**:
+  - Bursts: sieve quarter 1 = 97 cuts/min, Artificial Societies 54, Anvil 44.
+  - Final lifts: Palmier quarter 4 = 190, the "Introducing" showcase 47.
+  - Single-take films (Lance, Wildcard, Tenera) stay flat on cuts and carry their energy in animation density instead.
+- Best practice seen: chaos to calm. sieve's quarters 97/19/8/0 tie the edit rate to the story (problem = frantic, product = calm and confident).
+- The Palmier pattern is a slow, comedic setup (shots of 3-7 s) that pays off with a 3 s strobe climax under one fixed caption. The burst works because of the slow build before it.
