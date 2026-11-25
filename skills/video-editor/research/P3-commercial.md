@@ -255,3 +255,10 @@ Three tempo families appear in this batch:
   - rounded geometric sans for SaaS (Slack, Notion, PL).
 - **Mixed roman and italic within one phrase** (Apple MacBook "2x *faster*") and **words scattered around the subject** are high-craft Apple moves.
 - **Colour-flash type** (PL): a word alternates white ↔ brand gradient every 1–2 frames on the beat. It is a cheap, energetic text accent.
+
+### Flow and direction rules
+- Measured dominant flow: ← in 13 videos, → in 9, ↓ in 2, Z+ in 1. Within one sequence, the direction holds across consecutive cuts (Nike → dribbles, PL → clone trails, Slack ← pans), and reverses only at section changes.
+- **Match on position:** a subject, icon or crest stays at the same screen coordinates while the content swaps (04 file icon, 08 daughter's face, 22 crests, 02 photos centred). This is the batch's most common "invisible" fast-cut device.
+- **Match on motion:** a rotation or swing continues in the same direction across cuts (16 spin chain, 06 serve re-angles).
+- **Product as divider:** Galaxy uses the vertical phone as the split line for the text.
+- Static holds are used for comedy and product (01, 09, 11 ≥ 43% static). Hype edits are under 15% static (05, 18, 21, 23, 25).
