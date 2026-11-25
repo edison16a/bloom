@@ -67,3 +67,27 @@ export interface DitherStyle {
   /** 0–1 random jitter mixed into the Bayer matrix. Default 0.18. */
   jitter?: number;
 }
+
+export interface Style {
+  /** Cell size in CSS pixels. Number = square. */
+  cell: number | Vec2;
+  mark: Mark;
+  /** Mark size at tone 0 and 1, as a fraction of the cell. Equal values = constant size. Above 1 lets tiles merge (halftone print). */
+  size?: Vec2;
+  /** Corner radius for square marks, 0–1. */
+  round?: number;
+  /** `stagger` offsets odd rows by half a cell. */
+  grid?: "square" | "stagger";
+  /** Screen angle in degrees. */
+  angle?: number;
+  /** Tone curve: out = pow(tone * gain + lift, gamma). */
+  gamma?: number;
+  gain?: number;
+  lift?: number;
+  /** Brightness of unlit cells. The faint LED grid that makes objects feel displayed. Default 0. */
+  ghost?: number;
+  ghostColor?: string;
+  color?: ColorStyle;
+  dither?: DitherStyle;
+  glyph?: GlyphStyle;
+}
