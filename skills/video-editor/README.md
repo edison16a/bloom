@@ -27,3 +27,13 @@ Everything is built in **EffectCraft**, driven by Claude through MCP. Product cl
 1. Install ArtCraft and open EffectCraft once.
 2. Add the MCP server. The ArtCraft launcher's "Connect to Claude" option does this, or copy the entries from `.mcp.json.example` into your Claude Code config with `claude mcp add …`. EffectCraft's bridge listens on port 9877.
 3. Restart Claude Code in this folder and check with `claude mcp list`.
+
+## How to use it
+1. Open this folder in Claude Code.
+2. Drop footage, screenshots or a logo into `input/`. Originals are never changed.
+3. Ask in plain words:
+   - "Edit `input/founder.mp4` into an update. Here is our site and repo."
+   - "Make a 35 second launch film for our app. Here is the URL."
+   - "Cut a vertical version."
+   - "Use Vendo as the reference." The [reference films](.claude/skills/production-video-editing/references/references-studied.md) are linked. Claude works from its notes on them and only opens a film when you ask.
+4. Claude shows a one page plan, keeps going, checks its own output and puts the film in `output/`, with a list of licences. Project files are in `work/<job>/`.
