@@ -1,0 +1,77 @@
+{
+ "name": "Bloom",
+ "tagline": "Art, a launch film and a logo for your idea",
+ "rationale": "A lowercase b whose bowl is one petal, so the initial and the name say the same thing. Heavy, tight lowercase Geist matches the software tools it sits beside, and one loud pink keeps it out of the blue and black field.",
+ "colors": {
+  "primary": "#FF3D9A",
+  "accent": "#FFB8D9",
+  "ink": "#0E0E10",
+  "paper": "#FFFFFF",
+  "idea": "Bloom Pink #FF3D9A: warm and loud in a field of blue and black dev tools."
+ },
+ "symbol": {
+  "svg": "<rect x='-36' y='-70' width='22' height='104' rx='11' fill='{P}'/><path d='M0 0 A46 46 0 0 1 0 -76 A46 46 0 0 1 0 0Z' fill='{P}' transform='translate(-14 34) rotate(48)'/>",
+  "idea": "A b drawn as a stem and a single petal."
+ },
+ "wordmark": {
+  "font": "geist-800",
+  "case": "lower",
+  "tracking": -0.05,
+  "accent_chars": [],
+  "custom_glyphs": {},
+  "idea": "Geist at 800, tight, the type of the tools it works with."
+ },
+ "lockup": {
+  "cap_ratio": 0.74,
+  "gap": 0.24
+ },
+ "app_icon": {
+  "inset": 0.2,
+  "symbol_color": "#FFFFFF"
+ },
+ "alternatives": [
+  {
+   "label": "Option 2: Five dots",
+   "why": "A flower built from five dots with a seed cut out, a nod to the dot art the skills draw.",
+   "symbol": {
+    "svg": "<mask id='m{U}'><circle cx='0.00' cy='-18.00' r='14' fill='#fff'/><circle cx='17.12' cy='-5.56' r='14' fill='#fff'/><circle cx='10.58' cy='14.56' r='14' fill='#fff'/><circle cx='-10.58' cy='14.56' r='14' fill='#fff'/><circle cx='-17.12' cy='-5.56' r='14' fill='#fff'/><circle r='7' fill='#000'/></mask><rect x='-40' y='-40' width='80' height='80' fill='{P}' mask='url(#m{U})'/>"
+   },
+   "wordmark": {
+    "font": "figtree-800",
+    "case": "lower",
+    "tracking": -0.04
+   }
+  },
+  {
+   "label": "Option 3: Honeycomb",
+   "why": "Seven hexagons, the default mark of the dot art engine, in a deep berry with a pink seed.",
+   "symbol": {
+    "svg": "<polygon points='11.26,6.50 0.00,13.00 -11.26,6.50 -11.26,-6.50 -0.00,-13.00 11.26,-6.50' fill='{A}'/><polygon points='36.77,6.50 25.52,13.00 14.26,6.50 14.26,-6.50 25.52,-13.00 36.77,-6.50' fill='{P}'/><polygon points='24.02,28.60 12.76,35.10 1.50,28.60 1.50,15.60 12.76,9.10 24.02,15.60' fill='{P}'/><polygon points='-1.50,28.60 -12.76,35.10 -24.02,28.60 -24.02,15.60 -12.76,9.10 -1.50,15.60' fill='{P}'/><polygon points='-14.26,6.50 -25.52,13.00 -36.77,6.50 -36.77,-6.50 -25.52,-13.00 -14.26,-6.50' fill='{P}'/><polygon points='-1.50,-15.60 -12.76,-9.10 -24.02,-15.60 -24.02,-28.60 -12.76,-35.10 -1.50,-28.60' fill='{P}'/><polygon points='24.02,-15.60 12.76,-9.10 1.50,-15.60 1.50,-28.60 12.76,-35.10 24.02,-28.60' fill='{P}'/>"
+   },
+   "wordmark": {
+    "font": "manrope-800",
+    "case": "lower",
+    "tracking": -0.04
+   },
+   "colors": {
+    "primary": "#B0106A",
+    "accent": "#FF3D9A"
+   }
+  },
+  {
+   "label": "Option 4: Quatrefoil",
+   "why": "Four petals meeting at a point, calmer and more symmetric, in a warm coral.",
+   "symbol": {
+    "svg": "<path d='M0 0 A28 28 0 0 1 0 -44 A28 28 0 0 1 0 0Z' fill='{P}' transform='translate(0 0) rotate(0)'/><path d='M0 0 A28 28 0 0 1 0 -44 A28 28 0 0 1 0 0Z' fill='{P}' transform='translate(0 0) rotate(90)'/><path d='M0 0 A28 28 0 0 1 0 -44 A28 28 0 0 1 0 0Z' fill='{P}' transform='translate(0 0) rotate(180)'/><path d='M0 0 A28 28 0 0 1 0 -44 A28 28 0 0 1 0 0Z' fill='{P}' transform='translate(0 0) rotate(270)'/>"
+   },
+   "wordmark": {
+    "font": "plus-jakarta-sans-800",
+    "case": "lower",
+    "tracking": -0.04
+   },
+   "colors": {
+    "primary": "#FF5A4E"
+   }
+  }
+ ]
+}
