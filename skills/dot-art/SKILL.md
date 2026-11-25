@@ -26,3 +26,18 @@ source (3D points, raymarch, photo, model)  ->  grid of tone + colour  ->  marks
 | `examples/` | Photo scenes, four more finished scenes in `examples/scenes/`, prompts, and a Next.js gallery app |
 
 First use: `cd <skill>/scripts && npm install` (esbuild and playwright-core).
+
+## Workflow
+
+Copy this list and tick it off.
+
+```
+[ ] 1 Decide: family, source, look, palette, motion story
+[ ] 2 Install the engine into the project
+[ ] 3 Start from the nearest scene (or scripts/new.mjs)
+[ ] 4 sheet.mjs: look at one large frame, fix form first
+[ ] 5 sheet.mjs --n 9: look at the whole loop, fix motion
+[ ] 6 Score against references/craft.md; repeat 4-5 until every line passes
+[ ] 7 Mount with <DotArt>, check in the real page, and at 390 px wide
+[ ] 8 Export GIF/MP4 if asked
+```
