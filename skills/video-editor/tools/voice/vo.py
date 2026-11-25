@@ -39,3 +39,21 @@ def load_voice(spec):
         if v.get(k): v[k] = os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(path)), v[k]))
     return v
 
+
+def render(voice, lines):
+    """lines: [{"text","out","seed"}] -> runs the engine worker once for the whole batch."""
+    eng = voice["engine"]
+    job = {"lines": lines, "speed": voice.get("speed", 1.0), "temperature": voice.get("temperature")}
+    if eng.startswith("qwen"):
+        job.update(model=QWEN[eng], instruct=voice.get("instruct"), ref_audio=voice.get("ref_audio"), ref_text=voice.get("ref_text"))
+        if eng == "qwen-clone" and not (job["ref_audio"] and job["ref_text"]): sys.exit("qwen-clone needs ref_audio and ref_text")
+        py, worker = PY["qwen"], "qwen_worker.py"
+    elif eng == "chatterbox":
+        job.update(ref_audio=voice.get("ref_audio"), exaggeration=voice.get("exaggeration", 0.5), cfg=voice.get("cfg", 0.5))
+        py, worker = PY["cb"], "cb_worker.py"
+    else:
+        sys.exit("unknown engine " + eng)
+    with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f: json.dump(job, f)
+    p = subprocess.run([py, os.path.join(HERE, worker), f.name], text=True, capture_output=True)
+    if p.returncode: sys.exit(p.stderr[-3000:])
+
