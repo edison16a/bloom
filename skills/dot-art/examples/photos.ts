@@ -10,3 +10,11 @@ export const pagoda = defineScene({
   },
   bloom: { strength: 0.55 }, pointer: { mode: "glow", radius: 160, strength: 0.7 },
 });
+
+/** Photo -> colour halftone. Hexagon size carries light, hexagon colour carries the picture. */
+export const dahlia = defineScene({
+  id: "dahlia", title: "Dahlia, hexagon halftone", loop: 8, background: "#030a0c", samples: 3,
+  sources: [imageSource({ src: "/images/dahlia.jpg", focus: [0.46, 0.44], zoom: 1.12, black: 0.10, white: 0.82, gamma: 1.1, local: 1.3, saturation: 1.35, motion: "drift+sweep" })],
+  style: { cell: 6.5, mark: "hex", size: [0.18, 1.04], gamma: 0.9, color: { by: "source", shade: 0.25 } },
+  bloom: { strength: 0.35 }, pointer: { mode: "lens", radius: 150, strength: 0.6 },
+});
