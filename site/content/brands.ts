@@ -90,3 +90,11 @@ export const testRuns = [
 ];
 
 export const featuredBrand = brands[0];
+
+/** Figures from the skill's README and its builder output. */
+export const brandFigures = [
+  { figure: "8,332", label: "real logos studied" },
+  { figure: "3 to 5", label: "options before the kit" },
+  { figure: "60", label: "files in every kit" },
+  { figure: "1", label: "spec file to change it all" },
+];
