@@ -59,3 +59,15 @@ function panelRun(p, a, z, items) {
     if (i == items.length - 1) fadeOut(L, z, 6);
   }
 }
+function phone(file, x, y, w, h, a, z) {
+  var G = glass(x - 8, y - 8, w + 16, h + 16, 38, 22, 55); span(G, a, z); anim(tr(G, 'op'), [[a, 0], [a + fr(8), 100]], OUT); fadeOut(G, z, 6);
+  var src = kitFoot(file), L = K.comp.layers.add(src), sc = w / src.width * 100;
+  span(L, a, z); L.startTime = a; L.inPoint = a; L.outPoint = z; tr(L, 'scale').setValue([sc, sc]); tr(L, 'pos').setValue([x + w / 2, y + h / 2]);
+  var mh = h / sc * 100; rmask(L, 0, (src.height - mh) / 2, src.width, mh, 31 / sc * 100);
+  anim(tr(L, 'op'), [[a + fr(3), 0], [a + fr(11), 100]], OUT); fadeOut(L, z, 6);
+}
+function nameText(name, role, x, y, a, z) {
+  var N = kitText(name, 46, 'Inter', 'SemiBold'), R = kitText(role, 32, 'Inter', 'Regular');
+  tr(N, 'pos').setValue([x, y]); tr(R, 'pos').setValue([x, y + 46]);
+  var q = [N, R]; for (var i = 0; i < 2; i++) { span(q[i], a, z); softShadow(q[i], 60, 26); fadeIn(q[i], a + i * fr(3), 8); fadeOut(q[i], z, 6); }
+}
