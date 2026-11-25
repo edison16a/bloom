@@ -171,3 +171,15 @@ neo neo grotesk (Helvetica, Inter), geo geometric sans, hum humanist sans, round
 | tight | 27% | 42% | 14% |
 | normal | 62% | 51% | 78% |
 | wide | 11% | 8% | 8% |
+
+### The one custom detail
+
+| custom | all (n=860) | craft 4+ (n=351) | craft 1-2 (n=37) |
+|---|---|---|---|
+| none | 78% | 77% | 59% |
+| letter | 9% | 10% | 14% |
+| lig | 1% | 1% | 0% |
+| color | 5% | 4% | 11% |
+| dot | 2% | 2% | 0% |
+| cut | 0% | 0% | 0% |
+| symbol | 5% | 4% | 16% |
