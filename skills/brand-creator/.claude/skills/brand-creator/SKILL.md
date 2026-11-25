@@ -115,3 +115,15 @@ The alternatives are the options the user did not pick (each label keeps its opt
 python3 -I scripts/build_brand.py --brand brands/<slug>/brand.json
 python3 -I scripts/preview.py --board brands/<slug>/brand-board.html
 ```
+
+### 8. Review and fix (do not skip)
+
+Read `brands/<slug>/board.png` (the whole board on a light theme; add `--theme dark` to see it dark) and the color PNGs in `brands/<slug>/assets/png/`. White and reverse PNGs are white on transparent and look blank in an image viewer, so check those on the board's dark tiles instead. Fix and rebuild until every answer is yes:
+
+- Would this sit comfortably next to the reference sheet's best logos? If it looks amateur next to them, simplify.
+- Is the symbol one to three shapes, flat, and does the black version read on its own? Does the 16 px favicon read?
+- Are the word's letters evenly spaced, with nothing touching, and is the word about as tall as the symbol in the lockup?
+- One custom detail at most, and only if it adds meaning.
+- No gradient, shadow, outline or more than three colors anywhere.
+- The build printed no contrast warning, and the on brand color tiles and app icon read clearly.
+- It does not resemble a famous logo or a direct competitor's.
