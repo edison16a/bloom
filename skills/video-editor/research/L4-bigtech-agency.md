@@ -273,3 +273,12 @@ Batch of 25. Videos 01–15 are big-tech software and feature films: Apple, Goog
   - A launch trailer for an app sits at the high end only when it is a sizzle. The UI-led product films (Canvas, Vids, Shopify) keep 2.7–5 s "shots" but fill them with constant in-frame animation (motion share 0.35–0.42) and SFX (90–103 hits per min).
 - **BPM:** the most energetic UI trailers sit at 110–137 BPM with a strong beat: #08 Copilot 137 (5.3), #12 Shopify 110 (6.8), #22 Leave Dates 127. Reels go to 160–176. The 70–90 BPM entries are emotional or narrative films (Super Bowl, Pixel, VoiceOver, iMac Pro).
 - **Loudness:** delivered around -16 LUFS (YouTube-normalised range). The punchy outliers are #04 Canvas (-8.6) and #25 Air Max (-6.6). Nothing quieter than -20.4.
+
+### How pacing changes across the video
+- The peak cut-rate quarter was Q3 in 11 of 25 videos and Q4 in 6. In 17 of 25 the fastest section falls in the second half: a build into a late-middle climax, then a settle for the endcard.
+- **Four reusable curve shapes:**
+  1. **Build to the end:** #05 Vids 5.5 → 24.9; #08 Copilot 12 → 36; #17 Airbnb Services 0 → 16.
+  2. **Climax in Q3, then endcard hold:** #03 VoiceOver 26 → 38 → 6; #10 Stripe; #18 BUCK 60 → 133 → 60; #19 Superside.
+  3. **U-shape** (fast open sizzle, calm middle feature, fast close recap): #02 WWDC 21.6 → 10.8 → 23.5; #11 Stripe recap.
+  4. **Fast open then decelerate** (reels that end on a breath): #20 Ordinary Folk 55 → 21; #24 iMac Pro.
+- **Endcards are always held.** Last 2–5 s: logo on a flat colour, with no cuts.
