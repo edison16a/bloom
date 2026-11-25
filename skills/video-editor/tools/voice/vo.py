@@ -162,3 +162,26 @@ def read_script(p):
 def parse_say(items):
     return dict(x.split("=", 1) for x in (items or []))
 
+
+def cmd_audition(a):
+    voices = json.load(open(a.voices)); os.makedirs(a.out, exist_ok=True)
+    rows, say = [], parse_say(a.say)
+    names = [n for n in voices if not a.only or n in a.only.split(",")]
+    for name in names:
+        v = load_voice(a.voices + ":" + name)
+        out = os.path.join(a.out, re.sub(r"\W+", "-", name) + ".wav")
+        render(v, [{"text": apply_say(a.text, say), "out": os.path.abspath(out), "seed": a.seed}])
+        q = qc(a.text, out, say); q["voice"] = name; q["file"] = out; rows.append(q)
+        print(f"{name:22s} {q['speech']:5.2f}s  {q['wpm']:3d} wpm  wer {q['wer']}  pause {q['max_pause']}  heard: {q['heard'][:70]}")
+    # one file with every option back to back (0.9 s apart), in the order printed above
+    lst = os.path.join(a.out, "list.txt")
+    gap = os.path.join(a.out, "_gap.wav")
+    sh(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "anullsrc=r=48000:cl=mono", "-t", "0.9", gap])
+    with open(lst, "w") as f:
+        for r in rows:
+            norm = r["file"][:-4] + "_n.wav"
+            sh(["ffmpeg", "-v", "error", "-y", "-i", r["file"], "-af", "loudnorm=I=-16:TP=-1.5", "-ar", "48000", "-ac", "1", norm])
+            f.write(f"file '{os.path.abspath(norm)}'\nfile '{os.path.abspath(gap)}'\n")
+    sh(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, os.path.join(a.out, "audition_all.wav")])
+    json.dump(rows, open(os.path.join(a.out, "audition.json"), "w"), indent=1)
+
