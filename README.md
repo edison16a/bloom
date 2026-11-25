@@ -95,3 +95,31 @@ assets/brand/     the Bloom logo and its brand.json
 - **The launch film.** It follows the Launch Video skill's film shape, motion values and sound rules. EffectCraft is a macOS app and was not available in the cloud container the site was built in, so the same plan was rendered from a web page frame by frame with live dot art, then mastered to -14.2 LUFS and -3.9 dBTP and checked with the skill's gate. `showcase/launch-film/README.md` has the details.
 - **Brands.** All five were made with the brand builder from `skills/brand-creator`: candidates, an options sheet, then the full kit for option 1. Each `brand.json` the builder read sits next to its media in `site/public/media/brands`.
 - **Tests.** `npm test` checks that every setup prompt clones only its own skill and covers both agents, that every file the site links to exists, and that no source uses em dashes, midline dots or arrows.
+
+## Start the project
+
+You need Node 20 or newer.
+
+```bash
+cd site
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run dev
+```
+
+Open http://localhost:3000. The `dev` and `build` scripts run the dot-art sync first.
+
+```bash
+npm run build
+```
+
+```bash
+npm test
+```
+
+`npm run build` writes the static site to `site/out`, ready for any static host.
