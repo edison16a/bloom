@@ -128,3 +128,18 @@ Most common official hex values: #000000 (335), #4285F4 (38), #FF0000 (23), #FFF
 ## Wordmarks
 
 From 860 labeled wordmark and full logo files (svgl wordmarks and gilbarbara full logos).
+
+### Typeface class
+
+| type | all (n=860) | craft 4+ (n=351) | craft 1-2 (n=37) |
+|---|---|---|---|
+| neo | 22% | 24% | 22% |
+| geo | 44% | 42% | 16% |
+| hum | 7% | 7% | 16% |
+| round | 1% | 2% | 0% |
+| display | 21% | 21% | 32% |
+| serif | 3% | 3% | 8% |
+| slab | 0% | 1% | 3% |
+| mono | 2% | 1% | 3% |
+
+neo neo grotesk (Helvetica, Inter), geo geometric sans, hum humanist sans, round rounded sans, display custom or stylized.
