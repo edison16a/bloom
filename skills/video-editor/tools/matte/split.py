@@ -57,3 +57,10 @@ def grade(f, k=1.0):
     f = f.astype(np.float32) / 255 * gain * k; g = f.mean(2, keepdims=True); f = g + (f - g) * a.sat
     f = np.clip(f, 0, 1.3); f = f + a.lift * np.sin(np.clip(f, 0, 1) * np.pi); f = f + (a.contrast - 1) * np.sin((np.clip(f, 0, 1) - .5) * np.pi) * .5 * 0.9
     return np.clip(np.where(f > .86, .86 + (1 - np.exp(-(f - .86) / .14)) * .14, f), 0, 1)
+def room(f, m):
+    w = 1 - cv2.dilate(m, np.ones((45, 45))); q = cv2.resize(f.astype(np.float32), None, fx=.25, fy=.25, interpolation=cv2.INTER_AREA); wq = cv2.resize(w, (q.shape[1], q.shape[0]), interpolation=cv2.INTER_AREA)
+    out = None
+    for sig in (a.blur / 4, 22, 70):                    # fill behind the person from further and further away
+        n = cv2.GaussianBlur(q * wq[..., None], (0, 0), sig); d = cv2.GaussianBlur(wq, (0, 0), sig)[..., None]; e = n / np.maximum(d, 1e-4); c = np.clip((d - .02) / .2, 0, 1)
+        out = (e, c) if out is None else (out[0] * out[1] + e * (1 - out[1]), np.maximum(out[1], c))
+    fill = cv2.resize(out[0], (f.shape[1], f.shape[0]), interpolation=cv2.INTER_CUBIC); return cv2.GaussianBlur(fill, (0, 0), a.blur), fill
