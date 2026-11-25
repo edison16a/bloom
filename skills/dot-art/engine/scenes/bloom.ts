@@ -180,3 +180,10 @@ export const bloom = defineScene({
   bloom: { strength: 0.5 },
   pointer: { mode: "glow", radius: 110, strength: 0.6 },
 });
+
+/** The same flower in hexagons: a honeycomb whose tiles carry the colour. */
+export const bloomHex = defineScene({
+  ...bloom, id: "bloomHex", title: "Bloom, in hexagons", overlay: undefined,
+  style: { cell: 8, mark: "hex", size: [0.84, 0.92], gamma: 0.9, gain: 1.05, ghost: 0.045, ghostColor: "#3a1526", color: { by: "source", shade: 0.85 } },
+  bloom: { strength: 0.5 },
+});
