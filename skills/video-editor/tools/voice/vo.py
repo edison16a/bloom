@@ -185,3 +185,25 @@ def cmd_audition(a):
     sh(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", lst, os.path.join(a.out, "audition_all.wav")])
     json.dump(rows, open(os.path.join(a.out, "audition.json"), "w"), indent=1)
 
+
+def cmd_gen(a):
+    v = load_voice(a.voice); lines, say = read_script(a.script); say.update(parse_say(a.say))
+    td = os.path.join(a.out, "takes"); os.makedirs(td, exist_ok=True)
+    jobs, meta = [], []
+    for i, text in enumerate(lines, 1):
+        for k in range(1, a.takes + 1):
+            out = os.path.abspath(os.path.join(td, f"L{i:02d}_t{k}.wav"))
+            jobs.append({"text": apply_say(text, say), "out": out, "seed": a.seed + i * 31 + k * 7}); meta.append((i, k, text, out))
+    render(v, jobs)
+    report = {"voice": v, "lines": []}
+    for i, text in enumerate(lines, 1):
+        takes = []
+        for (li, k, t, out) in meta:
+            if li == i: q = qc(t, out, say); q.update(take=k, file=out); takes.append(q)
+        # best = fewest word errors, then no odd pauses (> 0.7 s inside a line), then pace closest to the target
+        best = min(takes, key=lambda x: ((x["wer"] if x["wer"] is not None else 0), x["max_pause"] > 0.7, abs(x["wpm"] - a.wpm)))
+        report["lines"].append({"id": f"L{i:02d}", "text": text, "takes": takes, "pick": best["take"]})
+        flag = "  <-- CHECK" if (best["wer"] or 0) > 0.08 else ""
+        print(f"L{i:02d} pick t{best['take']}  " + "  ".join(f"t{x['take']}:{x['speech']}s/{x['wpm']}wpm/wer{x['wer']}" for x in takes) + flag)
+    json.dump(report, open(os.path.join(a.out, "report.json"), "w"), indent=1)
+
