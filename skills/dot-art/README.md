@@ -103,3 +103,32 @@ Each of these came from a fresh Claude that had only this skill and the prompt.
 > **Rain on a window at night built from one sentence. Soft city lights behind, streaks refract the lines**
 
 ![Rain](assets/rain.gif)
+
+## Anything into dots
+
+A photo:
+
+> **Turn this photo into a neon LED wall, teal to magenta**
+
+![Pagoda](assets/pagoda.gif)
+
+> **Turn this night photo into a neon LED wall, contours brighter than surfaces**
+
+![Launch pad](assets/launchpad.gif)
+
+> **Turn this photo into a colour halftone of hexagons**
+
+![Dahlia](assets/dahlia.gif)
+
+> **Set this photo in a countdown**
+
+![Rocket](assets/rocket.gif)
+
+An existing scene, on another surface, in one line:
+
+> **The same flower in hexagons, then in octagons**
+
+![Hexagons](assets/bloomHex.gif)
+![Octagons](assets/bloomOctagon.gif)
+
+Also: an SVG or a word with `logoScene`, a `.glb` or `.obj` with `modelScene`.
