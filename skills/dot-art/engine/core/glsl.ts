@@ -77,3 +77,18 @@ float wrapDiff(vec3 n,vec3 l,float w){ return sat((dot(n,l)+w)/(1.+w)); }
 float blinn(vec3 n,vec3 l,vec3 v,float p){ return pow(sat(dot(n,normalize(l+v))),p); }
 float fresnel(vec3 n,vec3 v,float p){ return pow(1.-abs(dot(n,v)),p); }
 `;
+
+export const UNIFORMS = /* glsl */ `
+uniform float u_time;   // seconds
+uniform float u_phase;  // 0..1 over the loop
+uniform float u_loop;
+uniform vec2 u_grid;    // cols, rows
+uniform vec2 u_frame;   // pixels
+uniform float u_aspect;
+uniform vec3 u_eye;
+uniform mat4 u_view, u_viewProj;
+uniform vec2 u_clip;    // near, far
+uniform vec3 u_pointer; // x,y in -1..1 (y up), z = presence
+uniform float u_stag;
+uniform vec4 u_cam[4];  // right, up, forward, (tan(fov/2))
+`;
