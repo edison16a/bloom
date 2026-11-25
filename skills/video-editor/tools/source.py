@@ -107,3 +107,45 @@ def pcm(path, sr=22050):
     r = subprocess.run(["ffmpeg", "-v", "error", "-i", path, "-ac", "1", "-ar", str(sr), "-f", "f32le", "-"], capture_output=True)
     return np.frombuffer(r.stdout, dtype=np.float32), sr
 
+
+def analyse(path):
+    import numpy as np
+    x, sr = pcm(path)
+    if len(x) < sr * 5: return None
+    hop, win = 512, 2048
+    n = 1 + (len(x) - win) // hop
+    idx = np.arange(win)[None, :] + hop * np.arange(n)[:, None]
+    mag = np.empty((n, win // 2 + 1), np.float32); w = np.hanning(win).astype(np.float32)
+    for a in range(0, n, 2000): mag[a:a + 2000] = np.abs(np.fft.rfft(x[idx[a:a + 2000]] * w, axis=1))
+    lm = np.log1p(10 * mag); fl = np.maximum(0, np.diff(lm, axis=0)).mean(1); fl = np.concatenate([[0], fl])
+    fps = sr / hop
+    loc = np.convolve(fl, np.ones(int(fps)) / int(fps), "same"); on = np.maximum(0, fl - loc)
+    best = []
+    for bpm in np.arange(70, 180.01, 0.25):
+        s = 0
+        for k, g in ((1, 1.0), (2, .5), (4, .5)):
+            lag = k * 60 / bpm * fps; f = int(lag); fr = lag - f
+            if f + 1 >= len(on): continue
+            s += g * float((on[:-f - 1] * ((1 - fr) * on[f:-1] + fr * on[f + 1:])).mean())
+        best.append((s * math.exp(-0.5 * (math.log2(bpm / 122) / 0.7) ** 2), bpm))
+    s, bpm = max(best); strength = s / (2 * float((on ** 2).mean()) + 1e-12)
+    # one-second level curve, low end share
+    k = int(sr); sec = len(x) // k
+    rms = np.array([20 * np.log10(np.sqrt((x[i * k:(i + 1) * k] ** 2).mean()) + 1e-6) for i in range(sec)])
+    lo = mag[:, :int(150 * win / sr)].sum(1) / (mag.sum(1) + 1e-9)
+    lift = (0, 0.0)
+    for i in range(3, sec - 4):
+        d = rms[i:i + 4].mean() - rms[max(0, i - 3):i].mean()
+        if d > lift[1]: lift = (i, float(d))
+    loud = np.percentile(rms, 90); intro = int(next((i for i in range(sec) if rms[i] > loud - 4), 0))
+    r = subprocess.run(["ffmpeg", "-nostats", "-i", path, "-af", "ebur128", "-f", "null", "-"], capture_output=True, text=True).stderr
+    I = re.findall(r"I:\s+(-?[\d.]+) LUFS", r)
+    # first beat phase: the grid offset with the most onset energy
+    per = 60 / bpm * fps; ph = max(np.arange(0, per, 1), key=lambda p: on[np.clip((p + per * np.arange(int(len(on) / per) - 1)).astype(int), 0, len(on) - 1)].sum())
+    ev = float((np.diff(np.sign(on - on.mean() * 2.5)) > 0).sum() / (len(x) / sr) * 60)
+    return {"dur": round(len(x) / sr, 1), "bpm": round(float(bpm), 2), "beat_strength": round(float(strength), 2), "lufs": float(I[-1]) if I else None,
+            "first_beat": round(float(ph / fps), 3), "intro_s": intro, "lift_at": lift[0], "lift_db": round(lift[1], 1),
+            "dips": [int(i) for i in range(2, sec - 2) if rms[i] < np.median(rms) - 6][:12], "bass_share": round(float(lo.mean()), 3),
+            "events_per_min": round(ev), "range_db": round(float(np.percentile(rms, 95) - np.percentile(rms, 10)), 1),
+            "curve": " ".join(str(int(round(v))) for v in rms[:180])}
+
