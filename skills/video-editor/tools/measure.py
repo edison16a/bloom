@@ -157,3 +157,62 @@ def sheets(p, out, dur, cut_t):
     for i, m in enumerate(mids):
         run(['ffmpeg', '-y', '-v', 'error', '-ss', f'{m:.2f}', '-i', p, '-frames:v', '1', '-vf', 'scale=480:-2',
              os.path.join(sd, f'{i:02d}_{m:06.2f}.jpg')])
+
+def main():
+    src, out = sys.argv[1], sys.argv[2]
+    keep = '--keep' in sys.argv
+    os.makedirs(out, exist_ok=True)
+    tmp = tempfile.mkdtemp(prefix='meas_')
+    try:
+        p, meta = fetch(src, tmp)
+        dur, w, h, fps, has_a = probe(p)
+        ct = cuts(p, dur)
+        shots = np.diff([0] + ct + [dur])
+        fr = gray_frames(p)
+        mo = motion(fr)
+        # per-second flow summary: dominant direction when moving
+        flow = []
+        for s in range(int(dur)):
+            seg = mo[s * 10:(s + 1) * 10]
+            if len(seg) == 0: continue
+            dx, dy = seg[:, 0].sum(), seg[:, 1].sum()
+            z = seg[:, 3].sum()
+            mag = (dx * dx + dy * dy) ** 0.5
+            d = '.' if mag < 3 else ('→' if abs(dx) >= abs(dy) and dx > 0 else '←' if abs(dx) >= abs(dy) else '↓' if dy > 0 else '↑')
+            if mag < 3 and abs(z) > 0.25: d = 'Z+' if z > 0 else 'Z-'
+            flow.append(d)
+        on_beat = None
+        A = audio(p, dur) if has_a else {}
+        if A and ct and A.get('beat_strength', 0) > 1.3:
+            per = 60 / A['bpm']
+            res = [abs(((c - A['beat_phase'] + per / 2) % per) - per / 2) for c in ct]
+            on_beat = round(float(np.mean(np.array(res) < 0.06)), 2)
+        hit_on_cut = None
+        if A and ct:
+            hits = np.array(A['hits']); hit_on_cut = round(float(np.mean([np.any(np.abs(hits - c) < 0.12) for c in ct])), 2) if len(hits) else 0
+        subs = [f for f in os.listdir(tmp) if f.endswith('.vtt')]
+        wpm = None
+        if subs:
+            txt = open(os.path.join(tmp, subs[0]), errors='ignore').read()
+            words = re.sub(r'<[^>]+>|\d\d:\d\d[^\n]*|WEBVTT.*|Kind:.*|Language:.*', ' ', txt).split()
+            wpm = round(len(words) / 2 / dur * 60) if words else None  # auto-subs repeat lines ~2x
+        M = dict(src=src, meta=meta, duration=round(dur, 2), width=w, height=h, fps=round(fps, 2),
+                 aspect='vertical' if h > w else 'horizontal',
+                 cuts=len(ct), cuts_per_min=round(len(ct) / dur * 60, 1),
+                 shot_len_median=round(float(np.median(shots)), 2), shot_len_p10=round(float(np.percentile(shots, 10)), 2),
+                 shot_len_p90=round(float(np.percentile(shots, 90)), 2), cut_times=[round(c, 2) for c in ct[:300]],
+                 cuts_per_min_by_quarter=[round(float(((np.array(ct) >= dur * q / 4) & (np.array(ct) < dur * (q + 1) / 4)).sum() / (dur / 4) * 60), 1) for q in range(4)],
+                 motion_share=round(float(np.mean(np.hypot(mo[:, 0], mo[:, 1]) > 0.5)) if len(mo) else 0, 2),
+                 flow_per_second=''.join(flow), cuts_on_beat_share=on_beat, cuts_with_hit_share=hit_on_cut,
+                 subtitle_wpm_estimate=wpm, audio=A)
+        json.dump(M, open(os.path.join(out, 'metrics.json'), 'w'), indent=1)
+        sheets(p, out, dur, ct)
+        if keep: shutil.copy(p, os.path.join(out, 'video.mp4'))
+        summary = {k: M[k] for k in ('duration', 'aspect', 'cuts_per_min', 'shot_len_median', 'cuts_on_beat_share', 'cuts_with_hit_share', 'flow_per_second')}
+        summary.update({k: A.get(k) for k in ('bpm', 'beat_strength', 'lufs', 'hits_per_min', 'speech_share')} if A else {})
+        print(json.dumps(summary, ensure_ascii=False))
+    finally:
+        shutil.rmtree(tmp, ignore_errors=True)
+
+if __name__ == '__main__':
+    main()
