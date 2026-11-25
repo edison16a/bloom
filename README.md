@@ -5,7 +5,7 @@
 <h1 align="center">Bloom</h1>
 
 <p align="center">
-  Three agent skills that make the art for your site, your launch film and your logo, plus the site that shows them off.
+  Three AI agents that help you make the art for your site, your launch film and your logo, plus the site that shows them off.
 </p>
 
 <p align="center">
@@ -33,19 +33,19 @@
 
 ## What it is
 
-Bloom is a monorepo of three skills for Claude Code and Codex. You bring the idea. The skills cover how the site looks, the launch video and the brand.
+Bloom is three AI agents for Claude Code and Codex. You bring the idea. The agents handle how the site looks, the launch video and the brand. Each one is packaged as a skill, so your coding agent loads it and works the way it describes.
 
-| | Skill | What it does | Folder |
+| | Agent | What it does | Folder |
 |---|---|---|---|
 | 1 | Dot Art | Animated art made of hexagons, LED pixels, dither or letters, dropped into your project as a React component | `skills/dot-art` |
 | 2 | Launch Video | A launch film from a direction and a link: product capture, real music, short lines, cut to the beat in EffectCraft | `skills/video-editor` |
 | 3 | Brand Creator | A logo, wordmark and full brand kit from a company name, based on research on 8,332 real tech logos | `skills/brand-creator` |
 
-The site in `site/` shows each skill with real work it made: every dot art scene running live, a launch film, and five brands built with the brand builder (Vela, Bloom, Kite, Halo and Tessel). Bloom's own logo came out of Brand Creator.
+The site in `site/` shows each agent with real work it made: every dot art scene running live, a launch film, and five brands built with the brand builder (Vela, Bloom, Kite, Halo and Tessel). Bloom's own logo came out of Brand Creator.
 
-## Set up a skill
+## Set up an agent
 
-The quickest way is the site: every skill has a **Copy setup prompt** button. Paste the prompt into Claude Code or Codex and the agent clones only that skill's folder from this repo, installs it in the right skills folder for itself, checks what it needs and tells you what is missing. The prompts are built in `site/lib/prompts.ts`.
+The quickest way is the site: every agent has a **Copy setup prompt** button. Paste the prompt into Claude Code or Codex and it clones only that agent's folder from this repo, installs it in the right skills folder for itself, checks what it needs and tells you what is missing. The prompts are built in `site/lib/prompts.ts`.
 
 To do it by hand, for example for Dot Art in Claude Code:
 
@@ -65,7 +65,7 @@ For Codex, use `~/.codex/skills` instead. Launch Video and Brand Creator are wor
 
 ## How it works
 
-Each skill is a folder with a `SKILL.md` that tells the agent how to work, plus the scripts and references it uses. The skills were copied into this repo as they are and are never edited by the site.
+Each agent is a folder with a `SKILL.md` that tells your coding agent how to work, plus the scripts and references it uses. They were copied into this repo as they are and are never edited by the site.
 
 - **Dot Art** is a WebGL2 engine with no runtime dependencies. A scene describes what is drawn with a little GLSL, a photo, a shape or a model. The engine renders it into a low resolution grid and draws each cell as a mark or a letter. Every loop is seamless.
 - **Launch Video** turns a direction into a one page plan, records the real product, finds music with `tools/source.py`, builds the film in EffectCraft through MCP, and checks the render with `gate.py` for loudness, peaks and black frames.
@@ -86,15 +86,15 @@ site/
   public/media/   brand kits, the launch film, screenshots of the brand boards
 showcase/
   launch-film/    source of the launch film and its music licence
-skills/           the three skills, unchanged
+skills/           the three agents, unchanged
 assets/brand/     the Bloom logo and its brand.json
 ```
 
-- **Live dot art.** `npm run sync` runs the dot-art skill's own installer to copy the engine into `site/components/dot-art`, the same way the skill's gallery does. Scenes hold GLSL and functions, so pages pass scene ids and the client registry in `lib/scenes.ts` looks them up. Each canvas starts near the viewport, pauses off screen and gives its WebGL context back after 4 seconds away. Scenes that build up from nothing can start part way into their loop.
+- **Live dot art.** `npm run sync` runs Dot Art's own installer to copy the engine into `site/components/dot-art`, the same way its gallery does. Scenes hold GLSL and functions, so pages pass scene ids and the client registry in `lib/scenes.ts` looks them up. Each canvas starts near the viewport, pauses off screen and gives its WebGL context back after 4 seconds away. Scenes that build up from nothing can start part way into their loop.
 - **Design.** The interface follows the [unslop](https://github.com/heydamir/unslop) passes: one ink ramp, three text roles, one pink accent taken from the logo, Geist and Geist Mono, a 4 px spacing grid and one easing curve. The richness lives in the dot art, the film and the logos, not in the chrome.
-- **The launch film.** It follows the Launch Video skill's film shape, motion values and sound rules. EffectCraft is a macOS app and was not available in the cloud container the site was built in, so the same plan was rendered from a web page frame by frame with live dot art, then mastered to -14.2 LUFS and -3.9 dBTP and checked with the skill's gate. `showcase/launch-film/README.md` has the details.
+- **The launch film.** It follows the Launch Video agent's film shape, motion values and sound rules. EffectCraft is a macOS app and was not available in the cloud container the site was built in, so the same plan was rendered from a web page frame by frame with live dot art, then mastered to -14.2 LUFS and -3.9 dBTP and checked with its gate script. `showcase/launch-film/README.md` has the details.
 - **Brands.** All five were made with the brand builder from `skills/brand-creator`: candidates, an options sheet, then the full kit for option 1. Each `brand.json` the builder read sits next to its media in `site/public/media/brands`.
-- **Tests.** `npm test` checks that every setup prompt clones only its own skill and covers both agents, that every file the site links to exists, and that no source uses em dashes, midline dots or arrows.
+- **Tests.** `npm test` checks that every setup prompt clones only its own folder and covers both Claude Code and Codex, that every file the site links to exists, and that no source uses em dashes, midline dots or arrows.
 
 ## Start the project
 
