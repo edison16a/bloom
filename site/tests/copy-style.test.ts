@@ -9,3 +9,12 @@ import { setupAllPrompt, setupPrompt } from "@/lib/prompts";
  * no arrows standing in for words, no exclamation marks.
  */
 const root = path.resolve(__dirname, "..");
+
+const files = (dir: string): string[] =>
+  readdirSync(dir).flatMap((name) => {
+    const full = path.join(dir, name);
+    if (name === "dot-art" || name === "dot-art-examples") return [];
+    return statSync(full).isDirectory() ? files(full) : /\.(ts|tsx)$/.test(name) ? [full] : [];
+  });
+
+const sources = ["app", "components", "content", "lib"].flatMap((d) => files(path.join(root, d)));
