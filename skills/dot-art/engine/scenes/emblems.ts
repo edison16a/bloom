@@ -61,3 +61,15 @@ export function emblemScene(list: EmblemSpec[], over: Partial<Scene> = {}): Scen
     ...over,
   };
 }
+
+export const emblems = emblemScene([
+  { shape: { path: spark }, at: [0, 0.02], size: 0.46, color: ["#2ce6d4", "#7a5cff"], depth: 0.04, bevel: 0.3, bevelWidth: 0.42, spin: 0.75 },
+  { shape: { path: infinity, stroke: 2.6 }, at: [-0.66, 0.5], size: 0.27, color: ["#1fd6ff", "#2f7bff"], depth: 0, bevel: 0.11, bevelWidth: 0.11 },
+  { shape: { path: hexRing, fillRule: "evenodd" }, at: [0.66, 0.5], size: 0.25, color: ["#6f7bff", "#a256ff"] },
+  { shape: { path: bolt }, at: [-0.74, -0.42], size: 0.25, color: ["#35a8ff", "#4457ff"] },
+  { shape: orbit, at: [0.72, -0.42], size: 0.28, color: ["#18e0d0", "#2b8dff"], depth: 0, bevel: 0.07, bevelWidth: 0.07 },
+  { shape: burst, at: [-0.32, -0.68], size: 0.22, color: ["#c43cff", "#ff3f9f"], depth: 0, bevel: 0.06, bevelWidth: 0.07 },
+  { shape: { path: heart }, at: [0.32, 0.72], size: 0.18, color: ["#ff4fa3", "#b04bff"], depth: 0.04, bevel: 0.22, bevelWidth: 0.34 },
+  { shape: { path: moon }, at: [-0.3, 0.74], size: 0.17, color: ["#8f7bff", "#e072ff"], depth: 0.04, bevel: 0.18, bevelWidth: 0.26 },
+  { shape: { path: spark }, at: [0.34, -0.72], size: 0.14, color: ["#36c2ff", "#6a6cff"], depth: 0.04, bevel: 0.25, bevelWidth: 0.4 },
+]);
