@@ -92,3 +92,25 @@ uniform vec3 u_pointer; // x,y in -1..1 (y up), z = presence
 uniform float u_stag;
 uniform vec4 u_cam[4];  // right, up, forward, (tan(fov/2))
 `;
+
+export const SHADER_FS = (common: string, hook: string, decls: string) => `#version 300 es
+precision highp float; precision highp int; precision highp sampler2D;
+in vec2 v_uv;
+layout(location=0) out vec4 o_color;
+layout(location=1) out vec4 o_data;
+${UNIFORMS}${decls}${LIB}
+struct Cell { vec3 color; float tone; float alpha; float depth; float flag; };
+/** Id of the mark under uv. Use it for per-dot randomness (stars, twinkle) so staggered grids stay aligned. */
+vec2 cellId(vec2 uv){ vec2 q=uv*u_grid; float row=floor(u_grid.y-q.y); if(u_stag>.5&&mod(row,2.)>.5) q.x-=.5; return floor(q); }
+/** Camera ray through p (aspect-corrected, -1..1 vertically). */
+vec3 camRay(vec2 p){ return normalize(u_cam[0].xyz*p.x*u_cam[3].x+u_cam[1].xyz*p.y*u_cam[3].x+u_cam[2].xyz); }
+${common}
+${hook}
+void main(){
+  vec2 p=(v_uv*2.-1.)*vec2(u_aspect,1.);
+  Cell c=Cell(vec3(1.),0.,1.,1.,0.);
+  scene(v_uv,p,c);
+  float a=sat(c.alpha);
+  o_color=vec4(max(c.color,0.)*a,a);
+  o_data=vec4(sat(c.tone)*a,c.depth*a,c.flag*a,a);
+}`;
