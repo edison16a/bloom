@@ -1,0 +1,2 @@
+{ "name": "dot-art-scripts", "private": true, "type": "module",
+  "dependencies": { "esbuild": "^0.25.0", "playwright-core": "^1.56.0" } }
