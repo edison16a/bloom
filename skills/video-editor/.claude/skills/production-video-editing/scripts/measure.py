@@ -48,3 +48,22 @@ def probe(p):
     v = [s for s in j['streams'] if s['codec_type'] == 'video'][0]
     n, d = v['r_frame_rate'].split('/')
     return float(j['format']['duration']), int(v['width']), int(v['height']), float(n) / float(d), any(s['codec_type'] == 'audio' for s in j['streams'])
+
+def cuts(p, dur=None):
+    def at(th):
+        r = run(['ffmpeg', '-hide_banner', '-nostats', '-i', p, '-vf', f'scale=320:-2,scdet=threshold={th}:sc_pass=0', '-an', '-f', 'null', '-'])
+        return [float(m) for m in re.findall(r'lavfi\.scd\.time:\s*([0-9.]+)', r.stderr)]
+    c = at(12)
+    # Dark / low-contrast UI films: scdet at 12 misses soft cuts. Retry more sensitively, drop cuts <0.2 s apart.
+    if dur and len(c) / dur * 60 < 6:
+        c2 = at(5)
+        merged = []
+        for t in c2:
+            if not merged or t - merged[-1] > 0.2: merged.append(t)
+        if len(merged) > len(c): c = merged
+    return c
+
+def gray_frames(p, fps=10, w=96, h=54):
+    raw = subprocess.run(['ffmpeg', '-v', 'error', '-i', p, '-vf', f'fps={fps},scale={w}:{h},format=gray', '-f', 'rawvideo', '-'],
+                         capture_output=True).stdout
+    return np.frombuffer(raw, np.uint8).reshape(-1, h, w).astype(np.float32)
