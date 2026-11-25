@@ -132,3 +132,11 @@ function window2(t: number, inAt: number, pushAt: number) {
   $("board").style.opacity = String(seg(t, click, click + 0.15));
   $("options").style.opacity = String(1 - seg(t, click + 0.15, click + 0.3));
 }
+
+// ---------------------------------------------------------------- montage
+function cut(id: string, t: number, a: number, b: number, fadeOut = 0) {
+  const el = $(id);
+  const on = t >= a && t < b + fadeOut;
+  el.style.opacity = on ? String(1 - (fadeOut ? seg(t, b, b + fadeOut) : 0)) : "0";
+  return on;
+}
