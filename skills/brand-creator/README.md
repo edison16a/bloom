@@ -21,3 +21,14 @@ Tell Claude "create a brand for Acme, we make X". It first shows you three to fi
 Then keep talking to it. "Make the color more purple", "use option 3", "bigger text" or "give me the full assets" edit one spec file and rebuild the whole kit.
 
 Nothing is a template. Every symbol is drawn fresh for the name, and the choices follow what the research found separates strong logos from weak ones: simple flat shapes, a designed initial or one geometric idea, one or two saturated colors, and a tight, heavy wordmark.
+
+## Screenshots
+
+![Brand board for a test brand, Nook](docs/screenshots/board.png)
+
+| | |
+|---|---|
+| ![Nook](docs/screenshots/nook.png) | ![Tidepool](docs/screenshots/tidepool.png) |
+| ![Lumen Labs](docs/screenshots/lumen-labs.png) | ![Ferrite](docs/screenshots/ferrite.png) |
+
+These are made up companies from test runs: a savings app, a developer tool, an AI accounting company and a chip maker. Each was designed by an agent that only read the skill. This repo's own logo was made the same way.
