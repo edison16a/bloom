@@ -24,3 +24,18 @@ def find_chrome():
             return c
     sys.exit("Chrome not found. Set CHROME=/path/to/chrome")
 
+
+def sniff(blob):
+    if blob[:8] == b"\x89PNG\r\n\x1a\n":
+        return "image/png"
+    if blob[:3] == b"\xff\xd8\xff":
+        return "image/jpeg"
+    if blob[:4] == b"RIFF" and blob[8:12] == b"WEBP":
+        return "image/webp"
+    if blob[:6] in (b"GIF87a", b"GIF89a"):
+        return "image/gif"
+    head = blob[:600].lower()
+    if b"<svg" in head or b"<?xml" in head:
+        return "image/svg+xml"
+    return None
+
