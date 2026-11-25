@@ -137,3 +137,22 @@ export interface Geometry {
   extra?: Float32Array;
   index?: Uint32Array;
 }
+
+/** Point or triangle surface: `void surface(int i, int n, vec4 rnd, inout Pt p)`. */
+export interface SurfaceSource extends SourceBase {
+  type: "surface";
+  glsl: string;
+  /** Number of procedural points, when there is no geometry. */
+  count?: number;
+  /** Geometry, or a function that builds it. A function runs on first render only, so importing the scene stays cheap and SSR-safe. */
+  geometry?: Geometry | (() => Geometry);
+  /** Draw the geometry as triangles instead of points. */
+  triangles?: boolean;
+  blend?: "opaque" | "add";
+}
+
+export type Source = ShaderSource | SurfaceSource;
+
+/** A typed cell. `color` is 0-1 rgb, snapped to a 6-level cube. Default white. */
+export interface OverlayCell { col: number; row: number; char: string; tone?: number; color?: Vec3 }
+export interface GridInfo { cols: number; rows: number }
