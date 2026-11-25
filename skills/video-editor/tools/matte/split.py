@@ -64,3 +64,14 @@ def room(f, m):
         n = cv2.GaussianBlur(q * wq[..., None], (0, 0), sig); d = cv2.GaussianBlur(wq, (0, 0), sig)[..., None]; e = n / np.maximum(d, 1e-4); c = np.clip((d - .02) / .2, 0, 1)
         out = (e, c) if out is None else (out[0] * out[1] + e * (1 - out[1]), np.maximum(out[1], c))
     fill = cv2.resize(out[0], (f.shape[1], f.shape[0]), interpolation=cv2.INTER_CUBIC); return cv2.GaussianBlur(fill, (0, 0), a.blur), fill
+def unmix(f, fill, m):
+    """Take the wall out of half transparent edge pixels, then hold the outer rim to the colour just inside it."""
+    f = f.astype(np.float32); al = np.clip(m, .08, 1)[..., None]; F = np.clip((f - (1 - al) * fill) / al, 0, 255); band = ((m > .02) & (m < .98)).astype(np.float32); band = cv2.GaussianBlur(band, (0, 0), 1.5)[..., None]
+    inner = cv2.erode((m > .9).astype(np.uint8), cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (9, 9))).astype(np.float32)
+    n = cv2.GaussianBlur(f * inner[..., None], (0, 0), 6); d = cv2.GaussianBlur(inner, (0, 0), 6)[..., None]; e = n / np.maximum(d, 1e-3)
+    F = np.where(d > .02, np.minimum(F, e * 1.12 + 6), F); return np.clip(f * (1 - band) + F * band, 0, 255)
+def place(im, pad=0):
+    if not a.person: return fit(im[pad:])
+    k, px_, py_ = [float(v) for v in a.person.split(",")]
+    return cv2.warpAffine(im, np.float32([[k, 0, px_], [0, k, py_ - k * pad]]), (W, H), flags=cv2.INTER_CUBIC if k > .98 else cv2.INTER_AREA)
+rng = np.random.default_rng(1); noise = [rng.normal(0, 1.1, (H, W, 1)).astype(np.float32) / 255 for _ in range(5)]
