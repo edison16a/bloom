@@ -63,3 +63,27 @@ Normals for a parametric surface: evaluate it at `q`, `q+du`, `q+dv`, cross the 
 | Misc | `rot(a) sat(x) PI TAU camRay(p) cellId(uv)` |
 
 GLSL ES 3.00. Write float literals with a dot. `half` and `input` are reserved words.
+
+## Style
+
+| Key | Notes |
+|---|---|
+| `cell` | css px, number or `[w,h]`. Rounded to device pixels |
+| `mark` | `hex octagon square diamond plus cross line pixel glyph` |
+| `size` | `[at tone 0, at tone 1]` of the cell. Equal = constant. Over 1 lets marks merge |
+| `grid` | `square` or `stagger`. `hex` staggers by itself |
+| `angle` | screen angle, halftone: 15-30 |
+| `gain lift gamma` | `pow(tone*gain+lift, gamma)` |
+| `ghost ghostColor` | unlit cells, .04-.16 |
+| `color.by` | `source tone space mono`, with `stops` (max 8), `angle`, `highlight` |
+| `color.shade` | 0 = mark size alone carries light, 1 = brightness does |
+| `dither` | `{ type: "bayer"|"noise", stops, bands, jitter }` with mark `pixel` |
+
+Glyph: `ramp message fill messageAbove scroll rowShift weights font fontScale edges boxAbove glitch glitchUntil glitchChars looseChars detail under`.
+
+- `fill`: `ramp`, `hybrid` (message where bright), `message` (letters everywhere lit).
+- `detail` 0-1 clips and shades letters by the full-resolution render. `under` 0-.3 glows it behind them.
+- `edges`: draws | / _ \\ ^ on silhouettes and depth steps. If horizontal edges turn into `____` runs, lower to .5 or 0 and let `detail` hold the outline.
+- `boxAbove`: brighter cells become filled boxes with the glyph knocked out.
+- `glitch` s: newly lit cells scramble, until `glitchUntil` (scene time). Cells already lit at the loop point stay still.
+- `scroll` letters/s: `scroll * loop` should be a multiple of the message length for a perfect loop.
