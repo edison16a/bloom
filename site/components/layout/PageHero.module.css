@@ -1,0 +1,6 @@
+.hero { position: relative; min-height: 78svh; display: flex; align-items: flex-end; overflow: hidden; isolation: isolate; background: #050507; }
+.art { position: absolute; inset: 0; z-index: -2; }
+.veil { position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(5, 5, 7, 0.88) 0%, rgba(5, 5, 7, 0.5) 45%, rgba(5, 5, 7, 0) 75%), linear-gradient(180deg, rgba(5, 5, 7, 0) 55%, var(--bg) 100%); }
+.content { padding-top: 160px; padding-bottom: 80px; }
+.copy { max-width: 620px; }
+@media (max-width: 860px) { .veil { background: linear-gradient(180deg, rgba(5, 5, 7, 0.3) 0%, rgba(5, 5, 7, 0.75) 55%, var(--bg) 100%); } }
