@@ -104,3 +104,14 @@ def norm_words(s):
     s = re.sub(r"\d[\d,]*(?:\.\d+)?|\.\d+", num_words, s)
     return re.findall(r"[a-z']+", s)
 
+
+def wer(ref, hyp):
+    r, h = norm_words(ref), norm_words(hyp)
+    d = list(range(len(h) + 1))
+    for i in range(1, len(r) + 1):
+        prev, d[0] = d[0], i
+        for j in range(1, len(h) + 1):
+            cur = min(d[j] + 1, d[j - 1] + 1, prev + (r[i - 1] != h[j - 1]))
+            prev, d[j] = d[j], cur
+    return d[len(h)] / max(1, len(r))
+
