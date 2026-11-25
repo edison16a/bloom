@@ -1,0 +1,23 @@
+{
+  "name": "brand creator",
+  "tagline": "Logos and brand kits from a company name",
+  "rationale": "A lowercase b assembled from two separate parts, a black stem and an orange bowl, says that a brand is built from simple pieces. Calm lowercase Geist keeps it in the developer tool family next to Vercel and Linear.",
+  "colors": {"primary": "#F2541B", "accent": "#F2541B", "ink": "#0E0E10", "paper": "#FFFFFF",
+             "idea": "Kiln Orange #F2541B: a warm signal color in a black and blue developer tool field."},
+  "symbol": {"svg": "<path d='M0 0H34V100H0Z' fill='{I}'/><path d='M40 34H70A33 33 0 0 1 70 100H40Z' fill='{P}'/>",
+             "idea": "A b made of a stem and a bowl that do not touch: two simple parts, one letter."},
+  "wordmark": {"font": "geist-600", "case": "lower", "tracking": -0.04, "accent_chars": [], "custom_glyphs": {},
+               "idea": "Geist semibold, lowercase and tight: precise and quiet, like the tools developers already trust."},
+  "lockup": {"cap_ratio": 0.66, "gap": 0.24},
+  "app_icon": {"inset": 0.22, "symbol_color": "#FFFFFF"},
+  "alternatives": [
+    {"label": "Option 2: heavier word", "why": "Inter Extra Bold reads louder at small sizes.",
+     "wordmark": {"font": "inter-800", "case": "lower", "tracking": -0.045}},
+    {"label": "Option 3: corner and dot", "why": "A frame corner and a dot: the space a logo lives in. More abstract.",
+     "symbol": {"svg": "<path d='M0 0H100V30H30V100H0Z' fill='{I}'/><rect x='42' y='42' width='58' height='58' rx='29' fill='{P}'/>"},
+     "wordmark": {"font": "geist-800", "case": "lower", "tracking": -0.05}},
+    {"label": "Option 4: half round b", "why": "A thinner bowl that only starts at mid height; lighter and more graphic.",
+     "symbol": {"svg": "<path d='M0 0H36V100H0Z' fill='{I}'/><path d='M44 40A30 30 0 1 1 44 100Z' fill='{P}'/>"}},
+    {"label": "Option 5: all black", "why": "Ink only, for the most restrained use.", "colors": {"primary": "#0E0E10", "accent": "#0E0E10"}}
+  ]
+}
