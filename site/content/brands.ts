@@ -80,3 +80,13 @@ export const brands: Brand[] = [
     darkOnColor: true,
   },
 ];
+
+/** Logos from the skill's own test runs, made by agents that had only the skill. */
+export const testRuns = [
+  { name: "Nook", note: "a savings app", image: "/media/brands/tests/nook.webp" },
+  { name: "Tidepool", note: "a developer tool", image: "/media/brands/tests/tidepool.webp" },
+  { name: "Lumen Labs", note: "an AI accounting company", image: "/media/brands/tests/lumen-labs.webp" },
+  { name: "Ferrite", note: "a chip maker", image: "/media/brands/tests/ferrite.webp" },
+];
+
+export const featuredBrand = brands[0];
