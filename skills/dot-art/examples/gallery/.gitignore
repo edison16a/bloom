@@ -1,0 +1,7 @@
+node_modules
+.next
+components/dot-art
+lib/photos.ts
+public/images
+next-env.d.ts
+*.tsbuildinfo
