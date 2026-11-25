@@ -91,3 +91,12 @@ export interface Style {
   dither?: DitherStyle;
   glyph?: GlyphStyle;
 }
+
+export interface Fade {
+  /** Fraction of the frame over which each edge fades out. */
+  left?: number; right?: number; top?: number; bottom?: number;
+  /** Quiet zone for a headline: centre x,y (0–1, y down), radii rx,ry. */
+  hole?: [number, number, number, number];
+  /** 0–1 how dark the hole gets. Default 0.8. */
+  strength?: number;
+}
