@@ -161,3 +161,45 @@ How the 18 videos with people on camera get from the person to the product, in o
 7. **Title-card bridge.** Cluely dissolves (3-4 frames) to black cards with italic text and an icon. Comena and VibeFlow use one-line text cards ("Let's see it in action") as the hinge. Hold 1-1.5 s with a slow scale-down, then cut to the first UI frame.
 - **Return to the human:** most films go back to the founder for the close (Wildcard, Tenera, TrueMile, Sim A, WithAI, Lance, Cluely) and end with the logo over the founder or a separate end card.
 - **Rhythm:** human and UI alternate every 5-15 s in founder-led films. Pure demos without a person, longer than about 30 s, are where the energy drops.
+
+### 10 most reusable moves (recipes)
+Frame counts assume 30 fps; 24 fps films scale in proportion.
+1. **Speech-synced word reveal beside the speaker.**
+   - Each word: opacity 0→100 with Gaussian blur 12→0 px and y +8→0 px over 4 frames, easeOutCubic. The next word starts on its spoken syllable.
+   - The accent word takes the brand colour.
+   - Exit the whole line over 6 frames with blur, opacity and y +10 px. Optional soft tick on the accent word.
+2. **Neutral-canvas UI materialise.**
+   - Hard cut on the end of the speaker's phrase to a brand-tinted radial-vignette canvas.
+   - After 3 frames, a pill (40×20 px) scales X to full card width over 6 frames (easeOutQuint), then the contents fade up, staggered 2 frames per row.
+   - SFX: soft whoosh into the cut, pop on the card settle.
+3. **Glass stat card over the founder.**
+   - A frosted card (backdrop blur about 20 px, 10-15% white fill, 1 px light border) slides up 30 px and fades in over 8 frames beside the founder.
+   - The number counts up over 30-45 frames with easeOutExpo. The label fades in after the count lands. Tick per digit change or one chime on landing.
+4. **Rack-focus to the screen, then hard cut to full-screen UI.**
+   - Shoot shallow depth of field with the monitor in the background, and pull focus to it over about 12-18 frames.
+   - Cut on the moment of sharpest focus to the full-screen UI at the same screen orientation. The music lift lands on that cut.
+5. **Cursor-driven UI beats.** Every UI scene is click → reaction → settle:
+   - Cursor moves along an eased arc over 10-15 frames.
+   - Button press-scale 0.95 for 3 frames.
+   - The result panel expands or fades over 6-8 frames, optionally with camera auto-zoom 1.0→1.4x (easeInOut) toward the click target.
+   - SFX: click plus a soft pop.
+6. **Accelerating montage into a strobe.**
+   - Shot lengths step down roughly 15 → 10 → 6 → 4 → 3 → 2 frames, then hold 25 or more shots at 2-3 frames each.
+   - Use one fixed centred caption, or one word per shot, so the eye has an anchor.
+   - End on a hard cut to black or the logo with an impact hit. Seen in Palmier, Artificial Societies and sieve.
+7. **Colour-flip turn card.**
+   - Hard cut from the light problem canvas to the saturated brand colour with one line ("But that changes today" / "Let's see it in action").
+   - The text scales 100→96% over 45 frames, then a hard cut back to light with the first UI card.
+   - Put a music lift or hit on the flip.
+8. **Tilted UI travel, then flatten.**
+   - UI planes rotated about 25° (Y) and -10° (X) drift diagonally with ← flow for 1-2 s.
+   - Then animate the rotation to 0 and scale to fit over 12-15 frames (easeInOutCubic) when the content must be read. Use a whoosh under the drift.
+9. **Logo resolve end card.**
+   - The mark scales 0.8→1.0 with a 2-4 frame light flare or rotating parts.
+   - The wordmark wipes or types on, left to right, over 10-15 frames.
+   - The tagline fades in with one accent word, then the URL or CTA pill pops at +10 frames.
+   - Optional: the founder walks out of frame plus a 3-frame whip smear into it (Lance). Boom, then a short riser tail.
+10. **Story text block plus hold (cinematic narrative).**
+    - Left-aligned small sans text in a corner appends one sentence every about 1.5-2 s ("That's Gary. / His AI agent... / It cost $400k.") over a held, graded live-action shot.
+    - Use three examples (rule of three), then cut to the calm hero.
+    - The money or product reveal lands on a music swell after a silence beat.
