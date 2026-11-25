@@ -108,3 +108,15 @@ export interface Bloom {
   /** Only cells above this contribute. Default 0. */
   threshold?: number;
 }
+
+export interface Camera {
+  eye: Vec3; target?: Vec3; fov?: number; near?: number; far?: number; roll?: number;
+  /** Below this width/height the camera pulls back so the subject is never cropped at the sides. Set it on object scenes. */
+  minAspect?: number;
+}
+
+export type UniformValue = number | number[] | boolean;
+export type TextureInput =
+  | { image: TexImageSource | (() => TexImageSource); dynamic?: boolean; linear?: boolean; flipY?: boolean }
+  | { src: string; dynamic?: boolean; linear?: boolean; flipY?: boolean }
+  | { data: Float32Array; width: number; height: number; linear?: boolean; dynamic?: boolean };
