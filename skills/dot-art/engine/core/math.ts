@@ -37,3 +37,16 @@ export function resolveCamera(cam: Camera | undefined, aspect: number) {
   const view = lookAt(c.eye, c.target, c.roll);
   return { ...c, view, viewProj: multiply(perspective(c.fov, aspect, c.near, c.far), view) };
 }
+
+/** #rgb, #rrggbb or rgb() → 0–1 triple. */
+export function parseColor(s: string): Vec3 {
+  const h = s.trim();
+  if (h.startsWith("#")) {
+    const x = h.length === 4 ? [...h.slice(1)].map((c) => c + c).join("") : h.slice(1, 7);
+    const n = parseInt(x, 16);
+    return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
+  }
+  const m = h.match(/[\d.]+/g);
+  if (m && m.length >= 3) return [+m[0] / 255, +m[1] / 255, +m[2] / 255];
+  throw new Error(`dot-art: cannot parse colour "${s}" (use #rrggbb or rgb())`);
+}
