@@ -120,3 +120,9 @@ Clusters:
 - The measured on-beat share is near chance for most films (median 0.20). **Most launch films do NOT cut on the beat.** They cut on speech or on visual motion.
 - The exceptions are deliberate. Midjourney cuts **every bar** (2.6 s = 4 beats at 92 BPM, 0.61 on-beat), Sora 2 gets 0.54 (≈3× chance) and Arc Max 0.46. When a brand beat-cuts, it does it on the bar or the half-bar, not every beat.
 - In the fast type films the *beat* is carried by the **text and UI events**, not by cuts: a word, chip or click lands per beat while the "camera" never cuts (Lovable, Cursor, Notion; inference from hits on the beat at 0.28–0.94 while cuts are few).
+
+### SFX density and placement
+- The kinetic UI films run 80–137 transients/min, about 1.5–2.3 per second. With the visuals showing a cursor click, a keystroke or an element popping at that rate, the hits are most likely UI foley: clicks, key taps, soft pops and whooshes (inference, since the audio cannot be heard). Cowork has 93 hits/min at only −32 LUFS, which means the UI ticks are mixed *forward* of a very soft bed.
+- Pure footage sizzles use almost no SFX (Runway 5/min) and let the generated clips' own audio or the music carry them. Sora 2 uses native per-shot sound instead of a music-only mix.
+- Hits on cuts: 20% median. Big "impact + cut" moments are reserved for title-card slams (Pika 59%, Arc 54%). Practical rule: put an SFX on every *element entrance or interaction*, and on only about a fifth of the cuts.
+- End-card **stinger lift**: +11 to +32 dB jumps at the logo (Comet +32.5 dB at 65 s, Gamma +14.5 at 162 s, Lovable Cloud +11.8 at 107 s, Claude Code +18.5 at 185 s after a deliberate 4-s drop).
