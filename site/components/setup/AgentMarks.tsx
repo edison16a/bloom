@@ -17,3 +17,12 @@ export function CodexMark({ size = 16 }: { size?: number }) {
     </svg>
   );
 }
+
+export function AgentMarks({ size = 16 }: { size?: number }) {
+  return (
+    <span style={{ display: "inline-flex", gap: 4, alignItems: "center" }} aria-hidden="true">
+      <ClaudeMark size={size} />
+      <CodexMark size={size} />
+    </span>
+  );
+}
