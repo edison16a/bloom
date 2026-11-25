@@ -31,3 +31,13 @@ Paste any of these into Claude Code with the skill installed.
 > A glowing jellyfish in octagons drifting upward, tentacles trailing a beat behind the bell.
 
 > A hummingbird hovering at a flower, LED squares, emerald throat that flashes as it turns.
+
+## Dot backgrounds
+
+> Desert dunes at golden hour as a newspaper print, merging octagons on a 22 degree screen, five inks from aubergine to cream.
+
+> A total eclipse in octagons with a corona that breathes, empty centre for a headline.
+
+> Streams of light squeezing through a narrow waist, LED pixels, calm middle.
+
+> Aurora over a black treeline, 8 px hexagons, green into violet, very slow.
