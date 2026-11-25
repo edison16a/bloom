@@ -248,3 +248,22 @@ Hits are speech-inflated, so these rules come from the visuals plus the cases ab
   - typewriter ticks on type-on text (#01, #22)
   - cash/ding on big $ numbers (#06)
 - Masters are compressed (LRA ~3–4 for most). Loud YouTube creators sit at -12 to -16 LUFS (Mark Rober -11.8, Codie Short -13.9, Simon Squibb -14.9). Cinematic or brand pieces leave headroom (Hormozi trailer -28.3, Kimi -24.7).
+
+### Text animation conventions
+1. **Captions are the backbone on vertical** (all 6 Shorts), 1–3 words per chunk, centered at chest/mic height (about 55–65% down the frame), never at the very bottom. Four 2026 house styles:
+   - Hormozi: small white, bold keyword, or italic yellow with a bold-white keyword
+   - Colin & Samir / Dan Koe: small white plain
+   - Codie: black-on-white box
+   - Ali: karaoke pill with an active-word colour
+   They appear hard, in 1 frame, with no slide or bounce. The 2022 Hormozi yellow-italic word-pop is now reserved for horizontal "highlight" sections.
+2. **Emphasis swaps font, not just colour.** Codie's glowing serif, Ali's serif "fulfilment" scale-up, and Hormozi's 10% scale-up on the key line all mark one phrase per 10–20 s in a contrasting display face, held about 1 s.
+3. **Hook title cards sit in a box:**
+   - yellow highlighter box (#23)
+   - red rounded banner (#21)
+   - white box (#24)
+   - purple "COMING UP" pill (#05)
+   They hold 1.5–3 s across at least one cut, then fade in 2–3 frames.
+4. **Name titles:** brush script with a blur-in of about 0.3 s (#06); a right-aligned two-line lower third with an about 2-frame fade (#16); a logo wipe L→R over about 4 frames (#04); a handwritten label with an arrow on a paper freeze (#17).
+5. **Type-on:** word by word with a slight baseline rise, about 1 s per sentence (#07); handwriting at about 1 char per frame (#22); mono typewriter (#01).
+6. **Big numbers carry beats:** bold white numerals bottom-center ($250,000,000), counters incrementing per cut (#10), countdown timers as story clocks (#17), giant counters over tinted frames (#08).
+7. **Essay cards:** small white sans centered on pure black, full sentence at once (#02, #25). This is the calm/"intellectual" register.
