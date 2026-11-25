@@ -77,3 +77,15 @@ flat solid fills, cut solid with knocked out parts, line outlines or strokes, de
 | 3 | 17% | 8% | 39% | 13% |
 | 4 | 4% | 1% | 28% | 3% |
 | 5 | 1% | 0% | 9% | 1% |
+
+### Measured shape
+
+| group | parts | edge complexity | left right symmetry | ink coverage of its box |
+|---|---|---|---|---|
+| all (n=6234) | median 2.00, middle half 1.00 to 5.00 | median 9.52, middle half 6.67 to 14.63 | median 0.67, middle half 0.44 to 0.92 | median 0.47, middle half 0.35 to 0.63 |
+| craft 4+ (n=2478) | median 2.00, middle half 1.00 to 4.00 | median 8.21, middle half 5.93 to 12.60 | median 0.70, middle half 0.45 to 0.93 | median 0.51, middle half 0.38 to 0.67 |
+| craft 1-2 (n=357) | median 4.00, middle half 1.00 to 9.00 | median 14.48, middle half 9.19 to 22.09 | median 0.55, middle half 0.40 to 0.81 | median 0.40, middle half 0.26 to 0.56 |
+
+Mirror symmetric left to right (over 95 percent of pixels match): all 22%, craft 4+ 23%, craft 1-2 13%. Parts are separate filled shapes; complexity is edge length relative to area (a plain circle is about 3.5).
+
+## Color
