@@ -18,3 +18,11 @@ Read that skill's SKILL.md and the files it lists before planning. `look.md` ove
 
 ## Everything is automatic
 Installs, downloads, product capture, music, effects, footage and voice happen without asking. Real music and sounds come from the web (`tools/source.py`), product clips from the site or repo (`tools/capture`), and a voice from the local model (`tools/voice`) when nobody speaks. Log every licence in `work/JOB/assets/licences.json` and report it once, at the end. Ask only when something needs the user's own login or cannot be decided.
+
+## Every job
+1. Look at all inputs: `ffprobe`, contact sheet (`python3 -I tools/measure.py FILE work/JOB/source-metrics`), transcript, site, repo.
+2. Write a one page plan: the closest reference film, what is on screen when, music brief. Show it and keep going.
+3. Build in **EffectCraft** by script, project in `work/JOB/ec/`. Check frames at every beat.
+4. Sound, then ProRes, then H.264 and AAC in `output/JOB.mp4`.
+5. Run `gate.py`, check a contact sheet against the reference's notes (open reference links only when the user asks), fix, render again.
+6. Deliver with honest limits and licences. Save, then close EffectCraft, FilmCraft and PhotoCraft.
