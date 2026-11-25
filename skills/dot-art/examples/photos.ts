@@ -27,3 +27,11 @@ export const rocket = defineScene({
     glyph: { ramp: "  ..··::--=+", message: "t-minus ten nine eight seven six five four three two one ", fill: "hybrid", detail: 0.9, under: 0.16, messageAbove: 0.3, rowShift: 13, weights: [400, 600, 800] } },
   bloom: { strength: 0.5 }, pointer: { mode: "glow", radius: 150, strength: 0.8 },
 });
+
+/** Night photo -> LED wall. Contours measured on log luma, so dark lattice on a dark sky still lights up. */
+export const launchpad = defineScene({
+  id: "launchpad", title: "Launch pad, LED wall", loop: 8, background: "#05060f", samples: 3, poster: 1,
+  sources: [imageSource({ src: "/images/rocket.jpg", zoom: 1.05, focus: [0.5, 0.48], relative: true, ridge: 0.7, edge: 1.1, fill: 0.35, local: 0.8, black: 0.12, white: 0.95, gamma: 1.3 })],
+  ...looks.neon(),
+  pointer: { mode: "glow", radius: 160, strength: 0.7 },
+});
