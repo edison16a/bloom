@@ -61,3 +61,13 @@ Paste any of these into Claude Code with the skill installed.
 > Rushing down a corridor of typed panels, calm vanishing point for the headline.
 
 > Rain on glass built from our changelog, drops refract the lines behind them.
+
+## A prompt that gets a great result
+
+Say five things. The skill fills in whatever you leave out.
+
+1. **Subject**, and one thing it does.
+2. **Mark**: hexagon, octagon, LED square, dither, or letters (and the words).
+3. **Colour**: two or three, plus where the light comes from.
+4. **Where it goes**: hero, card, full-bleed, and where the copy sits.
+5. **Reference**, if there is one. A link, screenshot or video.
