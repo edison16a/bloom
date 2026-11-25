@@ -228,3 +228,39 @@ reverse/boomerang: key a few frames later with an EARLIER source time → plays 
 add Pixel Motion Blur (preferred over CC Force Motion Blur per source)
 ```
 Sync: keep the music layer in the comp with its waveform visible (B8: press L twice) and put the fast section on the downbeat. SFX: whoosh across the fast segment, peak at max velocity (W1).
+
+### R13. Legibility over busy footage (B2), in escalation order
+1. Drop shadow with high softness and higher opacity: "you can barely see that it's a drop shadow".
+2. Black solid under the text at about 20% opacity.
+3. Elliptical mask on that solid, large feather (vignette behind the text), then raise opacity carefully: "too far looks muddy".
+4. Adjustment layer under the text with Gaussian Blur 40, repeat edge pixels, and a rectangular mask around the text. That gives a frosted panel; add a 1–2 px white shape stroke and Tint (amount low) so it reads as deliberate. This is the glass-card look in 14 and 15.
+
+### R14. Whip/blur exit and zoom-through-letter transition (14; 10's eye push)
+Horizontal: Directional Blur (or motion blur on a 1-frame position jump of ±40% width), 2 f. Then scale the last letter of the outgoing word from 100% to 2000% over 4–6 f with expo-in, centred on the letter's counter or stem, cutting to the next shot once the frame is filled.
+- 10 Paul does the same with a starfield shot scaled into an eye close-up (a scale match).
+- SFX: a whoosh starting 1–2 f before the blur (lead 10–20 ms), a riser under the zoom, and an impact or sub on the first frame of the new shot.
+
+### R15. Strobe montage behind a locked title (12 DUCKLIFE; 07; 04)
+Title layer static at centre. Beneath it, a sequence of 1-frame clips (6–8 different shots), then 1–2 s of black hold, then repeat. Elsewhere use bursts of 1–3-frame shots: 07 runs at 228 cuts/min for 4.5 s, 04 has shot_len_p10 of 0.08 s.
+- SFX: either a single riser across the burst with an impact at its end, or a "film-flicker" texture (inference). Don't put one hit per frame.
+
+### R16. J/L cuts (B9)
+- **J:** the incoming shot's audio starts about 2 s before its picture. Overlap the audio and roll the video edit, with a short constant-power crossfade (a few frames) on the audio.
+- **L:** the outgoing audio continues about 2 s under the next picture.
+- In AE: offset the audio layer's inPoint versus the video layer's. Crossfade with `ADBE Audio Levels` going -48 → 0 dB over 4–8 f.
+- For talking heads, use J-cuts into B-roll sections (ambience first), and L-cuts out of a punchline so the laugh or room tone carries over the next title.
+
+### R17. SFX layering stack (W1, W2, W3, B10; densities from the measured reels)
+| Event | Layers | Timing | Level *(W1 relative to dialogue normalised to -6 dB)* |
+|---|---|---|---|
+| Whip / transition | core whoosh, plus optional air layer (HF), plus sub rumble | starts 10–20 ms (≈0–1 f) **before** the motion; peak on the fastest frame; length ≈ transition length (0.5 s transition → 400–500 ms) | -18 to -12 dB |
+| Text slam / reveal | impact transient (drum/metal), plus sub boom | 1–2 f **after** the reveal starts (W2) | under the VO; peak just below the music downbeat |
+| Build into a drop or reveal | riser (or reversed impact, W3) | ends abruptly on the cut / first frame of the reveal | ramps up |
+| Word pop / UI tick | click / pop / ui-tick | on the frame the word becomes ≥50% opaque | quiet; alternate two samples |
+| Exit | whoosh with a fade-out on its tail (B10) | — | — |
+
+EQ for whooshes (W1): HPF at 80–100 Hz, broad +1–3 kHz, gentle shelf above 10 kHz. Wide shots get distance processing, i.e. more reverb and less top (B10).
+
+---
+
+## 5. Batch synthesis
