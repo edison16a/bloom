@@ -250,3 +250,11 @@ Compared with the three excluded long tutorials (6–16 cuts/min, −25 to −17
 - Hit grids are mostly percussion. Clear off-grid transient clusters appear only in motion-design pieces (Notion "What is": irregular hits at 2.8, 3.2, 3.5, 4.2 s matching chip and pill pops). Inference: UI SFX in this category are **sparse and soft**: pops on chip appearance, a tick per typed word or pill, a shimmer on AI "processing". There is no whoosh on every cut.
 - Cuts with a hit: 25% median. The higher ones are montage-heavy (Gemini avatar 64%; Runway aspect 46%) where each result gets a hit or flash.
 - Voice-to-music cues are used as SFX: the Samsung "Play music" voice command starts the track; the Arc beat enters when the answer appears.
+
+### Text conventions in 9:16
+- **Three-tier hierarchy:** (1) a hero headline (bold sans, 2–4 words per line, about 8–12% of frame height, centred or top-left, built word by word); (2) a feature label (emoji or sticker plus 1–2 words, or a UI chip); (3) captions (small, 1–6 words, in a pill or as plain white with shadow, lower-middle third).
+- **Word-by-word build** is the default animation. Each word fades and slides up about 10–20 px over roughly 4–6 frames, often starting grey and turning black or white when active (Pixel Tag "Tag, you found it!"; ChatGPT "6 people. 6 underrated ways…"; Runway one-word karaoke).
+- The **typewriter with a blinking cursor** is used as a "product voice" device (Notion), at about 2–3 frames per character.
+- **Emphasis by style switch inside a line:** an italic word in a bold line (Arc "the *fastest way*"), or a 2x size word (Runway "problem").
+- Captions sit clear of the bottom 15–20% (platform UI) and the top 10%. Hero text sits mid-frame or on negative space such as sky or a flat field.
+- Exits are mostly cuts (text disappears with the shot). Fades out are rare.
