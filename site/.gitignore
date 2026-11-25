@@ -1,0 +1,9 @@
+node_modules
+.next
+out
+next-env.d.ts
+*.tsbuildinfo
+# Copied in from skills/dot-art by `npm run sync`
+components/dot-art
+lib/dot-art-examples
+public/images
