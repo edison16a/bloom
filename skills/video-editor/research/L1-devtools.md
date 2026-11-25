@@ -133,3 +133,10 @@
   5. Glyph scramble or resolve for logos (Retool "Reto01", Config glyph cycling, Vercel "Ship" stencil).
 - **Exits:** fade or blur-out over ~0.2–0.3 s, or a hard cut on the next card; rarely animated out.
 - **Holds:** title cards 0.6–1.5 s in fast films, 1.5–3 s in calm ones.
+
+### Flow and direction rules
+- **Forward and upward dominate:** flow strings are full of ↑ and Z+ (new panels rise from below; the camera pushes into the UI). It reads as "progress / deeper into the product".
+- **Leftward lateral motion** (content moving ←, i.e. the camera travelling right) is the standard for sequences and carousels (Zed, Framer, Notion caret-follow, Retool). Reading direction carries the eye.
+- One-take films keep a single direction for long stretches (Linear Agent: Z+/↑ for ~40 s; v0: Z+ then →) and never reverse; reversals happen only at chapter breaks.
+- Montage films (Raycast Focus, Raycast Windows, Arc) alternate ← → deliberately. Continuity there comes from a constant frame graphic (Arc's rounded border plus captions, Raycast's centred boxed archive frames), not from direction.
+- **Match devices instead of cuts:** headline → pill → prompt bar (v0); icon orbit → logo (Superhuman); mascot paper plane wipes each card (Notion Mail); cursor click on a logo flips to a full-bleed colour (Notion AI); push into the prompt box until the typed text fills the frame (Notion 3.0).
