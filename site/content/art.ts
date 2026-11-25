@@ -84,3 +84,18 @@ export const artGroups: ArtGroup[] = [
     ],
   },
 ];
+
+/** One scene drawn on different surfaces, for the surface switcher. */
+export const surfaces = [
+  { id: "bloom", label: "Letters" },
+  { id: "bloomHex", label: "Hexagons" },
+  { id: "bloomOctagon", label: "Octagons" },
+  { id: "bloomLed", label: "LED" },
+  { id: "bloomDither", label: "Dither" },
+  { id: "bloomPlus", label: "Plus signs" },
+] as const;
+
+/** The pieces the home page shows, biggest first. */
+export const homeArt = ["jelly", "knot", "morpho", "saturn", "hummingbird", "aurora"] as const;
+
+export const allPieces = (): ArtPiece[] => artGroups.flatMap((g) => g.pieces);
