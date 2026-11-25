@@ -298,3 +298,26 @@ def contrast(a, b):
     la, lb = sorted((lum(a), lum(b)), reverse=True)
     return (la + 0.05) / (lb + 0.05)
 
+
+def schemes(c, sym_mono_on_color="#FFFFFF"):
+    P, A, I, paper = c["primary"], c.get("accent") or c["primary"], c.get("ink", "#0B0B0C"), c.get("paper", "#FFFFFF")
+    word_acc = c.get("word_accent") or P
+    return {
+        "color": {"{S1}": P, "{S2}": A, "{S3}": I, "{W}": I, "{WA}": word_acc, "_bg": paper},
+        "black": {k: "#000000" for k in ("{S1}", "{S2}", "{S3}", "{W}", "{WA}")} | {"_bg": "#FFFFFF"},
+        "white": {k: "#FFFFFF" for k in ("{S1}", "{S2}", "{S3}", "{W}", "{WA}")} | {"_bg": "#111111"},
+        "reverse": {"{S1}": P, "{S2}": A, "{S3}": "#FFFFFF", "{W}": "#FFFFFF", "{WA}": word_acc, "_bg": I},
+        "on-primary": {k: sym_mono_on_color for k in ("{S1}", "{S2}", "{S3}", "{W}", "{WA}")} | {"_bg": P},
+    }
+
+
+# ---------------------------------------------------------------- PNG rendering
+
+RENDER = r"""<!doctype html><meta charset=utf-8><body><pre id=out></pre><script>
+const JOBS=__JOBS__;(async()=>{const out={};for(const j of JOBS){const img=new Image();
+img.src='data:image/svg+xml;base64,'+btoa(unescape(encodeURIComponent(j.svg)));await img.decode();
+const r=img.naturalWidth/img.naturalHeight;let W,H;if(r>=1){W=j.size;H=Math.max(1,Math.round(j.size/r))}else{H=j.size;W=Math.max(1,Math.round(j.size*r))}
+const c=document.createElement('canvas');c.width=W;c.height=H;const g=c.getContext('2d');if(j.bg){g.fillStyle=j.bg;g.fillRect(0,0,W,H)}
+g.drawImage(img,0,0,W,H);out[j.name]=c.toDataURL('image/png').split(',')[1]}
+document.getElementById('out').textContent=JSON.stringify(out)})();</script>"""
+
