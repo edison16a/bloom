@@ -91,3 +91,16 @@ def int_words(n):
     for div, name in ((10**9, "billion"), (10**6, "million"), (1000, "thousand")):
         if n >= div: return int_words(n // div) + " " + name + ("" if n % div == 0 else " " + int_words(n % div))
 
+
+def num_words(m):
+    a, _, b = m.group(0).replace(",", "").partition(".")
+    out = int_words(int(a)) if a else "zero"
+    if b: out += " point " + " ".join(ONES[int(c)] for c in b)
+    return " " + out + " "
+
+
+def norm_words(s):
+    s = s.lower().replace("&", " and ").replace("%", " percent ").replace("-", " ")
+    s = re.sub(r"\d[\d,]*(?:\.\d+)?|\.\d+", num_words, s)
+    return re.findall(r"[a-z']+", s)
+
