@@ -71,3 +71,15 @@ Render, look, then narrow to the best four. Add `lockups` pairs and render again
 ### 5. Color
 
 Pick the primary from the brief: either black led (ink as the main color, the primary used as a small accent) or one saturated mid light color. A light primary (amber, yellow, lime) cannot carry a white symbol: the builder then puts the ink color on the app icon and the on brand tiles and warns if you forced white. Ink is a near black (for example #0E0E10, not pure #000), paper is white or a warm off white. Give the primary a name. Try two or three palettes on the best lockup by editing `colors` in `candidates.json` and rendering again. Check the primary against white for contrast if the word will be set in it.
+
+### 6. Show the options and wait for a choice (do not skip)
+
+Turn the best work from steps 3 to 5 into three to five finished directions, each a complete logo: one symbol, one wordmark setting and one palette. Make them really different (another symbol idea, another type feel, or another hue family), not small variations of one logo, and order them with your recommendation first. Write `brands/<slug>/options.json` (format in `scripts/preview.py`) and render it:
+
+```bash
+python3 -I scripts/preview.py --options brands/<slug>/options.json
+```
+
+This writes `options.png` and `options.html`. Read `options.png` and fix anything that fails the checks in step 8 before showing it. Then show the user the sheet (send `options.png`, or point to `brands/<slug>/options.html`) and, in plain sentences, give each option's number, name and one line idea, say which one you recommend and why, and ask them to pick a number. Tell them they can mix parts (the symbol of 2 with the type of 1) or ask for changes or a new round. **End your turn here.** Do not write `brand.json` or build anything until the user answers.
+
+If the user asks for changes or new directions, update `options.json` (or go back to steps 3 to 5), render again and ask again. Keep at most five options on a sheet.
