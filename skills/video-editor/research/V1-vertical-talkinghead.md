@@ -203,3 +203,11 @@
 ### How cuts relate to the beat
 - They don't. In this genre the **speech is the metronome**. Cuts land on phrase boundaries, on the stressed word, or on a counted list. DOAC #12 (the dropped orange-juice clip) cut on every spoken number, "five / six / seven / eight", about 0.9 s apart, alternating hand insert and face. Music, when present, is a low bed under the voice: no drops, no lifts timed to visuals. The visual energy comes from caption cadence, punch-ins and inserts, not from the soundtrack.
 - (Inference for the skill:) if music is added to a talking-head vertical, keep it low (−20 to −25 dB under the voice), and sync the *inserts* to stressed words rather than to bars.
+
+### SFX density and placement
+- The metrics can't separate SFX from speech. What the visuals imply (inference):
+  - Pops or clicks on **sticker and icon pop-ins** (Codie app icons, DOAC "Like" button tap, Starter Story $ stamps and "SAUCE" slap, MKBHD chapter tags).
+  - **Whoosh** on whip-pans (Ali #05) and on window-shape changes or white-flash cuts (Williamson #20).
+  - **Mouse-click** on the subscribe-button CTA (Codie #10).
+  - Clips with high cuts_with_hit (#02 0.67, #12 0.60, #09 0.54, #19 0.53) are the ones with the most graphic inserts. That's consistent with hits on inserts.
+- What is *not* there: no SFX on every caption word. Captions swap silently. Sound effects are reserved for **objects entering** (stickers, icons, cards), about 3–8 per 30 s in the graphic-heavy edits and 0 in the founder single-takes.
