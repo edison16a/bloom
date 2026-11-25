@@ -23,3 +23,18 @@
 Fonts: the product's own typeface if it is installed, otherwise Inter. At most one serif italic accent. White on picture, near black on white. One family, two weights. All text must read at a glance on a phone: if it doesn't, make the words fewer, not the font fancier.
 
 If the background is bright, darken and soften the room behind the person (`tools/matte/split.py --room 0.45 --near 0.88 --blur 10`), so plain white text just works. Keep the wall bright near the person (`--near`) and let it fall off: a flat grey room with a hard hair edge looks like a cut out.
+
+## Panels beside the person
+The plate is split into `room` and `person` (`tools/matte/split.py`). Put panels **between** them, so a panel can tuck behind a shoulder and the person looks like they are really in front of it.
+
+| Part | Value at 1080p |
+|---|---|
+| Size | 34 to 40% of the frame width, 4:3 or the shape of the content |
+| Position | The bigger empty side, vertically centred on the head, one fixed spot for the whole film |
+| Frame | White tint 14 to 20%, white edge 1.5 px at 45 to 55%, radius 22 to 24, inset 10 to 12 px, inner radius 13 |
+| In | Frame fades over 8 frames. Content follows 4 frames later over 10 frames, sharpening from a small blur |
+| Change content | 5 frame dissolve inside the same frame. The frame does not move |
+| Out | 6 frame fade |
+| Motion | Only what happens inside: a cursor, a scroll, typing, a live feed |
+
+Crop the capture tight to what is being said, so it reads at that size. Never zoom into it. Nothing else overlaps the content: no label is needed when the words already say it.
