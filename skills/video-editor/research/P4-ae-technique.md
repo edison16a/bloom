@@ -264,3 +264,29 @@ EQ for whooshes (W1): HPF at 80–100 Hz, broad +1–3 kHz, gentle shelf above 1
 ---
 
 ## 5. Batch synthesis
+
+### Typical ranges (Half A; median [IQR])
+Excludes the broken 15 and, for pacing, the one-take 01 and 14.
+
+| Metric | Median | IQR |
+|---|---|---|
+| Cuts/min | 34 | 18–46 |
+| Median shot | 1.06 s | 0.70–1.64 s |
+| BPM (as measured) | 102 | 84–126 |
+| Beat strength | 4.2 | 3.9–5.2 |
+| LUFS | -10.8 | -12.9 to -9.1 |
+| Hits/min | 59 | 52–80 |
+| Cuts on beat | 0.28 | 0.16–0.30 |
+| Cuts with hit | 0.29 | 0.16–0.46 |
+
+Several low BPM values are probably half-time reads (inference). On sheets, the kinetic openers swap words every ~0.45–0.5 s, which matches 120–131 BPM.
+
+For the format closest to the target (**08 Kanda**, talking head plus AE text), the numbers are lower: 15.5 cuts/min, a 2.4 s median shot, -14.1 LUFS and speech share 0.34. Hits/min is about the same (57), and 60% of cuts carry a hit. The pace comes from text events (~3–5 per second during builds), not from cuts.
+
+### Pacing shape
+Cuts/min by quarter, median across 14 videos: **Q1 34, Q4 15**. The typical shape is to front-load a burst (07 228/min, 09 132/min, 12 106/min, 02 72/min, 04 73/min), relax into a readable middle, and often add a short burst before the end card (04 Q4 52, 07 Q4 54, 12 Q4 67).
+
+The exceptions build up instead: 03 goes 13 → 45/min, and 10's middle montage reaches 38.5/min between slow title cards.
+
+### Cuts vs beat
+As a population, showreel cuts sit near chance on the beat (0.28). The beat-locked parts are the **kinetic-type intros** (02 at .52) and the **agency montage** (12 at .42). Narrative or demo sections cut on content (action and speech) and land a **transient on the cut instead**: 03 .57, 08 .60, 04 .48. The practical rule is that each cut should be either on the beat or carry an SFX. Bare off-beat cuts are rare in the polished pieces (inference from the two shares adding up to ~0.6–0.9 in 03, 04, 05, 08 and 09).
