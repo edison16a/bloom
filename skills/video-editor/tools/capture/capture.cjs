@@ -32,3 +32,10 @@ async function open(o = {}) {
   const p = await c.newPage(); p.on("pageerror", (e) => console.error("  page error:", e.message.slice(0, 160)));
   return { b, c, p };
 }
+async function go(p, url, settle = 2500, css = "") {
+  await p.goto(url, { waitUntil: "domcontentloaded", timeout: 60000 });
+  await p.waitForLoadState("networkidle", { timeout: 8000 }).catch(() => {});
+  await p.addStyleTag({ content: HIDE + BANNERS.join(",") + "{display:none!important}" + css }).catch(() => {});
+  await p.evaluate(() => document.fonts && document.fonts.ready).catch(() => {});
+  await sleep(settle);
+}
