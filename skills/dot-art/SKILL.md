@@ -67,3 +67,11 @@ Words people use, and what they mean here:
 There is no circle mark, on purpose: circles leave gaps that break up the depth of a 3D form. If asked for round dots, use `hex` and say so: at 5-8 px it reads as a dot.
 
 Then give it a **story**: what appears, what it does, how it leaves or returns. "Rotates" alone is a screensaver. Good ones: types itself, collapses to a seed, buds, opens, holds, blows away, leaves the core, dissolves back to the seed.
+
+### 2. Install
+
+```bash
+node <skill>/scripts/install.mjs <project> --scenes bloom,knot   # omit --scenes for all 16
+```
+
+Lands in `components/dot-art` (or `src/components/dot-art`). Re-run with `--force` to update the engine; scene files already there are kept. `--reset` overwrites the shipped scenes too.
