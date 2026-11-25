@@ -219,3 +219,34 @@
 - Audio: −17.9 LUFS, 76 BPM; 40% of cuts on beat.
 
 ## 3. Batch synthesis
+
+### Typical ranges (25 videos; audio n = 24, #12 excluded)
+| Metric | Median | IQR |
+|---|---|---|
+| Duration | 31.4 s | 21.6–54.6 s |
+| Cuts/min | 19.1 | 9.5–24.6 (undercounted on 4 motion-design pieces) |
+| Median shot | 2.0 s | 1.5–4.2 s |
+| BPM | 89 | 79.5–120 (several octave errors; true tempos cluster at about 120–130 or about 80–90 half-time) |
+| Beat strength | 3.8 | 2.7–6.3 (nearly all have a clear beat) |
+| LUFS | −16.3 | −17.9 to −13.6 (range −25.3 to −9.7) |
+| Hits/min | 65 | 54–76 (mostly music percussion) |
+| Cuts on beat | 25% | 15–34% |
+| Cuts with a hit | 25% | 14–38% |
+| Speech share | 0.18 | 0.08–0.24 (detector likely low) |
+
+Compared with the three excluded long tutorials (6–16 cuts/min, −25 to −17.5 LUFS), the in-range Shorts cut about 1.5–3x faster and sit 5–8 dB louder.
+
+### How pacing changes across the video
+- Median cuts/min by quarter: 18.8, 18.9, 18.8, 14.3. The rate holds and drops in Q4 because the final 2–4 s is a held logo or CTA card.
+- Excluding the end card, there are two patterns. (a) **Front-loaded:** a fast sizzle or hook, then the explanation (Runway iOS Q1 42.9 then 15; Runway aspect 39.6 then 26; ElevenLabs UGC 39 then 23; Framer Wireframer 30 then 0; Messi 42 then 14). (b) **Payoff montage in Q3:** a feature explanation, then a burst of results at 0.5–0.7 s per shot, then the CTA (Gemini avatar Q3 53.8 against 7.7–15; Arc Android Q4 59). Pattern (b) is the stronger product-launch shape.
+- Shots shorter than 1 s are reserved for montages of outputs and examples. Explanatory UI shots hold 2–5 s.
+
+### How cuts relate to the beat
+- Strict beat-locking is rare: a median of 25% of cuts on beat. Hardware or brand-mood pieces lock to **bar lengths** instead (Framer F1 cuts every 3.03 s = 4 beats at 80 BPM; Notion T-rex every 1.4 s).
+- Big moments land on **music drops, not cuts**. The energy lift lines up with the reveal: Ask Photos +11.8 dB at 5 s when the photo goes full-bleed; Circle to Search +12.6 dB at 8 s when the AI answer appears; Arc Voice +8 dB at 13 s on the answer; Framer +19.5 dB on the first cut and +19.7 dB on the logo after a 2 s near-silence.
+- Speech-led pieces cut on phrases, with the music ducked (LUFS −25 to −17).
+
+### SFX density and placement (inferred)
+- Hit grids are mostly percussion. Clear off-grid transient clusters appear only in motion-design pieces (Notion "What is": irregular hits at 2.8, 3.2, 3.5, 4.2 s matching chip and pill pops). Inference: UI SFX in this category are **sparse and soft**: pops on chip appearance, a tick per typed word or pill, a shimmer on AI "processing". There is no whoosh on every cut.
+- Cuts with a hit: 25% median. The higher ones are montage-heavy (Gemini avatar 64%; Runway aspect 46%) where each result gets a hit or flash.
+- Voice-to-music cues are used as SFX: the Samsung "Play music" voice command starts the track; the Arc beat enters when the answer appears.
