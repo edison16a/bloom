@@ -59,3 +59,12 @@ def fetch_archives():
         print("downloading", k, file=sys.stderr)
         safe_extract(get(url, 300), d, lambda n: n.endswith((".svg", ".json", "svgs.ts")))
 
+
+def rows_si():
+    base = os.path.join(CACHE, "si", "package")
+    for x in json.load(open(os.path.join(base, "data", "simple-icons.json"))):
+        f = os.path.join("si", "package", "icons", x["slug"] + ".svg")
+        if os.path.exists(os.path.join(CACHE, f)):
+            yield dict(brand=x["title"], source="si", kind="icon", file=f, hex="#" + x["hex"],
+                       url=x.get("source", ""), category="", basis="listed in simple-icons")
+
