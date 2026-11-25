@@ -266,3 +266,14 @@ Compared with the three excluded long tutorials (6–16 cuts/min, −25 to −17
 4. **Push from device to full-bleed:** start on a real phone (desk top-down, in hand) and Z+ until the screen fills the frame (Circle to Search, Ask Photos).
 5. **Presenter plus UI stacks:** UI card in the top 55–65%, presenter cutout in the bottom 35–45% (ElevenLabs, Gemini Argon, Figma tutorials), or a 50/50 split (Framer Wireframer). Captions go on the seam.
 6. **In-camera UI** (iPad top-down, phone held to camera) for lifestyle or celebrity pieces (Canva stickers, Messi, Arc Voice).
+
+### Flow and direction rules
+- **Vertical (↑) motion dominates UI pieces:** scrolls, cards entering from below, phones rising into frame (Arc Android ↑ dominant; Arc Voice phone ↑ then tilt ↑; Circle to Search scroll ↑). This fits 9:16 and thumb-scroll habit.
+- **Z+ (push-in) is the main "focus" move:** into the stain, into the phone, into the generated result. It is paired with a pull-back only at the reveal.
+- Lateral (← →) slides are used for **swapping between peers** (tips, models, tools).
+- Motion continuity across cuts comes from a **travelling element** (Pixel Tag blob, Notion AI face, cursor) rather than whip pans.
+- Static camera plus moving UI is the norm (motion share median 0.21). Handheld is reserved for UGC or POV pieces.
+
+### CTA endings
+- About 1.5–3 s. Usually: logo on a flat colour (black, cream, white or brand gradient), plus at most one line ("Shipping Today", "Now available in Arc Search on iOS", "Download for free"), plus a URL or store badge.
+- There are three shapes. (a) A **typed or built line that echoes the hook** (Notion "Notion does…", Pixel "Time to hit send ✨"). (b) The **presenter direct-to-camera "Try X today"** (ElevenLabs, Grammarly). (c) The **music cut-out to silence on the logo** (Notion T-rex −35 dB, Gemini −30 dB, Framer −32 dB in the final second). In every case audio falls 10–20 dB in the last 1 s.
