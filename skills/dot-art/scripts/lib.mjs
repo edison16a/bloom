@@ -22,3 +22,14 @@ export function args(argv = process.argv.slice(2)) {
   }
   return o;
 }
+
+/** A scene is either a bundled id ("bloom") or a path to a .ts file exporting scenes. */
+function entryFor(scene, engine) {
+  const file = /\.tsx?$/.test(scene) ? path.resolve(scene) : path.join(engine, "scenes/index.ts");
+  if (!existsSync(file)) throw new Error(`No such scene file: ${file}`);
+  return `import * as S from ${JSON.stringify(file)};
+    import { DotRenderer } from ${JSON.stringify(path.join(engine, "core/renderer.ts"))};
+    const ok = (v) => v && (v.sources || typeof v.load === "function");
+    window.__scenes = Object.values(S).flatMap(v => ok(v) ? [v] : typeof v === "object" && v ? Object.values(v).filter(ok) : []);
+    window.__Dot = DotRenderer;`;
+}
