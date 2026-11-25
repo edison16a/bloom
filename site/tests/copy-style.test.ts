@@ -18,3 +18,34 @@ const files = (dir: string): string[] =>
   });
 
 const sources = ["app", "components", "content", "lib"].flatMap((d) => files(path.join(root, d)));
+
+const banned: [RegExp, string][] = [
+  [/—/, "em dash"],
+  [/–/, "en dash"],
+  [/·/, "middle dot"],
+  [/•/, "bullet"],
+  [/[←-⇿]/, "arrow"],
+];
+
+describe("copy style", () => {
+  for (const file of sources) {
+    it(path.relative(root, file), () => {
+      const text = readFileSync(file, "utf8");
+      for (const [re, name] of banned) expect(re.test(text), `${name} in ${file}`).toBe(false);
+    });
+  }
+
+  it("content has no double hyphens or spaced hyphens used as dashes", () => {
+    for (const file of sources.filter((f) => f.includes(`${path.sep}content${path.sep}`))) {
+      const text = readFileSync(file, "utf8");
+      expect(/\s--\s|\s-\s/.test(text), file).toBe(false);
+    }
+  });
+
+  it("prompts read cleanly", () => {
+    for (const prompt of [...skills.map((s) => setupPrompt(s.id)), setupAllPrompt()]) {
+      expect(/[—–·•←-⇿]/.test(prompt)).toBe(false);
+      expect(prompt).not.toContain("!");
+    }
+  });
+});
