@@ -361,3 +361,14 @@ Times assume 30 fps.
 10. **Speed ramp into a beat (B8).**
     - Time remap: peak speed at the segment start, decelerating to normal on the downbeat. Reverse the tail to match the next shot's direction, and add Pixel Motion Blur.
     - SFX: a whoosh whose peak sits on the max-velocity frame.
+
+### Amateur tells the pros avoid
+Sources: Half B statements plus contrast against the sheets.
+- Default AE text presets and bouncy or zany animation. Ben Marriott says type should be "subtle and deliberate"; Ignace says the stock presets "suck".
+- Easy Ease (33%) on everything, where pros use steep expo-out into rest. Uniform typewriter speed, where pros add bursts and pauses (B2).
+- Thick strokes on type (keep 1–4 pt), heavy obvious drop shadows, and big muddy dark boxes behind text (B1, B2).
+- Text over the face, or tracked text that jitters. Pros offset it below the chin or into negative space, one pre-comp per sentence (B6).
+- Camera shake without motion blur, or one that shows black edges (B5). Speed ramps without motion blur or with symmetric "boring" curves (B8).
+- An SFX on every cut *and* every beat, so the mix machine-guns. Pros either beat-lock the cut or give it a transient, and keep SFX below VO and music (W2).
+- Over-trimming: pros keep a silence beat after a key line (B11). Adding VFX where a simple cut would tell the story better (B11).
+- Slow, even pacing from start to finish. Every polished reel front-loads a burst (Q1 median 34 cuts/min vs Q4 15), and the talking-head piece keeps energy with 3–5 text events per second during builds rather than cuts.
