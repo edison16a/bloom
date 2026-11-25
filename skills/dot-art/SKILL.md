@@ -145,3 +145,11 @@ node <skill>/scripts/render.mjs aurora.ts --out aurora.gif --size 720x450 --max-
 ```
 
 For type in a GIF use `--size 800x500 --dpr 1.5`: at dpr 1 small letters turn to noise.
+
+## Do not
+
+- Ship a first render. Nothing here was good on the first render.
+- Recreate a third party's logo or artwork unless the user supplies it or owns it.
+- Set `hex` or `octagon` cells under 5 px, or glyph cells under 4x7: they stop being marks.
+- Use rainbow palettes, or bloom above 0.7. Both read as cheap.
+- Put motion behind text without a hole or fade.
