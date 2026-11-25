@@ -68,7 +68,7 @@ export function setupPrompt(id: SkillId): string {
   const skill = skillById(id);
   const steps = [fetchStep([skill.path]), skillsFolderStep, ...skillSteps(skill), `Delete ${TMP}.`];
   return [
-    `Set up the ${skill.name} skill from Bloom (${site.repoUrl}) on this machine.`,
+    `Set up the ${skill.name} agent from Bloom (${site.repoUrl}) on this machine. It installs as a skill in your skills folder.`,
     "",
     number(steps),
     "",
@@ -85,10 +85,10 @@ export function setupAllPrompt(): string {
     `Delete ${TMP}.`,
   ];
   return [
-    `Set up all three Bloom skills (${site.repoUrl}) on this machine: ${skills.map((s) => s.name).join(", ")}.`,
+    `Set up all three Bloom agents (${site.repoUrl}) on this machine: ${skills.map((s) => s.name).join(", ")}. Each one installs as a skill in your skills folder.`,
     "",
     number(steps),
     "",
-    "When you are done, give me one line per skill with what is ready and anything I still need to do.",
+    "When you are done, give me one line per agent with what is ready and anything I still need to do.",
   ].join("\n");
 }
