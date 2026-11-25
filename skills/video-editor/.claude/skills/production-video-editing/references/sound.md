@@ -19,3 +19,16 @@ Energizing is a rhythm the pictures agree with, not loudness. Pick a track whose
 **Shape of every launch film:** strong opening, stop dead for 0.4 to 1.5 s right before the reveal, music back exactly on the product, one lift around the middle, clean ending on a hit. Cut the track to fit: start it at its intro, remove a bar or jump at a phrase boundary, and fade only the tail.
 
 Rights: Mixkit needs no credit. Incompetech and Jamendo need a credit line. `source.py credits` prints it. Prefer no-credit tracks when both fit.
+
+## Effects and background sound
+`source.py sfx --job J click typing notification whoosh room tone` gives real recordings with onset and peak times. Place the **peak** on the frame, from `events.json` when it is a product capture.
+- Product films: clicks, keys, a soft notification, one low hit on the reveal. 12 to 18 dB under the music or voice.
+- Person films: silence except for something that really makes a sound inside a panel.
+- Background: room tone under cuts, or the real sound of the archive clip.
+
+## Voice
+- A person is speaking: clean the voice (high pass 80 Hz, gentle denoise, de-ess, light compression), level about -16 LUFS, bed 17 to 20 dB under it, slow mild ducking. No pumping.
+- No one is speaking: use the local model. `launch-video/references/voiceover.md` has the full workflow. Pick the default voice automatically, generate 3 takes a line, keep the best, time the cut to `words.json`, and tell the user the voice is AI. Only clone a voice they own.
+
+## Master
+Two pass loudnorm, -14 LUFS, true peak -1 dBTP or lower, 48 kHz, AAC 320k. Measure the final file.
