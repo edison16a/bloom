@@ -121,3 +121,15 @@
 - Near-silent films (Linear Releases, Linear Agent, Framer 3.0) feel premium but low-energy. That is the user's complaint, so avoid this profile for an "energetic" brief.
 - One big impact or swell per film, at the reveal: Raycast Focus +19 dB at 43 s, Raycast Windows +38 dB from silence, Vercel Ship +12 dB at 11 s.
 - End cards: music fades out over 3–5 s (energy drops 20–40 dB in the last 4 s of almost every film); no SFX on the logo except a soft final hit in some.
+
+### Text animation conventions
+- **Font:** clean grotesk sans (Inter-like) in 20 of 25. Exceptions: mono caps for "technical" teasers (Linear Releases, Raycast New, Vercel dates), serif for heritage or story tone (Arc 1.0, Raycast "Now on Windows"), custom display type for events (Config).
+- **Placement:** centred, 1–2 lines, short (2–7 words). Text cards alternate with UI shots (Notion, Cursor, Retool, Arc 1.0). Caption over UI sits top-centre (Loom, Superhuman).
+- **Entries, from most to least common:**
+  1. Per-word blur-in with a slight rise (Retool, Linear, v0): each word ~0.15–0.2 s, staggered ~0.1–0.15 s, from grey/blurred to sharp white.
+  2. Typewriter with a visible caret (Cursor 2.0, Linear, Raycast, Notion 3.0): ~3 characters per frame-tenth at 10 fps, so roughly 25–30 characters per second for display text; mono typing in Linear is slower, ~1 character per 2 frames.
+  3. Mask rise from below (Notion "Meet the new Notion AI", ~0.4 s).
+  4. **Inline chip swap**: one slot in the sentence cycles every ~0.5 s with a vertical blur-roll (Notion AI, Warp "full terminal use").
+  5. Glyph scramble or resolve for logos (Retool "Reto01", Config glyph cycling, Vercel "Ship" stencil).
+- **Exits:** fade or blur-out over ~0.2–0.3 s, or a hard cut on the next card; rarely animated out.
+- **Holds:** title cards 0.6–1.5 s in fast films, 1.5–3 s in calm ones.
