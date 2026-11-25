@@ -44,3 +44,15 @@ G abstract geometric, LI letterform of the initial, LM monogram or other letter,
 | B | 5% | 5% | 8% | 7% |
 
 S symbol only, W lettering only, SW symbol plus word, B badge.
+
+### Container
+
+| container | all (n=8183) | craft 4+ (n=2950) | craft 1-2 (n=519) | YC (n=1703) |
+|---|---|---|---|---|
+| none | 59% | 62% | 66% | 43% |
+| circle | 14% | 13% | 11% | 11% |
+| square | 12% | 10% | 14% | 37% |
+| rsquare | 7% | 10% | 3% | 6% |
+| shield | 1% | 1% | 0% | 1% |
+| hex | 3% | 2% | 2% | 1% |
+| other | 4% | 3% | 4% | 1% |
