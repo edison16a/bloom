@@ -293,3 +293,14 @@ Hits are speech-inflated, so these rules come from the visuals plus the cases ab
 10. **Montage lock.** For a 4–10 s B-roll run, set the bed at 110–130 BPM and cut every beat (0.46–0.55 s), or every half-beat for a 2–3 frame strobe (a16z patents). Match motion direction across adjacent pairs, then end on an impact plus a 1-frame white flash into the hero or title card. Verify ≥45% of cuts land on beat (GaryVee/Codie level).
 
 Bonus: the **paper-freeze intro** (#17). Freeze frame, desaturate, replace the background with a paper texture, write a handwritten label with an arrow over 24 frames, hold 2 s, tear back over 6 frames with a paper-rip SFX.
+
+### Amateur tells the pros avoid
+- **Flat pacing:** one cut rate the whole way. Pros either front-load (15/25) or build to the climax.
+- **Captions at the very bottom edge, or full sentences at once on vertical.** Pros use 1–3-word chunks at chest height.
+- **Animated caption entrances on every word** (bounce or slide). Pros pop captions hard and spend animation only on one emphasis phrase every 10–20 s.
+- **SFX on every graphic in long-form.** Pros accent title reveals, metaphors and memes; on Shorts the accent sits on the cut instead.
+- **Cutting talking-head sections to the music beat.** Pros cut to speech and lock only the montage runs to the beat.
+- **Generic wipes** (#11's diagonal stripe) and cross-dissolves between talking-head jump cuts. Pros use hard cuts, whips, flashes and push-throughs.
+- **Long static A-cam holds with no reframing** (#18 Valuetainment, #03). Even "minimal" pros reframe every few seconds.
+- **Quiet, dynamic masters for creator content.** Pros sit at -12 to -16 LUFS with LRA ~3 (exceptions: cinematic trailers with deliberate headroom).
+- **B-roll as random filler.** Pros use literal metaphor inserts timed to the noun (clay at "clay sculpture", produce at "disgusted", crowd at "99% of people").
