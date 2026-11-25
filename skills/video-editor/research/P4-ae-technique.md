@@ -72,3 +72,26 @@ Measurement caveats, read first:
 **15 AfterRender (pacing broken).** The client sample plays inside a branded frame. *Observed text work:* blue stat badge left of the speaker's face ("50%" → "Crypto Taxes 39%" → "0.1%") as a number swap in place; glassmorphic cards with a bullet list built line by line; mock Google search typing; "$10K" in a dashed selection box, then the box scales up and "IN MY FIRST MONTH / HOME SERVICE BUSINESS" pushes through at full width with a scale overshoot; YouTube play/pause UI overlay. *Audio:* 116 BPM with beat strength 7.22: a hard four-on-the-floor bed under a pure-graphics stretch (speech share 0, so the measured portion may be music-only).
 
 ---
+
+## 3. Half B: technique sources
+
+| # | Source | Kind | Used for |
+|---|---|---|---|
+| B1 | Ben Marriott, "5 Essential Type Animations in After Effects" (youtu.be/jS1YMWkm4DQ) | auto-subs | position plus steep ease, colour fill flash, blur-in, text out of a line (trim path plus alpha matte), scale 104→100 "sink", tracking animator, stroke/fill gradient |
+| B2 | Ben Marriott, "5 MORE Essential Type Techniques" (youtu.be/8EjtQPULbbE) | auto-subs | roughen boil (`time*4`), luma-matte texture, typewriter with irregular timing and hold keys, write-on, legibility over busy footage (shadow → vignette solid → frosted blur box), 3D camera-tracked text |
+| B3 | Jake In Motion, "Text Animators are an After Effects superpower" (youtu.be/NclmWZa4c_8) | auto-subs | range selector internals: Ramp Up, Ease Low 100, offset −100→100 over 30 f, second "out" selector with Ramp Down, grouping alignment, based-on words |
+| B4 | Ignace Aleya, "Simple but Professional Text Animation" (youtu.be/EglpVqoCSy4) | auto-subs | opacity plus blur(50) per character with Ramp Up; a separate tracking animator +5 over the whole duration |
+| B5 | Andrew Kramer / Video Copilot, "Camera Shake with Wiggler" (youtu.be/gZ-UUtoHD3g) | auto-subs | impact shake: wiggler freq 15, mag 25, jagged, motion blur on, Motion Tile 125% with mirror edges, ease out the last key |
+| B6 | rdylt09, "Text tracking to head" (youtu.be/ldhAwOgvCvw) | auto-subs | track the nose, apply to the text, offset Y below the face; one pre-comp per sentence |
+| B7 | Smertimba Graphics, "Text Behind Moving Object – Roto Brush" (youtu.be/_c_xSyOevCI) | auto-subs | duplicate plate: roto'd copy on top, text between, original underneath |
+| B8 | Camilo Castañeda, "My SECRET to Smooth Speed Ramps in AE" (youtu.be/MnjBH0wXkD8) | auto-subs | time remap key shapes, peak velocity at the entry, reverse-ramp exits for direction matching, pixel motion blur |
+| B9 | tutvid, "J-Cut and L-Cut" (youtu.be/DVSZujJDYXg) | auto-subs | J: next audio leads by ~2 s; L: outgoing audio tails ~2 s; short constant-power crossfade |
+| B10 | Premiere Gal, "The SECRET to Pro-Level Sound Design" (youtu.be/jkC_gwEZ6GQ) | auto-subs (Krotos sponsorship) | footsteps/whoosh performed to picture, distance processing for wide shots, fade-out on whoosh tails, colour-labelling SFX by type, layered ambience |
+| B11 | Hayden Hillier-Smith, "3 Editing Secrets I Wish I Knew Earlier" (youtu.be/XIVSa3wo0JU) | auto-subs | restraint: cut before VFX, keep pauses/silence beats ("don't over-trim"), match-cut barrages for scale |
+| W1 | Pixflow, "Cinematic whoosh sound effects" (pixflow.net/blog/cinematic-whoosh-sound-effects/) | article | whoosh lead 10–20 ms, peak at fastest motion, 400–500 ms for a 0.5 s transition, -18 to -12 dB vs dialogue, layer stack, EQ |
+| W2 | FlexClip, "Transition sound effects" (flexclip.com/learn/transition-sound-effects.html) | article | impact 1–2 frames after the transition or text reveal starts; SFX under music and dialogue |
+| W3 | Artlist, "Tips… sound design" (search snippet) | article | reverse an impact to make a riser; next shot's sound before its picture |
+
+Not obtained: the School of Motion kinetic-type course, Talking-Head MG breakdown uW-8SKO8kYE (429 on subs), and a speed-graph numeric article. Easing numbers below marked *(inferred)* convert what the tutors did by hand into KeyframeEase values. They weren't read off a screen.
+
+---
