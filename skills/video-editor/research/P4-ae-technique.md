@@ -151,3 +151,40 @@ For word-by-word captions, set `Range Type2 = 3` (words). For talking heads at r
 Typewriter preset = range selector `Start` keyed 0→100. Add mid keys with irregular spacing: bursts and pauses. For one word at a time, put keys at each word boundary and set them to hold: `P.setInterpolationTypeAtKey(i, KeyframeInterpolationType.HOLD)`.
 - Centre-out typing: key the layer's Position so its left edge starts at comp centre and ends centred, with the same ease as the selector.
 - SFX: one key-click per character, or one per word for the hold variant, at -20 dB under VO (inferred level).
+
+### R6. Text pushed out of a drawn line (B1; seen in 11 Craig and 13 Paul E.T.)
+```
+line = comp.layers.addShape(); path = horizontal, stroke 2 px white;
+trim = line.content.addProperty("ADBE Vector Filter - Trim");
+trim Start: t0=50 → t1=0 ; End: t0=50 → t1=100   (draw from centre), easy-ease → expo-out
+matte = solid/shape covering the area ABOVE the line (bottom edge = line y)
+txt (rest above line) Position: t0+f(4) = rest+[0,+60] (below line) → t0+f(16) = rest
+txt.setTrackMatte(matte, TrackMatteType.ALPHA)       // AE ≥2023; legacy: matte above txt, txt.trackMatteType = TrackMatteType.ALPHA
+second line of copy below: duplicate txt+matte, TrackMatteType.ALPHA_INVERTED, travel upward
+```
+Start the text when enough of the line has drawn ("don't pop out too early"): roughly 30–40% into the trim.
+- 13 Paul E.T. extends this: the line keeps drawing with right-angle steps to the next word, then the next object, and the comp camera (or a parent null) scrolls along the line. Each segment takes ~0.4–0.6 s, timed to VO words.
+- SFX: a soft swish for the line, and a tick when each text block lands.
+
+### R7. Text behind the person (B7; seen in 04, 06, 08, 13)
+```
+plate      = footage layer (bottom)
+txt        = text layer (middle)
+fg         = plate.duplicate() on top; Roto Brush / segmentation matte → person-only alpha
+            (EffectCraft: use its segmentation/roto effect or a hand mask; refine edge, feather 1–2 px)
+```
+Placement observed in 08 and 04: the word is set **large (cap height ≈ 25–35% of frame), in the upper third**, so the head overlaps 1–3 letters and the word stays readable. The animation is a word-by-word opacity/blur reveal (R4) or a vertical slide-up through a matte.
+- 06 "Masking" variant: the word fills in as the walker crosses it, using a matte keyed to the walker's x.
+- SFX: a low "boom" or sub hit on the reveal. In 08 it's on the cut-in, with no whoosh.
+
+### R8. Text tracked to the face or an object (B6; B2 3D tracker; seen in 11, 13)
+2D (head):
+```
+tracker point on nose (high-contrast feature), track → apply to Null (not the text directly);
+txt.parent = null; txt position offset so text sits BELOW chin (B6) or beside head in the open third.
+one pre-comp/segment per sentence (B6) so each text has its own track range.
+smooth jitter: null position expression  smooth(0.2, 5)  (inferred; not in source)
+```
+3D (environment): 3D Camera Tracker, then pick a solver point on the surface, then *Create Text and Camera* (B2). Scale up, push slightly in Z.
+- 11 Craig: one word per facade, about 1.2–1.4 s of screen time each, with the camera moving past fast. That gives a word-per-beat cadence without any cuts.
+- 13 Paul E.T.: timestamps and title cards sit on a table plate, tracked so they move with a slow push-in.
