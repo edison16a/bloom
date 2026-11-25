@@ -24,3 +24,16 @@ void scene(vec2 uv, vec2 p, inout Cell c)
 ```
 
 Raymarch with `vec3 rd=camRay(p)` from `u_eye`. Set `c.alpha=0.` where empty so later sources show through.
+
+## Hook 2: surface points
+
+```glsl
+void surface(int i, int n, vec4 rnd, inout Pt p)
+// rnd.xy is low-discrepancy (even coverage): use it as surface coordinates. rnd.zw is random. rnd.w also decides which points `p.alpha` keeps, so use rnd.z for timing and velocity
+// Write p.pos, p.nrm, p.color, p.tone, p.size (in cells: 1.3-1.8 for bodies, .6-.9 with more points for thin parts), p.alpha (stochastic), p.flag
+// With geometry: p.pos p.nrm p.color p.extra arrive filled.
+```
+
+`count` 200k-400k for an object, 500k-700k with `samples: 4`. `blend: "add"` for light and streaks: then `p.alpha` is energy per point, .001-.1, and the engine keeps brightness the same at every canvas size. `triangles: true` draws indexed geometry solid. Geometry can be `() => Geometry`, built on first use: do that for anything heavy or that touches a canvas, so importing stays cheap and works in SSR.
+
+Normals for a parametric surface: evaluate it at `q`, `q+du`, `q+dv`, cross the differences, then `faceView(n, pos)`.
