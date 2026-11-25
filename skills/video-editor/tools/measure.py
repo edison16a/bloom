@@ -134,3 +134,26 @@ def audio(p, dur):
                 beat_strength=round(float(strength), 2), hits_per_min=round(len(hits) / dur * 60, 1),
                 hits=[round(v, 2) for v in hits[:200]], energy_db_per_s=[round(v, 1) for v in sec],
                 biggest_lifts=[{'t': i, 'db': round(d, 1)} for d, i in jumps], speech_share=round(sp / max(tot, 1), 2))
+
+def sheets(p, out, dur, cut_t):
+    cols = 8
+    n = min(48, max(8, int(dur)))
+    step = dur / n
+    rows = (n + cols - 1) // cols
+    run(['ffmpeg', '-y', '-v', 'error', '-i', p, '-vf', f'fps=1/{step:.3f},scale=240:-2,tile={cols}x{rows}', '-frames:v', '1',
+         os.path.join(out, 'sheet_overview.png')])
+    run(['ffmpeg', '-y', '-v', 'error', '-t', '6', '-i', p, '-vf', 'fps=5,scale=240:-2,tile=6x5', '-frames:v', '1',
+         os.path.join(out, 'sheet_open.png')])
+    # densest-cut window (3 s at 10 fps) to see transitions frame by frame
+    if cut_t:
+        c = np.array(cut_t); dens = [((c > t) & (c < t + 3)).sum() for t in c]
+        t0 = max(0, float(c[int(np.argmax(dens))]) - 0.5)
+        run(['ffmpeg', '-y', '-v', 'error', '-ss', f'{t0:.2f}', '-t', '3', '-i', p, '-vf', 'fps=10,scale=240:-2,tile=6x5', '-frames:v', '1',
+             os.path.join(out, 'sheet_transitions.png')])
+    # one frame per shot (mid-shot), max 40
+    sd = os.path.join(out, 'shots'); os.makedirs(sd, exist_ok=True)
+    bounds = [0] + list(cut_t) + [dur]
+    mids = [(bounds[i] + bounds[i + 1]) / 2 for i in range(len(bounds) - 1)][:40]
+    for i, m in enumerate(mids):
+        run(['ffmpeg', '-y', '-v', 'error', '-ss', f'{m:.2f}', '-i', p, '-frames:v', '1', '-vf', 'scale=480:-2',
+             os.path.join(sd, f'{i:02d}_{m:06.2f}.jpg')])
