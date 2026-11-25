@@ -62,3 +62,19 @@ let art: { funnel: Live; rocket: Live; eclipse: Live };
 
 // ---------------------------------------------------------------- logo
 let stem: SVGRectElement, petal: SVGGElement, word: SVGGElement, wordBase = "";
+async function buildLogo(host: HTMLElement, animated: boolean) {
+  const svg = await (await fetch("assets/bloom-logo.svg")).text();
+  host.innerHTML = svg;
+  if (!animated) return;
+  const groups = host.querySelectorAll("svg > g");
+  stem = host.querySelector("rect")!;
+  const p = host.querySelector("path")!;
+  // Rebuild the petal so it can scale from its own base.
+  const holder = document.createElementNS("http://www.w3.org/2000/svg", "g");
+  p.setAttribute("transform", "rotate(48)");
+  holder.appendChild(p);
+  stem.parentNode!.appendChild(holder);
+  petal = holder;
+  word = groups[1] as SVGGElement;
+  wordBase = word.getAttribute("transform") ?? "";
+}
