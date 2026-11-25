@@ -32,3 +32,24 @@ python3 -I tools/measure.py "https://www.youtube.com/watch?v=<id>" <batch>/<nn>-
 - Flow: `flow_per_second`, one character per second (→ ← ↑ ↓ are global pans or pushes, Z+ and Z- are zoom proxies, `.` is static). It's noisy, so confirm it against the sheets.
 - **Look at the sheets** with the Read tool on the PNGs, at least the overview and transitions sheets for every video. Judge the type style, text animation, transitions, colour and layout, and how motion carries from one shot to the next (direction continuity, match cuts, whip directions).
 - Run the measurements in parallel with `&`, 3–4 at a time, to save time. If a download fails, pick another video.
+
+## Write `<batch>/NOTES.md`
+1. **Table, one row per video:** #, title / channel / URL, length, cuts/min, median shot, BPM (beat strength), LUFS, hits/min, % cuts on beat, % cuts with a hit, speech share, dominant flow, and one line on what's distinctive.
+2. **Per-video notes,** 3–6 lines each:
+   - opening hook (first 3 s)
+   - structure with timestamps
+   - text animation style: entry and exit, timing in frames if visible, font class and placement
+   - SFX usage: what kinds and where (inferred from the hits plus the visuals)
+   - music: energy shape, where drops land relative to visual moments
+   - transition types
+   - flow direction logic
+3. **Batch synthesis:**
+   - typical ranges (median and IQR) for cuts/min, shot length, BPM, LUFS and hits/min
+   - how pacing changes across the video
+   - how cuts relate to the beat
+   - SFX density and placement rules
+   - text animation conventions
+   - flow and direction rules
+   - the 10 most reusable concrete moves, each as a recipe with frames, easing and SFX
+   - amateur tells that the pros avoid
+4. Keep it factual. Mark inferences as inferences. Don't invent numbers. If a measurement looks broken, say so.
