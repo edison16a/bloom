@@ -83,3 +83,15 @@ function line(str, y, a, z, o) {
   if (!o.hold) leave(L, z - 0.25);
   return L;
 }
+// The pointer. path: [[t, [x, y]], ...] in screen px, clicks: [t, ...]
+function pointer(path, clicks, a, z) {
+  var L = K.comp.layers.addShape(); L.name = 'pointer'; var k = 1.7, pts = [[0, 0], [0, 23], [6, 17.5], [10, 26.5], [13.6, 25], [9.7, 16.3], [17.2, 16.3]];
+  for (var i = 0; i < pts.length; i++) pts[i] = [pts[i][0] * k, pts[i][1] * k];
+  var g = L.property('ADBE Root Vectors Group').addProperty('ADBE Vector Group').property('ADBE Vectors Group');
+  var p = g.addProperty('ADBE Vector Shape - Group'), s = new Shape(); s.vertices = pts; s.closed = true; p.property('ADBE Vector Shape').setValue(s);
+  var st = g.addProperty('ADBE Vector Graphic - Stroke'); st.property('ADBE Vector Stroke Color').setValue(WHITE); st.property('ADBE Vector Stroke Width').setValue(2.5);
+  var f = g.addProperty('ADBE Vector Graphic - Fill'); f.property('ADBE Vector Fill Color').setValue([0.06, 0.06, 0.07]);
+  span(L, a, z); mb(L); softShadow(L, 35, 14); anim(tr(L, 'pos'), path, INOUT); fadeIn(L, a, 8);
+  var sk = []; for (var c = 0; c < clicks.length; c++) sk.push([clicks[c] - 0.06, [100, 100]], [clicks[c] + 0.03, [88, 88]], [clicks[c] + 0.22, [100, 100]]);
+  if (sk.length) anim(tr(L, 'scale'), sk, INOUT); return L;
+}
