@@ -32,3 +32,13 @@ function fadeIn(L, t, n) { tr(L, 'op').setValueAtTime(t, 0); tr(L, 'op').setValu
 function fadeOut(L, t, n, from) { tr(L, 'op').setValueAtTime(t - fr(n), from == null ? 100 : from); tr(L, 'op').setValueAtTime(t, 0); }
 
 function plate(file) { var L = K.comp.layers.add(kitFoot(file)); L.startTime = 0; L.inPoint = 0; L.outPoint = K.plateEnd; try { L.audioEnabled = false; } catch (e) {} tr(L, 'pos').setValue([K.w / 2, K.h / 2]); return L; }
+
+// frosted frame: white tint + thin bright edge
+function glass(x, y, w, h, r, tint, edge) {
+  var L = K.comp.layers.addShape(); L.name = 'glass';
+  var g = L.property('ADBE Root Vectors Group').addProperty('ADBE Vector Group').property('ADBE Vectors Group');
+  var q = g.addProperty('ADBE Vector Shape - Rect'); q.property('ADBE Vector Rect Size').setValue([w, h]); q.property('ADBE Vector Rect Roundness').setValue(r);
+  var st = g.addProperty('ADBE Vector Graphic - Stroke'); st.property('ADBE Vector Stroke Color').setValue(WHITE); st.property('ADBE Vector Stroke Width').setValue(1.5); st.property('ADBE Vector Stroke Opacity').setValue(edge);
+  var f = g.addProperty('ADBE Vector Graphic - Fill'); f.property('ADBE Vector Fill Color').setValue(WHITE); f.property('ADBE Vector Fill Opacity').setValue(tint);
+  tr(L, 'pos').setValue([x + w / 2, y + h / 2]); return L;
+}
