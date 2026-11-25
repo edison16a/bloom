@@ -50,3 +50,32 @@ def brand_color(r):
         best = best or hx
     return best or ""
 
+
+def load():
+    cat = {r["id"]: r for r in csv.DictReader(open(os.path.join(R, "catalog.csv")))}
+    met = {r["id"]: r for r in csv.DictReader(open(os.path.join(R, "metrics.csv")))}
+    lab = {}
+    for f in sorted(glob.glob(os.path.join(R, "labels", "*.jsonl"))):
+        for line in open(f):
+            line = line.strip()
+            if line:
+                try:
+                    o = json.loads(line)
+                except ValueError:
+                    continue
+                lab[o.get("id")] = o
+    rows = []
+    for i, c in cat.items():
+        m = met.get(i, {})
+        l = lab.get(i, {})
+        r = dict(c)
+        r.update({k: v for k, v in m.items() if k not in r})
+        for k in ("comp", "kind", "cont", "style", "simple", "craft", "type", "case", "weight", "track", "custom", "sym", "skip"):
+            v = l.get(k)
+            r["l_" + k] = "" if v is None else str(v)
+        r["labeled"] = "1" if l and not l.get("skip") else ""
+        r["brand_hex"] = brand_color(r) if not m.get("err") else ""
+        r["brand_family"] = family(r["brand_hex"])
+        rows.append(r)
+    return rows
+
