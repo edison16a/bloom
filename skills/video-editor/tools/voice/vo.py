@@ -83,3 +83,11 @@ def transcribe(wav, words=False):
 ONES = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
 TENS = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()
 
+
+def int_words(n):
+    if n < 20: return ONES[n]
+    if n < 100: return TENS[n // 10] + ("" if n % 10 == 0 else " " + ONES[n % 10])
+    if n < 1000: return ONES[n // 100] + " hundred" + ("" if n % 100 == 0 else " " + int_words(n % 100))
+    for div, name in ((10**9, "billion"), (10**6, "million"), (1000, "thousand")):
+        if n >= div: return int_words(n // div) + " " + name + ("" if n % div == 0 else " " + int_words(n % div))
+
