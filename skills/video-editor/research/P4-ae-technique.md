@@ -188,3 +188,19 @@ smooth jitter: null position expression  smooth(0.2, 5)  (inferred; not in sourc
 3D (environment): 3D Camera Tracker, then pick a solver point on the surface, then *Create Text and Camera* (B2). Scale up, push slightly in Z.
 - 11 Craig: one word per facade, about 1.2–1.4 s of screen time each, with the camera moving past fast. That gives a word-per-beat cadence without any cuts.
 - 13 Paul E.T.: timestamps and title cards sit on a table plate, tracked so they move with a slow push-in.
+
+### R9. Kinetic-type opener: one word per beat, background invert (02, 03, 11, 09)
+```
+BPM = 120–131 → beat = 0.46–0.5 s = 14–15 f @30
+for each word i: new text layer, in = i*beat, out = (i+1)*beat
+  bg solid alternates black/white (02, 11) or colour A/B (03 pink/blue)
+  entry (choose one per word, rotate through): R2 sink, rotate 30°→0 settle, tracking-blur slide (horizontal motion blur, 3 f),
+     per-letter Y jitter settling in 2 f (11 "CREATE"), outline→fill swap (02)
+  exit: hard cut on next beat (no exit anim) — or 2-frame directional blur
+```
+- Measured: 02 runs at 72 cuts/min in Q1 with cuts on beat .52. 03 has 110 hits/min with .57 of cuts carrying a hit.
+- SFX: one tick, pop or whoosh per word on the beat. Alternate two samples so they don't machine-gun (inference).
+
+### R10. Number counter, badge swap, and "stat card" (01, 15)
+Source Text expression `Math.round(linear(time, t0, t1, a, b)) + "M views"` with expo-out on a slider. Drift the card in 3D: rotation Y about 10–15°, slow camera dolly. In 15 the badge beside the face swaps values in place (50% → 39% → 0.1%) on spoken numbers, with a scale pop of 100→108→100 over 6 f *(inferred amount)*.
+- SFX: a short tick per digit change, or one "cash/ding" on the final value.
