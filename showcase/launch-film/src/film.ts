@@ -92,3 +92,23 @@ function logo(t: number) {
   word.style.opacity = String(w);
   word.setAttribute("transform", `translate(${((1 - w) * 24).toFixed(2)} 0) ${wordBase}`);
 }
+
+// ---------------------------------------------------------------- windows
+/** Window one: first arrival leans back 26 degrees and lies flat in 1.4 s, once per film. */
+function window1(t: number, pushAt: number) {
+  const el = $("W1"), win = $("win1");
+  const start = bar(2) - 0.23;
+  if (t < start - 0.01 || t > pushAt + 0.51) { el.style.opacity = "0"; return false; }
+  const settle = inOut(seg(t, start, start + 1.4));
+  const fade = seg(t, start, start + 0.3);
+  // Camera: rest 1.2 s, then move in to the headline in 1.2 s, slow in and slow out.
+  const cam = inOut(seg(t, bar(3), bar(3) + 1.2));
+  const scale = 1 + 0.3 * cam;
+  const push = pushOffset(t, pushAt);
+  el.style.opacity = String(fade);
+  el.style.transform = `translateY(${-push * 1080}px)`;
+  // Move toward the headline at the left: its centre sits near x 470 in window pixels.
+  const tx = -(scale - 1) * (470 - 720) * cam / Math.max(cam, 1e-6) * (cam > 0 ? 1 : 0);
+  win.style.transform = `translateX(${tx}px) rotateX(${(1 - settle) * 26}deg) translateY(${(1 - settle) * 60}px) scale(${scale})`;
+  return true;
+}
