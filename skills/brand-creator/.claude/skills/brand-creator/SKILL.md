@@ -55,3 +55,19 @@ python3 -I scripts/preview.py --candidates brands/<slug>/candidates.json
 ```
 
 Keep the best three. Judge spacing between letters (no letters touching, no holes), weight at small size, and whether it looks like the archetype's leaders.
+
+### 4. Symbol candidates
+
+Add 16 to 24 original symbols to `candidates.json` as SVG bodies with color tokens `{P}` primary, `{A}` accent, `{I}` ink. Draw in any coordinates; the builder scales each symbol to its visible ink. Rules:
+
+- One to three shapes, flat fills, optional cut outs with a mask (`<mask id="m{U}">`, `{U}` becomes a unique id; inside a mask use literal `#fff` to keep and `#000` to cut, never a color token). No gradients, text, images, filters, scripts or style blocks (the builder rejects them).
+- It must still read in one color: shapes painted `{P}`, `{A}` and `{I}` become the same color in the black, white and app icon versions, so separate parts with gaps or cut outs, never by color alone. The preview shows the one color version next to the color one; delete any symbol that collapses into a blob.
+- It must read at 16 px (the preview shows 32 and 16 px).
+- Vary the ideas: designed initial letterform, abstract geometry, a cut or fold, bars or rays, dots or grid, one simple object only if it says something true about the company.
+- Do not draw the company name's literal meaning as a picture, and do not imitate a famous logo.
+
+Render, look, then narrow to the best four. Add `lockups` pairs and render again to see the best three symbol and wordmark pairs together. A lockup pair may carry `cap_ratio` and `gap` to try sizes (see step 7).
+
+### 5. Color
+
+Pick the primary from the brief: either black led (ink as the main color, the primary used as a small accent) or one saturated mid light color. A light primary (amber, yellow, lime) cannot carry a white symbol: the builder then puts the ink color on the app icon and the on brand tiles and warns if you forced white. Ink is a near black (for example #0E0E10, not pure #000), paper is white or a warm off white. Give the primary a name. Try two or three palettes on the best lockup by editing `colors` in `candidates.json` and rendering again. Check the primary against white for contrast if the word will be set in it.
