@@ -235,3 +235,16 @@ The user's "too slow" complaint maps onto tier C. A founder launch film should s
 - Only the music-driven montages lock to the beat: GaryVee 51% at 130 BPM, Codie sizzle 45% at 120 BPM, both with beat strength >2.2.
 - Rule: cut talking-head sections on phrase ends or breaths; inside B-roll or montage runs, snap cuts to the beat grid.
 - Beds are mostly 70–100 BPM with clear pulses (strength ~1.5–2.9), sitting about 15–25 dB under the voice (inference from speech dominance and low LRA). The faster montage pieces use 113–130 BPM.
+
+### SFX density and placement
+Hits are speech-inflated, so these rules come from the visuals plus the cases above chance:
+- **Shorts put an accent on the cut.** #21 75%, #24 73% and #25 50% of cuts coincide with a transient (chance ≈23%), and #23 is at 36%. Inference: a soft whoosh/click on camera switches, or cuts placed on consonant attacks, so every cut "ticks".
+- **Long-form creator videos don't.** Cut accents sit at or below chance (#02 3%, #09 6%, #05 10%), so SFX are reserved for graphic events: the meme insert (#05 +29.9 dB lift at 251 s), title reveals (#06 +13.9 dB at 97 s), and metaphor B-roll (#23 +12.2 dB at 19 s).
+- Likely SFX vocabulary, inferred from visuals:
+  - whoosh on whip pans and grid zoom-outs (#05, #22)
+  - pop/click on emoji and icon pops (#05)
+  - riser + impact on the chrome title fly-through (#06)
+  - paper tear (#17)
+  - typewriter ticks on type-on text (#01, #22)
+  - cash/ding on big $ numbers (#06)
+- Masters are compressed (LRA ~3–4 for most). Loud YouTube creators sit at -12 to -16 LUFS (Mark Rober -11.8, Codie Short -13.9, Simon Squibb -14.9). Cinematic or brand pieces leave headroom (Hormozi trailer -28.3, Kimi -24.7).
