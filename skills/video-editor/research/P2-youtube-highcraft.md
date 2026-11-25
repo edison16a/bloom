@@ -250,3 +250,40 @@ The brief asks for 2023–2026 videos. Five picks are older, but they are kept a
   - Satellite dissolve from a ground shot of the same location (07).
   - Hands entering before the host (11).
   - Host cut-out sliding in over a blurred background (04, 15).
+
+### The 10 most reusable moves (recipes)
+Frame counts are at 24–30 fps, read off 5–10 fps sheets, so ±1–2 frames.
+
+1. **Micro-montage cold open** (25, 09, 01).
+   - 12–24 related macro shots at 3–5 frames each (0.13–0.2 s) over the first 2–4 s. Add one glitch/RGB-split frame two-thirds of the way through, then a 1-frame white or gray flash into the first host or title shot.
+   - SFX: riser + tick or shutter texture under it, then an impact on the flash (inferred).
+   - Cut on picture, not on beat.
+2. **Type-on story title** (08, 01, 18).
+   - Bold caps typed 1–2 characters per frame (about 1.2 s for 15 chars), red or white with an outer glow, on a tilted 3D screen or plate with shallow depth of field.
+   - Camera drift 2–4% per second (ease-in-out) through the move.
+   - SFX: keyboard clicks per char or a soft data-chatter; whoosh as the camera dives into the next layer.
+3. **Logo sting into the A-roll mid-sentence** (12, 13).
+   - Concentric shapes collapse over 6 frames (ease-in), then a white flash with an outline snap to the logo (2 frames, overshoot then settle), hold 24 frames, then a diagonal slit wipe in 3–4 frames into the A-roll already mid-word.
+   - SFX: whoosh in + impact on the snap; the VO starts under the wipe.
+4. **Pop-on callout tag** (10, 24, 03).
+   - Pill or box in a brand colour with offset 3D extrusion shadow (4–6 px, darker brand colour) and a pointer notch toward the subject. Appears in 1–2 frames (scale 90 → 100%, ease-out); holds 1.5–3 s; exits on a cut.
+   - SFX: a short pop/click on the appear (inferred).
+5. **Big number / word slam** (05, 13, 15, 16, 22).
+   - A heavy sans or 3D-bevel word fills a third to half of the frame, placed beside the subject or behind them (occluded by the host matte). Scale-in 110 → 100% over 3–4 frames with a slight shake.
+   - SFX: bass impact + optional cash or ding for money.
+6. **Odometer year/number roll** (03, 16, 17).
+   - A yellow-box year or counter changes by a vertical roll in 2–3 frames exactly on the clip change. The same idea gives MrBeast's ×98 → ×97 counter and the countdown timer.
+   - SFX: a tick per change.
+7. **Satellite push-in to a pin** (07, 06, 08, 05).
+   - Cross-dissolve (about 24 frames) from a ground shot into a satellite map, then a Z+ push (ease-out) of 2–4 s ending on white rounded pins with brand logos that pop on in sequence about 6 frames apart. Contested or selected regions fill with a saturated colour and a glowing edge.
+   - SFX: low whoosh/swell on the push, soft pops on the pins (inferred).
+8. **Recurring navigation graphic** (11 levels bar, 06 blueprint panel, 14 split template).
+   - One graphic returns at every chapter with one new state: an arrow steps to the next level, the next house layer builds, the next section tag appears.
+   - Gives structure at 5–8 cpm without feeling slow.
+   - SFX: the same signature whoosh/click each return (inferred; a consistent sound motif).
+9. **UGC photo-stack burst** (22, 24).
+   - 20–30 fan or stock photos at 1–3 frames each, each rotated ±5–15° on black or offset like a stack. 2–4 s total under one sustained VO line.
+   - SFX: a camera-shutter or paper-flick texture per few frames, building into a music swell.
+10. **Chapter re-entry: drop, then hit** (01, 03, 09, 02).
+    - Pull the music out for one spoken line (RMS falls about 10–25 dB), then hard-enter the next chapter on a title card or montage with music back at full level (+15–40 dB lift measured).
+    - SFX: impact or reverse-cymbal into the re-entry.
