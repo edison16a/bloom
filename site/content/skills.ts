@@ -46,3 +46,9 @@ export const skills: Skill[] = [
     summary: "Pick a logo, get every file you need.",
   },
 ];
+
+export const skillById = (id: SkillId): Skill => {
+  const skill = skills.find((s) => s.id === id);
+  if (!skill) throw new Error(`Unknown skill: ${id}`);
+  return skill;
+};
