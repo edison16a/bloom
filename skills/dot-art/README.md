@@ -132,3 +132,21 @@ An existing scene, on another surface, in one line:
 ![Octagons](assets/bloomOctagon.gif)
 
 Also: an SVG or a word with `logoScene`, a `.glb` or `.obj` with `modelScene`.
+
+## Install
+
+For all your projects:
+
+```bash
+git clone --depth 1 https://github.com/edison16a/quality-art.git ~/.claude/skills/dot-art
+```
+
+```bash
+cd ~/.claude/skills/dot-art/scripts && npm install
+```
+
+For one project, clone into that project's `.claude/skills/dot-art` instead.
+
+The render scripts use Node 20+, an installed Chrome, and ffmpeg. The engine itself needs none of them.
+
+Then ask. More prompts, including the ones that recreate each reference: [examples/prompts.md](examples/prompts.md).
