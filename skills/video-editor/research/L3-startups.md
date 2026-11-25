@@ -131,3 +131,10 @@
 7. **Captions:** small boxed or plain white sentence captions bottom-centre (Lance, VibeFlow, WithAI, Cluely, Cascade). Hormozi-style condensed caps only in the most YouTube-native piece (Lamb Labs).
 8. **Story text blocks, left-aligned, appending clause by clause** for cinematic narratives (Cluely $15M lower-left; Cascade top-left "That's Gary. / His AI support agent... / It cost $400k").
 9. **End cards:** logo mark pops, then the wordmark types or wipes on, then a tagline with one accent word, then a URL or CTA in a pill (Unveil, Hinnacle, Comena). Black or white, always minimal.
+
+### Flow and direction rules
+- The dominant global flow is ← (12 of 25 videos), i.e. content moving left. This is consistent with "forward" reading: panels whip or slide toward the left and the camera trucks right (inference from flow plus sheets: Wildcard's whip-left, Comena's 10 s run of ←, VibeFlow's tilted UI pans).
+- Founder footage is locked off or steadicam (40-96% static). The motion budget goes to the UI and text, not the camera. Unveil's Lance is the exception, with a steadicam push-in walk-and-talk.
+- UI is shown at a 3D tilt of about 20-35 degrees while travelling, then flattened to front-on when the viewer must read it (VibeFlow, WithAI's task reel, Cluely's overlay punch-in, Anvil's retro screens).
+- Exit direction matches entry: Lance's founder walks out of frame right, the camera whips right, and the logo builds. Cards that rise from below leave upward.
+- Zooms are motivated by the cursor: auto-zoom toward the click target, ease-in-out, with motion blur (Weave, Sim). Punch-in scale on the UI is about 1.3-2x.
