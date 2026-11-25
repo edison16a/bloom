@@ -267,3 +267,15 @@ Hits are speech-inflated, so these rules come from the visuals plus the cases ab
 5. **Type-on:** word by word with a slight baseline rise, about 1 s per sentence (#07); handwriting at about 1 char per frame (#22); mono typewriter (#01).
 6. **Big numbers carry beats:** bold white numerals bottom-center ($250,000,000), counters incrementing per cut (#10), countdown timers as story clocks (#17), giant counters over tinted frames (#08).
 7. **Essay cards:** small white sans centered on pure black, full sentence at once (#02, #25). This is the calm/"intellectual" register.
+
+### Flow and direction
+- Talking-head sections are 70–93% static, so energy comes from cuts and reframing, not camera moves.
+- Montage sections flip to strong lateral flow (#06 →28/←20, #12 →26/←20, #13 →28/←25, #10 ←29/→20). The sheets show they are **direction-matched in pairs**: a hand moving right cuts to an object moving right (#12 page-flips, #04 treadmill → stairs).
+- Transitions that carry motion:
+  - whip pan with horizontal blur, about 5 frames (#22)
+  - push-through, where the camera dives into a page or screen and comes out in the next scene (#10)
+  - droste grid zoom-out followed by radial blur snap-in (#05)
+  - paper-tear reveal (#17)
+  - light-leak flash, about 2 frames (#04)
+  - stripe wipe (#11, lower craft)
+- Cross-dissolves appear only on the founder → product title hand-off (#16).
