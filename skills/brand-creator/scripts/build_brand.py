@@ -28,3 +28,21 @@ try:
 except ImportError:
     sys.exit('fontTools is required: pip install "fonttools[woff]"')
 
+
+def fnum(v):
+    s = "%.2f" % v
+    s = s.rstrip("0").rstrip(".")
+    return "0" if s in ("-0", "") else s
+
+
+# ---------------------------------------------------------------- fonts
+
+def list_fonts():
+    out = {}
+    for fn in sorted(os.listdir(FONT_DIR)):
+        if fn.endswith(".woff2"):
+            fid = fn[:-6]
+            fam, _, w = fid.rpartition("-")
+            out[fid] = {"id": fid, "family": fam.replace("-", " ").title(), "weight": int(w) if w.isdigit() else 400}
+    return out
+
