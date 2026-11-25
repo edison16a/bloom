@@ -153,3 +153,21 @@ neo neo grotesk (Helvetica, Inter), geo geometric sans, hum humanist sans, round
 | upper | 22% | 17% | 11% |
 | camel | 14% | 11% | 27% |
 | mixed | 1% | 0% | 3% |
+
+### Weight
+
+| weight | all (n=860) | craft 4+ (n=351) | craft 1-2 (n=37) |
+|---|---|---|---|
+| light | 3% | 0% | 5% |
+| regular | 30% | 26% | 38% |
+| medium | 16% | 18% | 8% |
+| bold | 38% | 39% | 38% |
+| black | 14% | 17% | 11% |
+
+### Letter spacing
+
+| tracking | all (n=860) | craft 4+ (n=351) | craft 1-2 (n=37) |
+|---|---|---|---|
+| tight | 27% | 42% | 14% |
+| normal | 62% | 51% | 78% |
+| wide | 11% | 8% | 8% |
