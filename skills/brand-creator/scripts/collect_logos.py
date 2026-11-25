@@ -192,3 +192,38 @@ def rows_wd(cached_only=False):
             if row:
                 yield row
 
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--skip-wd", action="store_true")
+    ap.add_argument("--wd-cached-only", action="store_true", help="use only Wikidata logos already downloaded")
+    a = ap.parse_args()
+    fetch_archives()
+    rows = list(rows_svgl()) + list(rows_gb()) + list(rows_si()) + list(rows_yc())
+    if not a.skip_wd:
+        rows += list(rows_wd(a.wd_cached_only))
+    seen, out = set(), []
+    for r in rows:
+        r["key"] = key_of(r["brand"])
+        dup = (r["key"], r["source"], r["kind"], r["file"])
+        if not r["key"] or dup in seen:
+            continue
+        seen.add(dup)
+        out.append(r)
+    for r in out:
+        r["id"] = r["source"] + "-" + os.path.splitext(os.path.basename(r["file"]))[0]
+    cols = ["id", "key", "brand", "source", "kind", "file", "hex", "url", "category", "basis"]
+    with open(os.path.join(ROOT, "research", "catalog.csv"), "w", newline="") as f:
+        w = csv.DictWriter(f, cols)
+        w.writeheader()
+        for r in out:
+            w.writerow({c: r.get(c, "") for c in cols})
+    brands = {r["key"] for r in out}
+    by = {}
+    for r in out:
+        by.setdefault(r["source"], set()).add(r["key"])
+    print("logo files:", len(out), "unique brands:", len(brands), {k: len(v) for k, v in by.items()})
+
+
+if __name__ == "__main__":
+    main()
