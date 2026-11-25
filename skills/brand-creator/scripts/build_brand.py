@@ -528,3 +528,19 @@ SVG files are vector and scale to any size. PNG files have transparent backgroun
     n_png = len(os.listdir(pngdir))
     print("built %s: %d SVG, %d PNG, board and zip in %s" % (name, len(files), n_png, outdir))
 
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--brand")
+    ap.add_argument("--no-png", action="store_true")
+    ap.add_argument("--list-fonts", action="store_true")
+    a = ap.parse_args()
+    if a.list_fonts:
+        for f in list_fonts().values():
+            print(f["id"], "|", f["family"], f["weight"])
+        return
+    build(a.brand, not a.no_png)
+
+
+if __name__ == "__main__":
+    main()
