@@ -25,3 +25,14 @@ The window fills 60 to 80% of the frame. If the thing being shown is small, crop
 
 ## Backgrounds
 One per film: the product's own soft brand colour, plain black, plain white, or real texture (stone, cloud, wheat, wall) blurred a little, as Hue does. `field('#e9e6df', '#c9d3dc', 0, dur)` or `backdrop('stone.jpg', 8, 0, dur)`. Never purple to blue, never floating blobs, never a grid.
+
+## Text
+| Use | Values |
+|---|---|
+| Single line on a plain frame | 72 to 96 px, medium, centred, words rise 0.1 s apart, whole line leaves together |
+| Line above or under the window | 48 to 60 px, 60 px clear of the window |
+| Word sized up | one word at 1.8 times the size next to small ones (Ghostship). Once |
+| Two lines at the left of archive footage | 44 to 52 px, regular, lines 0.4 s apart |
+| Caption over a demo | 34 px, bottom |
+
+3 to 7 words. On screen 1.4 to 2.5 s. Then nothing for at least 0.5 s. Sentence case, full stop allowed. `line(...)` makes it.
