@@ -36,3 +36,12 @@ function uiWindow(name, w, h, states) {
 }
 // A camera. Everything parented to it moves as one.
 function camera(a, z) { var N = K.comp.layers.addNull(); N.name = 'camera'; span(N, a, z); tr(N, 'anchor').setValue([0, 0]); tr(N, 'pos').setValue([0, 0]); return N; }
+// moves: [[t, [localX, localY], scale, [screenX, screenY]?], ...]. Give two keys with the same values to rest.
+function cameraMoves(N, moves, curve) {
+  var P = [], S = [];
+  for (var i = 0; i < moves.length; i++) {
+    var m = moves[i], s = m[2], f = m[3] || [K.w / 2, K.h / 2];
+    P.push([m[0], [f[0] - s * m[1][0], f[1] - s * m[1][1]]]); S.push([m[0], [s * 100, s * 100]]);
+  }
+  anim(tr(N, 'pos'), P, curve || INOUT); anim(tr(N, 'scale'), S, curve || INOUT);
+}
