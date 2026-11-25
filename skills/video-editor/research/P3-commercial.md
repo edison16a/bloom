@@ -234,3 +234,12 @@ Three tempo families appear in this batch:
 - Only 14% of cuts land exactly on a detected beat (IQR 8–20%), and 14% coincide with a transient. Pros do **not** cut every shot on the grid. They put the *picture events* (type changes, photo slams, impacts, logo hits) on the beat and let the in-between cuts follow action and VO phrasing.
 - Exceptions that are fully on-grid are graphic-driven pieces: 02 Apple photo slams (44% on beat / 47% with hit) and 14 Slack type changes (every 0.46 s = 1 beat at 129 BPM *(inf.)*). Rule: **the more graphic and less live-action the piece, the more strictly on-beat it is.**
 - VO-led films (05, 06, 21) cut on VO phrase boundaries: 7–14% on beat even at 35–90 cuts/min.
+
+### SFX density and placement
+- Hits/min median 41 (IQR 32–56). The heavily sound-designed pieces are 19 PUMA (96/min, 42% of cuts with a hit), 02 Apple (94), 13 Notion (90), 14 Slack (76) and 17 adidas F50 (60). Part of that is percussion *(caveat)*.
+- Placement patterns seen *(inf. from hits plus visuals)*:
+  - impacts or whooshes on **reveal moments**, not on every cut (PUMA vignette entrances, adidas sign-blow gag);
+  - UI clicks, keystrokes and shutter clicks synced to **on-screen UI events** (Apple MacBook letter drops, Apple photo slams, Notion card pops, Squarespace typing);
+  - one **big lift** (+20 to +43 dB) at the emotional turn: 01 at 23 s, 08 at 108 s, 03 at 63 and 92 s, 22 at 88 s;
+  - near-silence before the lift (03's Q1 and Q4 ≈ -34 dB). Contrast is what makes the lift feel loud.
+- Loudness: brand films sit at -13 to -17 LUFS. Hype edits are mastered hot (21 Mavs -8.9, 18 Beats -9.8, 06 Nike -10.7).
