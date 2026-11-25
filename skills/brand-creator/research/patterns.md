@@ -56,3 +56,24 @@ S symbol only, W lettering only, SW symbol plus word, B badge.
 | shield | 1% | 1% | 0% | 1% |
 | hex | 3% | 2% | 2% | 1% |
 | other | 4% | 3% | 4% | 1% |
+
+### Drawing style
+
+| style | all (n=8183) | craft 4+ (n=2950) | craft 1-2 (n=519) | YC (n=1703) |
+|---|---|---|---|---|
+| flat | 49% | 58% | 26% | 54% |
+| cut | 23% | 25% | 7% | 13% |
+| line | 17% | 11% | 25% | 19% |
+| detail | 11% | 6% | 42% | 14% |
+
+flat solid fills, cut solid with knocked out parts, line outlines or strokes, detail illustrative, shaded, 3D or gradient.
+
+### Simplicity (1 = draw from memory, 5 = intricate)
+
+| simple | all (n=8183) | craft 4+ (n=2950) | craft 1-2 (n=519) | YC (n=1703) |
+|---|---|---|---|---|
+| 1 | 32% | 51% | 5% | 37% |
+| 2 | 46% | 40% | 18% | 46% |
+| 3 | 17% | 8% | 39% | 13% |
+| 4 | 4% | 1% | 28% | 3% |
+| 5 | 1% | 0% | 9% | 1% |
