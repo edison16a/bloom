@@ -105,3 +105,26 @@ Mirror symmetric left to right (over 95 percent of pixels match): all 22%, craft
 | gray | 3% | 2% | 8% | 4% |
 | pink | 2% | 2% | 2% | 2% |
 | white | 1% | 2% | 3% | 8% |
+
+### Number of colors in the logo (full color sources only)
+
+| colors | all (n=2910) | craft 4+ (n=1274) | craft 1-2 (n=173) | YC (n=0) |
+|---|---|---|---|---|
+| 1 | 40% | 44% | 27% |  |
+| 2 | 30% | 30% | 26% |  |
+| 3 | 14% | 11% | 21% |  |
+| 4 | 9% | 8% | 15% |  |
+| 5 | 4% | 4% | 5% |  |
+| 6 | 2% | 2% | 3% |  |
+
+Counted from pixels: a color must cover at least 4 percent of the ink. Black text plus one brand color counts as 2.
+
+SVG gradient used: all 19%, craft 4+ 19%, craft 1-2 21% (gilbarbara and svgl files).
+
+Saturation and lightness of the main color in craft 4+ logos: saturation median 0.91, lightness median 0.50 (middle half 0.43 to 0.58). Strong brands pick a saturated, mid lightness color rather than a pastel or a dark muddy one.
+
+Most common official hex values: #000000 (335), #4285F4 (38), #FF0000 (23), #FFFFFF (13), #FF6600 (11), #333333 (10), #231F20 (9), #CC0000 (9), #222222 (8), #ED1C24 (7), #0052CC (7), #005571 (7).
+
+## Wordmarks
+
+From 860 labeled wordmark and full logo files (svgl wordmarks and gilbarbara full logos).
