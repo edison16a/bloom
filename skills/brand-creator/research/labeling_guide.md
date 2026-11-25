@@ -18,3 +18,16 @@ One JSON object per line in `research/labels/<sheet name>.jsonl` (for example `r
 | `style` | `flat` solid fills, `line` drawn with outlines or strokes, `cut` solid shape with knocked out parts, `detail` illustrative, 3D, shaded or gradient |
 | `simple` | 1 to 5. 1 = a child could draw it from memory after a glance; 3 = a few parts; 5 = intricate |
 | `craft` | 1 to 5. Professional quality and how modern and resolved it looks today. 5 = world class (Apple, Stripe level), 3 = competent, 1 = amateur |
+
+## Word sheets (`word_*.png`): wordmarks and full logos
+
+All keys above (`comp`, `kind`, `cont`, `style`, `simple`, `craft`, describing the symbol if there is one, `kind: "X"` if not), plus:
+
+| key | values |
+|---|---|
+| `type` | typeface class of the word: `geo` geometric sans (round O, Futura, Circular), `neo` neo grotesk or grotesk (Helvetica, Inter), `hum` humanist sans (Gill, Myriad), `round` rounded sans, `serif`, `slab`, `mono`, `display` custom, stylized or script lettering |
+| `case` | `lower`, `upper`, `title` (first letter capital), `camel` (internal capital), `mixed` |
+| `weight` | `light`, `regular`, `medium`, `bold`, `black` |
+| `track` | letter spacing: `tight`, `normal`, `wide` |
+| `custom` | the one custom detail in the word: `none`, `letter` (a modified letter), `lig` (ligature or joined letters), `color` (one letter or part in another color), `dot` (a special dot or accent), `cut` (a slash, cut or gap), `symbol` (a symbol replaces a letter) |
+| `sym` | where the symbol sits: `left`, `top`, `right`, `inside` (part of the word), `none` |
