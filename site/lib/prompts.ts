@@ -62,3 +62,16 @@ const tryLine: Record<SkillId, string> = {
 };
 
 const number = (lines: string[]) => lines.map((line, i) => `${i + 1}. ${line}`).join("\n");
+
+/** The prompt behind "Copy setup prompt" on a skill. */
+export function setupPrompt(id: SkillId): string {
+  const skill = skillById(id);
+  const steps = [fetchStep([skill.path]), skillsFolderStep, ...skillSteps(skill), `Delete ${TMP}.`];
+  return [
+    `Set up the ${skill.name} skill from Bloom (${site.repoUrl}) on this machine.`,
+    "",
+    number(steps),
+    "",
+    `When you are done, tell me in two lines what you installed and anything I still need to do. Then suggest one thing to try, like ${tryLine[id]}.`,
+  ].join("\n");
+}
