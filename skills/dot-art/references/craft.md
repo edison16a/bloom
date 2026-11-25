@@ -48,3 +48,13 @@ Score a render against this before showing it. Every line should pass.
 - 70% of the frame is quiet. One bright idea, off centre.
 - Composed for type on top: `fade.hole`, or keep the copy side dark.
 - No detail frequency near the headline's stroke width.
+
+## Photo to dots
+
+1. Crop tight. One subject, plain ground. Low resolution cannot carry a busy scene.
+2. `local` .7-1.3 first: the biggest gain. It separates subject from ground.
+3. Then `black` and `white` until the ground drops out.
+4. `edge` .5-.9 with `fill` .4-.6 for the contour-glow look. `edge` 0 and `fill` 1 for photographic.
+5. Night or low-key photo: `relative: true`, `ridge` .5-.8, `edge` 1+, `fill` .35.
+6. Bright sky behind a dark subject: `invert: true`, `gamma` 2+.
+7. Faces: `halftone`, 140+ columns, `edge` under .3.
