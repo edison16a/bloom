@@ -11,3 +11,24 @@ The user's main complaint about the last test was that it was "way too slow-pace
 - Prefer well-known, high-craft examples: official brand channels, top agencies, top creators. Prefer recent ones (2023–2026).
 - Skip tutorials, screen recordings without editing, reaction videos, low-effort uploads, and anything over 12 minutes. For long talking-head videos, a 3–6 minute professionally edited one is fine.
 - Find videos with `yt-dlp "ytsearch10:<query>" --flat-playlist --print "%(id)s|%(title)s|%(duration)s|%(channel)s"` (or a known URL). Check the title, channel and duration before measuring. Never measure a search result blind.
+
+## Measuring (required for every video)
+```
+cd "<research dir>"
+python3 -I tools/measure.py "https://www.youtube.com/watch?v=<id>" <batch>/<nn>-<slug>
+```
+- This downloads ≤720p to a temp folder, deletes it afterwards, and writes `metrics.json` plus contact sheets:
+  - `sheet_overview.png` (the whole video)
+  - `sheet_open.png` (the first 6 s at 5 fps)
+  - `sheet_transitions.png` (the densest 3 s of cuts at 10 fps)
+  - `shots/` (one frame per shot)
+- The numbers are waveform and pixel measurements, not listening. Nobody can hear the audio, so reason from the numbers:
+  - `bpm` and `beat_strength` (above about 1.6 is a clear beat)
+  - `lufs`
+  - `energy_db_per_s` and `biggest_lifts` (drops and lifts)
+  - `hits_per_min` (transients: SFX, impacts, whooshes)
+  - `cuts_on_beat_share`, `cuts_with_hit_share` and `speech_share`
+- Pacing: `cuts_per_min`, `shot_len_median` and `cuts_per_min_by_quarter` (does it speed up?).
+- Flow: `flow_per_second`, one character per second (→ ← ↑ ↓ are global pans or pushes, Z+ and Z- are zoom proxies, `.` is static). It's noisy, so confirm it against the sheets.
+- **Look at the sheets** with the Read tool on the PNGs, at least the overview and transitions sheets for every video. Judge the type style, text animation, transitions, colour and layout, and how motion carries from one shot to the next (direction continuity, match cuts, whip directions).
+- Run the measurements in parallel with `&`, 3–4 at a time, to save time. If a download fails, pick another video.
