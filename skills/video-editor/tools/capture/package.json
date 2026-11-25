@@ -1,0 +1,1 @@
+{ "name": "capture", "private": true, "description": "Product capture for video edits", "dependencies": { "playwright-core": "^1.50.0" } }
