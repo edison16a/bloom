@@ -300,3 +300,13 @@ Batch of 25. Videos 01–15 are big-tech software and feature films: Apple, Goog
   - Push-ins get a whoosh that resolves on the cut (#12 laptop → prompt).
   - Counters roll with a riser (#13).
   - Logo resolve gets a single low hit or chime, then silence or tail.
+
+### Text animation conventions
+1. **Word-by-word reveals on black or a flat field.** Centred sans, white, with the key word in the brand accent (#04 Gemini blue, #24 peach, #12 violet). About 0.5–1.0 s per word or phrase.
+2. **Word-swap slot.** A fixed phrase plus one rotating noun that changes every 10–12 frames ("Meet your [+New] designer / writer / producer…", #05). Change the word on the beat.
+3. **Typewriter with caret inside a UI prompt box.** Cut away before the prompt finishes (#05, #12, #09). A typed prompt typically shows about 12–20 characters before the cut.
+4. **Condensed caps trailer titles** (#12). Two-line headline, stretch-in or squash-in, about 1.5–2 s hold, then cut to proof footage.
+5. **Counters and stats.** Numbers roll up with ease-out over about 1–1.5 s (#13 "55+ → 150+", #11 usage meter to 30,000, #08 "2x / 3x" cards held about 1 s each).
+6. **Supers in live action.** Tiny, centred or lower, fade in and out (#03, #09). Never animated flashily.
+7. **Lower thirds (event recaps).** Name, thin vertical rule, title; bottom-left; white thin sans (#10, #11).
+8. **Bouncy brand type** (playful brands): per-letter overshoot and stagger (#15 Duolingo, #22 "TIME OFF").
