@@ -145,3 +145,50 @@ def rows_yc():
             if row:
                 yield row
 
+
+def rows_wd(cached_only=False):
+    d = os.path.join(CACHE, "wd")
+    os.makedirs(d, exist_ok=True)
+    meta = os.path.join(d, "query.json")
+    if not os.path.exists(meta):
+        q = ("SELECT ?c ?cLabel (SAMPLE(?lg) AS ?logo) (MAX(?sl) AS ?s) (SAMPLE(?il) AS ?ind) WHERE { VALUES ?i { %s } "
+             "?c wdt:P452 ?i; wdt:P154 ?lg; wikibase:sitelinks ?sl. FILTER(?sl>=5) ?i rdfs:label ?il. FILTER(LANG(?il)='en') "
+             "?c rdfs:label ?cLabel. FILTER(LANG(?cLabel)='en') } GROUP BY ?c ?cLabel" % TECH_INDUSTRIES)
+        url = "https://query.wikidata.org/sparql?" + urllib.parse.urlencode({"query": q, "format": "json"})
+        open(meta, "wb").write(get(url, 120))
+    res = json.load(open(meta))["results"]["bindings"]
+
+    def dl(b):
+        qid = b["c"]["value"].rsplit("/", 1)[1]
+        name = b["cLabel"]["value"]
+        if re.fullmatch(r"Q\d+", name):
+            return None
+        fn = urllib.parse.unquote(b["logo"]["value"].rsplit("/", 1)[1])
+        f = os.path.join("wd", qid + ".img")
+        p = os.path.join(CACHE, f)
+        if not os.path.exists(p):
+            if cached_only:
+                return None
+            src = "https://commons.wikimedia.org/wiki/Special:FilePath/" + urllib.parse.quote(fn) + "?width=256"
+            for attempt in range(6):
+                try:
+                    blob = get(src, 30)
+                    open(p, "wb").write(blob)
+                    time.sleep(1.5)
+                    break
+                except urllib.error.HTTPError as e:
+                    wait = int(e.headers.get("Retry-After") or 30) if e.code == 429 else 5
+                    print("wikimedia %d, waiting %ds" % (e.code, min(wait, 900)), file=sys.stderr)
+                    time.sleep(min(wait, 900) + 5)
+                except Exception:
+                    time.sleep(5)
+            else:
+                return None
+        return dict(brand=name, source="wd", kind="raster", file=f, hex="", url="https://www.wikidata.org/wiki/" + qid,
+                    category=b.get("ind", {}).get("value", ""), basis="Wikidata, %s sitelinks" % b["s"]["value"])
+
+    with ThreadPoolExecutor(1) as ex:
+        for row in ex.map(dl, res):
+            if row:
+                yield row
+
