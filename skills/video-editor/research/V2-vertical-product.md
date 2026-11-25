@@ -45,3 +45,177 @@
 | 25 | When Raycast on iOS? / Raycast / https://www.youtube.com/watch?v=UFPVuQlSfvw | 31.4 | 9.5 | 5.40 | 76.0 (2.73) | −17.9 | 51.6 | 40% | 40% | 0.23 | Z+ | Opens on a quoted user DM card; founders on camera; small desktop UI window over a blurred brand gradient |
 
 \* Cut detector misses animated transitions (see caveat 1). † Likely BPM octave or 2/3 error (see caveat 3).
+
+## 2. Per-video notes
+
+**01 Notion — 5 tips for Custom Agents (67 s)**
+- Hook (0–3 s): a real Notion sidebar fills the frame, and a small rounded presenter PiP sits bottom-right. A black pill caption reads "Custom Agents just dropped on Notion." At 2–3 s a giant black "Five Tips" headline appears on cream.
+- Structure: each tip follows the same pattern. Presenter A-roll, then a paper card pinned to the wall with a hand-lettered serif title ("Find the busywork", "Be a boss", "Set up triggers", "Limit access", "Do a test run"), then 2–4 UI cut-ins, then back to the presenter. The tip cards land at about 5, 15, 30, 42 and 55 s. Logo end card on cream at 66 s.
+- Text: two layers. Persistent captions are white text on a black rounded pill in the lower third, one phrase per pill. Chapter titles use a serif on the physical card, and the card's text appears over about 3 frames after an empty card first (seen in the overview sheet). "Tip 1" / "Tip 5" are huge white sans over the presenter.
+- UI framing: the UI is never shown as a whole window. Each cut-in is a single panel ("Add trigger" list, day picker, chat input) cropped and scaled so text is roughly caption-sized, on a flat colour field (cream, light blue, charcoal). The cursor stays in frame.
+- SFX and music: soft beat at 81 BPM, strength 2.05. Biggest energy lifts at 36 s (+15 dB) and 56 s (+11 dB) both sit at tip transitions. Inference: a music swell or whoosh marks each chapter. 43% of cuts land on the beat.
+- Flow: mostly static; small ← → slides when UI panels swap.
+
+**02 Notion — What Is Notion? (87 s)**
+- Hook: a blinking text cursor on pure white for about 0.3 s. A huge "N No" snaps in, then collapses to a small "Notion|" typed letter by letter (about 2–3 frames per character in the 10 fps sheet), ending "Notion is…". Then three black pills morph into "Notion is not an [AI chatbot ⌄]", "…a [✕ Task tracker]", "…a [~~Note-taking app~~]".
+- Structure: definition by negation (0–10 s), logo (10 s), then a long chain of floating UI vignettes: AI chat, project plan, meeting notes, Kanban, roadmap, customer logos. The ending mirrors the opening with the typewriter "Notion does [Busywork]", checklist items striking through, and the cursor clicking "To-do" into the Notion logo.
+- Text: tiny centred black sans (Inter-like), typewriter-revealed with a cursor. Product nouns sit inside UI chips (pill with icon) instead of plain text.
+- UI framing: white canvas the whole way. UI shows as floating cropped cards with soft shadows, and a hand-drawn face avatar (the Notion AI mascot) acts as the "cursor/character" that moves between cards.
+- Audio: 77 BPM (strength 2.58), −14.3 LUFS. Energy jumps +26 dB at 1 s, which is the music start on the first word. Hits are irregular (not on a grid), so they are inferred to be UI SFX: clicks and pops at 2.8, 3.2, 3.5, 4.2, 5.5 s… matching the chip pops.
+- Flow: lots of lateral ← → slides and Z+ scale-ins. Every scene change is a moving transform, never a hard cut.
+
+**03 Notion — You are what you use (13 s)**
+- Hook: a person in an inflatable T-rex costume at an office desk, with a static caption "You are what you use." that stays all the way through.
+- Structure: six T-rex gags, cut every 1.37–1.44 s (very regular, tied to the 150 BPM track: 1.4 s ≈ 3.5 beats). Ends on a slow → pan across an atrium.
+- Text: one small white sans caption at mid-frame, never animated.
+- Audio: loud (−12.4 LUFS), very clear beat (6.62). Music stops at 10 s (−23 → −35 dB) for a quiet ending.
+- Lesson: a meme-format brand Short with zero UI. The cadence is metronomic rather than beat-locked (17% on beat).
+
+**04 Runway — Change video aspect ratios (55 s)**
+- Hook: a widescreen clip of a fuzzy mascot letterboxed in black, with a single centred white word ("make", "2026") at about 1 word per 0.3–0.5 s. Then "you've had this **problem**", where the key word is scaled about 2x.
+- Structure: problem (widescreen vs social), then mascots on set, then the UI demo (menu, prompt, 9:16 select, generate) at 30–40 s, then results reformatted to 9:16 at full bleed, then end.
+- Text: karaoke-style one word at a time, centred, white sans. Emphasis words are bigger. This is the "one-word caption" convention at its most extreme.
+- UI framing: the dark UI panel is cropped to the dropdown or prompt box and centred on black, with the word caption over it.
+- Pacing: 30.8 cuts/min, median 1.5 s, starts at 39.6 cuts/min. 130 BPM, 43% of cuts on beat, 46% of cuts with a hit. Black letterbox bars give way to full-bleed frames on the payoff: the format change itself is the reveal.
+
+**05 Canva — Die-cut stickers (12 s)**
+- Hook: top-down desk with a script/serif title "create your own DIE-CUT STICKERS in Canva" overlaid in pink; the title fades out by about 0.8 s.
+- Structure: hands spread stickers, then iPad Canva designs (3 designs in 1.5 s), then the export panel, then printing, then stickers placed on a red card. No voiceover.
+- UI framing: the UI is shot on a real iPad in camera, top-down, then an in-camera push-in (Z+) to a tight crop of the design. No screen recording.
+- Pacing: 40.5 cuts/min, median 1.0 s; the middle quarter hits 81 cuts/min (3 design swaps). The music beat is strong (8.16) but cuts are not on it (0%). It is cut to hand action instead.
+- Lesson: ASMR-like tactile craft plus music; the UI is a prop.
+
+**06 ElevenLabs — Product photo to UGC ads (31 s)**
+- Hook: a white canvas with "What would you like to create?" and a prompt, the presenter cutout in the bottom third, and a small grey caption pill ("bathroom selfie").
+- Structure: prompt, generated selfie image (full-bleed 3 s), product image, UGC video full-screen (talking skincare guy, 4 s), then 3 variations in a fanned stack, then a 3D ring carousel of outputs, then "different voices / different languages" swipes, then the presenter full-frame CTA "try it".
+- UI framing: UI cards are cropped to the prompt box, centred upper half, with the presenter cutout overlapping the bottom edge. This is a layered "presenter in front of UI" layout.
+- Pacing: 23.4 cuts/min, median 1.54 s, 124 BPM. The 3D carousel is the visual peak around 20–24 s.
+
+**07 Samsung — Galaxy Buds On, Voice Command (22 s)**
+- Hook: a camcorder REC frame (red dot, timecode) over a woman in a studio, and a slate clap at 1 s. "Behind the scenes" framing.
+- Structure: slate, macro of the buds, actor on a ladder says "Play music 🎵" (caption with emoji), music kicks in, he dances with the ladder, "Easy. Said and done.", then 3 packshots on grey gradient, then a SAMSUNG logo on black.
+- Text: small white sans, centred lower-middle; the product name in bold.
+- Audio: 130 BPM, strength 4.87; the voice command triggers the music, so the drop is the story beat.
+- Flow: handheld; motion share 0.5, the highest in the batch.
+
+**08 Figma — Agent animates a gallery (42 s)**
+- Hook: zoomed out on the whole Figma canvas (tiny), then a fast push-in to the agent panel. Prompt text types into the input box.
+- Structure: prompt typed (0–9 s), agent thinking/steps (9–14 s), result phone frame animating cards in (17–24 s), timeline view (24–28 s), playback loops (28–42 s).
+- UI framing: one continuous screen recording with virtual camera moves. Zoom from full canvas to the panel (Z+), pan ↑↓ along the scrolling result. The phone frame is shown at about 70% of frame height on light grey.
+- Audio: a near-constant music bed, 90 BPM, strength 9.03, −20.2 LUFS. Hits every 0.33 s are hi-hats, so no SFX can be inferred. No speech.
+- Lesson: a single take plus camera moves can carry 42 s without hard cuts, but it only reads as fast if the virtual camera keeps moving (motion share 0.27).
+
+**09 OpenAI — 6 Underrated Ways to Use ChatGPT (62 s)**
+- Hook: a woman with a mic, and a big white bold headline "6 people. 6 underrated ways to use ChatGPT" building line by line in the top left over her (0–2 s).
+- Structure: six vox-pops of about 9 s each. Each has a name lower-third, then an emoji sticker plus label ("Fit check", "Ratings finder", "Hair scheduling", "Fiscal awareness", "Thought organizing", "Helpful agents") at mid-left, then a cut-in to a phone or UI, then end on the question "What's your most underrated use?" built word by word.
+- Text: large bold sans, left-aligned, word-by-word build (about 2 words per 0.5 s). Small captions at the bottom.
+- Audio: loudest in the batch (−9.7 LUFS). 119 BPM, 31% of cuts on beat, 38% of cuts with a hit. The first quarter runs 23 cuts/min and the last 19.
+
+**10 OpenAI — Messi asks ChatGPT (17 s)**
+- Hook: Messi raises a phone in an empty glass room. A small white subtitle shows his question.
+- Structure: voice prompt, a hand holding the phone toward camera showing the ChatGPT voice UI, then the generated image of the room on the phone, Messi smiling, a follow-up voice prompt, and a wide of the room.
+- UI framing: the phone mockup is a real phone, shot shallow focus at about 40% of frame height. No screen inserts.
+- Audio: quiet (−24.9 LUFS), clear soft beat. Cuts are not beat-synced (0%). Celebrity and dialogue lead.
+
+**11 Google — Ask Photos (Pixel 11) (22 s)**
+- Hook: a phone mockup centred on a flat lilac field with a music credit pill. The phone drops slightly (↓), then a title card "Friendsgiving can get messy, but your pics don't have to be".
+- Structure: mockup, then the photo fills the frame (the mockup is removed and the UI chrome stays). A prompt pill "Remove the red stain on purple shirt" types in, macro push-in on the stain, "Processing…" then "Erasing" pills over a blurred zoom, the clean photo returns, and the end card "Time to hit send ✨".
+- Text: small dark sans, centred, on lilac; the end card types on with a sparkle emoji.
+- Audio: −11.2 LUFS, 88 BPM, strength 8.2. Big lifts at 2 s (+8.7) and 5 s (+11.8): the beat drops exactly when the photo goes full bleed at 5.2 s.
+- Flow: a push-in (Z+) into the problem area, then a pull back for the reveal.
+
+**12 Google — Pixel Tag, Pixel Drop (52 s; audio N/A)**
+- Hook: huge black "Pixel Drop" with the "o" replaced by the product (a tag), then the G logo pops, then a lime-green card "Pixel Tag" with a blue jelly blob mascot.
+- Structure: question "How does 'I lost it' quickly become 'I found it'?", then the Find Hub app icon, then a 3D aerial city zooming to a pin, then a living room, then the phone UI "My Wallet — Located!", then the wallet under a couch, "Tag, you found it!", "Two clicks on your tag", "makes your phone ring", product hero end.
+- Text: the best example of word-by-word kinetic type. Each word fades and slides up into place, grey turning black when "active" (for example "Tag," then "Tag, you", then "Tag, you found it!" over about 1.5 s at 10 fps, so roughly 4–6 frames per word). Large black sans on warm white.
+- UI framing: UI appears as a rounded white phone-screen card floating over 3D imagery, not inside a device frame.
+- Continuity: the blue blob mascot travels across cuts and carries attention from scene to scene.
+
+**13 Google — Circle to Search, A'ja Wilson (20 s)**
+- Hook: top-down phone lying on a dark wood desk, showing a social post. The feed scrolls ↑.
+- Structure: long-press, then a Gemini glow sweeps the screen edges, then a circle is drawn around the player (glowing stroke animates over about 1 s). The camera pushes in until the phone UI fills the frame (5.7 s), then the search "is she the goat" types in, then the AI overview, then the screen dims and the bold stat "5 WNBA MVP awards" counts up.
+- Audio: −17 LUFS; energy jumps +12.6 dB at 8 s when the AI answer appears.
+- Flow: a continuous push-in (Z+) from desk to UI. No hard cut until 5.7 s.
+- Lesson: the vertical problem (a whole phone is small in 9:16) is solved by starting wide on the device, then pushing in until the UI is full-bleed.
+
+**14 Gemini — Meet the models, Gemini 4 Argon (78 s)**
+- Hook: presenter talking head with "Meet the Models" in white at the top. At 2 s a hand-drawn yellow arc text "MEGAN FROM GEMINI TEAM" appears.
+- Structure: the model picker UI floats over the top half of the frame (dark card), above her head. She explains each model (Flash-Lite, Flash, Pro, Argon), each with an emoji (⚡, 🧠). There are full-screen UI inserts (doc, app mock) and a giant "4" built from an image mosaic as a set-piece around 45 s. Ends on side-by-side model names.
+- UI framing: a cropped dark UI card overlaps her face area (she sits low in frame). In the transitions sheet the card pops in with a 1-frame scale overshoot and pops out with no fade.
+- Audio: quiet mix (−25.3 LUFS); music ducked under speech.
+
+**15 Gemini — Create and share your avatar (31 s)**
+- Hook: stacked avatar portrait cards on black-navy, then a white rounded card "Create and share your avatar in Gemini" scales in with sparkles.
+- Structure: phone UI (avatar entry), "Scan yourself and record your voice" (front-camera card with a progress ring), "Then share it out" (share sheet), "Create images and videos of you and your friends" (prompt card with @mentions), then a full-bleed result montage (Victorian, dolls, skydiving, news set, tattoo, snowmen) at 0.5–0.7 s per shot, "Remove anyone's access", and an end card with the URL.
+- UI framing: the phone UI is cropped (top bezel visible, bottom cut off by the frame edge) and slides in from the side. The caption is always centred below the UI in white on a navy gradient.
+- Pacing: the 3rd quarter peaks at 53.8 cuts/min (the result montage), against 7.7–15 elsewhere. 64% of cuts land with a hit, the highest in the batch.
+- Transitions: white flash-frames between montage shots (visible in the transitions sheet).
+
+**16 Framer — F1 starts shipping (25 s)**
+- Hook: a black frame, then a keyboard lit in a dark studio (Z+).
+- Structure: cuts at exactly 3.03, 6.07, 9.10 and 12.13 s (every 3.03 s, which is 4 beats at 80 BPM), then a wide and an "F1" logo glitch, "Shipping Today", and Framer × Work Louder.
+- Audio: the loudest track in the batch (−10.4 LUFS). Energy lifts of +19.5 dB at 3 s and +19.7 dB at 20 s are drops landing on the first cut and on the logo. The silent pause at 18–19 s (−24 dB) comes before the logo drop.
+- Transitions: 1–2 frame white-noise or glitch flash frames at the cut (transitions sheet).
+- Lesson: hardware "hype" uses few, long-ish shots at a fixed bar length with big drops; no captions until the end.
+
+**17 Framer — Portfolio with Wireframer (40 s)**
+- Hook: fast cuts (30 cuts/min in the first quarter) of portfolio examples, each with a one-word caption ("creating", "website", "easier", "wireframer"), then the presenter.
+- Structure: a creator-style split from 4 s to the end. Screen recording in the top half, presenter on a purple/pink gradient with the Framer logo in the bottom half, and a one-word caption at the seam.
+- UI framing: the desktop browser is cropped to the relevant region at about 1:1 aspect. The cursor stays visible. A slow push-in (Z+) on generation.
+- Audio: speech-led (0.72 speech share, the highest in the batch), quiet (−25.3 LUFS), low beat.
+- Lesson: the split layout gives the UI about 50% of the frame, which still reads small; the cut rate collapses to 0 after 10 s (single continuous split).
+
+**18 Airbnb — Laundry service (13 s)**
+- Hook: POV hands lift a laundry bag; caption "UNREAL: All my clothes got taken from my Airbnb" (TikTok "storytime" format, white, centred, small).
+- Structure: bag at the door, door opens to reveal folded laundry, "and returned clean and neatly folded", folded clothes close-up, "Laundry service is now on Airbnb", Airbnb logo drawn on.
+- Audio: −17.9 LUFS, 70.8 BPM, no speech.
+- Lesson: a native-UGC disguise for a feature launch; 23.5 cuts/min; flow follows the POV walk (Z+ forward, ← turn).
+
+**19 Apple — Desk View tip (19 s)**
+- Hook: a stitched/duet-style clip of a student asking "I just got a MacBook for college..drop all the tips and tricks" (TikTok caption style), then a cut to the Apple Store employee answering.
+- Structure: employee at a desk with a MacBook (2.4 s median), screen-captured FaceTime Control Center, the "Desk View" option circled in red, then the overhead desk view of handwriting.
+- UI framing: the screen capture is full-bleed vertical, cropped to the left part of the macOS screen (the FaceTime window plus menu), so the UI is large.
+- Audio: 116 BPM, −16.3 LUFS, speech 0.33.
+- Flow: static camera; all motion comes from cuts.
+
+**20 Arc — Voice Search (24 s)**
+- Hook: an empty waterfront with the NYC skyline. The phone rises into frame from the bottom (↑ over about 1 s) in a hand.
+- Structure: one continuous handheld shot (no hard cuts until 22 s). The voice-search smiley appears, the answer page, the phone lowers, the camera tilts up to the sky, and white bold text swaps "The fastest way to get an answer", "Now, even faster", "Voice Search", "Now available in Arc Search on iOS", then a black logo card.
+- Text: bold white sans, centred, lands on the sky as negative space.
+- Audio: 130.8 BPM; lift +8 dB at 13 s when the answer appears. Regular hits every 0.46 s from 13 s on, so the beat enters at the payoff.
+- Flow: ↑ in (phone up), then ↑ tilt to the sky (camera up). The upward direction is consistent and carries into the logo.
+
+**21 Arc — Now on Android (45 s)**
+- Hook: a saturated cobalt card "Dear Android friends," in white heavy italic, then the logo pop, then "Welcome to the *fastest way* to search" on a pink-blue gradient (bold sans with an italic emphasis word).
+- Structure: features ("who is caitlin clark", browse-for-me, "the *cleanest* way to browse", blocking toggles), then "Loved around the *world*" with tilted UGC creator clips in rounded cards plus country flags, 14.7K reviews, "Arc Search is now on Android", fast feature reprise, "Download today [Google Play]", and the URL.
+- UI framing: UI is cropped hard to one element at a time (search field, toggle, result card) and scaled to about full width. The keyboard typing "warehous" is shown big.
+- Pacing: 34.9 cuts/min, median 1.0 s, rising to 59 cuts/min in the last quarter (fast reprise before the CTA). Hits on a ~0.48 s grid suggest about 125 BPM (the detector says 83).
+- Flow: ↑ dominant (scrolls, cards entering from below).
+
+**22 Grammarly — AI Rewriter (58 s)**
+- Hook: a street-interview host walks up: "what's your biggest college fail?" in yellow/white bold captions.
+- Structure: 3 interviewees (0–25 s), "use Grammarly", a full-screen UI section (25–37 s) with big green arrow pointers and a highlighted text phrase plus teal caption pills, back to the interviews, then the Grammarly logo, then the end card "Download for free" on white with floating icon particles.
+- Text: word-pop captions of 1–3 words, yellow with a teal alternate colour, bold rounded sans, centred mid-frame, each swapping on its word.
+- Audio: −11.4 LUFS, speech 0.26, cuts every ~1.4 s.
+- UI framing: the doc UI fills the frame width, cropped to a single paragraph and suggestion popover. The green arrow is animated, bouncing toward the element.
+
+**23 ElevenLabs — More than voice (38 s)**
+- Hook: the presenter's face fills the frame next to a tweet screenshot ("I didn't realize you could make videos with ElevenLabs…").
+- Structure: a tour of tools, each as a floating white UI card in the top half: Image & Video, Text to Speech, Music, Sound Effects, Dubbing, Studio, Flows, All tools, then the presenter full-frame "Try ElevenCreative today."
+- Transitions: between cards, a 1–2 frame blur plus scale-up "punch" of the outgoing card into the next (transitions sheet), and a 1-frame blur on the presenter cutout.
+- Audio: 127 BPM; lifts at 15 s (+9.6) and 37 s (+8.7) align with the Sound Effects demo and the end CTA.
+- Captions: small grey pill, centred low.
+
+**24 Runway — Create on iOS and Android (95 s)**
+- Hook: an NYC rooftop skyline, then a giant elephant leg (AI-generated) under a bridge in the first second; handwritten "New York Imag…" text.
+- Structure: a phone-shot street tour of AI effects (elephants on the Brooklyn Bridge, pink hippo balloon, flooded Flatiron, Statue of Liberty torch, flocks of birds). Real people react (an elderly woman's "whoa" face is reused). Prompt pill overlays ("Add a character balloon between the buildings"). Black end card "Download Runway for".
+- Pacing: 42.9 cuts/min in the first quarter, slowing to 15 in the last; median 1.5 s.
+- Flow: handheld ← → whip-style; reaction close-ups are used as punctuation between effects.
+
+**25 Raycast — When Raycast on iOS? (31 s)**
+- Hook: a quoted user message card over a dark purple glow: "I'd be willing to pay for an iOS version of Raycast. Is this something you guys have thought about".
+- Structure: founder 1 answers, founder 2 answers, a desktop UI demo (window over a blurred brand light-streak background), founder 2 again.
+- UI framing: the landscape desktop window is placed small (about 95% width × 25% height) in the middle band, with an animated brand background filling the rest, then a slow push-in (Z+). This is the weakest UI legibility in the batch.
+- Audio: −17.9 LUFS, 76 BPM; 40% of cuts on beat.
+
+## 3. Batch synthesis
