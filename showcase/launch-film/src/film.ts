@@ -112,3 +112,23 @@ function window1(t: number, pushAt: number) {
   win.style.transform = `translateX(${tx}px) rotateX(${(1 - settle) * 26}deg) translateY(${(1 - settle) * 60}px) scale(${scale})`;
   return true;
 }
+
+/** Window two: the options sheet arrives, the camera moves to option 1, the pick dissolves to the board. */
+function window2(t: number, inAt: number, pushAt: number) {
+  const el = $("W2"), win = $("win2");
+  if (t < inAt - 0.01 || t > pushAt + 0.51) { el.style.opacity = "0"; return; }
+  const arrive = out(seg(t, inAt, inAt + 0.7));
+  const push = pushOffset(t, pushAt);
+  el.style.opacity = String(seg(t, inAt, inAt + 0.3));
+  el.style.transform = `translateY(${(1 - arrive) * 54 - push * 1080}px)`;
+  // Option 1's centre on the sheet, in window pixels.
+  const px = 371, py = 330, cx = 720, cy = 405, s = 1.35;
+  const moveIn = inOut(seg(t, bar(5) + 1.2, bar(5) + 2.4));
+  const click = bar(7);
+  const back = inOut(seg(t, click + 0.1, click + 1.1));
+  const k = moveIn * (1 - back);
+  const scale = 1 + (s - 1) * k;
+  win.style.transform = `translate(${-(s * (px - cx)) * k}px, ${-(s * (py - cy)) * k}px) scale(${scale})`;
+  $("board").style.opacity = String(seg(t, click, click + 0.15));
+  $("options").style.opacity = String(1 - seg(t, click + 0.15, click + 0.3));
+}
