@@ -83,3 +83,35 @@ python3 -I scripts/preview.py --options brands/<slug>/options.json
 This writes `options.png` and `options.html`. Read `options.png` and fix anything that fails the checks in step 8 before showing it. Then show the user the sheet (send `options.png`, or point to `brands/<slug>/options.html`) and, in plain sentences, give each option's number, name and one line idea, say which one you recommend and why, and ask them to pick a number. Tell them they can mix parts (the symbol of 2 with the type of 1) or ask for changes or a new round. **End your turn here.** Do not write `brand.json` or build anything until the user answers.
 
 If the user asks for changes or new directions, update `options.json` (or go back to steps 3 to 5), render again and ask again. Keep at most five options on a sheet.
+
+### 7. Build the chosen option
+
+Only after the user has picked. Write `brands/<slug>/brand.json` with the chosen option as the main `symbol`, `wordmark` and `colors`, and the options they did not pick as `alternatives` in the order shown:
+
+```json
+{
+  "name": "Acme",
+  "tagline": "What it does in one line",
+  "rationale": "Two sentences: why this logo fits the company and its category.",
+  "colors": {"primary": "#FF5A1F", "accent": "#FFB800", "ink": "#0E0E10", "paper": "#FFFFFF",
+             "idea": "Signal Orange: warm in a cold blue category."},
+  "symbol": {"svg": "<path d='...' fill='{P}'/>", "idea": "What the mark is and why."},
+  "wordmark": {"font": "inter-800", "case": "lower", "tracking": -0.04, "accent_chars": [], "custom_glyphs": {},
+               "idea": "Why this type."},
+  "lockup": {"cap_ratio": 0.66, "gap": 0.24},
+  "app_icon": {"inset": 0.2, "symbol_color": "#FFFFFF"},
+  "alternatives": [
+    {"label": "Option 2: uppercase", "why": "...", "symbol": {"svg": "..."}, "wordmark": {"font": "...", "case": "upper", "tracking": 0.02}},
+    {"label": "Option 3: black led", "why": "...", "colors": {"primary": "#0E0E10"}}
+  ]
+}
+```
+
+`lockup.cap_ratio` is the word's cap height as a share of the symbol height (default 0.66) and `gap` the space between them (default 0.24); `stack_cap_ratio` and `stack_gap` do the same for the stacked logo (defaults 0.36 and 0.24). Real lockups put the word's full ink at about 0.9 of the symbol height. Uppercase words and lowercase words with ascenders and descenders look right near the default; a lowercase word with few ascenders (like "nook" or "lumen") needs about 0.8.
+
+The alternatives are the options the user did not pick (each label keeps its option number from the sheet so the user can still say "use option 3"). A color only alternative must differ clearly at thumbnail size (another hue family, or black led), not a nearby shade. Then:
+
+```bash
+python3 -I scripts/build_brand.py --brand brands/<slug>/brand.json
+python3 -I scripts/preview.py --board brands/<slug>/brand-board.html
+```
