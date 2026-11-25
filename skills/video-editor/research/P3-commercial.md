@@ -262,3 +262,19 @@ Three tempo families appear in this batch:
 - **Match on motion:** a rotation or swing continues in the same direction across cuts (16 spin chain, 06 serve re-angles).
 - **Product as divider:** Galaxy uses the vertical phone as the split line for the text.
 - Static holds are used for comedy and product (01, 09, 11 ≥ 43% static). Hype edits are under 15% static (05, 18, 21, 23, 25).
+
+### 10 reusable moves (recipes)
+1. **Position-locked match-cut run** (04, 08, 22). Keep the hero element (face, logo, icon, crest) at the identical x/y and scale. Swap the background or subject every **2–4 frames at 24 fps** for 8–15 swaps. Hard cuts with no easing. SFX: a tick or click per swap, or ride the hi-hat. End by holding the last frame for ~12 frames.
+2. **UI card pop + typewriter over live action** (13, 15). Frame 1: an 8 px grey bar at the card position. Frame 2: card at 50% opacity, scale 0.96. Frame 3: full card with soft shadow and back-out easing. Text types **2–3 chars/frame** with a blinking cursor. Hold 3–4 s, then fade out over 6 frames. SFX: a soft pop on frame 3 and light key ticks (low in the mix).
+3. **Word-by-word end card build** (05, 07, 09). On black or flat brand colour, line 1 hard-cuts on a downbeat, line 2 is added 8–12 frames later, line 3 on the next downbeat. No motion, just hard cuts. Hold 36–48 frames, then cut to the logo. SFX: one low boom on the final word, then the music tail.
+4. **Photo slam on white** (02). Each still appears centred on pure white, scaled from 1.04 to 1.00 over 4 frames (ease-out), every beat (**~0.45 s at 135 BPM**), with 1–2 white frames between. Alternate portrait and landscape. SFX: a shutter click plus snare on each slam.
+5. **Scattered kinetic type around the subject** (03). Break the line into 3–5 words placed in empty areas of the live plate. Mix roman and italic. Letters drop in 1 per frame (y offset 20 px → 0, ease-out, 3 frames each). The words exit together with a 6-frame fade. SFX: keyboard clicks per letter, quiet.
+6. **Black/white-and-pillarbox → full-colour widescreen switch** (16, 06). Run the "struggle" act in B&W 4:3 inside 16:9. At the music lift, hard-cut to full-frame colour 16:9. Cut rate roughly doubles after the switch. SFX: a riser over the last 1 s and an impact on the switch frame.
+7. **Spin/motion match chain** (16). Choose 5–8 clips that rotate the same way. Cut at mid-rotation with 3–6 frames per clip. Optional 2-frame speed ramp (100% → 200% → 100%) around each cut. SFX: a whoosh per clip with alternating pitch.
+8. **Collage-frame hype** (23, 25). Put footage inside a box over an animated gradient frame, plus paper or newspaper cut-outs. Transitions are torn-paper reveals (6–8 frames), clone trails (echo 6–8 copies, 2-frame offset, horizontal) and 1-frame colour flashes on the type. Median shot **0.36–0.53 s**. SFX: a paper rip on the reveal, a whoosh on trails, impacts on the downbeats.
+9. **Motion-blur streak logo/word reveal** (19). The word enters from off-left in 4–6 frames with heavy horizontal directional blur (blur scales with speed; expo-out), then settles. The next phrase replaces it with the same streak. SFX: a fast whoosh into a low impact on the settle frame.
+10. **Caption-style manifesto VO** (21). Small white sans captions bottom-centre mirror the VO phrase. Each caption holds across 2–5 quick shots (3–8 frames each) and changes exactly at the VO phrase boundary, not the picture cut. Grade B&W for cohesion; open on a countdown or ticking element. Master loud (≈ -9 LUFS for social hype).
+
+Also worth noting:
+- **Product-as-divider type** (24): split a phrase around a vertical product shape.
+- **Diegetic stat** (10): print the number on a real prop in the scene instead of an overlay.
