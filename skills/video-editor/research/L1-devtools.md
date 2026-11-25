@@ -101,3 +101,16 @@
 - **LUFS:** median -16.4 (IQR -18.7 to -13.2). The energetic ones (Arc Windows -9.8, Loom -10.3, Vercel Ship -11.1, Arc 1.0 -11.5, Superhuman -11.6, Config 2026 -11.9) sit around -10 to -12. Calm and VO films sit at -17 to -29.
 - **Hits/min:** median 54 (IQR 44–84). The busiest are Cursor 2.0 (112), Retool (102), v0 (101), Notion AI (100) and Config 2025 (99). The outliers are Framer 3.0 (0.8) and the Linear dark films (10–13).
 - **Speech share:** median 0.03. Most are music-only; VO or founder pieces (Warp, Cursor 3, Zed, Arc 1.0) run 0.3–0.5.
+
+### Pacing across the video
+- Mean cuts/min by quarter: 17.3 → 18.9 → 18.3 → 12.1. **The pace is front-loaded or flat, and the last quarter slows** because of the end card, URL and logo (typically 4–8 s of calm).
+- Three shapes recur:
+  1. **Flat-out** (Config 2025, Arc Windows, Raycast Windows): 45–70 cuts/min from second 2 to the end card.
+  2. **Quiet hook, then drop** (Linear for Agents 9 s, Vercel Ship 11 s, Notion 3.0 10 s, Config 2026 12 s, Retool 6 s, Arc Windows 15.7 s): 5–12 s of sparse sound and slow motion, then a +5 to +12 dB lift exactly on the first product action or title.
+  3. **Accelerate → silence → reveal** (Raycast Focus): cut rate climbs from 19 to 47 to 61/min, then ~4 s of near-silence (-36 dB) before the product appears.
+- Long VO films (Warp 2.0, Zed) build in the last quarter: Warp goes from 5 to 38 cuts/min with a 0.2–0.3 s social-proof burst; Zed rises from 5.4 to 12.7.
+
+### How cuts relate to the beat
+- Median cuts on the beat is only 22%; median cuts with a hit is 27%. **These editors do not cut every shot on the beat.** The beat lives in the music and in rhythmic UI SFX; picture changes are free-timed.
+- What *does* lock to the grid: (a) the drop or lift moment, which coincides with the first big visual change in every "quiet hook" film; (b) SFX ticks, which run on exact 8th notes (Linear for Agents 0.28 s, v0 0.30 s, Retool 0.375 s, Loom 0.39 s, Config 0.46 s, Cursor 2.0 0.53 s quarters); (c) stat or title swaps in short bursts (Config 2026, Notion Mail at 59% on the beat).
+- Inference: the "energy" comes from a constant 8th-note transient layer plus a loud, flat (LRA 2–7) music bed, not from cutting faster.
