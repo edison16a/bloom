@@ -1,0 +1,65 @@
+{
+ "name": "Tessel",
+ "tagline": "Build caching for monorepos",
+ "rationale": "A T cut out of a square tile, the initial set into the grid it builds.",
+ "colors": {
+  "primary": "#C6F432",
+  "accent": "#0E0E10",
+  "ink": "#0E0E10",
+  "paper": "#FFFFFF",
+  "idea": "Volt #C6F432."
+ },
+ "symbol": {
+  "svg": "<mask id='m{U}'><rect x='-46' y='-46' width='92' height='92' rx='14' fill='#fff'/><path d='M-26 -26 L26 -26 L26 -10 L8 -10 L8 30 L-8 30 L-8 -10 L-26 -10Z' fill='#000'/></mask><rect x='-46' y='-46' width='92' height='92' rx='14' fill='{P}' mask='url(#m{U})'/>",
+  "idea": "A T cut out of a square tile, the initial set into the grid it builds."
+ },
+ "wordmark": {
+  "font": "space-grotesk-700",
+  "case": "lower",
+  "tracking": -0.03,
+  "accent_chars": [],
+  "custom_glyphs": {},
+  "idea": "Heavy, tight lowercase in the style of the category leaders."
+ },
+ "lockup": {
+  "cap_ratio": 0.8,
+  "gap": 0.24
+ },
+ "app_icon": {
+  "inset": 0.2,
+  "symbol_color": "#0E0E10"
+ },
+ "alternatives": [
+  {
+   "label": "Option 2: Offset tiles",
+   "why": "Four square tiles, one shifted out of the grid: the one build step that changed.",
+   "symbol": {
+    "svg": "<rect x='-46' y='-46' width='42' height='42' rx='6' fill='{P}'/><rect x='4' y='-46' width='42' height='42' rx='6' fill='{P}'/><rect x='-46' y='4' width='42' height='42' rx='6' fill='{P}'/><rect x='14' y='14' width='42' height='42' rx='6' fill='{A}'/>"
+   },
+   "wordmark": {
+    "font": "geist-800",
+    "case": "lower",
+    "tracking": -0.05
+   },
+   "colors": {
+    "primary": "#1F5BFF",
+    "accent": "#C6F432"
+   }
+  },
+  {
+   "label": "Option 3: Steps",
+   "why": "Three bars that stack like cached layers.",
+   "symbol": {
+    "svg": "<rect x='-46' y='16' width='92' height='22' rx='6' fill='{P}'/><rect x='-30' y='-14' width='76' height='22' rx='6' fill='{P}'/><rect x='-14' y='-44' width='60' height='22' rx='6' fill='{P}'/>"
+   },
+   "wordmark": {
+    "font": "jetbrains-mono-700",
+    "case": "lower",
+    "tracking": -0.02
+   },
+   "colors": {
+    "primary": "#FF4F1A"
+   }
+  }
+ ]
+}
