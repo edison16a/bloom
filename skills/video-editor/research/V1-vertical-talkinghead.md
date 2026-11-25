@@ -269,3 +269,9 @@ Plus two transition moves worth stealing: the **1-frame white flash cut** into a
 - Outros and end cards. Pros end on the payoff word, an open question or a one-tap CTA, and cut out within about 0.5 s.
 - Long static holds without *any* change. Even the "minimal" pros (Hormozi, Koe) change scale, image or caption every 0.5–6 s. Leila #16 (one locked shot for 24 s) is the closest to a static hold, and it is the plainest clip in the set.
 - Inconsistent loudness. The polished clips are mastered at −14 to −16 LUFS with peaks near −1 dBTP. The ones at −20 to −25 LUFS (MKBHD, YC, Ali) play noticeably quieter in the feed.
+
+### Note for the "too slow / not energetic" complaint
+- Energy in vertical talking-head comes from the **picture-change rate**, not from music.
+- Target a visible change every **≤0.8 s**, counting caption swaps, and a structural change (punch, insert, angle, card) every **2–4 s**. Load the first 3 s with 3+ events (title box, first punch or insert, first emphasis word).
+- Give the middle third a re-hook burst.
+- Master the voice to about −14 LUFS. If music is used, keep it under the voice and let stressed words, not the bar grid, place the inserts.
