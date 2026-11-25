@@ -278,3 +278,13 @@ Three tempo families appear in this batch:
 Also worth noting:
 - **Product-as-divider type** (24): split a phrase around a vertical product shape.
 - **Diegetic stat** (10): print the number on a real prop in the scene instead of an overlay.
+
+### Amateur tells the pros avoid
+- **Cutting every shot exactly on the grid for 60 s straight.** Pros sit at only ~14% on-beat and put *events* on the beat. Strict grid cutting appears only in graphic-only pieces.
+- **Constant energy with no contrast.** Pros build to Q3 and drop near-silent before the lift (03's -34 dB valleys; 01 holds silence until the 23 s slide).
+- **Type everywhere.** Pros use 1–3 lines in a live-action spot and let the image carry the rest. Big type is a deliberate act-change device.
+- **Whole-line fade-ins of text.** Pros build word by word, typewrite, or slam-cut type in on a beat.
+- **Random motion directions between consecutive shots.** Pros hold one dominant direction per section and use position- or motion-matched cuts in fast runs.
+- **Stock-looking lower thirds.** Pros either use diegetic type (props, UI, clippings) or full-frame typographic cards, rarely a banner over the image.
+- **Logo end card with no hold.** Every spot here holds the end line plus logo for ~2–5 s after the last fast cut.
+- **SFX on every cut.** Pros cluster SFX at reveals and UI events (median 14% of cuts carry a hit). Wall-to-wall whooshes are a template tell.
