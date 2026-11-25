@@ -168,3 +168,16 @@ void main(){
   for(int y=0;y<u_ss;y++)for(int x=0;x<u_ss;x++){ ivec2 q=b+ivec2(x,y); q.x=min(q.x,u_w-1); c+=texelFetch(u_color,q,0); d+=texelFetch(u_data,q,0); }
   float n=float(u_ss*u_ss); o_color=c/n; o_data=d/n;
 }`;
+
+/** r = time this cell last switched on (or -1 when off). */
+export const AGE_FS = `#version 300 es
+precision highp float; precision highp sampler2D;
+uniform sampler2D u_color,u_prev; uniform float u_now; uniform float u_reset;
+out vec4 o;
+void main(){
+  ivec2 q=ivec2(gl_FragCoord.xy);
+  bool on=texelFetch(u_color,q,0).a>.12;
+  float prev=texelFetch(u_prev,q,0).r;
+  if(u_reset>1.5) prev=-1.; else if(u_reset>.5&&prev>=0.) prev=0.;   // loop wrap: cells already lit count as long lit, so nothing scrambles at the seam
+  o=vec4(on?(prev<0.?u_now+1.:prev):-1.);
+}`;
