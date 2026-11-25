@@ -78,3 +78,17 @@ async function buildLogo(host: HTMLElement, animated: boolean) {
   word = groups[1] as SVGGElement;
   wordBase = word.getAttribute("transform") ?? "";
 }
+
+function logo(t: number) {
+  const el = $("logo");
+  const a = bar(0), end = bar(1) - 0.25;
+  if (t < a - 0.01 || t > end + 0.26) { el.style.opacity = "0"; return; }
+  el.style.opacity = String(1 - seg(t, end, end + 0.25));
+  const s = out(seg(t, a, a + 0.45));
+  stem.setAttribute("transform", `translate(0 34) scale(1 ${Math.max(0.001, s)}) translate(0 -34)`);
+  const p = out(seg(t, a + 0.3, a + 0.85));
+  petal.setAttribute("transform", `translate(-14 34) scale(${Math.max(0.001, p)})`);
+  const w = out(seg(t, a + 0.6, a + 1.2));
+  word.style.opacity = String(w);
+  word.setAttribute("transform", `translate(${((1 - w) * 24).toFixed(2)} 0) ${wordBase}`);
+}
