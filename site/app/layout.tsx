@@ -14,3 +14,15 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = { themeColor: "#060609" };
+
+export default function RootLayout({ children }: { children: ReactNode }) {
+  return (
+    <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
+      <body>
+        <SiteHeader />
+        <main>{children}</main>
+        <SiteFooter />
+      </body>
+    </html>
+  );
+}
