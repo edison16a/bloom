@@ -406,3 +406,125 @@ def render_pngs(jobs):
 def slugify(s):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-") or "brand"
 
+
+def build(brand_path, do_png=True):
+    b = json.load(open(brand_path))
+    name = b["name"]
+    slug = slugify(name)
+    outdir = os.path.dirname(os.path.abspath(brand_path))
+    c = b["colors"]
+    for k in ("primary",):
+        if k not in c:
+            sys.exit("colors.primary is required")
+    fonts = list_fonts()
+
+    def prep_symbol(s, label):
+        check_symbol(s, label)
+        return Uniq.ids(s)
+
+    raw = [prep_symbol(b["symbol"]["svg"], "symbol")]
+    for i, a in enumerate(b.get("alternatives", [])):
+        if a.get("symbol"):
+            raw.append(prep_symbol(a["symbol"]["svg"], "alternative %d" % i))
+    normed = normalize_symbols(raw)
+    main_sym = normed[0]
+    alt_syms = iter(normed[1:])
+    wm = dict(b["wordmark"], _name=name)
+    wmo = set_wordmark(wm, {})
+    lk = b.get("lockup", {})
+    inset = b.get("app_icon", {}).get("inset", 0.2)
+    on_col = b.get("app_icon", {}).get("symbol_color")
+    if not on_col:  # white on a light primary (amber, yellow, lime) is unreadable: fall back to ink
+        on_col = "#FFFFFF" if contrast("#FFFFFF", c["primary"]) >= 2.5 else c.get("ink", "#0E0E10")
+    if contrast(on_col, c["primary"]) < 2.5:
+        print("warning: %s on the primary %s has contrast %.1f:1; set app_icon.symbol_color to the ink color" % (on_col, c["primary"], contrast(on_col, c["primary"])))
+    b.setdefault("app_icon", {})["symbol_color"] = on_col
+    sc = schemes(c, on_col)
+
+    comps = {
+        "logo-horizontal": comp_horizontal(main_sym, wmo, lk),
+        "logo-stacked": comp_stacked(main_sym, wmo, lk),
+        "symbol": comp_symbol(main_sym),
+        "wordmark": comp_wordmark(wmo),
+    }
+    app_tpl = comp_appicon(main_sym, inset)
+
+    # files
+    svgdir, pngdir = os.path.join(outdir, "assets", "svg"), os.path.join(outdir, "assets", "png")
+    shutil.rmtree(os.path.join(outdir, "assets"), ignore_errors=True)
+    os.makedirs(svgdir)
+    os.makedirs(pngdir)
+    files, jobs = {}, []
+    for cname, (tpl, vb) in comps.items():
+        for sname in ("color", "black", "white", "reverse"):
+            svg = svg_doc(paint(tpl, sc[sname]), vb)
+            fn = "%s-%s-%s" % (slug, cname, sname)
+            files["svg/" + fn + ".svg"] = svg
+            for size in (1024, 2048):
+                jobs.append({"name": "png/%s-%dpx.png" % (fn, size), "svg": svg, "size": size})
+    app_variants = {
+        "app-icon": dict(sc["on-primary"], **{"{BG}": c["primary"]}),
+        "app-icon-dark": dict(sc["reverse"], **{"{BG}": c.get("ink", "#0B0B0C")}),
+    }
+    for an, m in app_variants.items():
+        svg = svg_doc(paint(app_tpl[0], m), app_tpl[1], 0)
+        files["svg/%s-%s.svg" % (slug, an)] = svg
+        for size in (180, 512, 1024):
+            jobs.append({"name": "png/%s-%s-%dpx.png" % (slug, an, size), "svg": svg, "size": size})
+    fav = files["svg/%s-app-icon.svg" % slug]
+    for size in (16, 32, 48, 192):
+        jobs.append({"name": "png/favicon-%d.png" % size, "svg": fav, "size": size})
+    for rel, svg in files.items():
+        open(os.path.join(outdir, "assets", rel), "w").write(svg)
+    if do_png:
+        for rel, blob in render_pngs(jobs).items():
+            open(os.path.join(outdir, "assets", rel), "wb").write(blob)
+
+    # alternatives (board only)
+    alts = []
+    for i, a in enumerate(b.get("alternatives", [])):
+        sym = next(alt_syms) if a.get("symbol") else main_sym
+        awm = dict(a.get("wordmark") or b["wordmark"], _name=name)
+        ao = set_wordmark(awm, {})
+        tpl, vb = comp_horizontal(sym, ao, dict(lk, **a.get("lockup", {})))
+        wtpl, wvb = comp_wordmark(ao)
+        stpl, svb = comp_symbol(sym)
+        alts.append({"label": a.get("label", "Option %d" % (i + 2)), "why": a.get("why", ""),
+                     "font": fonts.get(awm["font"], {}).get("family", awm["font"]),
+                     "logo": [tpl, vb], "word": [wtpl, wvb], "sym": [stpl, svb], "colors": a.get("colors")})
+
+    fi = fonts.get(wm["font"], {"family": wm["font"], "weight": ""})
+    data = {
+        "name": name, "slug": slug, "tagline": b.get("tagline", ""), "colors": c,
+        "rationale": b.get("rationale", ""), "symbol_idea": b["symbol"].get("idea", ""),
+        "wordmark_idea": b["wordmark"].get("idea", ""), "color_idea": c.get("idea", ""),
+        "type": {"family": fi["family"], "weight": fi["weight"], "case": wm.get("case", "as-is"),
+                 "tracking": wm.get("tracking", 0), "license": "SIL Open Font License"},
+        "comps": {k: [t, v] for k, (t, v) in comps.items()}, "app": [app_tpl[0], app_tpl[1]],
+        "inset": inset, "alts": alts, "app_symbol_color": b.get("app_icon", {}).get("symbol_color", "#FFFFFF"),
+    }
+    page = open(TEMPLATE).read().replace("__DATA__", json.dumps(data).replace("</", "<\\/")).replace("__TITLE__", html.escape(name))
+    open(os.path.join(outdir, "brand-board.html"), "w").write(page)
+
+    readme = """%s brand kit
+
+Recommended logo: assets/svg/%s-logo-horizontal-color.svg
+Use the color version on light backgrounds, reverse or white on dark backgrounds, black for single color print.
+Use the symbol alone only where space is tight (app icon, favicon, avatar). Keep clear space around the logo of at
+least half the symbol height. Do not stretch, rotate, recolor, outline or add effects.
+
+Colors: %s
+Type: %s %s (SIL Open Font License). All logo files have the type converted to outlines.
+SVG files are vector and scale to any size. PNG files have transparent backgrounds except the app icons.
+""" % (name, slug, ", ".join("%s %s" % (k, v) for k, v in c.items() if isinstance(v, str) and v.startswith("#")), fi["family"], fi["weight"])
+    open(os.path.join(outdir, "assets", "README.txt"), "w").write(readme)
+    zpath = os.path.join(outdir, "%s-brand-kit.zip" % slug)
+    with zipfile.ZipFile(zpath, "w", zipfile.ZIP_DEFLATED) as z:
+        for dp, _, fns in os.walk(os.path.join(outdir, "assets")):
+            for fn in fns:
+                full = os.path.join(dp, fn)
+                z.write(full, os.path.join("%s-brand-kit" % slug, os.path.relpath(full, os.path.join(outdir, "assets"))))
+        z.write(os.path.join(outdir, "brand-board.html"), "%s-brand-kit/brand-board.html" % slug)
+    n_png = len(os.listdir(pngdir))
+    print("built %s: %d SVG, %d PNG, board and zip in %s" % (name, len(files), n_png, outdir))
+
