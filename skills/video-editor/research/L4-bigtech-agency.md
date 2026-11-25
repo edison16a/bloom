@@ -374,3 +374,14 @@ Frames are at 30 fps. Frame counts are estimated from the 5 fps and 10 fps sheet
     - SFX: hits on every other swap, a big impact into the endcard, then a ring-out.
 
 Also useful: **chapter-card light-lines** (#06). A particle or line sweep ← carries a 2–3 word chapter title between demo blocks, with a bass drop-out under the card and a lift back in.
+
+### Amateur tells the pros avoid
+- **Uniform pacing.** 17 of 25 here accelerate into the second half and hold the endcard.
+- **SFX on every cut in an emotional piece.** The pros use 0% cut-hits in story spots (#09, #16) and save stacked hits for UI trailers.
+- **Long full typing.** Pros cut away from typed prompts mid-sentence.
+- **Mixed transition directions in a short product film.** Pros lock one direction (#17, #08, #02).
+- **Every cut on the beat.** Pros put key cuts on downbeats and land in-frame animation events on the other beats. Measured on-beat cut share is only about 24%, yet the music feels synced because hits per min is high.
+- **Busy multi-font type.** Pros use one sans family, white plus one accent colour, centred or left-aligned, short phrases (1–6 words).
+- **No grade unity.** Stripe (magenta and violet), Copilot (pastel glass) and Shopify (violet night) keep every shot inside one palette.
+- **Weak loudness.** Pros deliver around -16 LUFS (IQR -17 to -14). Trailers push to -9 to -7. Nothing below -20.
+- **Burying the brand.** Pros end every piece on a clean flat-colour logo endcard with 2–5 s of hold and no cuts.
