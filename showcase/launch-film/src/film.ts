@@ -42,3 +42,11 @@ function line(id: string, t: number, tin: number, tout: number) {
 
 // ---------------------------------------------------------------- push up (scene change, motion blur)
 let blurAmount = 0;
+function pushOffset(t: number, at: number): number {
+  const k = seg(t, at, at + 0.5);
+  if (k > 0 && k < 1) blurAmount = Math.max(blurAmount, Math.sin(k * Math.PI) * 28);
+  return inOut(k);
+}
+
+// ---------------------------------------------------------------- dot art renderers
+interface Live { renderer: DotRenderer; canvas: HTMLCanvasElement; scene: Scene }
