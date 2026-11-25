@@ -63,3 +63,23 @@ Things typeset in their own words.
 > **A total eclipse in octagons with a breathing corona**
 
 ![Eclipse](assets/eclipse.gif)
+
+## Text backgrounds
+
+Words repeated until they become a surface.
+
+> **A tilted field of bevelled keys in ASCII, iridescent edges, dark behind the headline**
+
+![Keys](assets/keys.gif)
+
+> **One sentence repeated edge to edge, moving like silk**
+
+![Liquid type](assets/liquid.gif)
+
+> **An ocean swell at night made of the word tide**
+
+![Tide](assets/tide.gif)
+
+> **Rushing down a corridor of typed panels**
+
+![Corridor](assets/tunnel.gif)
