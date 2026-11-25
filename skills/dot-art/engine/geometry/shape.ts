@@ -122,3 +122,9 @@ export function inflate(input: ShapeInput, o: InflateOptions = {}): Geometry {
   }
   return { position: pos, normal: nrm, extra: ext };
 }
+
+/** Pack two same-length shapes for morphing: the second shape's position goes in `color`. */
+export function morphPair(a: Geometry, b: Geometry): Geometry {
+  if (a.position.length !== b.position.length) throw new Error("dot-art: morphPair needs equal point counts");
+  return { position: a.position, normal: a.normal, color: b.position, extra: a.extra };
+}
