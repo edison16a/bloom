@@ -218,3 +218,21 @@ The brief asks for 2023–2026 videos. Five picks are older, but they are kept a
 - **Whooshes** belong to the move, not the cut: slit wipes, slide-ups, whip pans (MrBeast, Trahan), map push-ins (Wendover). Live-action hard cuts in VO sections mostly appear to carry no SFX (inference from the 2–9% hit share in 07, 13, 14, 15, 20, 23).
 - **Micro-montages** (09, 22, 25) are probably carried by a riser or a ticking/shutter texture, not one hit per frame (inference).
 - **Countdown/timer HUDs** (17, 25) imply a tick bed (inference).
+
+### Text animation conventions
+- **Pop-on, not fade.** Callouts, tags, numerals and location labels appear within 1–2 frames (seen at 5–10 fps sample rates) and usually exit by a cut, not an animation.
+- **Type-on is reserved for "story-starting" text:** search bar (01), date with red glow (08), "GOAL" (18). About 1–2 characters per frame.
+- **Placement and fonts:**
+  - Top-left corner tags for metadata (MrBeast location, Nick Shirley "Coming up", Mrwho "SOURCE:", Vox/MKBHD chyrons).
+  - Top-right for counters/HUD timers (MrBeast ×N, JH timer, Trahan/broadcast score bug).
+  - Centre for big words and numbers.
+  - Lower thirds: Vox yellow box name + grey role; Veritasium plain white two-line.
+  - Fonts are bold condensed or geometric sans; italic caps with heavy stroke for YouTube-entertainment (MrBeast, Mrwho); serif only for editorial titles (Vox).
+- **Big-word-behind-host** (Mrwhosetheboss): 3D bevel text placed in the set, occluded by the presenter. **Big-word-over-footage** (HAI "KIRUNA"/"WET", Yes Theory "2018", MKBHD "$449").
+- **Brand colour systems are strict and limited:**
+  - Cleo: lime + royal blue + maroon/teal.
+  - Vox: yellow highlighter + off-white paper + navy.
+  - Mrwho: orange vs blue.
+  - MrBeast: green money + white/yellow italic.
+  - JH: cream paper + red/orange.
+- **Highlighter wipes** (Vox, Cleo, HAI) on article screenshots, about 6–10 frames left to right.
