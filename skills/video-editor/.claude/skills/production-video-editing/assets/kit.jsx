@@ -87,3 +87,18 @@ function listText(rows, x, y, size, lead, times, z) {
     fadeIn(L, times[i], 7); fadeOut(L, z, 6);
   }
 }
+function captions(caps, cx, y, size, end, skip) {
+  for (var i = 0; i < caps.length; i++) {
+    var a = caps[i][0], z = Math.min(caps[i][1], end), no = false;
+    for (var s = 0; s < (skip || []).length; s++) if (a < skip[s][1] && z > skip[s][0] && a >= 0) no = no || (a >= skip[s][0] - 0.5 && a < skip[s][1] - 0.2);
+    if (no) continue;
+    var L = kitText(caps[i][2], size, 'Inter', 'Medium', WHITE, ParagraphJustification.CENTER_JUSTIFY);
+    tr(L, 'pos').setValue([cx, y]); span(L, a, z); softShadow(L, 75, 22);
+  }
+}
+function logoEnd(file, size, t) {
+  var src = kitFoot(file), L = K.comp.layers.add(src), sc = size / src.width * 100;
+  L.startTime = t; span(L, t, K.dur); tr(L, 'scale').setValue([sc, sc]); tr(L, 'pos').setValue([K.w / 2, K.h / 2]);
+  fadeIn(L, t + fr(4), 8);
+}
+function audio(file) { var f = new File(K.root + 'media/' + file); if (!f.exists) return; var L = K.comp.layers.add(kitFoot(file)); L.startTime = 0; }
