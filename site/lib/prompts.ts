@@ -16,3 +16,10 @@ const fetchStep = (paths: string[]) =>
     `   git clone --depth 1 --filter=blob:none --sparse ${site.cloneUrl} ${TMP}`,
     `   git -C ${TMP} sparse-checkout set ${paths.join(" ")}`,
   ].join("\n");
+
+const skillsFolderStep = [
+  "Work out which agent you are and use its skills folder:",
+  "   Claude Code: ~/.claude/skills",
+  "   Codex: ~/.codex/skills",
+  "   Create the folder if it does not exist.",
+].join("\n");
