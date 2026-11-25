@@ -69,3 +69,42 @@ async function survey() {
   fs.writeFileSync(path.join(out, "brand.json"), JSON.stringify(d.brand, null, 1)); fs.writeFileSync(path.join(out, "elements.json"), JSON.stringify(d.els, null, 1)); fs.writeFileSync(path.join(out, "links.json"), JSON.stringify(d.links, null, 1));
   console.log(d.brand.title, "|", d.els.length, "elements |", d.links.length, "links | page", H, "px"); await b.close();
 }
+
+async function recordClip(p, plan, clip, out) {
+  const dir = fs.mkdtempSync(path.join(out, clip.name + "-")), cdp = await p.context().newCDPSession(p), vp = p.viewportSize(), frames = [], events = [];
+  cdp.on("Page.screencastFrame", async (f) => { frames.push({ ts: f.metadata.timestamp, data: f.data }); cdp.send("Page.screencastFrameAck", { sessionId: f.sessionId }).catch(() => {}); });
+  await cdp.send("Page.startScreencast", { format: "jpeg", quality: 94, maxWidth: vp.width * 2, maxHeight: vp.height * 2, everyNthFrame: 1 });
+  await sleep(300); const t0 = Date.now() / 1000; const now = () => +(Date.now() / 1000 - t0).toFixed(3);
+  const still = async (n) => { await p.screenshot({ path: path.join(out, `${clip.name}-${n}.png`) }); };
+  for (const [i, s] of (clip.steps || []).entries()) {
+    const L = s.sel ? p.locator(s.sel).first() : null;
+    try {
+      if (s.do === "wait") await sleep(s.ms || 500);
+      else if (s.do === "scroll") { const y0 = await p.evaluate((q) => (q ? document.querySelector(q).scrollTop : scrollY), s.sel || null); const n = Math.max(2, Math.round((s.ms || 1200) / 16)); const st = Date.now(); events.push({ t: now(), type: "scroll", to: s.y });
+        for (;;) { const k = Math.min(1, (Date.now() - st) / (s.ms || 1200)), e = k < .5 ? 4 * k ** 3 : 1 - Math.pow(-2 * k + 2, 3) / 2; await p.evaluate(({ q, y }) => { if (q) document.querySelector(q).scrollTop = y; else window.scrollTo(0, y); }, { q: s.sel || null, y: y0 + (s.y - y0) * e }); if (k >= 1) break; await sleep(12); } }
+      else if (s.do === "press") { events.push({ t: now(), type: "key", key: s.key }); await p.keyboard.press(s.key); }
+      else if (s.do === "still") await still(s.name || i);
+      else if (s.do === "eval") await p.evaluate(s.js);
+      else { await L.waitFor({ timeout: s.timeout || 15000 }); await L.scrollIntoViewIfNeeded(); const r = await L.boundingBox(), x = r.x + r.width * (s.fx ?? .5), y = r.y + r.height * (s.fy ?? .5);
+        if (s.do === "hover") { events.push({ t: now(), type: "hover", x, y, box: r }); await p.mouse.move(x, y, { steps: 18 }); }
+        else if (s.do === "click") { await p.mouse.move(x, y, { steps: 18 }); await sleep(s.lead ?? 450); if (s.stills !== false) await still(i + "-before"); events.push({ t: now(), type: "click", x, y, box: r, sel: s.sel }); await p.mouse.click(x, y, { delay: 60 }); if (s.stills !== false) { await sleep(s.after ?? 900); await still(i + "-after"); } }
+        else if (s.do === "type") { await p.mouse.click(x, y); for (const ch of s.text) { events.push({ t: now(), type: "key", key: ch, x, y }); await p.keyboard.type(ch); await sleep((s.delay || 70) * (0.75 + Math.random() * 0.5)); } } }
+    } catch (e) { console.error(`  step ${i} (${s.do} ${s.sel || ""}) failed: ${e.message.split("\n")[0]}`); events.push({ t: now(), type: "failed", step: i }); }
+  }
+  await sleep(clip.tail ?? 1000); const T = now(); await cdp.send("Page.stopScreencast"); if (!frames.length) throw new Error("no frames");
+  const n = Math.round(T * 30); let j = 0; for (let i = 0; i < n; i++) { while (j + 1 < frames.length && frames[j + 1].ts <= t0 + i / 30) j++; fs.writeFileSync(path.join(dir, `f${String(i).padStart(5, "0")}.jpg`), Buffer.from(frames[j].data, "base64")); }
+  const f = path.join(out, clip.name + ".mp4"); execFileSync("ffmpeg", ["-v", "error", "-y", "-framerate", "30", "-i", path.join(dir, "f%05d.jpg"), "-vf", "pad=ceil(iw/2)*2:ceil(ih/2)*2", "-c:v", "libx264", "-crf", "10", "-pix_fmt", "yuv420p", f]);
+  fs.rmSync(dir, { recursive: true }); fs.writeFileSync(path.join(out, clip.name + ".events.json"), JSON.stringify({ viewport: vp, scale: 2, dur: T, events }, null, 1));
+  execFileSync("ffmpeg", ["-v", "error", "-y", "-i", f, "-vf", `fps=${(20 / Math.max(T, 1)).toFixed(3)},scale=400:-2,tile=5x4`, "-frames:v", "1", path.join(out, clip.name + ".sheet.jpg")]);
+  console.log("  ", clip.name, T.toFixed(1) + "s", frames.length, "frames", events.filter((e) => e.type === "failed").length ? "SOME STEPS FAILED" : "");
+}
+
+(async () => {
+  const cmd = process.argv[2];
+  if (cmd === "survey") return survey();
+  if (cmd === "element") { const { b, p } = await open({ scale: +(A.scale || 4), scheme: A.scheme }); await go(p, A.url); const L = p.locator(A.sel).first(); await L.scrollIntoViewIfNeeded(); await p.addStyleTag({ content: "html,body{background:transparent!important}" }); await sleep(300); await L.screenshot({ path: A.out, omitBackground: true }); console.log(A.out); return b.close(); }
+  if (cmd === "run") { const plan = JSON.parse(fs.readFileSync(A.plan, "utf8")); fs.mkdirSync(A.out, { recursive: true }); const { b, p } = await open(plan);
+    for (const c of plan.clips) { if (A.only && !A.only.split(",").includes(c.name)) continue; if (c.url) await go(p, c.url, c.settle ?? 2500, plan.css); try { await recordClip(p, plan, c, A.out); } catch (e) { console.error(c.name, e.message); } }
+    return b.close(); }
+  console.log(fs.readFileSync(__filename, "utf8").split("*/")[0]);
+})().catch((e) => { console.error(e); process.exit(1); });
