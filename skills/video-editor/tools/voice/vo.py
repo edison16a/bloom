@@ -64,3 +64,22 @@ def whisper_model():
         if m and os.path.exists(m): return m
     return None
 
+
+def transcribe(wav, words=False):
+    """whisper.cpp; returns [(start_s, end_s, text)] (word level when words=True)."""
+    m = whisper_model()
+    if not m: return None
+    with tempfile.TemporaryDirectory() as td:
+        w16 = os.path.join(td, "a.wav")
+        sh(["ffmpeg", "-v", "error", "-y", "-i", wav, "-ar", "16000", "-ac", "1", w16])
+        cmd = ["whisper-cli", "-m", m, "-f", w16, "-oj", "-of", os.path.join(td, "t"), "-np", "-l", "en"]
+        if words: cmd += ["-ml", "1", "-sow"]
+        sh(cmd)
+        try: segs = json.load(open(os.path.join(td, "t.json")))["transcription"]
+        except Exception: return None
+    return [(s["offsets"]["from"] / 1000, s["offsets"]["to"] / 1000, s["text"].strip()) for s in segs if s["text"].strip()]
+
+
+ONES = "zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen".split()
+TENS = "_ _ twenty thirty forty fifty sixty seventy eighty ninety".split()
+
