@@ -215,3 +215,31 @@ def openverse(q, category, need=0, licence="cc0,by"):
                     "credit": None if lic == "CC0" else f'"{p["title"]}" {p.get("creator")}, {lic}'})
     return out
 
+
+# ---------------------------------------------------------------- commands
+def cmd_music(a):
+    lo, hi = [float(v) for v in a.bpm.split("-")]
+    moods = [m.strip().lower() for m in a.mood.split(",") if m.strip()]; genres = [g.strip().lower() for g in a.genre.split(",") if g.strip()]
+    cands = mixkit_audio("free-stock-music", [f"mood/{slug(m)}/" for m in moods] + [f"{slug(g)}/" for g in genres] + [f"tag/{slug(t)}/" for t in a.tag.split(",") if t])
+    want = set(moods) | set(genres)
+    for c in cands: c["hit"] = len(want & {t.lower() for t in c["tags"]}) * 2 + (1 if c["dur"] >= a.need else -2)
+    cands = [c for c in cands if not ({t.lower() for t in c["tags"]} & {v.strip().lower() for v in a.avoid.split(",") if v})]
+    inc = incompetech(moods, lo, hi, a.need)[:4]
+    ov = openverse(" ".join((moods[:1] + genres[:1])), "music", a.need)[:4]
+    pool = sorted(cands, key=lambda c: -c["hit"])[:max(2, a.n - 3)] + inc[:2] + ov[:2]
+    d = adir(a.job, "music"); out = []
+    for c in pool[:min(max(a.n, 3), CAP)]:
+        f = os.path.join(d, slug(c["source"] + "-" + c["title"]) + ".mp3")
+        try:
+            if not fetch(c["url"], f, 40): continue
+        except Exception as e: warn(c["title"], e); continue
+        m = analyse(f)
+        if not m: continue
+        m.update(title=c["title"], by=c["by"], source=c["source"], licence=c["licence"], credit=c.get("credit"), tags=c["tags"][:8], file=os.path.relpath(f, ROOT))
+        m["score"] = score(m, lo, hi, a.need); out.append(m)
+        log(a.job, file=m["file"], kind="music", title=c["title"], by=c["by"], source=c["source"], licence=c["licence"], credit=c.get("credit"), page=c.get("page"))
+        print(f'  {m["score"]:5.2f}  {m["bpm"]:6.1f} bpm  pulse {m["beat_strength"]:.2f}  lift +{m["lift_db"]} dB @ {m["lift_at"]}s  intro {m["intro_s"]}s  {m["dur"]}s  {c["title"]} ({c["source"]}, {c["licence"]})')
+    out.sort(key=lambda m: -m["score"]); json.dump(out, open(os.path.join(d, "ranking.json"), "w"), indent=1)
+    if out: print("PICK:", out[0]["file"])
+    else: sys.exit("no usable track: widen --mood/--genre/--bpm")
+
