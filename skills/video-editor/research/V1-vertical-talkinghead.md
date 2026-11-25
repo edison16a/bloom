@@ -259,3 +259,13 @@ Every hook puts readable text on screen at frame 0–12. None opens with a logo 
 10. **Object pop-ins with UI semantics.** App icons, a "Like" button with a tap, a subscribe button with a cursor click, chat bubbles one at a time, red X or strike-through over a rejected idea. Each enters with a 4–6 frame scale pop (0 → 105 → 100%) and gets a click or pop SFX (inference). Stagger them 0.2–0.4 s apart. (Codie, DOAC, Starter Story, Ali.)
 
 Plus two transition moves worth stealing: the **1-frame white flash cut** into a colour-graded clip (Williamson #20), and the **3-frame whip-pan with horizontal motion blur** between two people (Ali #05).
+
+### Amateur tells the pros avoid
+- Captions in the bottom 15%, where the Shorts UI covers them. Also huge full-width captions on every word. The pros keep body text small and save scale for 1–3 payoff moments.
+- A logo intro, slow fade-in or "Hey guys" before the claim. Every pro clip has text and the claim inside 0.5 s.
+- An SFX on every caption swap. The pros keep caption swaps silent and give sound only to objects that enter.
+- Music driving the cut. In this genre the cuts follow speech, and music (when used) stays a quiet bed.
+- Mixed layout systems mid-video. The pros lock one frame system (window on black, fixed headline, fixed caption band) and vary only what's inside it.
+- Outros and end cards. Pros end on the payoff word, an open question or a one-tap CTA, and cut out within about 0.5 s.
+- Long static holds without *any* change. Even the "minimal" pros (Hormozi, Koe) change scale, image or caption every 0.5–6 s. Leila #16 (one locked shot for 24 s) is the closest to a static hold, and it is the plainest clip in the set.
+- Inconsistent loudness. The polished clips are mastered at −14 to −16 LUFS with peaks near −1 dBTP. The ones at −20 to −25 LUFS (MKBHD, YC, Ali) play noticeably quieter in the feed.
