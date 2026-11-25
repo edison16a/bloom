@@ -45,3 +45,12 @@ function cameraMoves(N, moves, curve) {
   }
   anim(tr(N, 'pos'), P, curve || INOUT); anim(tr(N, 'scale'), S, curve || INOUT);
 }
+// Place a window on the camera with its top left at x, y (local units, 1 = 1 px at camera scale 1).
+function placeWindow(U, cam, x, y, w, r, a, z) {
+  var L = K.comp.layers.add(U.comp), k = w / U.w; L.startTime = 0; span(L, a, z); mb(L);
+  if (cam) L.parent = cam;
+  tr(L, 'anchor').setValue([U.w / 2, U.h / 2]); tr(L, 'pos').setValue([x + w / 2, y + U.h * k / 2]); tr(L, 'scale').setValue([k * 100, k * 100]);
+  rmask(L, 0, 0, U.w, U.h, r / k);
+  var d = fx(L, 'ADBE Drop Shadow'); fxProp(d, 'Opacity').setValue(34); fxProp(d, 'Direction').setValue(180); fxProp(d, 'Distance').setValue(22 / k); fxProp(d, 'Softness').setValue(90 / k);
+  return L;
+}
