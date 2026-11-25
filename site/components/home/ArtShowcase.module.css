@@ -1,0 +1,5 @@
+.section { padding-top: 128px; scroll-margin-top: 60px; }
+.top { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: center; }
+.feature { position: relative; aspect-ratio: 5 / 4; border-radius: var(--radius-panel); overflow: hidden; background: #04050c; border: 1px solid var(--hairline); }
+.grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; margin-top: 48px; }
+@media (max-width: 1000px) { .top { grid-template-columns: 1fr; } .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
