@@ -49,3 +49,17 @@ Normals for a parametric surface: evaluate it at `q`, `q+du`, `q+dv`, cross the 
 ## Uniforms
 
 `u_time` s, `u_phase` 0..1, `u_loop`, `u_grid` cols/rows, `u_aspect`, `u_eye`, `u_view`, `u_viewProj`, `u_clip`, `u_pointer` (xy -1..1, z presence). `p`, `uv` and `u_pointer` are y up; `focus`, `fade.hole` and overlay rows are y down. Your own: `uniforms: { name: 0.5 | [x,y,z] | (t) => value }`, declared for you. Textures: `textures: { u_img: { src } | { image, dynamic } | { data, width, height } }`, with `u_img_size`. `data` textures are single channel floats (read `.r`), uploaded once; use an `image` canvas with `dynamic` for anything that changes. Functions and constants go in `common`, and can be shared by passing the same string to two sources.
+
+## Helpers
+
+| Group | Functions |
+|---|---|
+| Hash | `hash11 hash12 hash13 hash22 hash31 hash41` |
+| Noise | `vnoise(vec2/vec3)` 0..1, `snoise(vec3)` -1..1, `fbm(vec3)`, `lnoise(p,phase,r)` loops, `curl(vec3)` |
+| Time | `seg(t,a,b)` 0..1 clamp, `eio eout ein eback` |
+| SDF | `sdSphere sdBox sdRoundBox sdTorus sdCylinder sdCapsule sdBox2 smin smax` |
+| Light | `wrapDiff(n,l,w) blinn(n,l,v,p) fresnel(n,v,p) faceView(n,pos)` |
+| Colour | `ramp3 ramp4 cosPal irid luma` |
+| Misc | `rot(a) sat(x) PI TAU camRay(p) cellId(uv)` |
+
+GLSL ES 3.00. Write float literals with a dot. `half` and `input` are reserved words.
