@@ -13,3 +13,32 @@ import { setupPrompt } from "@/lib/prompts";
 const skill = skillById("launch");
 
 export const metadata: Metadata = { title: skill.name, description: skill.summary };
+
+export default function LaunchPage() {
+  return (
+    <>
+      <PageHero scene="tunnel">
+        <SectionIntro
+          as="h1"
+          number={skill.number}
+          name={skill.name}
+          title={skill.headline}
+          text={skill.summary}
+          actions={<SetupPrompt prompt={setupPrompt("launch")} showPrompt={false} bare />}
+        />
+      </PageHero>
+
+      <Section title="The Bloom launch film">
+        <FilmPlayer film={featuredFilm} />
+      </Section>
+
+      <Section title="Trained on hundreds of launch videos">
+        <Figures items={launchFigures} />
+      </Section>
+
+      <Section title="Set it up">
+        <SetupPrompt prompt={setupPrompt("launch")} />
+      </Section>
+    </>
+  );
+}
