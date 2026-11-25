@@ -79,3 +79,11 @@ Opens on paintings and archive speeches with their real sound. White words follo
 **0.email (compilation, 338 to 390 s).** Text typed on an old CRT, a talk clip captioned "Paul Graham, 2012.", macro shots of a real inbox, then black and white single lines in turn: "Lots of spam.", "Secure? not really.", "We're fixing that." The name large, then small. Dark UI in a soft tilt with one list building.
 
 **The AI job film (compilation, 1136 to 1164 s, more seen small up to 1264 s).** Fast archive and news montage, then black, "Take a breath.", "AI isn't here to take your job." on a soft field. A laptop in a real room, the camera moving around it.
+
+## What they share
+1. Text is plain. White or black, one or two weights, sentence case, few words. No boxes behind names.
+2. The real thing is shown: real UI, real posts, real archive, real hardware.
+3. Every element appears once, quickly and softly, then stays still.
+4. One idea at a time, with empty space around it.
+5. There is a moment of near silence right before the reveal.
+6. Endings are plain: logo, then maybe a URL or one sentence.
