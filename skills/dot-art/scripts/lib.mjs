@@ -33,3 +33,12 @@ function entryFor(scene, engine) {
     window.__scenes = Object.values(S).flatMap(v => ok(v) ? [v] : typeof v === "object" && v ? Object.values(v).filter(ok) : []);
     window.__Dot = DotRenderer;`;
 }
+
+async function launch() {
+  const gpu = process.platform === "darwin" ? ["--use-angle=metal"] : ["--use-angle=gl", "--use-gl=angle"];
+  const opts = { headless: true, args: [...gpu, "--enable-gpu", "--ignore-gpu-blocklist", "--enable-unsafe-swiftshader"] };
+  try { return await chromium.launch({ ...opts, channel: "chrome" }); } catch {}
+  try { return await chromium.launch(opts); } catch (e) {
+    throw new Error("Needs Google Chrome, or Playwright's Chromium (npx playwright-core install chromium).\n" + e.message);
+  }
+}
