@@ -24,3 +24,10 @@ If `.venv-qwen` or `.venv-cb` is missing, run `tools/voice/setup.sh` without ask
 4. **Assemble:** `python3 tools/voice/vo.py assemble --dir work/JOB/vo --gap 0.28`. Gives `vo.wav` at -16 LUFS and `words.json` with every word's time.
 5. **Cut to the words.** Each beat starts on the word that names it. Music hits go in the gaps between lines.
 6. **Mix** as in `../production-video-editing/references/sound.md`.
+
+## Adjusting
+- Flat: add "brisk, warm, smiling" to the description. Speed 1.05 to 1.1 at most.
+- Announcer: add "conversational, talking to one friend, not a commercial".
+- Wrong word: respell it by sound and regenerate that line.
+- Uneven: one engine and one voice for the whole film, all lines in one run.
+- Harsh s: raise `deesser=i` in `vo.py` from 0.35 to 0.5.
