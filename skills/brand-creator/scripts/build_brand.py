@@ -356,3 +356,23 @@ def chrome_eval(page_html, timeout=120):
     finally:
         shutil.rmtree(tmp, ignore_errors=True)
 
+
+def normalize_symbols(syms):
+    """Scale and center every symbol so its visible ink fills the 100 by 100 box (2 unit margin).
+    Symbols may be drawn anywhere; strokes and masks are measured from rendered pixels."""
+    flat = [token_fill(s, "#000") for s in syms]
+    boxes = chrome_eval(MEASURE.replace("__SY__", json.dumps(flat)))
+    if not boxes:
+        print("Chrome not found: symbols are used as drawn, without normalizing", file=sys.stderr)
+        return syms
+    out = []
+    for s, bb in zip(syms, boxes):
+        if not bb:
+            sys.exit("A symbol renders as empty. Check its SVG.")
+        x0, y0, x1, y1 = bb
+        w, h = x1 - x0, y1 - y0
+        k = 96.0 / max(w, h)
+        tx, ty = (100 - w * k) / 2 - x0 * k, (100 - h * k) / 2 - y0 * k
+        out.append('<g transform="translate(%s %s) scale(%s)">%s</g>' % (fnum(tx), fnum(ty), fnum(k), s))
+    return out
+
