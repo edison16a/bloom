@@ -21,3 +21,18 @@ def hsl(hexv):
     H, L, S = colorsys.rgb_to_hls(r, g, b)
     return H * 360, S, L
 
+
+def family(hexv):
+    if not hexv or len(hexv.lstrip("#")) != 6:
+        return ""
+    h, s, l = hsl(hexv)
+    if l < 0.14:
+        return "black"
+    if l > 0.93:
+        return "white"
+    if s < 0.16:
+        return "gray"
+    for lim, n in ((15, "red"), (40, "orange"), (66, "yellow"), (165, "green"), (195, "teal"), (250, "blue"), (290, "purple"), (335, "pink"), (361, "red")):
+        if h < lim:
+            return n
+
