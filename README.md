@@ -123,3 +123,13 @@ npm test
 ```
 
 `npm run build` writes the static site to `site/out`, ready for any static host.
+
+## Credits
+
+- Music in the launch film: "Newer Wave" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0.
+- Fonts bundled with Brand Creator are under the SIL Open Font License.
+- Interface direction follows unslop by Damir Sokolovsky, CC BY 4.0.
+
+## License
+
+MIT. See [LICENSE](LICENSE).
