@@ -26,3 +26,13 @@ Installs, downloads, product capture, music, effects, footage and voice happen w
 4. Sound, then ProRes, then H.264 and AAC in `output/JOB.mp4`.
 5. Run `gate.py`, check a contact sheet against the reference's notes (open reference links only when the user asks), fix, render again.
 6. Deliver with honest limits and licences. Save, then close EffectCraft, FilmCraft and PhotoCraft.
+
+## Standing rules
+- EffectCraft, not Remotion. Remotion only for a purely 2D piece that is clearly easier in code.
+- Never OpenHiggsfield.
+- Never change files in `input/`.
+- Never show emails, tokens, session links or other people's data. Look at every captured frame.
+- You cannot hear. Measure, and say it is measurement.
+- Fast and energetic music and cutting is for launch films. A person talking is calm, and the energy comes from the edit of the words.
+- Keep the user's personal details out of any request to an outside service.
+- Clone a voice only if the user owns it.
