@@ -112,3 +112,22 @@
   5. Glitch or static bursts on chaos montages (sieve, Knowlify).
   6. A boom or impact on the logo or money reveal.
 - 40-70% of cuts carry a hit in the UI-led films (VibeFlow 70%, Comena 50%, Wildcard 40%, TrueMile 42%, Palmier 40%). Cinematic films (Cluely $15M, Cascade, Knowlify) use almost none on cuts (0-10%) and let the score carry the energy.
+
+### Text animation conventions
+1. **Word-by-word reveal synced to speech** (Tenera, TrueMile, Wildcard, Lamb Labs).
+   - Each word fades and de-blurs in over about 3-5 frames, one word per spoken word.
+   - The text sits in the negative space beside the speaker, never over the face, and sometimes splits around the head.
+   - The line exits as a unit with fade, blur and a small downward drift over about 4-6 frames.
+2. **Accent keyword colour.** One word per line takes the brand accent: orange (TrueMile, Lamb Labs), blue gradient (Sim, Dash, Mbodi uses red), or blue on micro-type (Neuron). Every other word stays white or black.
+3. **Font classes:**
+   - Clean grotesk (Inter-like) for SaaS.
+   - Heavy condensed caps for punchy or parody films (Lamb Labs, Knowlify, PlexTrac).
+   - Italic serif for cinematic subtitles (02).
+   - Mono or typewriter for terminal or archival looks (Artificial Societies, sieve, Mbodi caret).
+   - Tiny wide-tracked caps for 3D or hardware (Neuron).
+4. **Stacked one-word-per-line columns** (WithAI "Smaller / funds / just / can't / match"), each line popping in as it is spoken.
+5. **Typewriter with caret** on plain backgrounds for problem statements (Comena, Mbodi, Dash prompt bars).
+6. **Big-number stat cards:** a huge number with a small label beneath. Glass card over the founder (TrueMile, Tenera) or full-screen (Comena "17%"-style, PlexTrac bubbles). Numbers count up over about 1-1.5 s with ease-out.
+7. **Captions:** small boxed or plain white sentence captions bottom-centre (Lance, VibeFlow, WithAI, Cluely, Cascade). Hormozi-style condensed caps only in the most YouTube-native piece (Lamb Labs).
+8. **Story text blocks, left-aligned, appending clause by clause** for cinematic narratives (Cluely $15M lower-left; Cascade top-left "That's Gary. / His AI support agent... / It cost $400k").
+9. **End cards:** logo mark pops, then the wordmark types or wipes on, then a tagline with one accent word, then a URL or CTA in a pill (Unveil, Hinnacle, Comena). Black or white, always minimal.
