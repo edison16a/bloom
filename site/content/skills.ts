@@ -13,3 +13,36 @@ export interface Skill {
   headline: string;
   summary: string;
 }
+
+export const skills: Skill[] = [
+  {
+    id: "art",
+    number: 1,
+    name: "Dot Art",
+    path: "skills/dot-art",
+    installName: "dot-art",
+    route: "/art/",
+    headline: "Art that moves",
+    summary: "Animated art for your site, drawn by your agent.",
+  },
+  {
+    id: "launch",
+    number: 2,
+    name: "Launch Video",
+    path: "skills/video-editor",
+    installName: "video-editor",
+    route: "/launch/",
+    headline: "Accelerate your video creation",
+    summary: "A launch film from a link, cut to real music.",
+  },
+  {
+    id: "logo",
+    number: 3,
+    name: "Brand Creator",
+    path: "skills/brand-creator",
+    installName: "brand-creator",
+    route: "/logo/",
+    headline: "A name in, a brand out",
+    summary: "Pick a logo, get every file you need.",
+  },
+];
