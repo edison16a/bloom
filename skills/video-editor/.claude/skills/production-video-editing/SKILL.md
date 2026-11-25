@@ -16,3 +16,28 @@ Paths that start with `tools/` are in the video-editor repository (`edison16a/vi
 
 ## What the user gives, what you do
 They give a general direction, raw clips, a website and a repo. You do the rest without asking: the cut, the product clips, the script, the music, the sounds, the footage, the voice if one is missing, and the installs. Ask only when something truly cannot be decided or needs their login, and ask once.
+
+## Steps
+1. **Look at everything.** `ffprobe`, contact sheet, word-level transcript. Read the site (`capture.cjs survey`) and the repo. Write down what is true, so nothing on screen is invented.
+2. **Cut the speech.** Keep the best take per line, remove dead air and mistakes, leave breaths. Make one plate with one framing.
+3. **Plan on one page.** A table: time, spoken words, what is on screen beside the person, where it comes from. Say which reference film it follows, what music brief, and where there is nothing on screen but the person. Show it and keep going.
+4. **Split the plate.** `swiftc -O tools/matte/matte.swift`, then `tools/matte/split.py PLATE MATTE media --person … --room 0.45 --near 0.88 --blur 10`. Choose values on `--still` frames first. The frame count must match the plate.
+5. **Capture the product.** Record each moment, crop tight, look at every clip for emails, tokens or other people's data, and recapture if any show.
+6. **Build in EffectCraft** with `assets/lib.jsx` and `assets/kit.jsx` (room, then panels, then person, then text). Check every beat with `render_frame`.
+7. **Sound.** Clean the voice, pick real music with `source.py music`, mix per `sound.md`.
+8. **Render, finish, gate.** ProRes from EffectCraft, then H.264 crf 16 and AAC 320k. Then:
+   `python3 -I scripts/gate.py output/JOB.mp4 --script build.jsx --srt output/JOB.srt --plate media/room.mov --end SECONDS`
+9. **Look at it.** Contact sheet, checked against the reference's notes, or beside its frames if the user asked you to open it. Answer the six gate questions in `look.md` with frames. Fix what fails, then render again.
+10. **Deliver.** MP4, SRT, licence list. Say what you cannot hear, what is imperfect, and anything unlicensed. Save and close the apps.
+
+## Layout in one line
+Person slightly off centre, the empty side is for one panel, captions small at the bottom, name once at the start, at most one phrase every 12 to 15 s.
+
+## When to leave the speaker alone
+The first line, the last line, a personal line, the turn. Silence on screen is a choice.
+
+## Not allowed, ever
+Anything in the NEVER list: no AI look, no dashes or middle dots on screen, no name cards, no zooms, no full-screen inserts over a speaker, no generated music.
+
+## Honest limits
+We measure sound, we do not hear it. A webcam in a bedroom will not look like a film set. Tell the user that a window, a lamp or a second angle will help more than any effect, and never hide it behind graphics.
