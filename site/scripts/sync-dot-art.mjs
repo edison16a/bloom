@@ -21,3 +21,9 @@ rmSync(examples, { recursive: true, force: true });
 mkdirSync(examples, { recursive: true });
 cpSync(path.join(skill, "examples/scenes"), path.join(examples, "scenes"), { recursive: true });
 cpSync(path.join(skill, "examples/photos.ts"), path.join(examples, "photos.ts"));
+
+const images = path.join(site, "public/images");
+mkdirSync(images, { recursive: true });
+for (const f of ["dahlia.jpg", "pagoda.jpg", "rocket.jpg"]) cpSync(path.join(skill, "examples/images", f), path.join(images, f));
+
+console.log("dot-art synced into site/");
