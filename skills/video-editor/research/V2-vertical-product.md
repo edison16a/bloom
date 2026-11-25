@@ -289,3 +289,13 @@ Compared with the three excluded long tutorials (6–16 cuts/min, −25 to −17
 8. **Chapter card on a physical or brand object.** For list formats (tips, models), insert a 1–1.5 s card per chapter: a serif title on a pinned paper card, or a giant numeral on the A-roll. Pair it with a music swell or whoosh (+10 dB lift). (Notion 5 tips.)
 9. **Bar-locked hardware cuts with a pre-logo silence.** Cut every 4 beats (3.0 s at 80 BPM) on macro product shots with 1–2 f glitch or noise flash frames at each cut. Drop the music to near-silence for 1–2 s, then slam the logo on a +20 dB drop. (Framer F1.)
 10. **Rise-and-tilt CTA.** The phone rises into frame from the bottom (↑, 25–30 f, ease-out). After the demo, lower the phone and tilt up to clean sky or a flat field, and land 2–4 swapping white bold lines there (each in 4 f, hold 20–30 f), ending on the logo on black. The beat enters at the payoff moment. (Arc Voice Search.)
+
+### Amateur tells the pros avoid
+- Showing a whole desktop window letterboxed in 9:16 so the text is unreadable (even Raycast's version is the weakest-reading example here). Pros crop to the element.
+- Static, unanimated screen recordings held for 5+ s. Pros add a slow Z+ drift, cursor action or a card pop at least every 2–3 s.
+- A whoosh on every cut. Pros use few UI SFX (soft pops and ticks) and let the music drop carry the reveal.
+- Captions in the bottom 15% (covered by platform UI) or long multi-line subtitle blocks. Pros use 1–6 word phrases in a pill or a word-by-word build, at mid or lower-middle.
+- Flat energy to the end. Pros cut music to near-silence on the logo, or drop it hard into the CTA.
+- Slow logo intros. Every video here opens on content or a question within the first frame. None opens on a logo; logos only close.
+- Mixed type systems. Pros use one sans family, with emphasis by italic, weight or size inside it (one serif accent at most).
+- Very quiet mixes for hype pieces. The launch and hype set sits around −10 to −15 LUFS. Quieter mixes (−20 to −25) only appear in speech-led tutorials.
