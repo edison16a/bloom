@@ -35,3 +35,18 @@ def key_of(name):
     n = re.sub(r"\b(inc|corp|corporation|ltd|llc|gmbh|co|company|technologies|labs?)\b\.?", "", n)
     return re.sub(r"[^a-z0-9]", "", n)
 
+
+def safe_extract(blob, dest, want):
+    """Extract only .svg/.json/.ts members, refusing absolute paths and parent traversal."""
+    os.makedirs(dest, exist_ok=True)
+    with tarfile.open(fileobj=io.BytesIO(blob), mode="r:gz") as t:
+        for m in t.getmembers():
+            if not m.isfile() or not want(m.name):
+                continue
+            if m.name.startswith("/") or ".." in m.name.split("/"):
+                continue
+            out = os.path.join(dest, m.name)
+            os.makedirs(os.path.dirname(out), exist_ok=True)
+            with open(out, "wb") as f:
+                f.write(t.extractfile(m).read())
+
