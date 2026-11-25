@@ -45,3 +45,13 @@ python3 -I scripts/examples.py --brand stripe,linear,vercel,nvidia,spacex --out 
 ```
 
 If it says the cache is missing, run `python3 -I scripts/collect_logos.py --skip-wd` once (about a minute). Narrow filters often return fewer logos than `--n`; the script says so, and you can drop a filter (for example `--track`) to see more. `--brand` matches exact names first, so `--brand stripe` is Stripe and not every name containing it. Learn proportions, weight and restraint. Never copy a logo.
+
+### 3. Wordmark candidates
+
+Write `brands/<slug>/candidates.json` (format in `scripts/preview.py`) with 10 to 16 wordmarks: different fonts (`python3 -I scripts/build_brand.py --list-fonts`), cases, weights and tracking, all inside the research ranges. Two or three may carry one custom detail: `accent_chars` (indexes drawn in the accent color) or `custom_glyphs` (replace one character, by its index, with your own SVG drawn in a box 100 units tall; `{"3": {"svg": "...", "w": 72, "height": "cap"}}` where `w` is the box width in the same units (default 100) and `height` is `cap` or `x`; use `{I}` as the fill). `case` is `lower`, `upper`, `title` (every word capitalized) or `as-is` (exactly as typed, for names like "iRobot"). Render and look:
+
+```bash
+python3 -I scripts/preview.py --candidates brands/<slug>/candidates.json
+```
+
+Keep the best three. Judge spacing between letters (no letters touching, no holes), weight at small size, and whether it looks like the archetype's leaders.
