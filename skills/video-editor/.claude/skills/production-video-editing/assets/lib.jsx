@@ -52,3 +52,8 @@ function tr(L, name) {
 function hex(h) { h = h.replace('#', ''); return [parseInt(h.substr(0, 2), 16) / 255, parseInt(h.substr(2, 2), 16) / 255, parseInt(h.substr(4, 2), 16) / 255]; }
 function span(L, a, z) { L.inPoint = a; L.outPoint = z; }
 function fx(L, match) { return L.property('ADBE Effect Parade').addProperty(match); }
+function fxProp(effect, name) {
+  for (var i = 1; i <= effect.numProperties; i++) if (effect.property(i).name == name) return effect.property(i);
+  return null;
+}
+
