@@ -204,3 +204,27 @@ for each word i: new text layer, in = i*beat, out = (i+1)*beat
 ### R10. Number counter, badge swap, and "stat card" (01, 15)
 Source Text expression `Math.round(linear(time, t0, t1, a, b)) + "M views"` with expo-out on a slider. Drift the card in 3D: rotation Y about 10–15°, slow camera dolly. In 15 the badge beside the face swaps values in place (50% → 39% → 0.1%) on spoken numbers, with a scale pop of 100→108→100 over 6 f *(inferred amount)*.
 - SFX: a short tick per digit change, or one "cash/ding" on the final value.
+
+### R11. Impact camera shake (B5 Video Copilot)
+```
+P = position; key at impact frame tI and at tI + f(10..15) with SAME value
+Wiggler panel ≈ expression: posterizeTime(0) not needed —
+  expression on Position:  amp = 25*Math.max(0, 1-(time-tI)/0.5);  (time>=tI)? wiggle(15, amp) : value
+  (Kramer: freq 15, mag 25, Jagged, all dims independent; delete jerky last keys, easy-ease into rest)
+layer.motionBlur = true; comp.motionBlur = true
+fx = plate.Effects.addProperty("ADBE Tile");  output width/height 125, mirror edges ON   // hides black borders
+```
+On talking heads, scale the magnitude down to 6–12 px at 1080p *(inferred; Kramer's 25 is for a baseball-bat "explosion" hit)* and decay over 8–12 f. SFX: impact or sub boom on frame tI, on the same frame or 1 frame after (W2).
+
+### R12. Speed ramp (B8)
+```
+L.timeRemapEnabled = true; TR = L.property("ADBE Time Remapping");
+keys: A (normal) → B (fast section start) → drag B's value later in source = speed-up; → C → D (speed out)
+Speed graph: entering hot → peak velocity at the START of the segment then decelerate
+             (out-influence on fast key small, in-influence on landing key large  ⇒ expo-out shape)
+exiting:     gradual rise then disappear (mirror)
+reverse/boomerang: key a few frames later with an EARLIER source time → plays backwards; use to make
+             a clip's motion direction match the next clip (left→right into right→left)
+add Pixel Motion Blur (preferred over CC Force Motion Blur per source)
+```
+Sync: keep the music layer in the comp with its waveform visible (B8: press L twice) and put the fast section on the downbeat. SFX: whoosh across the fast segment, peak at max velocity (W1).
