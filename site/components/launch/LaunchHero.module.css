@@ -1,0 +1,14 @@
+.hero { position: relative; overflow: hidden; isolation: isolate; background: #050507; padding-top: 128px; }
+/* Live light behind the words and the top half of the film. */
+.art { position: absolute; left: 0; right: 0; top: 0; height: 78%; z-index: -2; }
+.veil {
+  position: absolute; left: 0; right: 0; top: 0; height: 78%; z-index: -1; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(5, 5, 7, 0.82) 0%, rgba(5, 5, 7, 0.55) 40%, rgba(5, 5, 7, 0.15) 75%),
+    linear-gradient(180deg, rgba(5, 5, 7, 0.3) 0%, rgba(5, 5, 7, 0) 40%, var(--bg) 100%);
+}
+.top { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px 48px; flex-wrap: wrap; }
+.copy { display: flex; flex-direction: column; gap: 16px; max-width: 680px; }
+.title { font-size: clamp(40px, 5.6vw, 72px); line-height: 1.04; font-weight: 500; letter-spacing: -0.035em; text-wrap: balance; }
+.text { color: var(--text-2); font-size: 18px; line-height: 28px; max-width: 36rem; }
+.film { margin-top: 48px; }
