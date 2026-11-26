@@ -1,10 +1,8 @@
 import type { Metadata } from "next";
-import { FilmPlayer } from "@/components/launch/FilmPlayer";
-import { PageHero } from "@/components/layout/PageHero";
+import { LaunchHero } from "@/components/launch/LaunchHero";
 import { SetupPrompt } from "@/components/setup/SetupPrompt";
 import { Figures } from "@/components/ui/Figures";
 import { Section } from "@/components/ui/Section";
-import { SectionIntro } from "@/components/ui/SectionIntro";
 import { featuredFilm } from "@/content/films";
 import { launchFigures } from "@/content/launch";
 import { skillById } from "@/content/skills";
@@ -17,18 +15,12 @@ export const metadata: Metadata = { title: skill.name, description: skill.summar
 export default function LaunchPage() {
   return (
     <>
-      <PageHero scene="tunnel">
-        <SectionIntro
-          as="h1"
-          title={skill.headline}
-          text={skill.summary}
-          actions={<SetupPrompt prompt={setupPrompt("launch")} showPrompt={false} bare />}
-        />
-      </PageHero>
-
-      <Section title="The Bloom launch film">
-        <FilmPlayer film={featuredFilm} />
-      </Section>
+      <LaunchHero
+        title={skill.headline}
+        text={`${skill.summary} Trained on 250 launch videos, built in EffectCraft.`}
+        prompt={setupPrompt("launch")}
+        film={featuredFilm}
+      />
 
       <Section title="Trained on hundreds of launch videos">
         <Figures items={launchFigures} />
