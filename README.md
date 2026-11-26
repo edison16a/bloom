@@ -85,14 +85,14 @@ site/
   tests/          vitest: prompts, content integrity, writing rules
   public/media/   brand kits, the launch film, screenshots of the brand boards
 showcase/
-  launch-film/    source of the launch film and its music licence
+  launch-film/    source of an earlier launch film and its music licence
 skills/           the three agents, unchanged
 assets/brand/     the Bloom logo and its brand.json
 ```
 
 - **Live dot art.** `npm run sync` runs Dot Art's own installer to copy the engine into `site/components/dot-art`, the same way its gallery does. Scenes hold GLSL and functions, so pages pass scene ids and the client registry in `lib/scenes.ts` looks them up. Each canvas starts near the viewport, pauses off screen and gives its WebGL context back after 4 seconds away. Scenes that build up from nothing can start part way into their loop.
 - **Design.** The interface follows the [unslop](https://github.com/heydamir/unslop) passes: one ink ramp, three text roles, one pink accent taken from the logo, Geist and Geist Mono, a 4 px spacing grid and one easing curve. The richness lives in the dot art, the film and the logos, not in the chrome.
-- **The launch film.** It follows the Launch Video agent's film shape, motion values and sound rules. EffectCraft is a macOS app and was not available in the cloud container the site was built in, so the same plan was rendered from a web page frame by frame with live dot art, then mastered to -14.2 LUFS and -3.9 dBTP and checked with its gate script. `showcase/launch-film/README.md` has the details.
+- **The launch film.** The site plays the Bloom launch video, 24 seconds at 1920 by 1080, with a play bar that shows on hover: play and pause, the time, a progress bar you can drag and sound. An earlier film rendered from a web page in this repo, with its music licence, is kept in `showcase/launch-film`.
 - **Brands.** All five were made with the brand builder from `skills/brand-creator`: candidates, an options sheet, then the full kit for option 1. Each `brand.json` the builder read sits next to its media in `site/public/media/brands`.
 - **Tests.** `npm test` checks that every setup prompt clones only its own folder and covers both Claude Code and Codex, that every file the site links to exists, and that no source uses em dashes, midline dots or arrows.
 
@@ -126,7 +126,7 @@ npm test
 
 ## Credits
 
-- Music in the launch film: "Newer Wave" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0.
+- Music in the earlier film in `showcase/launch-film`: "Newer Wave" by Kevin MacLeod (incompetech.com), licensed under CC BY 4.0.
 - Fonts bundled with Brand Creator are under the SIL Open Font License.
 - Interface direction follows unslop by Damir Sokolovsky, CC BY 4.0.
 
