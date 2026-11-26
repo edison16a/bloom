@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { films } from "@/content/films";
 import { site } from "@/content/site";
 import { skills } from "@/content/skills";
 import styles from "./SiteFooter.module.css";
@@ -31,9 +30,6 @@ export function SiteFooter() {
           </ul>
         </div>
         <div className={styles.credits}>
-          {films.map((f) => (
-            <p key={f.id}>Music in the {f.title}: {f.music.credit}.</p>
-          ))}
           <p>
             Interface direction follows <a href="https://github.com/heydamir/unslop">unslop</a> by Damir Sokolovsky, CC BY 4.0.
           </p>

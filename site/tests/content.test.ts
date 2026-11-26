@@ -45,12 +45,11 @@ describe("content", () => {
     expect(featuredBrand.kit).toBeDefined();
   });
 
-  it("every film and poster is there, with its music credited", () => {
+  it("every film and poster is there", () => {
     for (const f of films) {
       expect(existsSync(publicFile(f.src)), f.src).toBe(true);
       expect(existsSync(publicFile(f.poster)), f.poster).toBe(true);
-      expect(f.music.credit).toContain(f.music.by);
-      expect(f.music.credit).toContain(f.music.licence);
+      expect(f.seconds).toBeGreaterThan(0);
     }
   });
 });
