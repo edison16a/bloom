@@ -2,14 +2,35 @@
   position: relative; overflow: hidden; border-radius: var(--radius-panel); background: #000;
   border: 1px solid var(--hairline-strong); box-shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
 }
-.video { width: 100%; height: auto; display: block; }
-.controls {
-  position: absolute; left: 16px; bottom: 16px; display: flex; gap: 8px;
+.video { width: 100%; height: auto; display: block; cursor: pointer; }
+
+/* The bar shows on hover, on keyboard focus and whenever the film is paused. The player sets .show. */
+.bar {
+  position: absolute; left: 12px; right: 12px; bottom: 12px; display: flex; align-items: center; gap: 12px;
+  height: 44px; padding: 0 8px 0 4px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(6, 6, 9, 0.72); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  opacity: 0; transform: translateY(6px); transition: opacity 180ms var(--ease), transform 180ms var(--ease);
 }
-.control {
-  display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 12px; border: 1px solid rgba(255, 255, 255, 0.16);
-  border-radius: 10px; background: rgba(6, 6, 9, 0.6); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-  color: var(--text); font-size: 13px; cursor: pointer; transition: background-color 160ms var(--ease);
+.show .bar { opacity: 1; transform: none; }
+@media (hover: none) { .bar { opacity: 1; transform: none; } }
+
+.icon {
+  display: inline-grid; place-items: center; width: 36px; height: 36px; flex: none; border: 0; border-radius: 8px;
+  background: transparent; color: var(--text); cursor: pointer; transition: background-color 160ms var(--ease);
 }
-.control:hover { background: rgba(23, 25, 34, 0.85); }
-.control:active { transform: scale(0.98); }
+.icon:hover { background: rgba(255, 255, 255, 0.08); }
+.icon:active { transform: scale(0.96); }
+.time { flex: none; font: 400 12px/16px var(--font-mono); font-variant-numeric: tabular-nums; color: var(--text-2); min-width: 84px; }
+
+.seek { flex: 1; min-width: 0; height: 20px; margin: 0; background: transparent; cursor: pointer; appearance: none; -webkit-appearance: none; }
+.seek::-webkit-slider-runnable-track {
+  height: 4px; border-radius: 2px;
+  background: linear-gradient(to right, var(--accent) var(--p, 0%), rgba(255, 255, 255, 0.18) var(--p, 0%));
+}
+.seek::-moz-range-track { height: 4px; border-radius: 2px; background: rgba(255, 255, 255, 0.18); }
+.seek::-moz-range-progress { height: 4px; border-radius: 2px; background: var(--accent); }
+.seek::-webkit-slider-thumb { -webkit-appearance: none; width: 12px; height: 12px; margin-top: -4px; border-radius: 50%; background: #fff; border: 0; }
+.seek::-moz-range-thumb { width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 0; }
+.seek:focus-visible { outline: none; }
+.seek:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 3px rgba(255, 61, 154, 0.5); }
+@media (max-width: 520px) { .time { min-width: 0; } }
