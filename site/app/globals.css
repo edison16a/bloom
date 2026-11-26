@@ -43,7 +43,7 @@ h1, h2, h3, p { margin: 0; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
 ::selection { background: rgba(255, 61, 154, 0.35); }
 
-.container { width: 100%; max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
+.container { width: 100%; max-width: var(--page); margin-inline: auto; padding-inline: var(--gutter); }
 .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 @media (prefers-reduced-motion: reduce) {
